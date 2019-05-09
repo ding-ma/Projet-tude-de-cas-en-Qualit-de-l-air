@@ -1,16 +1,10 @@
-#-------------------------------------------------------------------------------
-# Name:        module2
-# Purpose:
-#
-# Author:      MaD
-#
-# Created:     09/05/2019
-# Copyright:   (c) MaD 2019
-# Licence:     <your licence>
-#-------------------------------------------------------------------------------
+from tkinter import *
+import Backend as bk
 
-def main():
-    pass
+bk.test()
+window = Tk()
+window.title("Welcome")
+window.geometry('800x600')
+bk.test()
 
-if __name__ == '__main__':
-    main()
+window.mainloop()
