@@ -1,5 +1,5 @@
 from tkinter import *
-import Backend as bk
+from src import Backend as bk
 
 bk.test()
 window = Tk()
