@@ -6,7 +6,7 @@ window.title("Welcome")
 window.geometry('800x600')
 dateLabel = tk.Label(window, text="Enter Date in YYYY/MM/DD format")
 dateLabel.grid(column=0, row=0)
-txt = tk.Entry(window, width=10)
+txt = tk.Entry(window, width=13)
 txt.grid(column=1, row=0)
 
 
