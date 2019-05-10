@@ -1,3 +1,21 @@
+import os
+
+
+# to connect to host, not working
+# def CMCServerConnection():  # add arguments to change user/pass
+#     host = "sci-eccc-in.science.gc.ca"
+#     host = "199.212.17.148"
+#     user = "sair001"
+#     passw= "1AiqaCom!"
+#     port = 22
+#     client = paramiko.SSHClient()
+#     client.set_missing_host_key_policy(paramiko.WarningPolicy())
+#     print(" Connecting to %s \n with username: %s... \n" % (host, user))
+#     client.connect(hostname=host, port=port, username=user,password=passw)
+#     print("connected")
+#     stdin, stdout, stderr = client.exec_command("alias")
+#     print(stderr.readlines)
+
 # checks for date input errors
 def inputDate(date):
     unformatattedDate = date.split("/")
@@ -19,6 +37,18 @@ def inputDate(date):
     else:
         print(year, month, day)
 
+
 def dateErrors():
     print("Date format error enter them again")
 
+
+def modelChosen(model):
+    if model == "GEM-MACH":
+        print("Using GEM-MACH")
+    else:
+        print("Function not supported yet")
+
+def toolChosen(tool):
+    if tool == "XRARC":
+        print("Lanching XRARC...")
+        os.system('XRARC')
