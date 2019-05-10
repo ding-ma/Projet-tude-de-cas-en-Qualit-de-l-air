@@ -1,6 +1,3 @@
-import os
-
-
 # to connect to host, not working
 # def CMCServerConnection():  # add arguments to change user/pass
 #     host = "sci-eccc-in.science.gc.ca"
@@ -55,7 +52,7 @@ def inputEndDate(eDate):
 
     if len(eYear) != 4 or len(eMonth) != 2 or eMonth> "12" or len(eDay) != 2:
         dateErrors()
-    elif eMonth == "02" and int(day) > 28:
+    elif eMonth == "02" and int(eDay) > 28:
         dateErrors()
     elif eMonth in oddMonths and int(eDay) > 31:
         dateErrors()
@@ -68,7 +65,28 @@ def dateErrors():
     print("Date format error enter them again")
 
 
-# 2017"+year"",08,08,2017,08,08\n"
+
+def toolChosen(tool):
+    if tool == "XRARC":
+        print("Lanching XRARC...")
+    # os.system('XRARC')
+
+
+def time(sTime, eTime):
+    hours = (
+        "000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015",
+        "016",
+        "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029", "030", "031", "032",
+        "033",
+        "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047", "048")
+    sIndex = hours.index(sTime)
+    eIndex = hours.index(eTime)
+    global extTime
+    for timeList in range(eIndex - sIndex + 1):
+        extTime = hours[sIndex + timeList]
+        print(extTime)
+
+
 def modelChosen(model):
     if model == "GEM-MACH":
         print("Using GEM-MACH")
@@ -79,21 +97,15 @@ def modelChosen(model):
             "postprocess = nopost\n"
             "date = "
             # start
-            + sYear + "," + sMonth + "," + sDay +","
+            + sYear + "," + sMonth + "," + sDay + ","
             # end
             + eYear + "," + eMonth + "," + eDay +
             "\nbranche = operation.forecasts.mach\n"
-            "ext = 002,003,004,005,006,007\n"
-            "heure = 00\n"
+            "ext = "  # TODO format the extTime into the appropriate format in order to insert it
+            "\nheure = 00\n"
             "priority = online\n"
             "inc = 1\n"
             "#\n")
 
     else:
         print("Function not supported yet")
-
-
-def toolChosen(tool):
-    if tool == "XRARC":
-        print("Lanching XRARC...")
-    # os.system('XRARC')

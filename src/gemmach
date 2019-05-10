@@ -1,0 +1,10 @@
+target = /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma
+filter = copy
+postprocess = nopost
+date = 1234,12,11,1234,11,12
+branche = operation.forecasts.mach
+ext = 
+heure = 00
+priority = online
+inc = 1
+#
