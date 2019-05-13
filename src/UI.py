@@ -11,8 +11,7 @@ def Clicked():
     eDate = enteredEndDate.get()
     Bk.inputEndDate(eDate)
 
-    model = modelCombo.get()
-    Bk.modelChosen(model)
+
 
     tool = toolCombo.get()
     Bk.toolChosen(tool)
@@ -21,7 +20,8 @@ def Clicked():
     eTime = eHourCombo.get()
     Bk.time(sTime, eTime)
 
-
+    model = modelCombo.get()
+    Bk.modelChosen(model)
 
 window = tk.Tk()
 window.title("Welcome")

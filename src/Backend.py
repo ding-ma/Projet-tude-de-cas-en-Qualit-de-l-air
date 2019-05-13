@@ -1,3 +1,6 @@
+import os
+
+
 # to connect to host, not working
 # def CMCServerConnection():  # add arguments to change user/pass
 #     host = "sci-eccc-in.science.gc.ca"
@@ -38,6 +41,7 @@ def inputStartDate(sDate):
     else:
         print(sYear, sMonth, sDay)
 
+
 def inputEndDate(eDate):
     global eYear
     global eMonth
@@ -50,7 +54,7 @@ def inputEndDate(eDate):
     oddMonths = ("01", "03", "05", "07", "09", "11")
     evenMonths = ("04", "06", "08", "10", "12")
 
-    if len(eYear) != 4 or len(eMonth) != 2 or eMonth> "12" or len(eDay) != 2:
+    if len(eYear) != 4 or len(eMonth) != 2 or eMonth > "12" or len(eDay) != 2:
         dateErrors()
     elif eMonth == "02" and int(eDay) > 28:
         dateErrors()
@@ -61,9 +65,9 @@ def inputEndDate(eDate):
     else:
         print(eYear, eMonth, eDay)
 
+
 def dateErrors():
     print("Date format error enter them again")
-
 
 
 def toolChosen(tool):
@@ -73,6 +77,7 @@ def toolChosen(tool):
 
 
 def time(sTime, eTime):
+    global formattedSelectedTime
     hours = (
         "000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015",
         "016",
@@ -81,18 +86,24 @@ def time(sTime, eTime):
         "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047", "048")
     sIndex = hours.index(sTime)
     eIndex = hours.index(eTime)
-    global extTime
+    unformattedSelectedTime = ""
     for timeList in range(eIndex - sIndex + 1):
-        extTime = hours[sIndex + timeList]
-        print(extTime)
+        unformattedSelectedTime += hours[sIndex + timeList]
+    formattedSelectedTime = addComma(unformattedSelectedTime)
 
 
+def addComma(string):
+    return ','.join(string[i:i + 3] for i in range(0, len(string), 3))
+
+
+# rarc cmd
+# rarc -i /home/sair001/rarcdirectives/gemmach -tmpdir ./temp
 def modelChosen(model):
     if model == "GEM-MACH":
         print("Using GEM-MACH")
         file = open("gemmach", "w")
         file.write(
-            "target = /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma\n"
+            "target = /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/temp\n"
             "filter = copy\n"
             "postprocess = nopost\n"
             "date = "
@@ -101,11 +112,14 @@ def modelChosen(model):
             # end
             + eYear + "," + eMonth + "," + eDay +
             "\nbranche = operation.forecasts.mach\n"
-            "ext = "  # TODO format the extTime into the appropriate format in order to insert it
+            "ext = " + formattedSelectedTime +
+            # todo add checkbox for 00/12h
             "\nheure = 00\n"
             "priority = online\n"
             "inc = 1\n"
             "#\n")
-
+        print("File Save...Running RARC")
+        os.system(
+            "rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach -tmpdir /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/temp")
     else:
         print("Function not supported yet")

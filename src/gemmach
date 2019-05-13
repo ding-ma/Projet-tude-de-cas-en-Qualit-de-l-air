@@ -1,9 +1,9 @@
-target = /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma
+target = /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/temp
 filter = copy
 postprocess = nopost
-date = 1234,12,11,1234,11,12
+date = 2002,01,11,2002,02,11
 branche = operation.forecasts.mach
-ext = 
+ext = 000,001,002,003
 heure = 00
 priority = online
 inc = 1
