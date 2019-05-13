@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+import os
 import tkinter as tk
 from tkinter import ttk
 
@@ -11,14 +13,16 @@ def Clicked():
     eDate = enteredEndDate.get()
     Bk.inputEndDate(eDate)
 
-
-
     tool = toolCombo.get()
     Bk.toolChosen(tool)
 
     sTime = sHourcombo.get()
     eTime = eHourCombo.get()
     Bk.time(sTime, eTime)
+
+    h_00 = var_00.get()
+    h_12 = var_12.get()
+    Bk.modelCheckbox(h_00, h_12)
 
     model = modelCombo.get()
     Bk.modelChosen(model)
@@ -40,7 +44,7 @@ enteredEndDate = tk.Entry(window, width=13)
 enteredEndDate.grid(column=1, row=1)
 
 # execute button
-btn = tk.Button(window, text=" Enter", command=Clicked, width=20, height=5)
+btn = tk.Button(window, text="Write to file", command=Clicked, width=20, height=5)
 btn.grid(column=10, row=10)
 
 # model
@@ -87,7 +91,25 @@ eHourCombo = ttk.Combobox(window, values=hours, state='readonly')
 eHourCombo.grid(column=7, row=5)
 eHourCombo.current(0)
 
-modelhours = ("00", "12")
+# Hour Selection
+# todo add label
+var_00 = tk.BooleanVar()
+modelHourLabel = tk.Label(window, text="Select model time (UTC)")
+modelHourLabel.grid(column=0, row=7)
+hours00_Checkbutton = tk.Checkbutton(window, text="00", variable=var_00)
+hours00_Checkbutton.grid(column=1, row=7)
 
+var_12 = tk.BooleanVar()
+hours12_Checkbutton = tk.Checkbutton(window, text="12", variable=var_12)
+hours12_Checkbutton.grid(column=2, row=7)
+
+
+def Start():
+    os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach")
+
+
+abtn = tk.Button(window, text="Start Program", command=Start, width=20, height=5)
+abtn.grid(column=10, row=11)
+##
 # System.out.print('"'+","+'"'+i)
 window.mainloop()

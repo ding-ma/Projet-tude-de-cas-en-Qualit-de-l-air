@@ -1,5 +1,7 @@
-import os
+#!/usr/bin/env python3
 
+
+# Notes: def modelChosen(model): always needs to be the last function!
 
 # to connect to host, not working
 # def CMCServerConnection():  # add arguments to change user/pass
@@ -39,6 +41,7 @@ def inputStartDate(sDate):
     elif sMonth in evenMonths and int(sDay) > 30:
         dateErrors()
     else:
+        print("Start Date")
         print(sYear, sMonth, sDay)
 
 
@@ -63,6 +66,7 @@ def inputEndDate(eDate):
     elif eMonth in evenMonths and int(eDay) > 30:
         dateErrors()
     else:
+        print("End Date")
         print(eYear, eMonth, eDay)
 
 
@@ -73,7 +77,6 @@ def dateErrors():
 def toolChosen(tool):
     if tool == "XRARC":
         print("Lanching XRARC...")
-    # os.system('XRARC')
 
 
 def time(sTime, eTime):
@@ -96,6 +99,18 @@ def addComma(string):
     return ','.join(string[i:i + 3] for i in range(0, len(string), 3))
 
 
+def modelCheckbox(h_00, h_12):
+    global modelHour
+    if h_00 is True and h_12 is False:
+        modelHour = "00"
+    if h_12 is True and h_00 is False:
+        modelHour = "12"
+    if h_12 and h_00 is True:
+        modelHour = "00,12"
+
+    # todo make sure user checks at least 1 checkbox
+
+
 # rarc cmd
 # rarc -i /home/sair001/rarcdirectives/gemmach -tmpdir ./temp
 def modelChosen(model):
@@ -103,7 +118,7 @@ def modelChosen(model):
         print("Using GEM-MACH")
         file = open("gemmach", "w")
         file.write(
-            "target = /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/temp\n"
+            "target = $TMPDIR\n"
             "filter = copy\n"
             "postprocess = nopost\n"
             "date = "
@@ -113,13 +128,13 @@ def modelChosen(model):
             + eYear + "," + eMonth + "," + eDay +
             "\nbranche = operation.forecasts.mach\n"
             "ext = " + formattedSelectedTime +
-            # todo add checkbox for 00/12h
-            "\nheure = 00\n"
-            "priority = online\n"
+            "\nheure = " + modelHour +
+            "\npriority = online\n"
             "inc = 1\n"
             "#\n")
         print("File Save...Running RARC")
-        os.system(
-            "rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach -tmpdir /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/temp")
+        # os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach ")
+    #   os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach -tmpdir /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/temp")
+    # os.system("rarc")
     else:
-        print("Function not supported yet")
+        print("Function not supported yet ")
