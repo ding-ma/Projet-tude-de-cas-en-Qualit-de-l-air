@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-import os
+import datetime
+import logging
 import tkinter as tk
 from tkinter import ttk
 
@@ -10,12 +11,15 @@ window = tk.Tk()
 window.title("Welcome")
 window.geometry('800x600')
 
+logging.basicConfig(filename='logs.log', level=logging.DEBUG)
+logging.info("Program Launched: " + str(datetime.datetime.now()))
+
+
 # Defines and places the notebook widget
 nb = ttk.Notebook(window)
 nb.grid(row=1, column=0, columnspan=50, rowspan=49, sticky='NESW')
 
 # Adds tab for Gem-Mach
-
 machTab = ttk.Frame(nb)
 nb.add(machTab, text="Gem-Mach")
 
@@ -87,7 +91,13 @@ hours12_Checkbutton.grid(column=2, row=7)
 
 
 def Start():
-    os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach")
+    # in order for the command to run on CMC server, it has to be ISOLATED and no passed through functions
+    # other way works on windows
+    # os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach")
+    # os.system("spi")
+    Bk.execute("py tests.py")
+    # Bk.log("py tests.py")
+    # Bk.execute("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach")
 
 
 abtn = tk.Button(machTab, text="Start Program", command=Start, width=20, height=5)

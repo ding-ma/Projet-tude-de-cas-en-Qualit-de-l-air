@@ -18,9 +18,12 @@
 #     stdin, stdout, stderr = client.exec_command("alias")
 #     print(stderr.readlines)
 
+import logging
 # checks for date input errors
+import os
 
 
+# change filename to gemmach
 def inputStartDate(sDate):
     global sYear
     global sMonth
@@ -73,7 +76,6 @@ def dateErrors():
     print("Date format error enter them again")
 
 
-
 def time(sTime, eTime):
     global formattedSelectedTime
     hours = (
@@ -106,8 +108,16 @@ def modelCheckbox(h_00, h_12):
         modelHour = "00,12"
     else:
         modelHour = " "
-    # todo make sure user checks at least 1 checkbox
 
+
+def execute(cmd):
+    os.system(cmd)
+    log(cmd)
+
+
+def log(cmd):
+    myCmd = os.popen(cmd).read()
+    logging.info(myCmd)
 
 # rarc cmd
 # rarc -i /home/sair001/rarcdirectives/gemmach -tmpdir ./temp
