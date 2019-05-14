@@ -102,16 +102,17 @@ def addComma(string):
 
 def modelCheckbox(h_00, h_12):
     global modelHour
-
-    if h_00 is True and h_12 is False:
+    h_00 = int(h_00)
+    h_12 = int(h_12)
+    print(h_00)
+    if (h_00 is True and h_12 is False) or (h_00 is 1 and h_12 is 0):
         modelHour = "00"
-
-    elif h_12 is True and h_00 is False:
+    elif (h_12 is True and h_00 is False) or (h_00 is 0 and h_12 is 1):
         modelHour = "12"
-
-    elif h_12 and h_00 is True:
+    elif (h_12 and h_00 is True) or (h_00 is 1 and h_12 is 1):
         modelHour = "00,12"
-
+    else:
+        modelHour = " "
     # todo make sure user checks at least 1 checkbox
 
 

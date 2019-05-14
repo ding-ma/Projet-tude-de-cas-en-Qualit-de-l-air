@@ -93,12 +93,11 @@ eHourCombo.current(0)
 
 # Hour Selection
 # todo add label
-var_00 = tk.BooleanVar()
+var_00 = tk.BooleanVar(value=True)
 modelHourLabel = tk.Label(window, text="Select model time (UTC)")
 modelHourLabel.grid(column=0, row=7)
 hours00_Checkbutton = tk.Checkbutton(window, text="00", variable=var_00)
 hours00_Checkbutton.grid(column=1, row=7)
-
 var_12 = tk.BooleanVar()
 hours12_Checkbutton = tk.Checkbutton(window, text="12", variable=var_12)
 hours12_Checkbutton.grid(column=2, row=7)

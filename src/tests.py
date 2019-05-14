@@ -39,4 +39,5 @@ def abc():
         return modelHour
 
 
-aaa()
+azq = 55
+print(bool(azq))
