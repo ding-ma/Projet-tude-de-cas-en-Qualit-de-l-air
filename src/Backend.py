@@ -20,6 +20,7 @@
 
 # checks for date input errors
 
+
 def inputStartDate(sDate):
     global sYear
     global sMonth
@@ -101,11 +102,14 @@ def addComma(string):
 
 def modelCheckbox(h_00, h_12):
     global modelHour
+
     if h_00 is True and h_12 is False:
         modelHour = "00"
-    if h_12 is True and h_00 is False:
+
+    elif h_12 is True and h_00 is False:
         modelHour = "12"
-    if h_12 and h_00 is True:
+
+    elif h_12 and h_00 is True:
         modelHour = "00,12"
 
     # todo make sure user checks at least 1 checkbox

@@ -9,13 +9,34 @@ start = "000"
 end = "013"
 
 startIndex = hours.index(start)
-print(startIndex)
 
 endIndex = hours.index(end)
-print(endIndex)
+
 
 file = open("gemmach", "w")
 
 
 for x in range(endIndex - startIndex + 1):
     file.write("," + hours[startIndex + x])
+
+
+def aaa():
+    modelHour = abc()
+    print(modelHour)
+
+
+def abc():
+    h_00 = True
+    h_12 = True
+    if h_00 is True and h_12 is False:
+        modelHour = "00"
+        return modelHour
+    elif h_12 is True and h_00 is False:
+        modelHour = "12"
+        return modelHour
+    elif h_12 and h_00 is True:
+        modelHour = "00,12"
+        return modelHour
+
+
+aaa()

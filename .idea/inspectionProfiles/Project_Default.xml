@@ -15,6 +15,7 @@
           <option value="Backend.year" />
           <option value="Backend.month" />
           <option value="Backend.day" />
+          <option value="tests.aaa" />
         </list>
       </option>
     </inspection_tool>
