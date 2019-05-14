@@ -5,6 +5,20 @@ from tkinter import ttk
 
 import Backend as Bk
 
+# initial setting
+window = tk.Tk()
+window.title("Welcome")
+window.geometry('800x600')
+
+# Defines and places the notebook widget
+nb = ttk.Notebook(window)
+nb.grid(row=1, column=0, columnspan=50, rowspan=49, sticky='NESW')
+
+# Adds tab for Gem-Mach
+
+machTab = ttk.Frame(nb)
+nb.add(machTab, text="Gem-Mach")
+
 
 def Clicked():
     sDate = enteredDate.get()
@@ -12,9 +26,6 @@ def Clicked():
 
     eDate = enteredEndDate.get()
     Bk.inputEndDate(eDate)
-
-    tool = toolCombo.get()
-    Bk.toolChosen(tool)
 
     sTime = sHourcombo.get()
     eTime = eHourCombo.get()
@@ -24,51 +35,24 @@ def Clicked():
     h_12 = var_12.get()
     Bk.modelCheckbox(h_00, h_12)
 
-    model = modelCombo.get()
-    Bk.modelChosen(model)
+    Bk.writeFile()
 
-window = tk.Tk()
-window.title("Welcome")
-window.geometry('800x600')
 
 # Start date
-startDateLabel = tk.Label(window, text="Enter Start Date in YYYY/MM/DD format")
+startDateLabel = tk.Label(machTab, text="Enter Start Date in YYYY/MM/DD format")
 startDateLabel.grid(column=0, row=0)
-enteredDate = tk.Entry(window, width=13)
+enteredDate = tk.Entry(machTab, width=13)
 enteredDate.grid(column=1, row=0)
 
 # Start date
-endDateLabel = tk.Label(window, text="Enter End Date in YYYY/MM/DD format")
+endDateLabel = tk.Label(machTab, text="Enter End Date in YYYY/MM/DD format")
 endDateLabel.grid(column=0, row=1)
-enteredEndDate = tk.Entry(window, width=13)
+enteredEndDate = tk.Entry(machTab, width=13)
 enteredEndDate.grid(column=1, row=1)
 
 # execute button
-btn = tk.Button(window, text="Write to file", command=Clicked, width=20, height=5)
+btn = tk.Button(machTab, text="Write to file", command=Clicked, width=20, height=5)
 btn.grid(column=10, row=10)
-
-# model
-modelLabel = tk.Label(window, text="Choose the model")
-modelLabel.grid(column=0, row=2)
-modelCombo = ttk.Combobox(window,
-                          values=[
-                              "GEM-MACH",
-                              "UMOS",
-                              "FireWork",
-                              "Others..."], state='readonly')
-modelCombo.grid(column=0, row=3)
-modelCombo.current(0)
-
-# tools
-toolLabel = tk.Label(window, text="Choose the tool")
-toolLabel.grid(column=0, row=4)
-toolCombo = ttk.Combobox(window,
-                         values=[
-                             "XRARC",
-                             "RARC",
-                             "Others..."], state='readonly')
-toolCombo.grid(column=0, row=5)
-toolCombo.current(0)
 
 hours = (
     "000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015",
@@ -78,28 +62,27 @@ hours = (
     "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047", "048")
 
 # Start Hours
-sHourLabel = tk.Label(window, text="Choose the start time")
+sHourLabel = tk.Label(machTab, text="Choose the start time")
 sHourLabel.grid(column=5, row=4)
-sHourcombo = ttk.Combobox(window, values=hours, state='readonly')
+sHourcombo = ttk.Combobox(machTab, values=hours, state='readonly')
 sHourcombo.grid(column=5, row=5)
 sHourcombo.current(0)
 
 # End Hours
-eHourLabel = tk.Label(window, text="Choose the end time")
+eHourLabel = tk.Label(machTab, text="Choose the end time")
 eHourLabel.grid(column=7, row=4)
-eHourCombo = ttk.Combobox(window, values=hours, state='readonly')
+eHourCombo = ttk.Combobox(machTab, values=hours, state='readonly')
 eHourCombo.grid(column=7, row=5)
 eHourCombo.current(0)
 
 # Hour Selection
-# todo add label
 var_00 = tk.BooleanVar(value=True)
-modelHourLabel = tk.Label(window, text="Select model time (UTC)")
+modelHourLabel = tk.Label(machTab, text="Select model time (UTC)")
 modelHourLabel.grid(column=0, row=7)
-hours00_Checkbutton = tk.Checkbutton(window, text="00", variable=var_00)
+hours00_Checkbutton = tk.Checkbutton(machTab, text="00", variable=var_00)
 hours00_Checkbutton.grid(column=1, row=7)
 var_12 = tk.BooleanVar()
-hours12_Checkbutton = tk.Checkbutton(window, text="12", variable=var_12)
+hours12_Checkbutton = tk.Checkbutton(machTab, text="12", variable=var_12)
 hours12_Checkbutton.grid(column=2, row=7)
 
 
@@ -107,8 +90,19 @@ def Start():
     os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach")
 
 
-abtn = tk.Button(window, text="Start Program", command=Start, width=20, height=5)
+abtn = tk.Button(machTab, text="Start Program", command=Start, width=20, height=5)
 abtn.grid(column=10, row=11)
-##
-# System.out.print('"'+","+'"'+i)
+
+###########################################
+#           end of tab 1                  #
+###########################################
+
+# tab for UMOS
+umosTab = ttk.Frame(nb)
+nb.add(umosTab, text="UMOS")
+
+# tab for FireWork
+fireWorkTab = ttk.Frame(nb)
+nb.add(fireWorkTab, text="FireWork")
+
 window.mainloop()

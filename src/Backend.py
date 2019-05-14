@@ -42,8 +42,7 @@ def inputStartDate(sDate):
     elif sMonth in evenMonths and int(sDay) > 30:
         dateErrors()
     else:
-        print("Start Date")
-        print(sYear, sMonth, sDay)
+        print("Start Date: " + sYear, sMonth, sDay)
 
 
 def inputEndDate(eDate):
@@ -67,17 +66,12 @@ def inputEndDate(eDate):
     elif eMonth in evenMonths and int(eDay) > 30:
         dateErrors()
     else:
-        print("End Date")
-        print(eYear, eMonth, eDay)
+        print("End Date: " + eYear, eMonth, eDay)
 
 
 def dateErrors():
     print("Date format error enter them again")
 
-
-def toolChosen(tool):
-    if tool == "XRARC":
-        print("Lanching XRARC...")
 
 
 def time(sTime, eTime):
@@ -104,7 +98,6 @@ def modelCheckbox(h_00, h_12):
     global modelHour
     h_00 = int(h_00)
     h_12 = int(h_12)
-    print(h_00)
     if (h_00 is True and h_12 is False) or (h_00 is 1 and h_12 is 0):
         modelHour = "00"
     elif (h_12 is True and h_00 is False) or (h_00 is 0 and h_12 is 1):
@@ -118,28 +111,21 @@ def modelCheckbox(h_00, h_12):
 
 # rarc cmd
 # rarc -i /home/sair001/rarcdirectives/gemmach -tmpdir ./temp
-def modelChosen(model):
-    if model == "GEM-MACH":
-        print("Using GEM-MACH")
-        file = open("gemmach", "w")
-        file.write(
-            "target = $TMPDIR\n"
-            "filter = copy\n"
-            "postprocess = nopost\n"
-            "date = "
-            # start
-            + sYear + "," + sMonth + "," + sDay + ","
-            # end
-            + eYear + "," + eMonth + "," + eDay +
-            "\nbranche = operation.forecasts.mach\n"
-            "ext = " + formattedSelectedTime +
-            "\nheure = " + modelHour +
-            "\npriority = online\n"
-            "inc = 1\n"
-            "#\n")
-        print("File Save...Running RARC")
-        # os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach ")
-    #   os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach -tmpdir /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/temp")
-    # os.system("rarc")
-    else:
-        print("Function not supported yet ")
+def writeFile():
+    file = open("gemmach", "w")
+    file.write(
+        "target = $TMPDIR\n"
+        "filter = copy\n"
+        "postprocess = nopost\n"
+        "date = "
+        # start
+        + sYear + "," + sMonth + "," + sDay + ","
+        # end
+        + eYear + "," + eMonth + "," + eDay +
+        "\nbranche = operation.forecasts.mach\n"
+        "ext = " + formattedSelectedTime +
+        "\nheure = " + modelHour +
+        "\npriority = online\n"
+        "inc = 1\n"
+        "#\n")
+    print("File Saved")

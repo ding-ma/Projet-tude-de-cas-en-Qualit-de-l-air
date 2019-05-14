@@ -1,3 +1,26 @@
+import tkinter as tk
+from tkinter import ttk
+
+main = tk.Tk()
+main.title('Notebook Demo')
+main.geometry('500x500')
+
+# gives weight to the cells in the grid
+rows = 0
+while rows < 50:
+    main.rowconfigure(rows, weight=1)
+    main.columnconfigure(rows, weight=1)
+    rows += 1
+
+# Defines and places the notebook widget
+nb = ttk.Notebook(main)
+nb.grid(row=1, column=0, columnspan=50, rowspan=49, sticky='NESW')
+
+# Adds tab 1 of the notebook
+page1 = ttk.Frame(nb)
+nb.add(page1, text="Gem-mach")
+
+
 hours = (
     "000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015",
     "016",
@@ -5,39 +28,15 @@ hours = (
     "033",
     "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047", "048")
 
-start = "000"
-end = "013"
+# Start Hours
+sHourLabel = tk.Label(page1, text="Choose the start time")
+sHourLabel.grid(column=5, row=4)
+sHourcombo = ttk.Combobox(page1, values=hours, state='readonly')
+sHourcombo.grid(column=5, row=5)
+sHourcombo.current(0)
 
-startIndex = hours.index(start)
+# Adds tab 2 of the notebook
+page2 = ttk.Frame(nb)
+nb.add(page2, text='Tab2')
 
-endIndex = hours.index(end)
-
-
-file = open("gemmach", "w")
-
-
-for x in range(endIndex - startIndex + 1):
-    file.write("," + hours[startIndex + x])
-
-
-def aaa():
-    modelHour = abc()
-    print(modelHour)
-
-
-def abc():
-    h_00 = True
-    h_12 = True
-    if h_00 is True and h_12 is False:
-        modelHour = "00"
-        return modelHour
-    elif h_12 is True and h_00 is False:
-        modelHour = "12"
-        return modelHour
-    elif h_12 and h_00 is True:
-        modelHour = "00,12"
-        return modelHour
-
-
-azq = 55
-print(bool(azq))
+main.mainloop()
