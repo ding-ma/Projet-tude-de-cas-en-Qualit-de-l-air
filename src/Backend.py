@@ -110,15 +110,6 @@ def modelCheckbox(h_00, h_12):
         modelHour = " "
 
 
-def execute(cmd):
-    os.system(cmd)
-    log(cmd)
-
-
-def log(cmd):
-    myCmd = os.popen(cmd).read()
-    logging.info(myCmd)
-
 # rarc cmd
 # rarc -i /home/sair001/rarcdirectives/gemmach -tmpdir ./temp
 def writeFile():

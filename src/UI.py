@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 import datetime
 import logging
+import os
 import tkinter as tk
 from tkinter import ttk
-
+import csv
 import Backend as Bk
 
 # initial setting
@@ -90,21 +91,42 @@ hours12_Checkbutton = tk.Checkbutton(machTab, text="12", variable=var_12)
 hours12_Checkbutton.grid(column=2, row=7)
 
 
+# in order for the command to run on CMC server, it has to be ISOLATED and no passed through functions
+# other way works on windows
+# os.system("spi")
+# Bk.execute("py tests.py")
+# Bk.log("py tests.py")
+# Bk.execute("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach")
+
 def Start():
-    # in order for the command to run on CMC server, it has to be ISOLATED and no passed through functions
-    # other way works on windows
-    # os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach")
-    # os.system("spi")
-    Bk.execute("py tests.py")
-    # Bk.log("py tests.py")
-    # Bk.execute("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach")
+    os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach")
+
+#logging doesnt work on linux server
+def Log():
+    myCmd = os.popen("py tests.py").read()
+    logging.info(myCmd)
 
 
 abtn = tk.Button(machTab, text="Start Program", command=Start, width=20, height=5)
 abtn.grid(column=10, row=11)
 
+# station list display
+stationFile = open("stationList-ASCII.csv","r")
+reader = csv.reader(stationFile)
+stationList=list(reader)
+
+for x in range(len(stationList)):
+    line = stationList[x]
+    name = line[1]
+    latitude = line[2]
+    longitude = line[3]
+    stationsDictionary = {id:(name, latitude, longitude)}
+   # print(stationsDictionary[1][1])
+    stationCombo = ttk.Combobox(machTab, values=id, state='readonly')
+    stationCombo.grid(column=7, row=15)
+
 ###########################################
-#           end of tab 1                  #
+#           end of Gem-mach Tab           #
 ###########################################
 
 # tab for UMOS
