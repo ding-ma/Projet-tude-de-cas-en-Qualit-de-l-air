@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
+import csv
 import datetime
 import logging
 import os
 import tkinter as tk
 from tkinter import ttk
-import csv
+
 import Backend as Bk
 
 # initial setting
@@ -14,7 +15,6 @@ window.geometry('800x600')
 
 logging.basicConfig(filename='logs.log', level=logging.DEBUG)
 logging.info("Program Launched: " + str(datetime.datetime.now()))
-
 
 # Defines and places the notebook widget
 nb = ttk.Notebook(window)
@@ -40,7 +40,7 @@ def Clicked():
     h_12 = var_12.get()
     Bk.modelCheckbox(h_00, h_12)
 
-    Bk.writeFile()
+    Bk.rarcFile()
 
 
 # Start date
@@ -91,6 +91,27 @@ hours12_Checkbutton = tk.Checkbutton(machTab, text="12", variable=var_12)
 hours12_Checkbutton.grid(column=2, row=7)
 
 
+# station list display
+# TODO not done yet
+stationFile = open("stationList-ASCII.csv", "r")
+reader = csv.reader(stationFile)
+stationList = list(reader)
+
+for x in range(len(stationList)):
+    line = stationList[x]
+    name = line[1]
+    latitude = line[2]
+    longitude = line[3]
+    stationsDictionary = {id: (name, latitude, longitude)}
+    # print(stationsDictionary[1][1])
+    stationCombo = ttk.Combobox(machTab, values=id, state='readonly')
+    stationCombo.grid(column=7, row=15)
+####
+
+# molecule checkbox
+moleculeList = ("O3", "NO3", "CO2", "O2", "TT", "PP2.5?")
+
+
 # in order for the command to run on CMC server, it has to be ISOLATED and no passed through functions
 # other way works on windows
 # os.system("spi")
@@ -98,32 +119,20 @@ hours12_Checkbutton.grid(column=2, row=7)
 # Bk.log("py tests.py")
 # Bk.execute("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach")
 
-def Start():
-    os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach")
 
-#logging doesnt work on linux server
+# logging doesnt work on linux server
 def Log():
-    myCmd = os.popen("py tests.py").read()
+    myCmd = os.popen("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach").read()
     logging.info(myCmd)
+
+
+def Start():
+    command = "rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach"
+    os.system(command)
 
 
 abtn = tk.Button(machTab, text="Start Program", command=Start, width=20, height=5)
 abtn.grid(column=10, row=11)
-
-# station list display
-stationFile = open("stationList-ASCII.csv","r")
-reader = csv.reader(stationFile)
-stationList=list(reader)
-
-for x in range(len(stationList)):
-    line = stationList[x]
-    name = line[1]
-    latitude = line[2]
-    longitude = line[3]
-    stationsDictionary = {id:(name, latitude, longitude)}
-   # print(stationsDictionary[1][1])
-    stationCombo = ttk.Combobox(machTab, values=id, state='readonly')
-    stationCombo.grid(column=7, row=15)
 
 ###########################################
 #           end of Gem-mach Tab           #

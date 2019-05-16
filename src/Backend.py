@@ -18,9 +18,7 @@
 #     stdin, stdout, stderr = client.exec_command("alias")
 #     print(stderr.readlines)
 
-import logging
 # checks for date input errors
-import os
 
 
 # change filename to gemmach
@@ -60,6 +58,7 @@ def inputEndDate(eDate):
     oddMonths = ("01", "03", "05", "07", "09", "11")
     evenMonths = ("04", "06", "08", "10", "12")
 
+
     if len(eYear) != 4 or len(eMonth) != 2 or eMonth > "12" or len(eDay) != 2:
         dateErrors()
     elif eMonth == "02" and int(eDay) > 28:
@@ -70,14 +69,15 @@ def inputEndDate(eDate):
         dateErrors()
     else:
         print("End Date: " + eYear, eMonth, eDay)
-
+        listOfDays()
 
 def dateErrors():
     print("Date format error enter them again")
 
 
 def time(sTime, eTime):
-    global formattedSelectedTime
+    global formattedSelectedTimeWithComma
+    global formattedSelectedTimeWithSpace
     hours = (
         "000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015",
         "016",
@@ -89,12 +89,15 @@ def time(sTime, eTime):
     unformattedSelectedTime = ""
     for timeList in range(eIndex - sIndex + 1):
         unformattedSelectedTime += hours[sIndex + timeList]
-    formattedSelectedTime = addComma(unformattedSelectedTime)
-
+    formattedSelectedTimeWithComma = addComma(unformattedSelectedTime)
+    formattedSelectedTimeWithSpace = addSpace(unformattedSelectedTime)
 
 def addComma(string):
     return ','.join(string[i:i + 3] for i in range(0, len(string), 3))
 
+
+def addSpace(string):
+    return ' '.join(string[i:i + 3] for i in range(0, len(string), 3))
 
 def modelCheckbox(h_00, h_12):
     global modelHour
@@ -110,9 +113,23 @@ def modelCheckbox(h_00, h_12):
         modelHour = " "
 
 
+# used for bashfile
+def listOfDays():
+    global formattedDay
+    days = (
+        "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17",
+        "18",
+        "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31")
+    sIndex = days.index(sDay)
+    eIndex = days.index(eDay)
+    unformattedDay = ""
+    for dayList in range(eIndex - sIndex + 1):
+        unformattedDay += days[sIndex + dayList]
+    formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
+
 # rarc cmd
 # rarc -i /home/sair001/rarcdirectives/gemmach -tmpdir ./temp
-def writeFile():
+def rarcFile():
     file = open("gemmach", "w")
     file.write(
         "target = $TMPDIR\n"
@@ -124,9 +141,87 @@ def writeFile():
         # end
         + eYear + "," + eMonth + "," + eDay +
         "\nbranche = operation.forecasts.mach\n"
-        "ext = " + formattedSelectedTime +
+        "ext = " + formattedSelectedTimeWithComma +
         "\nheure = " + modelHour +
         "\npriority = online\n"
         "inc = 1\n"
         "#\n")
+    bashFile()
     print("File Saved")
+
+
+def bashFile():
+    modelHourWithSpace = modelHour.replace(",", " ")
+    fileBash = open("gemmachBashTest.bash", 'w')
+    fileBash.write(
+        "#!/bin/bash\n"
+        "PathOut=/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest"
+        "\nPathIn=/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest"
+        "\nDateDebut=" + sYear + sMonth +
+        "\nDateFin=" + eYear + eMonth +
+        "\nListeMois=\"" + sMonth + "\""
+                                    "\nAnnee=2016"  # not used
+                                    "\nTag1=TEST"
+                                    "\neditfst=/fs/ssm/eccc/mrd/rpn/utils/16.2/ubuntu-14.04-amd64-64/bin/editfst"
+                                    "\nType=species"
+                                    "\nGrille=regeta"
+                                    "\nFichierTICTAC=/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/${DateDebut}2200_000"  # need to change end?
+                                    "\nListeVersionsGEM=\"operation.forecasts.mach\""
+                                    "\nListeEspeces=\"TT\""  # TODO get the variables
+                                    "\nListeNiveaux=\"12000 11950 11850\""  # TODO confirm levels
+                                    "\nListeJours=\"" + formattedDay + "\""
+                                                                       "\nListePasse=\"" + modelHourWithSpace + "\""
+                                                                                                                "\nListeHeures=\"" + formattedSelectedTimeWithSpace + "\""
+                                                                                                                                                                      "\n################# Extraction#############"
+                                                                                                                                                                      "\nfor VersionGEM in  ${ListeVersionsGEM}"
+                                                                                                                                                                      "\ndo"
+                                                                                                                                                                      "\nFileOut1=${PathOut}/${VersionGEM}/${Tag1}.${DateDebut}_${DateFin}_${Grille}.fst"
+                                                                                                                                                                      "\nif [  ${FileOut1}  ]; then"
+                                                                                                                                                                      "\nrm -rf  ${FileOut1}"
+                                                                                                                                                                      "\nelse"
+                                                                                                                                                                      "\ncontinue"
+                                                                                                                                                                      "\nfi"
+                                                                                                                                                                      "\nFileIn=${FichierTICTAC}"
+                                                                                                                                                                      "\n${editfst} -s ${FileIn} -d ${FileOut1} <<EOF"
+                                                                                                                                                                      "\nDESIRE(-1,['>>','^^'],-1,-1,-1,-1,-1)"
+                                                                                                                                                                      "\nEOF"
+                                                                                                                                                                      "\nfor mois in ${ListeMois}"
+                                                                                                                                                                      "\ndo"
+                                                                                                                                                                      "\necho ${mois}"
+                                                                                                                                                                      "\nfor jour in ${ListeJours}"
+                                                                                                                                                                      "\ndo"
+                                                                                                                                                                      "\nfor passe  in ${ListePasse}"
+                                                                                                                                                                      "\ndo"
+                                                                                                                                                                      "\nfor heure in ${ListeHeures}"
+                                                                                                                                                                      "\ndo"
+                                                                                                                                                                      "\necho ${heure}"
+                                                                                                                                                                      "\nFileIn1=${PathIn}/${VersionGEM}/${DateDebut}${jour}${passe}_${heure}"
+                                                                                                                                                                      "\nif [ ! ${FileIn1}  ]; then"
+                                                                                                                                                                      "\ncontinue"
+                                                                                                                                                                      "\nelse"
+                                                                                                                                                                      "\necho \"-------------\""
+                                                                                                                                                                      "\necho ${FileIn1} \"file does exist\""
+                                                                                                                                                                      "\nfi"
+                                                                                                                                                                      "\necho ${FileIn1}"
+                                                                                                                                                                      "\nfor Espece in ${ListeEspeces}"
+                                                                                                                                                                      "\ndo"
+                                                                                                                                                                      "\nif [ \"$Espece\" = \"P0\" ] || [ \"$Espece\" = \"TCC\" ] ; then"
+                                                                                                                                                                      "\n${editfst} -s ${FileIn1} -d ${FileOut1} <<EOF"
+                                                                                                                                                                      "\nDESIRE (-1,\"$Espece\",-1, -1, 0, -1, -1)"
+                                                                                                                                                                      "\nEOF"
+                                                                                                                                                                      "\nelse"
+                                                                                                                                                                      "\nfor niveau in  ${ListeNiveaux}"
+                                                                                                                                                                      "\ndo"
+                                                                                                                                                                      "\n${editfst} -s ${FileIn1} -d ${FileOut1} <<EOF"
+                                                                                                                                                                      "\nDESIRE (-1,\"$Espece\",-1, -1, $niveau, -1, -1) " \
+                                                                                                                                                                      "\nEOF"
+                                                                                                                                                                      "\ndone"
+                                                                                                                                                                      "\nfi"
+                                                                                                                                                                      "\ndone"
+                                                                                                                                                                      "\ndone"
+                                                                                                                                                                      "\ndone"
+                                                                                                                                                                      "\ndone"
+                                                                                                                                                                      "\ndone"
+                                                                                                                                                                      "\ndone"
+    )
+    print("saved!")
