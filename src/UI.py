@@ -40,6 +40,12 @@ def Clicked():
     h_12 = var_12.get()
     Bk.modelCheckbox(h_00, h_12)
 
+    O3 = var_O3.get()
+    NO2 = var_NO2.get()
+    CO = var_CO.get()
+    PM25 = var_PM25.get()
+    Bk.particuleCheckBox(O3, NO2, CO,PM25)
+
     Bk.rarcFile()
 
 
@@ -81,15 +87,33 @@ eHourCombo.grid(column=7, row=5)
 eHourCombo.current(0)
 
 # Hour Selection
-var_00 = tk.BooleanVar(value=True)
 modelHourLabel = tk.Label(machTab, text="Select model time (UTC)")
 modelHourLabel.grid(column=0, row=7)
+var_00 = tk.BooleanVar(value=True)
 hours00_Checkbutton = tk.Checkbutton(machTab, text="00", variable=var_00)
 hours00_Checkbutton.grid(column=1, row=7)
 var_12 = tk.BooleanVar()
 hours12_Checkbutton = tk.Checkbutton(machTab, text="12", variable=var_12)
 hours12_Checkbutton.grid(column=2, row=7)
 
+# molecule checkbox
+# moleculeList = ("O3", "NO2", "CO", "PM2.5")
+# AF in fst, PM 2.5
+# N2 for NO2
+moleculeLabel = tk.Label(machTab, text="Select desired particules")
+moleculeLabel.grid(column=0, row=8)
+var_O3 = tk.BooleanVar()
+O3_Checkbutton = tk.Checkbutton(machTab, text="O3", variable = var_O3)
+O3_Checkbutton.grid(column=1, row=8)
+var_NO2 = tk.BooleanVar()
+NO2_Checkbutton = tk.Checkbutton(machTab, text ="NO2", variable = var_NO2)
+NO2_Checkbutton.grid(column=2, row=8)
+var_CO = tk.BooleanVar()
+CO_Checkbutton = tk.Checkbutton(machTab, text ="CO", variable = var_CO)
+CO_Checkbutton.grid(column=3, row=8)
+var_PM25 = tk.BooleanVar()
+PM25_Checkbutton = tk.Checkbutton(machTab, text ="PM2.5", variable = var_PM25)
+PM25_Checkbutton.grid(column=4, row=8)
 
 # station list display
 # TODO not done yet
@@ -99,6 +123,7 @@ stationList = list(reader)
 
 for x in range(len(stationList)):
     line = stationList[x]
+    id = line[0]
     name = line[1]
     latitude = line[2]
     longitude = line[3]
@@ -106,10 +131,10 @@ for x in range(len(stationList)):
     # print(stationsDictionary[1][1])
     stationCombo = ttk.Combobox(machTab, values=id, state='readonly')
     stationCombo.grid(column=7, row=15)
-####
+    # print(stationsDictionary)
 
-# molecule checkbox
-moleculeList = ("O3", "NO3", "CO2", "O2", "TT", "PP2.5?")
+
+####
 
 
 # in order for the command to run on CMC server, it has to be ISOLATED and no passed through functions
