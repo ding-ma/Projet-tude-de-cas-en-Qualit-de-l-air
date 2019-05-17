@@ -117,23 +117,29 @@ otherVariable.grid(column=4, row=8)
 # station list display
 # TODO not done yet
 # maybe create a class
-class stations:
-    stationFile = open("stationList-ASCII.csv", "r")
-    reader = csv.reader(stationFile)
-    stationList = list(reader)
+stationFile = open("stationList-ASCII.csv", "r")
+reader = csv.reader(stationFile)
+stationList = list(reader)
 
-    for x in range(len(stationList)):
-        line = stationList[x]
-        id = line[0]
-        name = line[1]
-        latitude = line[2]
-        longitude = line[3]
-        stationsDictionary = {id: (name, latitude, longitude)}
-        print(id[20])
+lstID = []
+lstName = []
+lstDisplay = []
+lstLatitude = []
+lstLongitude = []
+for x in range(len(stationList)):
+    line = stationList[x]
+    ids = line[0]
+    name = line[1]
+    latitude = line[2]
+    longitude = line[3]
+    lstDisplay.append(ids + ": " + name)
+    lstID.append(ids)
+    lstName.append(name)
+    lstLatitude.append(latitude)
+    lstLongitude.append(longitude)
 
-
-# stationCombo = ttk.Combobox(machTab, values=stations.stationsDictionary, state='readonly')
-# stationCombo.grid(column=7, row=15)
+stationCombo = ttk.Combobox(machTab, values=lstDisplay, state='readonly')
+stationCombo.grid(column=1, row=15)
 ####
 
 

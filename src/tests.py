@@ -1,15 +1,67 @@
-listMonth = ("00","01","02","03","04","05","06","07","08","09","10","11","12")
+import csv
+import re
 
-sMonth = "01"
-eMonth = "10"
+stationFile = open("stationList-ASCII.csv", "r")
+reader = csv.reader(stationFile)
+stationList = list(reader)
 
-sIndex = listMonth.index(sMonth)
-eIndex = listMonth.index(eMonth)
-unformattedMonthList =""
-for monthList in range(eIndex-sIndex+1):
-    unformattedMonthList += listMonth[sIndex+monthList]
-    formattedMonthlist = ' '.join(unformattedMonthList[i:i + 2] for i in range(0, len(unformattedMonthList), 2))
-print(formattedMonthlist)
+lstID = []
+lstName = []
+lstDisplay = []
+lstLatitude = []
+lstLongitude = []
+for x in range(len(stationList)):
+    line = stationList[x]
+    ids = line[0]
+    name = line[1]
+    latitude = line[2]
+    longitude = line[3]
+    lstDisplay.append(ids + ": " + name)
+    lstID.append(ids)
+    lstName.append(name)
+    lstLatitude.append(latitude)
+    lstLongitude.append(longitude)
 
-abc = False
-print(int(abc))
+
+def findWithStation(station):
+    index = isStationFound(station.title())
+    if index is False:
+        print("Name does not exist")
+    else:
+        stationID = lstID[index]
+        stationLongitude = lstLongitude[index]
+        stationLatitude = lstLatitude[index]
+        print(station.title() + " " + stationID + " " + stationLongitude + " " + stationLatitude)
+
+
+def isStationFound(StationInput):
+    if StationInput in lstName:
+        return lstName.index(StationInput)
+    return False
+
+
+def findWithID(ID):
+    index = isIDFound(ID)
+    if index is False:
+        print("ID does not exist")
+    else:
+        stationName = lstName[index]
+        stationLongtitude = lstLongitude[index]
+        stationLatitude = lstLatitude[index]
+        print(stationName + " " + ID + " " + stationLatitude + " " + stationLongtitude)
+
+
+def isIDFound(IDinput):
+    if IDinput in lstID:
+        return IDinput.index(IDinput)
+    return False
+
+
+while True:
+    userInput = input()
+    # regex to deternime if input is a number of string
+    patten = re.compile('\D')
+    if patten.findall(userInput):
+        findWithStation(userInput)
+    else:
+        findWithID(userInput)
