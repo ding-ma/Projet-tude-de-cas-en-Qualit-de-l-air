@@ -66,6 +66,10 @@ def inputEndDate(eDate):
         dateErrors()
     elif eMonth in evenMonths and int(eDay) > 30:
         dateErrors()
+    elif sMonth > eMonth:
+        dateErrors()
+    elif sMonth == eMonth and sDay > eDay:
+        dateErrors()
     else:
         print("End Date: " + eYear, eMonth, eDay)
         listOfDays()
@@ -73,12 +77,14 @@ def inputEndDate(eDate):
 
 
 def dateErrors():
-    print("Date format error enter them again")
+    raise Exception("Date format error, please check what you have entered")
 
 
 def time(sTime, eTime):
     global formattedSelectedTimeWithComma
     global formattedSelectedTimeWithSpace
+    global sTimeBash
+    sTimeBash = sTime
     hours = (
         "000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015",
         "016",
@@ -104,17 +110,20 @@ def addSpace(string):
 
 def modelCheckbox(h_00, h_12):
     global modelHour
+    global modelHourBash
     h_00 = int(h_00)
     h_12 = int(h_12)
     if (h_00 is True and h_12 is False) or (h_00 is 1 and h_12 is 0):
         modelHour = "00"
+        modelHourBash = "00"
     elif (h_12 is True and h_00 is False) or (h_00 is 0 and h_12 is 1):
         modelHour = "12"
+        modelHourBash = "12"
     elif (h_12 and h_00 is True) or (h_00 is 1 and h_12 is 1):
         modelHour = "00,12"
+        modelHourBash = "00"
     else:
         modelHour = " "
-
 
 # used for bashfile
 def listOfDays():
@@ -139,28 +148,25 @@ def listofMonth():
         unformattedMonthList += listMonth[sIndex + monthList]
         formattedMonthlist = ' '.join(unformattedMonthList[i:i + 2] for i in range(0, len(unformattedMonthList), 2))
 
-def particuleCheckBox(O3, NO2, CO,PM25):
-    global stringO3
-    global stringNO2
-    global stringCO
-    global stringPM25
+
+def particuleCheckBox(O3, NO2, others, PM25):
+    # TODO dictionary for others?
+    global formattedParticuleString
     O3 = int(O3)
     NO2 = int(NO2)
-    CO = int(CO)
     PM25 = int(PM25)
-    stringO3 =""
-    stringNO2=""
-    stringCO=""
-    stringPM25=""
+    stringO3 = ""
+    stringNO2 = ""
+    stringPM25 = ""
     if O3 is 1:
-        stringO3 = "O3 "
+        stringO3 = "O3"
     if NO2 is 1:
-        stringNO2 = "N2 "
-    if CO is 1:
-        stringCO = "CO "
+        stringNO2 = "N2"
     if PM25 is 1:
         stringPM25 = "AF"
-    #TODO concatnate string with the previous then split
+    unformattedParticuleString = stringO3 + stringNO2 + stringPM25 + others
+    formattedParticuleString = ' '.join(
+        unformattedParticuleString[i:i + 2] for i in range(0, len(unformattedParticuleString), 2))
 
 # rarc cmd
 # rarc -i /home/sair001/rarcdirectives/gemmach -tmpdir ./temp
@@ -194,16 +200,16 @@ def bashFile():
         "\nPathIn=/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach"
         "\nDateDebut=" + sYear + sMonth +
         "\nDateFin=" + eYear + eMonth +
-        "\nListeMois=\"" + formattedMonthlist + "\"" #TODO list of month
-        "\nAnnee=2016"  # not used
+        "\nListeMois=\"" + formattedMonthlist + "\""
+                                                "\nAnnee=" + sYear +  # not used
         "\nTag1=TEST"
         "\neditfst=/fs/ssm/eccc/mrd/rpn/utils/16.2/ubuntu-14.04-amd64-64/bin/editfst"
         "\nType=species"
         "\nGrille=regeta"
-        "\nFichierTICTAC=/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/${DateDebut}2200_000"  # need to change end?
+        "\nFichierTICTAC=/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/operation.forecasts.mach/${DateDebut}" + sDay + modelHourBash + "_" + sTimeBash +
         "\nListeVersionsGEM=\"operation.forecasts.mach\""
-        "\nListeEspeces=\""+stringO3+stringNO2+stringCO+stringPM25+"\""  # TODO get the variables
-        "\nListeNiveaux=\"93423264\""  # TODO confirm levels
+        "\nListeEspeces=\"" + formattedParticuleString + "\""
+                                                         "\nListeNiveaux=\"76696048\""  # TODO confirm levels
         "\nListeJours=\"" + formattedDay + "\""
         "\nListePasse=\"" + modelHourWithSpace + "\""
         "\nListeHeures=\"" + formattedSelectedTimeWithSpace + "\""

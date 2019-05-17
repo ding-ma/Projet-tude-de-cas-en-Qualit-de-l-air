@@ -42,9 +42,9 @@ def Clicked():
 
     O3 = var_O3.get()
     NO2 = var_NO2.get()
-    CO = var_CO.get()
+    others = otherVariable.get()
     PM25 = var_PM25.get()
-    Bk.particuleCheckBox(O3, NO2, CO,PM25)
+    Bk.particuleCheckBox(O3, NO2, others, PM25)
 
     Bk.rarcFile()
 
@@ -100,40 +100,40 @@ hours12_Checkbutton.grid(column=2, row=7)
 # moleculeList = ("O3", "NO2", "CO", "PM2.5")
 # AF in fst, PM 2.5
 # N2 for NO2
-moleculeLabel = tk.Label(machTab, text="Select desired particules")
+moleculeLabel = tk.Label(machTab, text="Select desired particules(for others, add no space e.g. UVTT)")
 moleculeLabel.grid(column=0, row=8)
-var_O3 = tk.BooleanVar()
+var_O3 = tk.BooleanVar(value=True)
 O3_Checkbutton = tk.Checkbutton(machTab, text="O3", variable = var_O3)
 O3_Checkbutton.grid(column=1, row=8)
 var_NO2 = tk.BooleanVar()
 NO2_Checkbutton = tk.Checkbutton(machTab, text ="NO2", variable = var_NO2)
 NO2_Checkbutton.grid(column=2, row=8)
-var_CO = tk.BooleanVar()
-CO_Checkbutton = tk.Checkbutton(machTab, text ="CO", variable = var_CO)
-CO_Checkbutton.grid(column=3, row=8)
 var_PM25 = tk.BooleanVar()
 PM25_Checkbutton = tk.Checkbutton(machTab, text ="PM2.5", variable = var_PM25)
-PM25_Checkbutton.grid(column=4, row=8)
+PM25_Checkbutton.grid(column=3, row=8)
+otherVariable = tk.Entry(machTab, width=13)
+otherVariable.grid(column=4, row=8)
 
 # station list display
 # TODO not done yet
-stationFile = open("stationList-ASCII.csv", "r")
-reader = csv.reader(stationFile)
-stationList = list(reader)
+# maybe create a class
+class stations:
+    stationFile = open("stationList-ASCII.csv", "r")
+    reader = csv.reader(stationFile)
+    stationList = list(reader)
 
-for x in range(len(stationList)):
-    line = stationList[x]
-    id = line[0]
-    name = line[1]
-    latitude = line[2]
-    longitude = line[3]
-    stationsDictionary = {id: (name, latitude, longitude)}
-    # print(stationsDictionary[1][1])
-    stationCombo = ttk.Combobox(machTab, values=id, state='readonly')
-    stationCombo.grid(column=7, row=15)
-    # print(stationsDictionary)
+    for x in range(len(stationList)):
+        line = stationList[x]
+        id = line[0]
+        name = line[1]
+        latitude = line[2]
+        longitude = line[3]
+        stationsDictionary = {id: (name, latitude, longitude)}
+        print(id[20])
 
 
+# stationCombo = ttk.Combobox(machTab, values=stations.stationsDictionary, state='readonly')
+# stationCombo.grid(column=7, row=15)
 ####
 
 
@@ -151,14 +151,20 @@ def Log():
     logging.info(myCmd)
 
 
-def Start():
-    command = "rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach"
-    os.system(command)
+def StartXRACR():
+    os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach &")
 
 
-abtn = tk.Button(machTab, text="Start Program", command=Start, width=20, height=5)
-abtn.grid(column=10, row=11)
+extrationBtn = tk.Button(machTab, text="Start Extraction", command=StartXRACR, width=20, height=5)
+extrationBtn.grid(column=10, row=11)
 
+
+def StartBash():
+    os.system("./gemmachBashTest.bash &")
+
+
+scriptBtn = tk.Button(machTab, text="Start Script", command=StartBash, width=20, height=5)
+scriptBtn.grid(column=11, row=11)
 ###########################################
 #           end of Gem-mach Tab           #
 ###########################################
