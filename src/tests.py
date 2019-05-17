@@ -1,6 +1,6 @@
 import csv
 import re
-
+import string
 stationFile = open("stationList-ASCII.csv", "r")
 reader = csv.reader(stationFile)
 stationList = list(reader)
@@ -24,14 +24,14 @@ for x in range(len(stationList)):
 
 
 def findWithStation(station):
-    index = isStationFound(station.title())
+    index = isStationFound(string.capwords(station))
     if index is False:
         print("Name does not exist")
     else:
         stationID = lstID[index]
         stationLongitude = lstLongitude[index]
         stationLatitude = lstLatitude[index]
-        print(station.title() + " " + stationID + " " + stationLatitude + " " + stationLongitude)
+        print(string.capwords(station) + " " + stationID + " " + stationLatitude + " " + stationLongitude)
 
 
 def isStationFound(StationInput):

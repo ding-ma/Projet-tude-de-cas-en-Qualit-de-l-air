@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import csv
 import datetime
 import logging
 import os
@@ -10,8 +9,10 @@ import Backend as Bk
 
 # initial setting
 window = tk.Tk()
-window.title("Welcome")
-window.geometry('800x600')
+# window.attributes('-zoomed', True)
+w, h = window.winfo_screenwidth(), window.winfo_screenheight()
+window.geometry("%dx%d+0+0" % (w, h))
+# window.geometry("1500x1200")
 
 logging.basicConfig(filename='logs.log', level=logging.DEBUG)
 logging.info("Program Launched: " + str(datetime.datetime.now()))
@@ -65,24 +66,19 @@ enteredEndDate.grid(column=1, row=1)
 btn = tk.Button(machTab, text="Write to file", command=Clicked, width=20, height=5)
 btn.grid(column=10, row=10)
 
-hours = (
-    "000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015",
-    "016",
-    "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029", "030", "031", "032",
-    "033",
-    "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047", "048")
+
 
 # Start Hours
 sHourLabel = tk.Label(machTab, text="Choose the start time")
 sHourLabel.grid(column=5, row=4)
-sHourcombo = ttk.Combobox(machTab, values=hours, state='readonly')
+sHourcombo = ttk.Combobox(machTab, values=Bk.hours, state='readonly')
 sHourcombo.grid(column=5, row=5)
 sHourcombo.current(0)
 
 # End Hours
 eHourLabel = tk.Label(machTab, text="Choose the end time")
 eHourLabel.grid(column=7, row=4)
-eHourCombo = ttk.Combobox(machTab, values=hours, state='readonly')
+eHourCombo = ttk.Combobox(machTab, values=Bk.hours, state='readonly')
 eHourCombo.grid(column=7, row=5)
 eHourCombo.current(0)
 
@@ -114,32 +110,26 @@ PM25_Checkbutton.grid(column=3, row=8)
 otherVariable = tk.Entry(machTab, width=13)
 otherVariable.grid(column=4, row=8)
 
-# station list display
-# TODO not done yet
-# maybe create a class
-stationFile = open("stationList-ASCII.csv", "r")
-reader = csv.reader(stationFile)
-stationList = list(reader)
+# stations
+displayString = "Search Name or ID"
+stationCombo = ttk.Combobox(machTab, values=Bk.lstDisplay, state='readonly')
+stationCombo.grid(column=0, row=15)
+stationCombo.current(0)
 
-lstID = []
-lstName = []
-lstDisplay = []
-lstLatitude = []
-lstLongitude = []
-for x in range(len(stationList)):
-    line = stationList[x]
-    ids = line[0]
-    name = line[1]
-    latitude = line[2]
-    longitude = line[3]
-    lstDisplay.append(ids + ": " + name)
-    lstID.append(ids)
-    lstName.append(name)
-    lstLatitude.append(latitude)
-    lstLongitude.append(longitude)
+stationSearchField = ttk.Entry(machTab, width=15)
+stationSearchField.grid(column=2, row=15)
 
-stationCombo = ttk.Combobox(machTab, values=lstDisplay, state='readonly')
-stationCombo.grid(column=1, row=15)
+
+def SearchNameID():
+    userInput = stationSearchField.get()
+    displayString = Bk.SearchNameID(userInput)
+    stationSearchLabel.config(text=displayString)
+
+
+stationSearchLabel = tk.Label(machTab, text=displayString)
+stationSearchLabel.grid(column=1, row=15)
+searchBtn = tk.Button(machTab, text="Search", command=SearchNameID)
+searchBtn.grid(column=3, row=15)
 ####
 
 

@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-
+import csv
+import re
+import string
 
 # Notes: def modelChosen(model): always needs to be the last function!
 
@@ -18,9 +20,73 @@
 #     stdin, stdout, stderr = client.exec_command("alias")
 #     print(stderr.readlines)
 
-# checks for date input errors
+# search for StationID or StationName
+stationFile = open("stationList-ASCII.csv", "r")
+reader = csv.reader(stationFile)
+stationList = list(reader)
+
+lstID = []
+lstName = []
+lstDisplay = []
+lstLatitude = []
+lstLongitude = []
+for x in range(len(stationList)):
+    line = stationList[x]
+    ids = line[0]
+    name = line[1]
+    latitude = line[2]
+    longitude = line[3]
+    lstDisplay.append(ids + ": " + name)
+    lstID.append(ids)
+    lstName.append(name)
+    lstLatitude.append(latitude)
+    lstLongitude.append(longitude)
 
 
+def findWithStation(station):
+    index = isStationFound(string.capwords(station))
+    if index is False:
+        return "ID not found, invalid station name"
+    else:
+        stationID = lstID[index]
+        stationLongitude = lstLongitude[index]
+        stationLatitude = lstLatitude[index]
+        return string.capwords(station) + " (" + stationID + ") Lat: " + stationLatitude + " Lon: " + stationLongitude
+
+
+def isStationFound(StationInput):
+    if StationInput in lstName:
+        return lstName.index(StationInput)
+    return False
+
+
+def findWithID(ID):
+    index = isIDFound(ID)
+    if index is False:
+        return "Station Name not found, invalid ID"
+    else:
+        stationName = lstName[index]
+        stationLongtitude = lstLongitude[index]
+        stationLatitude = lstLatitude[index]
+        return stationName + " (" + ID + ") Lat: " + stationLatitude + " Lon: " + stationLongtitude
+
+
+def isIDFound(IDinput):
+    if IDinput in lstID:
+        return lstID.index(IDinput)
+    return False
+
+
+# returning the found list
+def SearchNameID(userInput):
+    patten = re.compile('\D')
+    if patten.findall(userInput):
+        return findWithStation(userInput)
+    else:
+        return findWithID(userInput)
+
+
+########
 # change filename to gemmach
 def inputStartDate(sDate):
     global sYear
@@ -80,17 +146,19 @@ def dateErrors():
     raise Exception("Date format error, please check what you have entered")
 
 
+hours = (
+    "000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015",
+    "016",
+    "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029", "030", "031", "032",
+    "033",
+    "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047", "048")
+
 def time(sTime, eTime):
     global formattedSelectedTimeWithComma
     global formattedSelectedTimeWithSpace
     global sTimeBash
     sTimeBash = sTime
-    hours = (
-        "000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015",
-        "016",
-        "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029", "030", "031", "032",
-        "033",
-        "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047", "048")
+
     sIndex = hours.index(sTime)
     eIndex = hours.index(eTime)
     unformattedSelectedTime = ""
