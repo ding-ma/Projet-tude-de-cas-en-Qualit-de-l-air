@@ -31,7 +31,7 @@ def findWithStation(station):
         stationID = lstID[index]
         stationLongitude = lstLongitude[index]
         stationLatitude = lstLatitude[index]
-        print(station.title() + " " + stationID + " " + stationLongitude + " " + stationLatitude)
+        print(station.title() + " " + stationID + " " + stationLatitude + " " + stationLongitude)
 
 
 def isStationFound(StationInput):
@@ -53,7 +53,7 @@ def findWithID(ID):
 
 def isIDFound(IDinput):
     if IDinput in lstID:
-        return IDinput.index(IDinput)
+        return lstID.index(IDinput)
     return False
 
 
