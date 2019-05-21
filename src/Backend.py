@@ -25,8 +25,10 @@ stationFile = open("stationList-ASCII.csv", "r")
 reader = csv.reader(stationFile)
 stationList = list(reader)
 
+# creates list based on csv entry
 lstID = []
 lstName = []
+#lstDisplay is for the UI
 lstDisplay = []
 lstLatitude = []
 lstLongitude = []
@@ -43,27 +45,31 @@ for x in range(len(stationList)):
     lstLongitude.append(longitude)
 
 
+#search algorithm
 def findWithStation(station):
     index = isStationFound(string.capwords(station))
     if index is False:
         return "ID not found, invalid station name"
     else:
+        #with the index, we can get the other values since all corresponding data are stored at the same index for the same value
         stationID = lstID[index]
         stationLongitude = lstLongitude[index]
         stationLatitude = lstLatitude[index]
         return string.capwords(station) + " (" + stationID + ") Lat: " + stationLatitude + " Lon: " + stationLongitude
 
 
+#returns the index of the item if it exist else, it returns false, gets around the item out of bound problem
 def isStationFound(StationInput):
     if StationInput in lstName:
         return lstName.index(StationInput)
     return False
 
 
+#same logic for searching with ID
 def findWithID(ID):
     index = isIDFound(ID)
     if index is False:
-        return "Station Name not found, invalid ID"
+        return "Station name not found, invalid ID"
     else:
         stationName = lstName[index]
         stationLongtitude = lstLongitude[index]
@@ -79,7 +85,9 @@ def isIDFound(IDinput):
 
 # returning the found list
 def SearchNameID(userInput):
+    #ignores all digit
     patten = re.compile('\D')
+    #if there are no digit, search by name. else, search with ID
     if patten.findall(userInput):
         return findWithStation(userInput)
     else:
@@ -87,21 +95,29 @@ def SearchNameID(userInput):
 
 
 ########
+
 # change filename to gemmach
+
+
+oddMonths = ("01", "03", "05", "07", "09", "11")
+evenMonths = ("04", "06", "08", "10", "12")
+
+
+#formats the start date
 def inputStartDate(sDate):
     global sYear
     global sMonth
     global sDay
+    #splits the entry into a tuple
     unformatattedDate = sDate.split("/")
     sYear = unformatattedDate[0]
     sMonth = unformatattedDate[1]
     sDay = unformatattedDate[2]
 
-    oddMonths = ("01", "03", "05", "07", "09", "11")
-    evenMonths = ("04", "06", "08", "10", "12")
-
+    #checks if the user input is correct
     if len(sYear) != 4 or len(sMonth) != 2 or sMonth > "12" or len(sDay) != 2:
         dateErrors()
+    #for feb
     elif sMonth == "02" and int(sDay) > 28:
         dateErrors()
     elif sMonth in oddMonths and int(sDay) > 31:
@@ -112,6 +128,7 @@ def inputStartDate(sDate):
         print("Start Date: " + sYear, sMonth, sDay)
 
 
+# end date
 def inputEndDate(eDate):
     global eYear
     global eMonth
@@ -120,9 +137,6 @@ def inputEndDate(eDate):
     eYear = unformatattedDate[0]
     eMonth = unformatattedDate[1]
     eDay = unformatattedDate[2]
-
-    oddMonths = ("01", "03", "05", "07", "09", "11")
-    evenMonths = ("04", "06", "08", "10", "12")
 
     if len(eYear) != 4 or len(eMonth) != 2 or eMonth > "12" or len(eDay) != 2:
         dateErrors()
@@ -158,22 +172,17 @@ def time(sTime, eTime):
     global formattedSelectedTimeWithSpace
     global sTimeBash
     sTimeBash = sTime
-
+    #gets index then generates a list within the index
     sIndex = hours.index(sTime)
     eIndex = hours.index(eTime)
     unformattedSelectedTime = ""
     for timeList in range(eIndex - sIndex + 1):
         unformattedSelectedTime += hours[sIndex + timeList]
-    formattedSelectedTimeWithComma = addComma(unformattedSelectedTime)
-    formattedSelectedTimeWithSpace = addSpace(unformattedSelectedTime)
-
-
-def addComma(string):
-    return ','.join(string[i:i + 3] for i in range(0, len(string), 3))
-
-
-def addSpace(string):
-    return ' '.join(string[i:i + 3] for i in range(0, len(string), 3))
+    # for every 3 character
+    formattedSelectedTimeWithComma = ','.join(
+        unformattedSelectedTime[i:i + 3] for i in range(0, len(unformattedSelectedTime), 3))
+    formattedSelectedTimeWithSpace = ' '.join(
+        unformattedSelectedTime[i:i + 3] for i in range(0, len(unformattedSelectedTime), 3))
 
 
 def modelCheckbox(h_00, h_12):
@@ -204,8 +213,11 @@ def listOfDays():
     unformattedDay = ""
     for dayList in range(eIndex - sIndex + 1):
         unformattedDay += days[sIndex + dayList]
+    #for every 2 character, adds space
     formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
 
+
+#for bash
 def listofMonth():
     global formattedMonthlist
     listMonth = ("00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")
@@ -218,7 +230,6 @@ def listofMonth():
 
 
 def particuleCheckBox(O3, NO2, others, PM25):
-    # TODO dictionary for others?
     global formattedParticuleString
     O3 = int(O3)
     NO2 = int(NO2)
@@ -233,6 +244,7 @@ def particuleCheckBox(O3, NO2, others, PM25):
     if PM25 is 1:
         stringPM25 = "AF"
     unformattedParticuleString = stringO3 + stringNO2 + stringPM25 + others
+    # for every 2 character, add space
     formattedParticuleString = ' '.join(
         unformattedParticuleString[i:i + 2] for i in range(0, len(unformattedParticuleString), 2))
 
