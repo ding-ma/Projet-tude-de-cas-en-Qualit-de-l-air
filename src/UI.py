@@ -53,13 +53,13 @@ def Clicked():
 rarcLabel = tk.Label(machTab, text="Rarc Settings", font="20")
 rarcLabel.grid(column=0, row=0)
 # Start date
-startDateLabel = tk.Label(machTab, text="Enter Start Date in YYYY/MM/DD format")
+startDateLabel = tk.Label(machTab, text="Enter Start Date (YYYY/MM/DD)")
 startDateLabel.grid(column=0, row=1)
 enteredDate = tk.Entry(machTab, width=13)
 enteredDate.grid(column=1, row=1)
 
 # Start date
-endDateLabel = tk.Label(machTab, text="Enter End Date in YYYY/MM/DD format")
+endDateLabel = tk.Label(machTab, text="Enter End Date (YYYY/MM/DD)")
 endDateLabel.grid(column=0, row=2)
 enteredEndDate = tk.Entry(machTab, width=13)
 enteredEndDate.grid(column=1, row=2)
@@ -168,6 +168,14 @@ scriptBtn.grid(column=10, row=11, padx=40)
 
 extrationBtn = tk.Button(machTab, text="Start Extraction (2)", command=StartXRACR, width=15, height=1)
 extrationBtn.grid(column=10, row=2)
+
+
+def testing():
+    print(os.path.isdir("gem"))
+
+
+extrationBtn = tk.Button(machTab, text="Check if file exist", command=testing, width=15, height=1)
+extrationBtn.grid(column=10, row=3)
 
 ###########################################
 #           end of Gem-mach Tab           #

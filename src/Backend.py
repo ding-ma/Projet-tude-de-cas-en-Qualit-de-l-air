@@ -215,7 +215,7 @@ def listOfDays():
         unformattedDay += days[sIndex + dayList]
     #for every 2 character, adds space
     formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
-
+    print(unformattedDay)
 
 #for bash
 def listofMonth():
@@ -227,7 +227,7 @@ def listofMonth():
     for monthList in range(eIndex - sIndex + 1):
         unformattedMonthList += listMonth[sIndex + monthList]
         formattedMonthlist = ' '.join(unformattedMonthList[i:i + 2] for i in range(0, len(unformattedMonthList), 2))
-
+    print(unformattedMonthList)
 
 def particuleCheckBox(O3, NO2, others, PM25):
     global formattedParticuleString

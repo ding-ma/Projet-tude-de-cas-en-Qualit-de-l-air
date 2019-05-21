@@ -48,6 +48,7 @@ print("m: " + aaa[0], "d: " + aaa[1], "      end ", "m: " + bbb[0], "d: " + bbb[
 cc = ['ping www.google.ca', 'ping www.facebook.com']
 for c in cc:
     os.system(c)
+    os.wait()
 
 # a=os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach &")
 # b=os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach1 &")
