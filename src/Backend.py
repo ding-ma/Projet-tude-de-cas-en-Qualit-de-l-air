@@ -299,8 +299,8 @@ def bashFile():
         "\nFichierTICTAC=/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/operation.forecasts.mach/${DateDebut}" + sDay + modelHourBash + "_" + sTimeBash +
         "\nListeVersionsGEM=\"operation.forecasts.mach\""
         "\nListeEspeces=\"" + formattedParticuleString + "\""
-                                                         "\nListeNiveaux=\"76696048\""  # TODO confirm levels
-        "\nListeJours=\"" + formattedDay + "\""
+                                                         "\nListeNiveaux=\"93423264 76696048\""  # TODO confirm levels
+                                                         "\nListeJours=\"" + formattedDay + "\""
         "\nListePasse=\"" + modelHourWithSpace + "\""
         "\nListeHeures=\"" + formattedSelectedTimeWithSpace + "\""
           "\n################# Extraction#############"

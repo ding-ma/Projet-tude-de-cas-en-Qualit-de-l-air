@@ -360,3 +360,43 @@ INFO:root:Program Launched: 2019-05-22 09:23:43.810440
 INFO:root:Program Launched: 2019-05-22 09:28:07.023393
 INFO:root:Program Launched: 2019-05-22 09:31:19.192828
 INFO:root:Program Launched: 2019-05-22 09:32:11.668922
+INFO:root:Program Launched: 2019-05-22 09:54:23.898859
+INFO:root:Program Launched: 2019-05-22 10:06:22.969887
+INFO:root:Program Launched: 2019-05-22 10:07:25.117099
+INFO:root:Program Launched: 2019-05-22 10:15:00.433040
+INFO:root:0
+INFO:root:Program Launched: 2019-05-22 10:15:37.921917
+INFO:root:Program Launched: 2019-05-22 10:16:35.843400
+INFO:root:0
+INFO:root:Program Launched: 2019-05-22 10:18:08.890827
+INFO:root:Program Launched: 2019-05-22 10:24:58.376682
+INFO:root:Program Launched: 2019-05-22 10:25:18.581873
+INFO:root:0
+INFO:root:Program Launched: 2019-05-22 10:25:32.833620
+INFO:root:0
+INFO:root:Program Launched: 2019-05-22 10:26:40.356237
+INFO:root:Program Launched: 2019-05-22 10:27:29.283278
+INFO:root:Program Launched: 2019-05-22 10:29:09.811003
+INFO:root:Program Launched: 2019-05-22 10:45:48.869505
+INFO:root:0
+INFO:root:Program Launched: 2019-05-22 10:46:27.034583
+INFO:root:Program Launched: 2019-05-22 10:48:30.145262
+INFO:root:Program Launched: 2019-05-22 10:49:30.301573
+INFO:root:Program Launched: 2019-05-22 10:52:29.445839
+INFO:root:Program Launched: 2019-05-22 10:52:51.135987
+INFO:root:Program Launched: 2019-05-22 10:56:48.218726
+INFO:root:Program Launched: 2019-05-22 10:56:59.860651
+INFO:root:b' Volume in drive M is MTLFS3_VOL1\r\n Volume Serial Number is E836-E001\r\n\r\n Directory of M:\\Projet-tude-de-cas-en-Qualit-de-l-air\\src\r\n\r\n22/05/2019  10:56 AM    <DIR>          .\r\n22/05/2019  10:56 AM    <DIR>          ..\r\n22/05/2019  09:39 AM            12,567 Backend.py\r\n21/05/2019  03:37 PM             1,653 config_Site_regeta_Profils_0Z_12Z_2007.tcl\r\n22/05/2019  09:07 AM             1,795 dateVerification-inprogress.py\r\n21/05/2019  03:35 PM             6,682 Extract_Site_regeta.tcl\r\n16/05/2019  01:23 PM             5,340 Extract_species_Meteo_test.bash\r\n22/05/2019  08:56 AM    <DIR>          gem\r\n22/05/2019  09:32 AM               262 gemmach\r\n22/05/2019  09:32 AM             1,746 gemmachBashTest.bash\r\n22/05/2019  10:56 AM            21,457 logs.log\r\n14/05/2019  01:24 PM            21,522 stationList - Copy.txt\r\n21/05/2019  02:17 PM             9,856 stationList-ASCII.csv\r\n15/05/2019  09:41 AM             9,781 stationList.csv\r\n22/05/2019  10:56 AM               272 tests.py\r\n22/05/2019  10:06 AM             5,766 UI.py\r\n22/05/2019  10:39 AM    <DIR>          __pycache__\r\n              13 File(s)         98,699 bytes\r\n               4 Dir(s)  21,451,010,048 bytes free\r\n'
+INFO:root:Program Launched: 2019-05-22 10:57:40.724374
+INFO:root:Program Launched: 2019-05-22 10:57:51.788008
+INFO:root:Program Launched: 2019-05-22 10:58:09.962096
+INFO:root:Program Launched: 2019-05-22 10:58:19.290914
+INFO:root:Program Launched: 2019-05-22 10:59:01.607917
+INFO:root:Program Launched: 2019-05-22 11:00:11.302830
+INFO:root:Program Launched: 2019-05-22 11:00:17.131576
+INFO:root:Program Launched: 2019-05-22 11:00:27.132701
+INFO:root:Program Launched: 2019-05-22 11:00:46.806614
+INFO:root:Program Launched: 2019-05-22 11:00:53.244795
+INFO:root:Program Launched: 2019-05-22 11:00:58.901706
+INFO:root:Program Launched: 2019-05-22 11:47:27.330618
+INFO:root:Program Launched: 2019-05-22 13:13:13.504178

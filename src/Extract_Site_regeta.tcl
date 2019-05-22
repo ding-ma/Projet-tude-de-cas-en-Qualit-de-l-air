@@ -1,6 +1,6 @@
 #!/bin/sh
 # : - \
-    exec /home/sair001/.spi
+    exec /fs/ssm/eccc/cmo/cmoe/apps/SPI_7.12.0_all/tclsh "$0" "$@"
 package require TclData
 
 ################################################################################ 
@@ -48,7 +48,7 @@ proc AvgAllDom::Do { sp outTXT start end} {
     puts $anMois
     
     ############ get and open the input .fst file
-    set FileIn [ lsort -dictionary [ glob $Data(Path)/$Data(TAG1).${start}_${end}*.fst ] ]
+    set FileIn [ lsort -dictionary [ glob $Data(Path)/$Data(TAG1).fst ] ]
     fstdfile open 1 read  $FileIn 
     
     ############ loop on months
@@ -76,10 +76,10 @@ proc AvgAllDom::Do { sp outTXT start end} {
             
             set fields ""
             set nbHour 0
-            for { set hour 0 } { $hour < 29 } { incr hour 1 } {
+            for { set hours $Data(hours) 0 } { $hours < 25 } { incr hours 1 } {
                 
  
-                set hour1 [format "%02d" $hour]
+                set hour1 [format "%02d" $hours]
     puts "Hour1 $hour1" 
            
                 set laDate [ fstdstamp fromdate "${anMois}${day}" "${hour1}000000" ]

@@ -157,7 +157,7 @@ def StartXRACR():
 
 
 def StartBash():
-    os.system("./gemmachBashTest.bash &")
+    os.system("./gemmachBashTest.bash & >-a logs.log")
 
 
 btn = tk.Button(machTab, text="Write to file (1)", command=Clicked, width=15, height=1)
