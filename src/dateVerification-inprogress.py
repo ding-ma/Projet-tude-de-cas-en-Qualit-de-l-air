@@ -12,23 +12,22 @@ hours = (
     "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047", "048")
 
 path = '/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/operation.forecasts.mach/'
-sHourIndex = 5
-eHoursIndex = 9
-lstdays = list(days[0:3])
+sHourIndex = 0
+eHoursIndex = 4
+lstdays = list(days[0:2])
 lsthours = list(hours[sHourIndex:eHoursIndex + 1])
 
 newlst = []
 lst1 = []
-qqq = []
+i = 0
 for d in lstdays:
     for h in lsthours:
         a = os.path.isfile(path + '201905' + d + '12_' + h)
         newlst.append(a)
         lst1.append(d + " " + h)
-#         abc = open("gem/gemmach"+d+"_"+h+".txt", 'w+')
-#         abc.write("day: "+d+" hour: "+h)
-#         qqq.append(abc)
-# print(qqq)
+        abc = open("gem/gemmach" + d + "_" + h + ".txt", 'w+')
+        abc.write('ping 172.217.13.16' + str(i))
+        i = i + 1
 print(newlst)
 print(lst1)
 
@@ -45,10 +44,10 @@ bbb = end.split(" ")
 print(lst)
 print("m: " + aaa[0], "d: " + aaa[1], "      end ", "m: " + bbb[0], "d: " + bbb[1])
 
-cc = ['ping www.google.ca', 'ping www.facebook.com']
-for c in cc:
-    os.system(c)
-    os.wait()
+print(os.listdir('gem'))
 
+for a in os.listdir('gem'):
+    abc = open("gem/" + a, 'r').read()
+    os.system(abc)
 # a=os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach &")
 # b=os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach1 &")
