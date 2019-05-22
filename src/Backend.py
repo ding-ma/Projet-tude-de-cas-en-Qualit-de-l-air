@@ -113,12 +113,17 @@ def inputStartDate(sDate):
     sYear = unformatattedDate[0]
     sMonth = unformatattedDate[1]
     sDay = unformatattedDate[2]
-
+    # checks for leap year
+    if int(sYear) % 4 == 0 and int(sYear) % 100 != 0 or int(sYear) % 400 == 0:
+        leap = True
+    else:
+        leap = False
     #checks if the user input is correct
     if len(sYear) != 4 or len(sMonth) != 2 or sMonth > "12" or len(sDay) != 2:
         dateErrors()
-    #for feb
-    elif sMonth == "02" and int(sDay) > 28:
+    elif leap is True and int(sDay) > 29 and sMonth == "02":
+        dateErrors()
+    elif leap is False and sMonth == "02" and int(sDay) > 28:
         dateErrors()
     elif sMonth in oddMonths and int(sDay) > 31:
         dateErrors()
@@ -137,10 +142,17 @@ def inputEndDate(eDate):
     eYear = unformatattedDate[0]
     eMonth = unformatattedDate[1]
     eDay = unformatattedDate[2]
+    # checks for leap year
+    if int(eYear) % 4 == 0 and int(eYear) % 100 != 0 or int(eYear) % 400 == 0:
+        leap = True
+    else:
+        leap = False
 
     if len(eYear) != 4 or len(eMonth) != 2 or eMonth > "12" or len(eDay) != 2:
         dateErrors()
-    elif eMonth == "02" and int(eDay) > 28:
+    elif leap is True and eMonth == "02" and int(eDay) > 29:
+        dateErrors()
+    elif leap is False and eMonth == "02" and int(eDay) > 28:
         dateErrors()
     elif eMonth in oddMonths and int(eDay) > 31:
         dateErrors()
@@ -215,7 +227,6 @@ def listOfDays():
         unformattedDay += days[sIndex + dayList]
     #for every 2 character, adds space
     formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
-    print(unformattedDay)
 
 #for bash
 def listofMonth():
@@ -227,7 +238,6 @@ def listofMonth():
     for monthList in range(eIndex - sIndex + 1):
         unformattedMonthList += listMonth[sIndex + monthList]
         formattedMonthlist = ' '.join(unformattedMonthList[i:i + 2] for i in range(0, len(unformattedMonthList), 2))
-    print(unformattedMonthList)
 
 def particuleCheckBox(O3, NO2, others, PM25):
     global formattedParticuleString

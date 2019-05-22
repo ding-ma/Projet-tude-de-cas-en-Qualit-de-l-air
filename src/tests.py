@@ -1,53 +1,5 @@
-import os
-
-days = (
-    "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18"
-    , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31")
-
-hours = (
-    "000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015",
-    "016",
-    "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029", "030", "031", "032",
-    "033",
-    "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047", "048")
-
-path = '/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/operation.forecasts.mach/'
-sHourIndex = 5
-eHoursIndex = 9
-lstdays = list(days[0:3])
-lsthours = list(hours[sHourIndex:eHoursIndex + 1])
-
-newlst = []
-lst1 = []
-qqq = []
-for d in lstdays:
-    for h in lsthours:
-        a = os.path.isfile(path + '201905' + d + '12_' + h)
-        newlst.append(a)
-        lst1.append(d + " " + h)
-#         abc = open("gem/gemmach"+d+"_"+h+".txt", 'w+')
-#         abc.write("day: "+d+" hour: "+h)
-#         qqq.append(abc)
-# print(qqq)
-print(newlst)
-print(lst1)
-
-i = 0
-lst = []
-for t in newlst:
-    if t is False:
-        lst.append(lst1[i])
-    i = i + 1
-beg = lst[0]
-end = lst[-1]
-aaa = beg.split(" ")
-bbb = end.split(" ")
-print(lst)
-print("m: " + aaa[0], "d: " + aaa[1], "      end ", "m: " + bbb[0], "d: " + bbb[1])
-
-cc = ['ping www.google.ca', 'ping www.facebook.com']
-for c in cc:
-    os.system(c)
-
-# a=os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach &")
-# b=os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach1 &")
+year = int(input("Enter year to be checked:"))
+if (year % 4 == 0 and year % 100 != 0 or year % 400 == 0):
+    print("The year is a leap year!")
+else:
+    print("The year isn't a leap year!")
