@@ -157,7 +157,13 @@ def StartXRACR():
 
 
 def StartBash():
-    os.system("./gemmachBashTest.bash & >-a logs.log")
+    if Bk.bothCheked is 1:
+        os.system("./gemmachBashTest00.bash &")
+    if Bk.bothCheked is 2:
+        os.system("./gemmachBashTest12.bash &")
+    if Bk.bothCheked is 3:
+        os.system("./gemmachBashTest00.bash &")
+        os.system("./gemmachBashTest11.bash &")
 
 
 btn = tk.Button(machTab, text="Write to file (1)", command=Clicked, width=15, height=1)
@@ -177,6 +183,14 @@ def testing():
 extrationBtn = tk.Button(machTab, text="Check if file exist", command=testing, width=15, height=1)
 extrationBtn.grid(column=10, row=3)
 
+
+def getLocation():
+    location = stationCombo.current()
+    Bk.locationExtraction(location)
+
+
+locationBtn = tk.Button(machTab, text="Get data at location", command=getLocation, width=15, height=1)
+locationBtn.grid(column=10, row=15)
 ###########################################
 #           end of Gem-mach Tab           #
 ###########################################

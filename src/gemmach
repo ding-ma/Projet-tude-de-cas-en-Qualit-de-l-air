@@ -1,7 +1,7 @@
 target = /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach
 filter = copy
 postprocess = nopost
-date = 2012,01,29,2012,02,29
+date = 1234,11,11,1234,11,11
 branche = operation.forecasts.mach
 ext = 000
 heure = 00

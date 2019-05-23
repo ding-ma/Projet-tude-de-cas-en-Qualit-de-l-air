@@ -9,12 +9,12 @@ Tag1=TEST
 editfst=/fs/ssm/eccc/mrd/rpn/utils/16.2/ubuntu-14.04-amd64-64/bin/editfst
 Type=species
 Grille=regeta
-FichierTICTAC=/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/operation.forecasts.mach/${DateDebut}1112_000
+FichierTICTAC=/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/operation.forecasts.mach/${DateDebut}1100_000
 ListeVersionsGEM="operation.forecasts.mach"
 ListeEspeces="O3"
 ListeNiveaux="93423264 76696048"
 ListeJours="11"
-ListePasse="12"
+ListePasse="00"
 ListeHeures="000"
 ################# Extraction#############
 for VersionGEM in  ${ListeVersionsGEM}

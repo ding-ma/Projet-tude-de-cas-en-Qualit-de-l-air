@@ -1,5 +1,5 @@
 import os
-
+import time
 days = (
     "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18"
     , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31")
@@ -49,5 +49,6 @@ print(os.listdir('gem'))
 for a in os.listdir('gem'):
     abc = open("gem/" + a, 'r').read()
     os.system(abc)
+print(time.clock())
 # a=os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach &")
 # b=os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach1 &")
