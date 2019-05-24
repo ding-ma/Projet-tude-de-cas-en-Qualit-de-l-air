@@ -25,16 +25,16 @@
 #######################################################
 
 
-PathOut=/space/hall1/sitestore/eccc/oth/airq_central/rio001/Requete_ETS/EDITFST
+PathOut=/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest
 
-PathIn=/space/hall1/sitestore/eccc/oth/airq_central/rio001/Requete_ETS/DonneesBrutes
+PathIn/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach
 
-DateDebut=201502
-DateFin=201502
-ListeMois="12"
+DateDebut=201904
+DateFin=201904
+ListeMois="04"
 
 
-Annee=2015
+Annee=2019
 
 Tag1=TEST
 #Tag1=TEST1
@@ -49,28 +49,28 @@ Type=species
 Grille=regeta
 
 #FichierTICTAC=/cnfs/dev/regions/que/afqsfrc/Requete_ETS/2015/operation.forecasts.regeta/${DateDebut}2200_000
-FichierTICTAC=/space/hall1/sitestore/eccc/oth/airq_central/rio001/Requete_ETS/DonneesBrutes/operation.forecasts.regeta/${DateDebut}2200_000
+FichierTICTAC=/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/operation.forecasts.mach/${DateDebut}0500_000
 
-ListeVersionsGEM="operation.forecasts.regeta"
+ListeVersionsGEM="operation.forecasts.mach"
 
 
 
 #ListeEspeces="TT UU VV WW"
 #ListeEspeces="HR P0 TCC"
-ListeEspeces="TT"
+ListeEspeces="O3"
 # premiere moitie TT UU VV WW
 # deuxieme moitie HR P0 TCC
 #ListeEspeces="TT UU VV WW HR P0 TCC"
 
 #ListeNiveaux="12000"
-ListeNiveaux="12000 11950 11850 11733 11606 11467 11316 11151 10973 10780 10571 10346 10104 9845 9567 9272 8959 8646 8337 8034 7737 7446 7161 6883 6612 6348 6091 5843 5602 5369 5144 4928 4721 4522 4331 4149 3976 3812 3667 3541 3431 3334 3248 3172  3104 3044 2990 2941 2897 2852 2795 2720 2625 2508 2374 2233 2102 2000"
+ListeNiveaux="93423264 76696048"
 
 
-ListeJours="22 23 24 25 26 27 28"
+ListeJours="05"
 #"01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31"
 
-ListePasse="00 06 12 18"
-ListeHeures="000 001 002 003 004 005"
+ListePasse="00 12"
+ListeHeures="000 001 002 003 004 005 006 007 008 009 010 011"
 
 
 

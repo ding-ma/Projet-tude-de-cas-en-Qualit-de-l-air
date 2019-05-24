@@ -21,7 +21,7 @@ import string
 #     print(stderr.readlines)
 
 # search for StationID or StationName
-stationFile = open("stationList-ASCII.csv", "r")
+stationFile = open("stations_DB.csv", "r")
 reader = csv.reader(stationFile)
 stationList = list(reader)
 
@@ -36,8 +36,8 @@ for x in range(len(stationList)):
     line = stationList[x]
     ids = line[0]
     name = line[1]
-    latitude = line[2]
-    longitude = line[3]
+    latitude = line[3]
+    longitude = line[4]
     lstDisplay.append(ids + ": " + name)
     lstID.append(ids)
     lstName.append(name)
