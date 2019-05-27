@@ -47,8 +47,8 @@ def Clicked():
     PM25 = var_PM25.get()
     Bk.particuleCheckBox(O3, NO2, others, PM25)
 
+    Bk.level(levelEntry.get())
     Bk.rarcFile()
-
 
 rarcLabel = tk.Label(machTab, text="Rarc Settings", font="20")
 rarcLabel.grid(column=0, row=0)
@@ -63,9 +63,6 @@ endDateLabel = tk.Label(machTab, text="Enter End Date (YYYY/MM/DD)")
 endDateLabel.grid(column=0, row=2)
 enteredEndDate = tk.Entry(machTab, width=13)
 enteredEndDate.grid(column=1, row=2)
-
-
-
 
 # Start Hours
 sHourLabel = tk.Label(machTab, text="Choose the start time")
@@ -113,14 +110,36 @@ PM25_Checkbutton.grid(column=3, row=11)
 otherVariable = tk.Entry(machTab, width=13)
 otherVariable.grid(column=5, row=11)
 
-# stations
-displayString = "Search Name or ID"
-stationCombo = ttk.Combobox(machTab, values=Bk.lstDisplay, state='readonly')
-stationCombo.grid(column=0, row=13, pady=(20, 0))
-stationCombo.current(0)
+# manual add level
+levelLabel = tk.Label(machTab, text="Enter Level (optinal)")
+levelLabel.grid(column=4, row=1)
+levelEntry = tk.Entry(machTab, width=15)
+levelEntry.grid(column=4, row=2)
 
+# stations
+def combined(event):
+    Bk.provlist.clear()
+    name = comboprov.get()
+    provlist = Bk.gettingprovlist(name)
+    combostations.config(values=provlist)
+
+
+comboprov = ttk.Combobox(window, values=Bk.prov, width=10, state='readonly')
+comboprov.grid(column=0, row=44)
+comboprov.bind('<<ComboboxSelected>>', combined)
+comboprov.current(0)
+
+combostations = ttk.Combobox(window, values=Bk.gettingprovlist("AB"), width=30, state='readonly')
+combostations.grid(column=1, row=44)
+combostations.current(1)
+
+# stationCombo = ttk.Combobox(machTab, values=Bk.lstDisplay, state='readonly')
+# stationCombo.grid(column=0, row=13, pady=(20, 0))
+# stationCombo.current(0)
+
+displayString = "Search Name or ID"
 stationSearchField = ttk.Entry(machTab, width=15)
-stationSearchField.grid(column=2, row=13, pady=(20, 0))
+stationSearchField.grid(column=3, row=13, pady=(20, 0))
 
 
 def SearchNameID():
@@ -130,9 +149,9 @@ def SearchNameID():
 
 
 stationSearchLabel = tk.Label(machTab, text=displayString)
-stationSearchLabel.grid(column=1, row=13, pady=(20, 0))
+stationSearchLabel.grid(column=2, row=13, pady=(20, 0), padx=(60, 0))
 searchBtn = tk.Button(machTab, text="Search", command=SearchNameID)
-searchBtn.grid(column=3, row=13, pady=(20, 0))
+searchBtn.grid(column=4, row=13, pady=(20, 0))
 ####
 
 
@@ -152,8 +171,6 @@ def Log():
 
 def StartXRACR():
     os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach &")
-
-
 
 
 def StartBash():
@@ -185,8 +202,12 @@ extrationBtn.grid(column=10, row=3)
 
 
 def getLocation():
-    location = stationCombo.current()
-    Bk.locationExtraction(location)
+    location = int(combostations.current())
+    province = comboprov.get()
+    locationlst = Bk.provinceDic[province]
+    loc = locationlst[location]
+    Bk.locationExtraction(loc)
+    #Bk.locationExtraction(location)
 
 
 locationBtn = tk.Button(machTab, text="Get data at location", command=getLocation, width=15, height=1)

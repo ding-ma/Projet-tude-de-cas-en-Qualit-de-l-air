@@ -1,286 +1,286 @@
 id    ,name_en_CA                           ,name_fr_CA                           ,lat   ,lon     ,province,city                    ,address
-10102 ,St. John's                           ,St. John's                           ,47.560,-52.711 ,1       ,St. John's              ,354 WATER STREET
-10401 ,Mount Pearl                          ,Mount Pearl                          ,47.505,-52.795 ,1       ,Mount Pearl             ,OLD PLACENTIA ROAD
-10501 ,Grand Falls - Windsor                ,Grand Falls - Windsor                ,48.927,-55.660 ,1       ,Grand Falls - Windsor   ,SCOTT AVENUE
-10601 ,Goose Bay                            ,Goose Bay                            ,53.305,-60.364 ,1       ,Happy Valley - Goose Bay,Abbott Drive
-10602 ,Corner Brook                         ,Corner Brook                         ,48.952,-57.922 ,1       ,Corner Brook            ,Macpherson Avenue
-10801 ,Port au Choix                        ,Port au Choix                        ,50.711,-57.364 ,1       ,Port au Choix           ,Port au Choix
-10901 ,Marystown/Burin                      ,Marystown/Burin                      ,47.099,-55.199 ,1       ,Burin                   ,
-11002 ,FIREHALL-LABRADORCITY2               ,FIREHALL-LABRADORCITY2               ,52.945,-66.910 ,1       ,Labrador City           ,317 Hudson Drive
-20104 ,Charlottetown                        ,Charlottetown                        ,46.233,-63.137 ,2       ,Charlottetown           ,3 BRIGHTON ROAD
-20301 ,Wellington                           ,Wellington                           ,46.450,-64.000 ,2       ,Wellington              ,40 HACKMATACK RD. (ROUTE 125)
-20401 ,Southampton                          ,Southampton                          ,46.388,-62.581 ,2       ,Southampton             ,2580 CARDIGAN ROAD (ROUTE 313)
-30001 ,Halifax Downtown                     ,Halifax - centre-ville               ,44.647,-63.574 ,3       ,Halifax                 ,1672 GRANVILLE STREET
-30113 ,Johnston Building                    ,Johnston Building                    ,44.647,-63.574 ,3       ,Halifax                 ,1672 GRANVILLE STREET
-30120 ,Lake Major                           ,Lake Major                           ,44.720,-63.482 ,3       ,Dartmouth               ,Cherrybrook Road
-30201 ,Port Hawkesbury                      ,Port Hawkesbury                      ,45.614,-61.362 ,3       ,Port Hawkesbury         ,Embree & Granville
-30310 ,Sydney (Welton Street)               ,Sydney (Welton Street)               ,46.142,-60.173 ,3       ,Sydney                  ,71 Welton Street
-30502 ,Kejimkujik Site B                    ,Kejimkujik Site B                    ,44.403,-65.203 ,3       ,                        ,
-30701 ,Aylesford Mountain                   ,Aylesford Mountain                   ,45.073,-64.840 ,3       ,Aylesford               ,"MOUNTAIN BROW ROAD, KINGS COUNTY"
-30901 ,Pictou                               ,Pictou                               ,45.682,-62.697 ,3       ,Pictou                  ,91 BEACHES ROAD
-31101 ,Kentville                            ,Kentville                            ,45.067,-64.483 ,3       ,Kentville               ,32 MAIN STREET
-40104 ,Fredericton Needham                  ,Fredericton Needham                  ,45.957,-66.646 ,4       ,Fredericton             ,486 Needham Street
-40203 ,Forest Hills                         ,Forest Hills                         ,45.309,-66.008 ,4       ,Saint John              ,MOUNTAIN ROAD
-40207 ,West Side                            ,West Side                            ,45.253,-66.080 ,4       ,Saint John              ,476 LANCASTER AVENUE W.
-40209 ,Castle Street                        ,Castle Street                        ,45.280,-66.056 ,4       ,Saint John              ,
-40302 ,Moncton                              ,Moncton                              ,46.101,-64.790 ,4       ,Moncton                 ,5 THANET STREET
-40901 ,St. Andrews                          ,St. Andrews                          ,45.087,-67.074 ,4       ,St. Andrews             ,BRANDY COVE ROAD
-41302 ,Bathurst                             ,Bathurst                             ,47.610,-65.634 ,4       ,Bathurst                ,1255 Rough Waters Drive
-41501 ,Edmundston Queen St.                 ,Edmundston rue Queen                 ,47.363,-68.322 ,4       ,Edmundston              ,19 Queen St.
-49998 ,Campbellton                          ,Campbellton                          ,47.999,-66.684 ,4       ,Campbellton             ,Campbellton
-50103 ,Saint-Jean-Baptiste                  ,Saint-Jean-Baptiste                  ,45.641,-73.500 ,5       ,Montreal                ,"1050 A, BOUL. SAINT-JEAN-BAPTISTE"
-50109 ,Duncan & Decarie                     ,Duncan & Decarie                     ,45.503,-73.664 ,5       ,Montreal                ,"2495 Duncan / Decarie, Mont-Royal"
-50113 ,Chomedey                             ,Chomedey                             ,45.548,-73.747 ,5       ,Laval                   ,1160 BOUL PIE IX
-50119 ,Bourassa                             ,Bourassa                             ,45.522,-73.488 ,5       ,Longueuil               ,FACE AU 1819 RUE VICTORIA
-50122 ,Parc Sorbonne                        ,Parc Sorbonne                        ,45.449,-73.481 ,5       ,Brossard                ,8405 avenue Sorbonne
-50126 ,Sainte-Anne-de-Bellevue              ,Sainte-Anne-de-Bellevue              ,45.427,-73.929 ,5       ,Montreal                ,"20965 CH. SAINTE-MARIE, STE-ANNEdB"
-50128 ,Aeroport de Montreal                 ,Aeroport de Montreal                 ,45.468,-73.741 ,5       ,Montreal                ,"90-A rue Herv-Saint-Martin, Dorval"
-50129 ,Riviere-des-Prairies                 ,Riviere-des-Prairies                 ,45.652,-73.574 ,5       ,Montreal                ,12400 WILFRID-OUELLETTE
-50131 ,Hochelaga-Maisonneuve                ,Hochelaga-Maisonneuve                ,45.540,-73.541 ,5       ,Montreal                ,3250 STE-CATHERINE EST
-50133 ,Chenier                              ,Chenier                              ,45.602,-73.542 ,5       ,Anjou                   ,8200A Rue Chenier
-50134 ,Saint-Joseph (Molson)                ,Saint-Joseph (Molson)                ,45.543,-73.572 ,5       ,Montreal                ,2580 St-Joseph Est
-50135 ,Firehouse 17                         ,Caserne 17                           ,45.593,-73.637 ,5       ,Montreal                ,4240 rue Charleroi
-50136 ,St-Dominique                         ,St-Dominique                         ,45.512,-73.567 ,5       ,Montreal                ,75 rue Ontario Est
-50137 ,Parc Vaillant                        ,Parc Vaillant                        ,45.705,-73.658 ,5       ,Terrebonne              ,905 rue Vaillant
-50138 ,York-Roberval                        ,York-Roberval                        ,45.465,-73.583 ,5       ,Montreal                ,1540 rue de Roberval
-50204 ,Hull (ile)                           ,Hull (ile)                           ,45.437,-75.726 ,5       ,Gatineau                ,"255 St-Redempteur, Hull"
-50308 ,Des Sables                           ,Des Sables                           ,46.821,-71.221 ,5       ,Quebec                  ,600 RUE DES SABLES
-50310 ,Saint-Charles Garnier                ,Saint-Charles Garnier                ,46.797,-71.246 ,5       ,Quebec                  ,1150 Boul. Rene-Levesque O.
-50311 ,Parc Primevres                       ,Parc Primevres                       ,46.774,-71.370 ,5       ,Quebec                  ,1465 Rue Flix-Antione-Savard
-50404 ,Parc Cambron                         ,Parc Cambron                         ,45.413,-71.874 ,5       ,Sherbrooke              ,"655, RUE PAPINEAU"
-50504 ,University Chicoutimi                ,Universit Chicoutimi                 ,48.416,-71.053 ,5       ,Saguenay                ,"789 Coul. Des tudiants, Chicoutimi"
-50604 ,Parc Tremblay                        ,Parc Tremblay                        ,48.234,-78.983 ,5       ,Rouyin-Noranda          ,1570 RUE PARADIS
-50803 ,TROIS-RIVIERES-MEES                  ,TROIS-RIVIERES-MEES                  ,46.357,-72.546 ,5       ,Trois-Rivieres          ,"Mauricie English Elementary School, rue Whitehead"
-51201 ,Frigon                               ,Frigon                               ,46.554,-72.736 ,5       ,Shawinigan              ,363 RUE FRIGON
-51501 ,Zephirin                             ,Zephirin                             ,46.043,-72.660 ,5       ,St-Zephirin-de-Courval  ,701 RANG SAINT-MICHEL
-52001 ,Charette                             ,Charette                             ,46.441,-72.893 ,5       ,Charette                ,AU NORD DU 170 2E RANG
-52201 ,Saint-Simon                          ,Saint-Simon                          ,45.716,-72.840 ,5       ,Saint-Simon             ,"Derrire le 83, 4e rang Est"
-52301 ,Saint Faustin                        ,Saint Faustin                        ,46.035,-74.481 ,5       ,Saint-Faustin-Lac-Carre ,CHEMIN DU LAC (CARIBOU)
-52401 ,La Peche                             ,La Peche                             ,45.622,-76.018 ,5       ,La Peche                ,LAC PHILIPPE - MASHAM
-52701 ,Temiscaming                          ,Temiscaming                          ,46.721,-79.100 ,5       ,Tmiscaming              ,RUE BOUCHER
-52801 ,Auclair                              ,Auclair                              ,47.733,-68.707 ,5       ,Auclair                 ,66 Rang St-Grgoire Nord
-53201 ,Pemonca                              ,Pemonca                              ,48.810,-72.739 ,5       ,La Dor                  ,"Route 167, La Dor"
-53301 ,Deschambault-Ramco                   ,Deschambault-Ramco                   ,46.682,-71.968 ,5       ,Deschambault            ,"334, 3 E RANG - DESHAMBAULT"
-53501 ,Franois                              ,Franois                              ,47.015,-70.864 ,5       ,Saint-Franois           ,"Face au 198 Royale, le d'Orlans"
-53601 ,Notre-Dame du Rosaire                ,Notre-Dame du Rosaire                ,46.851,-70.453 ,5       ,Notre-Dame-Du-Rosaire   ,RANG ST-LOUIS
-53701 ,Hilaire                              ,Hilaire                              ,45.825,-70.856 ,5       ,St-Hilaire-De-Dorset    ,RANG DORSET
-53801 ,Tingwick                             ,Tingwick                             ,45.908,-71.949 ,5       ,Tingwick                ,CHEMIN RADAR ET WARWICK
-53901 ,douard                               ,douard                               ,47.647,-72.291 ,5       ,Lac-douard              ,Derrire l'hpital village
-54102 ,Mont Sutton/Round Top Ridge          ,Mont Sutton/Round Top Ridge          ,45.089,-72.557 ,5       ,Sutton                  ,MONT SUTTON/ROUND TOP RIDGE
-54201 ,Chapais                              ,Chapais                              ,49.822,-74.976 ,5       ,                        ,
-54401 ,Saint-Anicet                         ,Saint-Anicet                         ,45.117,-74.283 ,5       ,Saint-Anicet            ,1128 DE LA GUERRE
-54703 ,Bcancour                             ,Bcancour                             ,46.350,-72.433 ,5       ,Bcancour                ,8310 Boul. Becancour
-54901 ,Ditton                               ,Ditton                               ,45.374,-71.250 ,5       ,La Patrie               ,RANG PETIT CANADA OUEST
-55001 ,Mont Saint-Michel                    ,Mont Saint-Michel                    ,46.769,-75.432 ,5       ,Ferme Neuve             ,215 4e Rang Gravel
-55101 ,Bell                                 ,Bell                                 ,48.433,-77.200 ,5       ,Senneterre              ,Chemin Rivire Bell
-55301 ,L'Acadie                             ,L'Acadie                             ,45.294,-73.349 ,5       ,Saint-Jean-Sur-Richelieu,"FERME EXP., 1134 ROUTE 219"
-55401 ,Roy                                  ,Roy                                  ,46.362,-72.510 ,5       ,Trois-Rivire            ,Intersection des rues Dorval et Roy
-55501 ,Frelighsburg                         ,Frelighsburg                         ,45.052,-72.862 ,5       ,Frelighsburg            ,FRELIGHSBURG
-55601 ,Mingan                               ,Mingan                               ,50.267,-64.217 ,5       ,Mingan                  ,MINGAN
-55702 ,Parc Georges Maranda                 ,Parc Georges Maranda                 ,46.806,-71.167 ,5       ,Levis                   ,200 rue des Commandeurs
-60104 ,Ottawa Downtown                      ,Ottawa - centre-ville                ,45.434,-75.676 ,6       ,Ottawa                  ,RIDEAU & WURTEMBURG
-60204 ,Windsor Downtown                     ,Windsor - centre-ville               ,42.316,-83.044 ,6       ,Windsor                 ,467 UNIVERSITY AVE. WEST
-60211 ,Windsor West                         ,Windsor - ouest                      ,42.293,-83.073 ,6       ,Windsor                 ,COLLEGE & SOUTH ST.
-60304 ,Kingston                             ,Kingston                             ,44.220,-76.521 ,6       ,Kingston                ,23 Beechgrove Lane
-60410 ,Toronto East                         ,Toronto - est                        ,43.748,-79.274 ,6       ,Toronto                 ,LAWRENCE & KENNEDY
-60424 ,Toronto Downtown                     ,Toronto - centre-ville               ,43.663,-79.388 ,6       ,Toronto                 ,BAY & WELLESLEY
-60430 ,Toronto West                         ,Toronto - ouest                      ,43.709,-79.544 ,6       ,Toronto                 ,125 RESOURCES ROAD
-60434 ,Mississauga                          ,Mississauga                          ,43.547,-79.659 ,6       ,Mississauga             ,3359 Mississauga Road North
-60436 ,Hanlan's Point (Toronto Island)      ,Hanlan's Point (Toronto Island)      ,43.612,-79.389 ,6       ,Toronto                 ,Toronto Island
-60437 ,York University                      ,York University                      ,43.768,-79.506 ,6       ,Toronto                 ,Passy Crescent & Assiniboine Rd
-60440 ,Toronto North                        ,Toronto North                        ,43.780,-79.467 ,6       ,Toronto                 ,4905 Dufferin Street
-60450 ,Brampton                             ,Brampton                             ,43.670,-79.767 ,6       ,Brampton                ,109 McLaughlin Road South
-60512 ,Hamilton Downtown                    ,Hamilton - centre-ville              ,43.258,-79.862 ,6       ,Hamilton                ,ELGIN & KELLY
-60515 ,Hamilton West                        ,Hamilton Ouest                       ,43.257,-79.908 ,6       ,Hamilton                ,Main St. W./hwy 403
-60521 ,Hamilton Mountain                    ,Hamilton Mountain                    ,43.241,-79.889 ,6       ,Hamilton                ,250 Fennell Ave. W.
-60610 ,Sudbury                              ,Sudbury                              ,46.492,-81.003 ,6       ,Sudbury                 ,155 Elm Street
-60709 ,Sault Ste. Marie                     ,Sault Ste. Marie                     ,46.533,-84.310 ,6       ,Sault Sainte Marie      ,"443 NORTHERN AVE., SAULT COLLEGE"
-60808 ,Thunder Bay                          ,Thunder Bay                          ,48.379,-89.290 ,6       ,Thunder Bay             ,421 JAMES STREET SOUTH
-60904 ,London                               ,London                               ,42.974,-81.201 ,6       ,London                  ,42 St. Julien Street
-61009 ,Sarnia                               ,Sarnia                               ,42.990,-82.395 ,6       ,Sarnia                  ,720 Christina St. N.
-61104 ,Peterborough                         ,Peterborough                         ,44.302,-78.346 ,6       ,Peterborough            ,10 HOSPITAL DRIVE
-61201 ,Cornwall                             ,Cornwall                             ,45.018,-74.735 ,6       ,Cornwall                ,BEDFORD & THIRD ST.
-61302 ,St Catharines                        ,St Catharines                        ,43.160,-79.235 ,6       ,St. Catharines          ,ARGYLE CRESCENT
-61402 ,Brantford                            ,Brantford                            ,43.139,-80.293 ,6       ,Brantford               ,324 GRAND RIVER AVE.
-61502 ,Kitchener                            ,Kitchener                            ,43.444,-80.504 ,6       ,Kitchener               ,WEST AVE. & HOMEWOOD
-61603 ,Oakville                             ,Oakville                             ,43.487,-79.702 ,6       ,Oakville                ,8TH LINE/GLENASHTON DR.
-61703 ,Oshawa                               ,Oshawa                               ,43.952,-78.913 ,6       ,Oshawa                  ,Britannia Ave. W.
-61802 ,Guelph                               ,Guelph                               ,43.552,-80.264 ,6       ,Guelph                  ,70 DIVISION STREET
-62001 ,North Bay                            ,North Bay                            ,46.323,-79.449 ,6       ,North Bay               ,CHIPPEWA ST.
-62501 ,Tiverton                             ,Tiverton                             ,44.314,-81.550 ,6       ,Tiverton                ,BRUCE NUCLEAR VISITOR CTR
-63001 ,Burlington                           ,Burlington                           ,43.315,-79.803 ,6       ,Burlington              ,HWY 2 & NORTH SHORE BLVD.
-63301 ,Dorset                               ,Dorset                               ,45.224,-78.933 ,6       ,Dorset                  ,HWY 117 & PAINT LAKE ROAD
-63701 ,Grand Bend                           ,Grand Bend                           ,43.333,-81.743 ,6       ,Grand Bend              ,HWY 21 & COUNTY RD 83
-64001 ,Experimental Lakes                   ,Experimental Lakes                   ,49.664,-93.721 ,6       ,Exp. Lakes Area         ,EXP. LAKES AREA
-64101 ,Algoma                               ,Algoma                               ,47.035,-84.381 ,6       ,Algoma                  ,ALGOMA
-64401 ,Egbert                               ,Egbert                               ,44.233,-79.781 ,6       ,Egbert                  ,EGBERT
-65001 ,Barrie                               ,Barrie                               ,44.382,-79.702 ,6       ,Barrie                  ,85 PERRY STREET
-65101 ,Newmarket                            ,Newmarket                            ,44.044,-79.483 ,6       ,Newmarket               ,EAGLE ST. & McCAFFREY RD.
-65201 ,Parry Sound                          ,Parry Sound                          ,45.338,-80.038 ,6       ,Parry Sound             ,7 BAY STREET
-65301 ,Port Stanley                         ,Port Stanley                         ,42.672,-81.163 ,6       ,Port Stanley            ,43665 DEXTER LINE
-65401 ,Belleville                           ,Belleville                           ,44.151,-77.396 ,6       ,Belleville              ,2 SIDNEY STREET
-65801 ,Chatham                              ,Chatham                              ,42.404,-82.208 ,6       ,Chatam                  ,435 GRAND AVENUE W.
-65901 ,Pickle Lake                          ,Pickle Lake                          ,51.449,-90.218 ,6       ,Pickle Lake             ,PICKLE LAKE
-66101 ,Bonner Lake                          ,Bonner Lake                          ,49.386,-82.121 ,6       ,Moonbeam                ,
-66201 ,Petawawa                             ,Petawawa                             ,45.997,-77.441 ,6       ,Petawawa                ,Petawawa Research Forest Facility
-67001 ,Milton                               ,Milton                               ,43.530,-79.862 ,6       ,Milton                  ,"1120 Main St. E., Milton, ON"
-70118 ,City of Winnipeg Flood Pump Station  ,City of Winnipeg Flood Pump Station  ,49.932,-97.113 ,7       ,Winnipeg                ,JEFFERSON & SCOTIA
-70119 ,Winnipeg - 65 Ellen Street           ,Winnipeg - 65 Ellen Street           ,49.898,-97.147 ,7       ,Winnipeg                ,65 ELLEN STREET
-70203 ,Assiniboine Comm. College            ,Assiniboine Comm. College            ,49.842,-99.919 ,7       ,Brandon                 ,1430 VICTORIA AVENUE EAST
-70301 ,Flin Flon                            ,Flin Flon                            ,54.769,-101.878,7       ,Flin Flon               ,143 MAIN STREET
-70501 ,Thompson                             ,Thompson                             ,55.747,-97.874 ,7       ,Thompson                ,
-80110 ,Regina                               ,Regina                               ,50.450,-104.617,8       ,Regina                  ,2505 11TH. AVENUE
-80211 ,Corman Park                          ,Corman Park                          ,52.136,-106.663,8       ,Saskatoon               ,511 1ST AVENUE NORTH
-80402 ,Prince Albert                        ,Prince Albert                        ,53.202,-105.752,8       ,Prince Albert           ,63 - 12th STREET EAST
-80502 ,Estevan                              ,Estevan                              ,49.132,-102.985,8       ,Estevan                 ,530 1A street
-80901 ,Bratt's Lake                         ,Bratt's Lake                         ,50.203,-104.204,8       ,Bratt's Lake            ,RADIATION OBSERVATORY
-81001 ,Speedy Creek                         ,Speedy Creek                         ,50.286,-107.817,8       ,Swift Current           ,1200 Begg Street West
-82001 ,Pinehouse Lake                       ,Pinehouse Lake                       ,55.503,-106.722,8       ,                        ,
-90120 ,Edmonton South                       ,Edmonton - sud                       ,53.500,-113.526,9       ,Edmonton                ,6240 113 STREET
-90121 ,Edmonton East                        ,Edmonton - est                       ,53.548,-113.367,9       ,Edmonton                ,17 STREET & 105 AVENUE
-90130 ,Edmonton Central                     ,Edmonton - centre                    ,53.544,-113.499,9       ,Edmonton                ,10255 - 104TH STREET
-90133 ,Woodcroft                            ,Woodcroft                            ,53.564,-113.563,9       ,Edmonton                ,13915 - 115 Ave NW Edmonton
-90134 ,Sherwood Park                        ,Sherwood Park                        ,53.532,-113.321,9       ,Sherwood Park           ,
-90135 ,Ardrossan                            ,Ardrossan                            ,53.555,-113.145,9       ,Ardrossan               ,
-90136 ,St. Albert                           ,St. Albert                           ,53.627,-113.612,9       ,St. Albert              ,
-90222 ,Calgary Northwest                    ,Calgary - nord-ouest                 ,51.080,-114.143,9       ,Calgary                 ,39 ST. & 29 AVE. N.W.
-90228 ,Calgary Central                      ,Calgary - centre                     ,51.048,-114.075,9       ,Calgary                 ,620 7th Ave South-West
-90229 ,Calgary Southeast                    ,Calgary - sud-est                    ,50.955,-113.970,9       ,Calgary                 ,4700 110 Avenue SE
-90250 ,Airdrie                              ,Airdrie                              ,51.268,-114.038,9       ,Airdrie                 ,Chinook Winds Park
-90302 ,Red Deer - Riverside Drive           ,Red Deer - Riverside Drive           ,52.299,-113.794,9       ,Red Deer                ,73 STREET & RIVERSIDE DRIVE
-90304 ,Red Deer - Lancaster                 ,Red Deer - Lancaster                 ,52.241,-113.765,9       ,Red Deer                ,11 Lancaster Drive
-90402 ,Crescent Heights                     ,Crescent Heights                     ,50.053,-110.688,9       ,Medicine Hat            ,12th ST NW & Division Ave.
-90502 ,Lethbridge                           ,Lethbridge                           ,49.716,-112.800,9       ,Lethbridge              ,
-90601 ,Fort Saskatchewan                    ,Fort Saskatchewan                    ,53.710,-113.222,9       ,Fort Saskatchewan       ,9209A-96 Ave
-90602 ,Range Road 220                       ,Range Road 220                       ,53.752,-113.126,9       ,Fort Saskatchewan       ,RGE RD 220 & RIVER ROAD
-90603 ,Ross Creek                           ,Ross Creek                           ,53.716,-113.200,9       ,Fort Saskatchewan       ,100 AVE EAST OF 109ST.
-90604 ,Scotford                             ,Scotford                             ,53.791,-113.079,9       ,Fort Saskatchewan       ,RGE RD 214 TWP RD 560
-90606 ,Bruderheim                           ,Bruderheim                           ,53.800,-112.928,9       ,Bruderheim              ,
-90607 ,Gibbons                              ,Gibbons                              ,53.827,-113.327,9       ,Gibbons                 ,Behind 4807 50 Ave
-90608 ,Redwater                             ,Redwater                             ,53.952,-113.106,9       ,Redwater                ,4704 49th Avenue
-90701 ,Athabasca Valley                     ,Valle de l'Athabasca                 ,56.733,-111.390,9       ,Fort McMurray           ,FRANKLIN AVENUE
-90702 ,Patricia McInnes                     ,Patricia McInnes                     ,56.752,-111.476,9       ,Fort McMurray           ,TIMBERLEA SUBDIVISION
-90801 ,Fort McKay                           ,Fort McKay                           ,57.189,-111.641,9       ,Fort McKay              ,MAIN STREET
-90806 ,Syncrude UE1                         ,Syncrude UE1                         ,57.149,-111.642,9       ,Fort McKay              ,
-91001 ,Esther                               ,Esther                               ,51.667,-110.200,9       ,Esther                  ,
-91101 ,Elk Island National Park             ,Parc national Elk Island             ,53.682,-112.868,9       ,Elk Island              ,NATIONAL PARK
-91301 ,Tomahawk                             ,Tomahawk                             ,53.373,-114.768,9       ,Tomahawk                ,SE 2 51 6 W5
-91401 ,Violet Grove                         ,Violet Grove                         ,53.142,-115.138,9       ,Violet Grove            ,SE 17 48 08 W5
-91501 ,Beaverlodge                          ,Beaverlodge                          ,55.197,-119.394,9       ,Beaverlodge             ,BEAVERLODGE RESEARCH FARM
-91601 ,Carrot Creek                         ,Carrot Creek                         ,53.607,-115.877,9       ,Carrot Creek            ,SE 31 53 13 W5
-91701 ,Steeper                              ,Steeper                              ,53.133,-117.091,9       ,Steeper                 ,NE 12 48 22 W5
-91801 ,Fort Chipewyan                       ,Fort Chipewyan                       ,58.700,-111.133,9       ,Fort Chipewyan          ,FORT CHIPEWYAN
-91901 ,Caroline                             ,Caroline                             ,51.950,-114.700,9       ,Caroline                ,16-30-034-5 W5
-92001 ,Grande Prairie - Henry Pirker Station,Grande Prairie - Henry Pirker Station,55.177,-118.806,9       ,Grande Prairie          ,10327 - 107 AVENUE
-92201 ,Lamont County                        ,Comt de Lamont                       ,53.760,-112.880,9       ,Lamont                  ,RGE RD 203 & TWP RD 550
-92601 ,Breton                               ,Breton                               ,53.090,-114.461,9       ,Breton                  ,Highway 20
-92801 ,Drayton Valley                       ,Drayton Valley                       ,53.220,-114.972,9       ,                        ,
-92901 ,Edson                                ,Edson                                ,53.587,-116.431,9       ,                        ,
-93101 ,Genesee                              ,Genesee                              ,53.302,-114.221,9       ,Thorsby                 ,Range Road 15
-93202 ,Hinton                               ,Hinton                               ,53.427,-117.544,9       ,Hinton                  ,
-93801 ,Meadows                              ,Meadows                              ,53.530,-114.636,9       ,Warburg                 ,Range Road 34
-93901 ,Power                                ,Power                                ,53.633,-114.420,9       ,Thorsby                 ,Range Road 11
-94202 ,Wagner 2                             ,Wagner 2                             ,53.494,-114.450,9       ,                        ,
-94301 ,Cold Lake South                      ,Cold Lake South                      ,54.458,-110.174,9       ,Bonnyville              ,5105-50th Avenue
-94401 ,St. Lina                             ,St. Lina                             ,54.216,-111.503,9       ,                        ,
-100103,New Westminster                      ,New Westminster                      ,49.227,-122.894,10      ,New Westminster         ,"351 E. Columbia Street, New Westminster, BC"
-100110,Kensington Park                      ,Kensington Park                      ,49.279,-122.971,10      ,GVRD - Burnaby          ,6400 E. HASTINGS & KENSINGTON
-100111,Rocky Pt. Park                       ,Rocky Pt. Park                       ,49.281,-122.849,10      ,GVRD - Port Moody       ,MOODY & ESPLANADE PORT MOODY
-100112,Robson Square                        ,Robson Square                        ,49.282,-123.121,10      ,GVRD - Vancouver        ,ROBSON/HORNBY
-100118,Kitsilano                            ,Kitsilano                            ,49.262,-123.163,10      ,GVRD - Vancouver        ,2550 WEST 10TH AVENUE
-100119,Burnaby South                        ,Burnaby South                        ,49.215,-122.986,10      ,GVRD - Burnaby          ,5455 RUMBLE STREET
-100121,Second Narrows                       ,Second Narrows                       ,49.302,-123.020,10      ,GVRD - Vancouver        ,75 RIVERSIDE DR. N. VANCOUVER
-100125,North Delta                          ,North Delta                          ,49.158,-122.902,10      ,GVRD - Delta            ,8544 116TH AVE. DELTA
-100126,Burnaby Mountain                     ,Burnaby Mountain                     ,49.280,-122.922,10      ,GVRD - Burnaby          ,RING ROAD BURNABY
-100127,Surrey East                          ,Surrey East                          ,49.133,-122.694,10      ,GVRD - Surrey           ,19000 & 72ND AVE. SURREY
-100128,Richmond South                       ,Richmond South                       ,49.142,-123.108,10      ,GVRD - Richimond        ,WILLIAMS & ARAGON RICHMOND
-100132,Mahon Park                           ,Mahon Park                           ,49.324,-123.084,10      ,GVRD - Vancouver        ,16TH ST. & JONES AVE NORTH VAN
-100134,Vancouver Intl. Airport              ,Vancouver Intl. Airport              ,49.186,-123.152,10      ,GVRD - Richmond         ,3153 TEMPLETON STREET
-100135,Coquitlam                            ,Coquitlam                            ,49.288,-122.791,10      ,GVRD - Coquitlam        ,1250 PINETREE WAY
-100138,Horsheshoe Bay                       ,Horsheshoe Bay                       ,49.368,-123.276,10      ,GVRD - Vancouver West   ,6350 MARINE DRIVE
-100140,Tsawwassen                           ,Tsawwassen                           ,49.010,-123.082,10      ,GVRD - Vancouver        ,
-100202,Prince George Plaza 400              ,Prince George Plaza 400              ,53.915,-122.742,10      ,Prince George           ,1011 4TH AVENUE
-100203,Prince George BC Rail Warehouse      ,Prince George BC Rail Warehouse      ,53.871,-122.744,10      ,Prince George           ,1108 INDUSTRIAL WAY
-100205,Prince George Gladstone School       ,Prince George Gladstone School       ,53.858,-122.761,10      ,Prince George           ,GLADSTONE SCHOOL
-100206,Prince George Lakewood               ,Prince George Lakewood               ,53.916,-122.796,10      ,Prince George           ,LAKEWOOD
-100212,Prince George Marsulex Acid Plant    ,Prince George Marsulex Acid Plant    ,53.842,-122.734,10      ,Prince George           ,
-100213,Prince George Denicola Ranch         ,Prince George Denicola Ranch         ,53.935,-122.681,10      ,Prince George           ,
-100214,Prince George Exploration Place      ,Prince George Exploration Place      ,53.905,-122.734,10      ,Prince George           ,
-100304,Victoria Topaz                       ,Victoria Topaz                       ,48.443,-123.363,10      ,Victoria                ,923 TOPAZ
-100308,Colwood City Hall                    ,Colwood City Hall                    ,48.424,-123.493,10      ,Victoria                ,3300 WISHART ROAD
-100312,Esquimalt Graving Dock               ,Esquimalt Graving Dock               ,48.437,-123.422,10      ,Esquimalt               ,825 Admirals Road
-100401,Kamloops Federal Building            ,Kamloops Federal Building            ,50.674,-120.333,10      ,Kamloops                ,317 SEYMOUR ST.
-100701,Kelowna College                      ,Kelowna College                      ,49.861,-119.475,10      ,Kelowna                 ,3333 COLLEGE WAY
-101003,Central Abbotsford                   ,Central Abbotsford                   ,49.043,-122.310,10      ,GVRD - Abbotsford       ,32995 BEVAN AVE.
-101005,Abbotsford Airport                   ,Abbotsford Airport                   ,49.022,-122.327,10      ,Abbotsford              ,1073 Columbia St
-101101,Chilliwack Airport                   ,Chilliwack Airport                   ,49.156,-121.941,10      ,GVRD-Chilliwack         ,46244 AIRPORT ROAD
-101202,Pitt Meadows                         ,Pitt Meadows                         ,49.245,-122.709,10      ,Pitt Meadows            ,18477 DEWDNY TRUNK
-101301,Langley Central                      ,Langley Central                      ,49.096,-122.566,10      ,Langley                 ,23752 52ND AVENUE
-101401,Hope Airport                         ,Hope Airport                         ,49.370,-121.499,10      ,Hope                    ,62715 AIRPORT ROAD
-101501,Maple Ridge                          ,Maple Ridge                          ,49.215,-122.582,10      ,Maple Ridge             ,23124 118TH AVENUE
-101603,Squamish Elementary                  ,Squamish Elementary                  ,49.705,-123.151,10      ,Squamish                ,38370 Buckley Ave
-101701,Quesnel Senior Secondary             ,Quesnel Senior Secondary             ,52.819,-122.492,10      ,Quesnel                 ,585 CALLANAN STREET
-101702,Quesnel Maple Drive                  ,Quesnel Maple Drive                  ,52.963,-122.451,10      ,Quesnel                 ,950 MOUNTAIN ASH ROAD
-101704,Quesnel West Correlieu School        ,Quesnel West Correlieu School        ,52.966,-122.517,10      ,Quesnel                 ,CORRELIEU SCHOOL
-101801,Creston PC School                    ,Creston PC School                    ,49.094,-116.513,10      ,creston                 ,PRINCE CHARLES SECONDARY SCHOOL
-101904,Cranbrook Muriel Baxter              ,Cranbrook Muriel Baxter              ,49.507,-115.754,10      ,Cranbrook               ,"3rd st. s, 20 ave s, Cranbrook, BC"
-102001,Saturna                              ,Saturna                              ,48.783,-123.133,10      ,Saturna                 ,SATURNA
-102102,Nanaimo Labieux Road                 ,Nanaimo Labieux Road                 ,49.201,-123.994,10      ,Nanaimo                 ,280 LABIEUX ROAD
-102103,Harmac                               ,Harmac                               ,49.099,-123.852,10      ,Nanaimo                 ,CEDAR 7 WOOBANK RD
-102201,Butler Park                          ,Butler Park                          ,49.096,-117.697,10      ,Trail                   ,BUTLER PARK
-102301,Powell River Cranberry Lake          ,Powell River Cranberry Lake          ,49.875,-124.517,10      ,Powell River            ,WILDLIFE SANCTUARY
-102302,Powell River Wildwood                ,Powell River Wildwood                ,49.888,-124.558,10      ,Powell River            ,WILDWOOD MOTORS
-102303,Powell River James Thompson School   ,Powell River James Thompson School   ,49.899,-124.563,10      ,Powell River            ,
-102401,Smithers                             ,Smithers                             ,54.783,-127.178,10      ,Smithers                ,4020 BROADWAY AVENUE
-102501,Terrace BC Access Centre             ,Terrace BC Access Centre             ,54.518,-128.598,10      ,Terrace                 ,104 - 3220 EBY STREET
-102503,Terrace Skeena Middle School         ,Terrace Skeena Middle School         ,54.522,-128.608,10      ,Terrace                 ,3411 Munroe Street
-102602,Port Alberni Elementary              ,Port Alberni Elementary              ,49.261,-124.806,10      ,Port Alberni            ,4645 Helen Street
-102701,Williams Lake Columneetza School     ,Williams Lake Columneetza School     ,52.142,-122.153,10      ,Williams Lake           ,1045 WESTERN AVENUE
-102706,Williams Lake CRD Library            ,Williams Lake CRD Library            ,52.131,-122.142,10      ,Williams Lake           ,180 NORTH 3RD AVE
-102801,Elk Falls Dogwood                    ,Elk Falls Dogwood                    ,50.017,-125.247,10      ,Campbell River          ,ADJACENT TO 660 WESTMERE
-103202,Golden Helipad                       ,Golden Helipad                       ,51.298,-116.967,10      ,Golden                  ,835 9TH AVENUE SOUTH
-103302,Nelson Kutenai Place                 ,Nelson Kutenai Place                 ,49.491,-117.295,10      ,Nelson                  ,333 Victoria Street
-103402,Revelstoke                           ,Revelstoke                           ,50.987,-118.188,10      ,Revelstoke              ,402 DOWNIE STREET
-103502,Castlegar Zinio Park                 ,Castlegar Zinio Park                 ,49.318,-117.669,10      ,Castlegar               ,801 9th Avenue
-103601,Agassiz                              ,Agassiz                              ,49.238,-121.762,10      ,Agassiz                 ,7170 Cheam Ave
-103702,Pine River Gas Plant                 ,Pine River Gas Plant                 ,55.575,-121.921,10      ,Pine River              ,Gas Plant Site
-103704,Pine River Hasler                    ,Pine River Hasler                    ,55.606,-121.972,10      ,Hasler Flat             ,
-103901,Kitimat Riverlodge                   ,Kitimat Riverlodge                   ,54.056,-128.674,10      ,Kitimat                 ,653 COLUMBIA STREET
-103902,Kitimat Haul Road                    ,Kitimat Haul Road                    ,54.030,-128.702,10      ,Kitimat                 ,Haulage Road
-103904,Kitimat Whitesail                    ,Kitimat Whitesail                    ,54.068,-128.640,10      ,Kitimat                 ,1332 Lahakas Blvd N
-103905,Kitimat Haisla Village               ,Kitimat Haisla Village               ,53.973,-128.650,10      ,Kitimat                 ,
-103906,Kitimat Rio Tinto Alcan              ,Kitimat Rio Tinto Alcan              ,54.019,-128.704,10      ,Kitimat                 ,
-104003,Vernon Science Centre                ,Vernon Science Centre                ,50.258,-119.267,10      ,Vernon                  ,2704 HIGHWAY 6
-104101,Grand Forks City Hall                ,Grand Forks City Hall                ,49.033,-118.433,10      ,Grand Forks             ,CITY HALL
-104301,Taylor Townsite                      ,Taylor Townsite                      ,56.151,-120.686,10      ,Taylor                  ,MCMAHON COMPLEX
-104302,Taylor South Hill                    ,Taylor South Hill                    ,56.106,-120.663,10      ,Taylor                  ,Pingle Creek Road
-104303,Bessborough 237 Road                 ,Bessborough 237 Road                 ,55.792,-120.484,10      ,Bessborough             ,237 Road
-104304,Farmington Community Hall            ,Farmington Community Hall            ,55.913,-120.532,10      ,Farmington              ,4794 parkland Road
-104305,Tomslake 197 Road East               ,Tomslake 197 Road East               ,55.590,-120.086,10      ,Tomslake                ,Tomslake 197 Road East
-104601,Telkwa                               ,Telkwa                               ,54.691,-127.055,10      ,Telkwa                  ,1304 BIRCH STREET
-104801,Duncan Deykin Avenue                 ,Duncan Deykin Avenue                 ,48.803,-123.645,10      ,Duncan                  ,6364 DEYKIN AVENUE
-104804,Duncan College Street                ,Duncan College Street                ,48.786,-123.717,10      ,Duncan                  ,1050 College Street
-105001,Whistler Meadow Park                 ,Whistler Meadow Park                 ,50.144,-122.961,10      ,Whisler                 ,MEADOW PARK
-105101,Houston Firehall                     ,Houston Firehall                     ,54.400,-126.646,10      ,Houston                 ,FIREHALL
-105201,Burns Lake Fire Centre               ,Burns Lake Fire Centre               ,54.233,-125.764,10      ,Burns Lake              ,FIRE CENTRE
-105301,Langdale Elementary                  ,Langdale Elementary                  ,49.442,-123.492,10      ,Langdale                ,FORRES ROAD
-105501,Fort St. John NP Cultural Centre     ,Fort St. John NP Cultural Centre     ,56.246,-120.849,10      ,Fort St. John           ,10015 100TH AVENUE
-105503,Doig River Cultural Centre           ,Doig River Cultural Centre           ,56.578,-120.498,10      ,Doig River              ,4356 Doig Road
-105504,Fort St John Key Learning Centre     ,Fort St John Key Learning Centre     ,56.245,-120.856,10      ,Fort St John            ,10511 99 Avenue
-106701,Crofton Substation                   ,Crofton Substation                   ,48.875,-123.650,10      ,Crofton                 ,
-106702,Crofton Georgia Heights              ,Crofton Georgia Heights              ,48.838,-123.655,10      ,Crofton                 ,
-106800,Ucluelet Amphitrite Point            ,Ucluelet Amphitrite Point            ,48.922,-125.541,10      ,Ucluelet                ,
-106900,Vanderhoof                           ,Vanderhoof                           ,54.016,-124.006,10      ,Vanderhoof              ,
-107000,Rumble Beach Hospital                ,Rumble Beach Hospital                ,50.426,-127.488,10      ,Rumble Beach            ,
-107001,Port Alice Lake Road                 ,Port Alice Lake Road                 ,50.367,-127.433,10      ,Port Alice              ,
-107100,Courtenay Elementary School          ,Courtenay Elementary School          ,49.683,-124.996,10      ,Courtenay               ,
-107200,Strathnaver Pellet Plant             ,Strathnaver Pellet Plant             ,53.307,-122.533,10      ,Strathnaver             ,
-119004,Steele Street Station                ,Steele Street Station                ,60.720,-135.059,11      ,Whitehorse              ,401 Steele Street
-129003,Yellowknife                          ,Yellowknife                          ,62.452,-114.364,12      ,Yellowknife             ,49th St and 52nd Ave
-129203,Inuvik                               ,Inuvik                               ,68.357,-133.714,12      ,Inuvik                  ,Bompas Street
-129501,Snare Rapids                         ,Snare Rapids                         ,63.509,-116.008,12      ,Snare Rapids            ,SNARE RAPIDS
-129601,Fort Smith                           ,Fort Smith                           ,60.004,-111.893,12      ,Fort Smith              ,95 Conibear Cres.
-129602,Wood Buffalo                         ,Wood Buffalo                         ,60.147,-113.638,12      ,                        ,
-129303,Waterlab                             ,Waterlab                             ,63.752,-68.522 ,13      ,Iqaluit                 ,Building 959 C
-129998,Arviat                               ,Arviat                               ,61.108,-94.058 ,13      ,Arviat                  ,
-129999,Kugluktuk                            ,Kugluktuk                            ,67.827,-115.093,13      ,Kugluktuk               ,
+10102,St. John's                           ,St. John's                           ,47.56,-52.711,1,St. John's              ,354 WATER STREET
+10401,Mount Pearl                          ,Mount Pearl                          ,47.505,-52.795,1,Mount Pearl             ,OLD PLACENTIA ROAD
+10501,Grand Falls - Windsor                ,Grand Falls - Windsor                ,48.927,-55.66,1,Grand Falls - Windsor   ,SCOTT AVENUE
+10601,Goose Bay                            ,Goose Bay                            ,53.305,-60.364,1,Happy Valley - Goose Bay,Abbott Drive
+10602,Corner Brook                         ,Corner Brook                         ,48.952,-57.922,1,Corner Brook            ,Macpherson Avenue
+10801,Port au Choix                        ,Port au Choix                        ,50.711,-57.364,1,Port au Choix           ,Port au Choix
+10901,Marystown/Burin                      ,Marystown/Burin                      ,47.099,-55.199,1,Burin                   ,
+11002,FIREHALL-LABRADORCITY2               ,FIREHALL-LABRADORCITY2               ,52.945,-66.91,1,Labrador City           ,317 Hudson Drive
+20104,Charlottetown                        ,Charlottetown                        ,46.233,-63.137,2,Charlottetown           ,3 BRIGHTON ROAD
+20301,Wellington                           ,Wellington                           ,46.45,-64,2,Wellington              ,40 HACKMATACK RD. (ROUTE 125)
+20401,Southampton                          ,Southampton                          ,46.388,-62.581,2,Southampton             ,2580 CARDIGAN ROAD (ROUTE 313)
+30001,Halifax Downtown                     ,Halifax - centre-ville               ,44.647,-63.574,3,Halifax                 ,1672 GRANVILLE STREET
+30113,Johnston Building                    ,Johnston Building                    ,44.647,-63.574,3,Halifax                 ,1672 GRANVILLE STREET
+30120,Lake Major                           ,Lake Major                           ,44.72,-63.482,3,Dartmouth               ,Cherrybrook Road
+30201,Port Hawkesbury                      ,Port Hawkesbury                      ,45.614,-61.362,3,Port Hawkesbury         ,Embree & Granville
+30310,Sydney (Welton Street)               ,Sydney (Welton Street)               ,46.142,-60.173,3,Sydney                  ,71 Welton Street
+30502,Kejimkujik Site B                    ,Kejimkujik Site B                    ,44.403,-65.203,3,                        ,
+30701,Aylesford Mountain                   ,Aylesford Mountain                   ,45.073,-64.84,3,Aylesford               ,"MOUNTAIN BROW ROAD, KINGS COUNTY"
+30901,Pictou                               ,Pictou                               ,45.682,-62.697,3,Pictou                  ,91 BEACHES ROAD
+31101,Kentville                            ,Kentville                            ,45.067,-64.483,3,Kentville               ,32 MAIN STREET
+40104,Fredericton Needham                  ,Fredericton Needham                  ,45.957,-66.646,4,Fredericton             ,486 Needham Street
+40203,Forest Hills                         ,Forest Hills                         ,45.309,-66.008,4,Saint John              ,MOUNTAIN ROAD
+40207,West Side                            ,West Side                            ,45.253,-66.08,4,Saint John              ,476 LANCASTER AVENUE W.
+40209,Castle Street                        ,Castle Street                        ,45.28,-66.056,4,Saint John              ,
+40302,Moncton                              ,Moncton                              ,46.101,-64.79,4,Moncton                 ,5 THANET STREET
+40901,St. Andrews                          ,St. Andrews                          ,45.087,-67.074,4,St. Andrews             ,BRANDY COVE ROAD
+41302,Bathurst                             ,Bathurst                             ,47.61,-65.634,4,Bathurst                ,1255 Rough Waters Drive
+41501,Edmundston Queen St.                 ,Edmundston rue Queen                 ,47.363,-68.322,4,Edmundston              ,19 Queen St.
+49998,Campbellton                          ,Campbellton                          ,47.999,-66.684,4,Campbellton             ,Campbellton
+50103,Saint-Jean-Baptiste                  ,Saint-Jean-Baptiste                  ,45.641,-73.5,5,Montreal                ,"1050 A, BOUL. SAINT-JEAN-BAPTISTE"
+50109,Duncan & Decarie                     ,Duncan & Decarie                     ,45.503,-73.664,5,Montreal                ,"2495 Duncan / Decarie, Mont-Royal"
+50113,Chomedey                             ,Chomedey                             ,45.548,-73.747,5,Laval                   ,1160 BOUL PIE IX
+50119,Bourassa                             ,Bourassa                             ,45.522,-73.488,5,Longueuil               ,FACE AU 1819 RUE VICTORIA
+50122,Parc Sorbonne                        ,Parc Sorbonne                        ,45.449,-73.481,5,Brossard                ,8405 avenue Sorbonne
+50126,Sainte-Anne-de-Bellevue              ,Sainte-Anne-de-Bellevue              ,45.427,-73.929,5,Montreal                ,"20965 CH. SAINTE-MARIE, STE-ANNEdB"
+50128,Aeroport de Montreal                 ,Aeroport de Montreal                 ,45.468,-73.741,5,Montreal                ,"90-A rue Herv-Saint-Martin, Dorval"
+50129,Riviere-des-Prairies                 ,Riviere-des-Prairies                 ,45.652,-73.574,5,Montreal                ,12400 WILFRID-OUELLETTE
+50131,Hochelaga-Maisonneuve                ,Hochelaga-Maisonneuve                ,45.54,-73.541,5,Montreal                ,3250 STE-CATHERINE EST
+50133,Chenier                              ,Chenier                              ,45.602,-73.542,5,Anjou                   ,8200A Rue Chenier
+50134,Saint-Joseph (Molson)                ,Saint-Joseph (Molson)                ,45.543,-73.572,5,Montreal                ,2580 St-Joseph Est
+50135,Firehouse 17                         ,Caserne 17                           ,45.593,-73.637,5,Montreal                ,4240 rue Charleroi
+50136,St-Dominique                         ,St-Dominique                         ,45.512,-73.567,5,Montreal                ,75 rue Ontario Est
+50137,Parc Vaillant                        ,Parc Vaillant                        ,45.705,-73.658,5,Terrebonne              ,905 rue Vaillant
+50138,York-Roberval                        ,York-Roberval                        ,45.465,-73.583,5,Montreal                ,1540 rue de Roberval
+50204,Hull (ile)                           ,Hull (ile)                           ,45.437,-75.726,5,Gatineau                ,"255 St-Redempteur, Hull"
+50308,Des Sables                           ,Des Sables                           ,46.821,-71.221,5,Quebec                  ,600 RUE DES SABLES
+50310,Saint-Charles Garnier                ,Saint-Charles Garnier                ,46.797,-71.246,5,Quebec                  ,1150 Boul. Rene-Levesque O.
+50311,Parc Primevres                       ,Parc Primevres                       ,46.774,-71.37,5,Quebec                  ,1465 Rue Flix-Antione-Savard
+50404,Parc Cambron                         ,Parc Cambron                         ,45.413,-71.874,5,Sherbrooke              ,"655, RUE PAPINEAU"
+50504,University Chicoutimi                ,Universit Chicoutimi                 ,48.416,-71.053,5,Saguenay                ,"789 Coul. Des tudiants, Chicoutimi"
+50604,Parc Tremblay                        ,Parc Tremblay                        ,48.234,-78.983,5,Rouyin-Noranda          ,1570 RUE PARADIS
+50803,TROIS-RIVIERES-MEES                  ,TROIS-RIVIERES-MEES                  ,46.357,-72.546,5,Trois-Rivieres          ,"Mauricie English Elementary School, rue Whitehead"
+51201,Frigon                               ,Frigon                               ,46.554,-72.736,5,Shawinigan              ,363 RUE FRIGON
+51501,Zephirin                             ,Zephirin                             ,46.043,-72.66,5,St-Zephirin-de-Courval  ,701 RANG SAINT-MICHEL
+52001,Charette                             ,Charette                             ,46.441,-72.893,5,Charette                ,AU NORD DU 170 2E RANG
+52201,Saint-Simon                          ,Saint-Simon                          ,45.716,-72.84,5,Saint-Simon             ,"Derrire le 83, 4e rang Est"
+52301,Saint Faustin                        ,Saint Faustin                        ,46.035,-74.481,5,Saint-Faustin-Lac-Carre ,CHEMIN DU LAC (CARIBOU)
+52401,La Peche                             ,La Peche                             ,45.622,-76.018,5,La Peche                ,LAC PHILIPPE - MASHAM
+52701,Temiscaming                          ,Temiscaming                          ,46.721,-79.1,5,Tmiscaming              ,RUE BOUCHER
+52801,Auclair                              ,Auclair                              ,47.733,-68.707,5,Auclair                 ,66 Rang St-Grgoire Nord
+53201,Pemonca                              ,Pemonca                              ,48.81,-72.739,5,La Dor                  ,"Route 167, La Dor"
+53301,Deschambault-Ramco                   ,Deschambault-Ramco                   ,46.682,-71.968,5,Deschambault            ,"334, 3 E RANG - DESHAMBAULT"
+53501,Franois                              ,Franois                              ,47.015,-70.864,5,Saint-Franois           ,"Face au 198 Royale, le d'Orlans"
+53601,Notre-Dame du Rosaire                ,Notre-Dame du Rosaire                ,46.851,-70.453,5,Notre-Dame-Du-Rosaire   ,RANG ST-LOUIS
+53701,Hilaire                              ,Hilaire                              ,45.825,-70.856,5,St-Hilaire-De-Dorset    ,RANG DORSET
+53801,Tingwick                             ,Tingwick                             ,45.908,-71.949,5,Tingwick                ,CHEMIN RADAR ET WARWICK
+53901,douard                               ,douard                               ,47.647,-72.291,5,Lac-douard              ,Derrire l'hpital village
+54102,Mont Sutton/Round Top Ridge          ,Mont Sutton/Round Top Ridge          ,45.089,-72.557,5,Sutton                  ,MONT SUTTON/ROUND TOP RIDGE
+54201,Chapais                              ,Chapais                              ,49.822,-74.976,5,                        ,
+54401,Saint-Anicet                         ,Saint-Anicet                         ,45.117,-74.283,5,Saint-Anicet            ,1128 DE LA GUERRE
+54703,Bcancour                             ,Bcancour                             ,46.35,-72.433,5,Bcancour                ,8310 Boul. Becancour
+54901,Ditton                               ,Ditton                               ,45.374,-71.25,5,La Patrie               ,RANG PETIT CANADA OUEST
+55001,Mont Saint-Michel                    ,Mont Saint-Michel                    ,46.769,-75.432,5,Ferme Neuve             ,215 4e Rang Gravel
+55101,Bell                                 ,Bell                                 ,48.433,-77.2,5,Senneterre              ,Chemin Rivire Bell
+55301,L'Acadie                             ,L'Acadie                             ,45.294,-73.349,5,Saint-Jean-Sur-Richelieu,"FERME EXP., 1134 ROUTE 219"
+55401,Roy                                  ,Roy                                  ,46.362,-72.51,5,Trois-Rivire            ,Intersection des rues Dorval et Roy
+55501,Frelighsburg                         ,Frelighsburg                         ,45.052,-72.862,5,Frelighsburg            ,FRELIGHSBURG
+55601,Mingan                               ,Mingan                               ,50.267,-64.217,5,Mingan                  ,MINGAN
+55702,Parc Georges Maranda                 ,Parc Georges Maranda                 ,46.806,-71.167,5,Levis                   ,200 rue des Commandeurs
+60104,Ottawa Downtown                      ,Ottawa - centre-ville                ,45.434,-75.676,6,Ottawa                  ,RIDEAU & WURTEMBURG
+60204,Windsor Downtown                     ,Windsor - centre-ville               ,42.316,-83.044,6,Windsor                 ,467 UNIVERSITY AVE. WEST
+60211,Windsor West                         ,Windsor - ouest                      ,42.293,-83.073,6,Windsor                 ,COLLEGE & SOUTH ST.
+60304,Kingston                             ,Kingston                             ,44.22,-76.521,6,Kingston                ,23 Beechgrove Lane
+60410,Toronto East                         ,Toronto - est                        ,43.748,-79.274,6,Toronto                 ,LAWRENCE & KENNEDY
+60424,Toronto Downtown                     ,Toronto - centre-ville               ,43.663,-79.388,6,Toronto                 ,BAY & WELLESLEY
+60430,Toronto West                         ,Toronto - ouest                      ,43.709,-79.544,6,Toronto                 ,125 RESOURCES ROAD
+60434,Mississauga                          ,Mississauga                          ,43.547,-79.659,6,Mississauga             ,3359 Mississauga Road North
+60436,Hanlan's Point (Toronto Island)      ,Hanlan's Point (Toronto Island)      ,43.612,-79.389,6,Toronto                 ,Toronto Island
+60437,York University                      ,York University                      ,43.768,-79.506,6,Toronto                 ,Passy Crescent & Assiniboine Rd
+60440,Toronto North                        ,Toronto North                        ,43.78,-79.467,6,Toronto                 ,4905 Dufferin Street
+60450,Brampton                             ,Brampton                             ,43.67,-79.767,6,Brampton                ,109 McLaughlin Road South
+60512,Hamilton Downtown                    ,Hamilton - centre-ville              ,43.258,-79.862,6,Hamilton                ,ELGIN & KELLY
+60515,Hamilton West                        ,Hamilton Ouest                       ,43.257,-79.908,6,Hamilton                ,Main St. W./hwy 403
+60521,Hamilton Mountain                    ,Hamilton Mountain                    ,43.241,-79.889,6,Hamilton                ,250 Fennell Ave. W.
+60610,Sudbury                              ,Sudbury                              ,46.492,-81.003,6,Sudbury                 ,155 Elm Street
+60709,Sault Ste. Marie                     ,Sault Ste. Marie                     ,46.533,-84.31,6,Sault Sainte Marie      ,"443 NORTHERN AVE., SAULT COLLEGE"
+60808,Thunder Bay                          ,Thunder Bay                          ,48.379,-89.29,6,Thunder Bay             ,421 JAMES STREET SOUTH
+60904,London                               ,London                               ,42.974,-81.201,6,London                  ,42 St. Julien Street
+61009,Sarnia                               ,Sarnia                               ,42.99,-82.395,6,Sarnia                  ,720 Christina St. N.
+61104,Peterborough                         ,Peterborough                         ,44.302,-78.346,6,Peterborough            ,10 HOSPITAL DRIVE
+61201,Cornwall                             ,Cornwall                             ,45.018,-74.735,6,Cornwall                ,BEDFORD & THIRD ST.
+61302,St Catharines                        ,St Catharines                        ,43.16,-79.235,6,St. Catharines          ,ARGYLE CRESCENT
+61402,Brantford                            ,Brantford                            ,43.139,-80.293,6,Brantford               ,324 GRAND RIVER AVE.
+61502,Kitchener                            ,Kitchener                            ,43.444,-80.504,6,Kitchener               ,WEST AVE. & HOMEWOOD
+61603,Oakville                             ,Oakville                             ,43.487,-79.702,6,Oakville                ,8TH LINE/GLENASHTON DR.
+61703,Oshawa                               ,Oshawa                               ,43.952,-78.913,6,Oshawa                  ,Britannia Ave. W.
+61802,Guelph                               ,Guelph                               ,43.552,-80.264,6,Guelph                  ,70 DIVISION STREET
+62001,North Bay                            ,North Bay                            ,46.323,-79.449,6,North Bay               ,CHIPPEWA ST.
+62501,Tiverton                             ,Tiverton                             ,44.314,-81.55,6,Tiverton                ,BRUCE NUCLEAR VISITOR CTR
+63001,Burlington                           ,Burlington                           ,43.315,-79.803,6,Burlington              ,HWY 2 & NORTH SHORE BLVD.
+63301,Dorset                               ,Dorset                               ,45.224,-78.933,6,Dorset                  ,HWY 117 & PAINT LAKE ROAD
+63701,Grand Bend                           ,Grand Bend                           ,43.333,-81.743,6,Grand Bend              ,HWY 21 & COUNTY RD 83
+64001,Experimental Lakes                   ,Experimental Lakes                   ,49.664,-93.721,6,Exp. Lakes Area         ,EXP. LAKES AREA
+64101,Algoma                               ,Algoma                               ,47.035,-84.381,6,Algoma                  ,ALGOMA
+64401,Egbert                               ,Egbert                               ,44.233,-79.781,6,Egbert                  ,EGBERT
+65001,Barrie                               ,Barrie                               ,44.382,-79.702,6,Barrie                  ,85 PERRY STREET
+65101,Newmarket                            ,Newmarket                            ,44.044,-79.483,6,Newmarket               ,EAGLE ST. & McCAFFREY RD.
+65201,Parry Sound                          ,Parry Sound                          ,45.338,-80.038,6,Parry Sound             ,7 BAY STREET
+65301,Port Stanley                         ,Port Stanley                         ,42.672,-81.163,6,Port Stanley            ,43665 DEXTER LINE
+65401,Belleville                           ,Belleville                           ,44.151,-77.396,6,Belleville              ,2 SIDNEY STREET
+65801,Chatham                              ,Chatham                              ,42.404,-82.208,6,Chatam                  ,435 GRAND AVENUE W.
+65901,Pickle Lake                          ,Pickle Lake                          ,51.449,-90.218,6,Pickle Lake             ,PICKLE LAKE
+66101,Bonner Lake                          ,Bonner Lake                          ,49.386,-82.121,6,Moonbeam                ,
+66201,Petawawa                             ,Petawawa                             ,45.997,-77.441,6,Petawawa                ,Petawawa Research Forest Facility
+67001,Milton                               ,Milton                               ,43.53,-79.862,6,Milton                  ,"1120 Main St. E., Milton, ON"
+70118,City of Winnipeg Flood Pump Station  ,City of Winnipeg Flood Pump Station  ,49.932,-97.113,7,Winnipeg                ,JEFFERSON & SCOTIA
+70119,Winnipeg - 65 Ellen Street           ,Winnipeg - 65 Ellen Street           ,49.898,-97.147,7,Winnipeg                ,65 ELLEN STREET
+70203,Assiniboine Comm. College            ,Assiniboine Comm. College            ,49.842,-99.919,7,Brandon                 ,1430 VICTORIA AVENUE EAST
+70301,Flin Flon                            ,Flin Flon                            ,54.769,-101.878,7,Flin Flon               ,143 MAIN STREET
+70501,Thompson                             ,Thompson                             ,55.747,-97.874,7,Thompson                ,
+80110,Regina                               ,Regina                               ,50.45,-104.617,8,Regina                  ,2505 11TH. AVENUE
+80211,Corman Park                          ,Corman Park                          ,52.136,-106.663,8,Saskatoon               ,511 1ST AVENUE NORTH
+80402,Prince Albert                        ,Prince Albert                        ,53.202,-105.752,8,Prince Albert           ,63 - 12th STREET EAST
+80502,Estevan                              ,Estevan                              ,49.132,-102.985,8,Estevan                 ,530 1A street
+80901,Bratt's Lake                         ,Bratt's Lake                         ,50.203,-104.204,8,Bratt's Lake            ,RADIATION OBSERVATORY
+81001,Speedy Creek                         ,Speedy Creek                         ,50.286,-107.817,8,Swift Current           ,1200 Begg Street West
+82001,Pinehouse Lake                       ,Pinehouse Lake                       ,55.503,-106.722,8,                        ,
+90120,Edmonton South                       ,Edmonton - sud                       ,53.5,-113.526,9,Edmonton                ,6240 113 STREET
+90121,Edmonton East                        ,Edmonton - est                       ,53.548,-113.367,9,Edmonton                ,17 STREET & 105 AVENUE
+90130,Edmonton Central                     ,Edmonton - centre                    ,53.544,-113.499,9,Edmonton                ,10255 - 104TH STREET
+90133,Woodcroft                            ,Woodcroft                            ,53.564,-113.563,9,Edmonton                ,13915 - 115 Ave NW Edmonton
+90134,Sherwood Park                        ,Sherwood Park                        ,53.532,-113.321,9,Sherwood Park           ,
+90135,Ardrossan                            ,Ardrossan                            ,53.555,-113.145,9,Ardrossan               ,
+90136,St. Albert                           ,St. Albert                           ,53.627,-113.612,9,St. Albert              ,
+90222,Calgary Northwest                    ,Calgary - nord-ouest                 ,51.08,-114.143,9,Calgary                 ,39 ST. & 29 AVE. N.W.
+90228,Calgary Central                      ,Calgary - centre                     ,51.048,-114.075,9,Calgary                 ,620 7th Ave South-West
+90229,Calgary Southeast                    ,Calgary - sud-est                    ,50.955,-113.97,9,Calgary                 ,4700 110 Avenue SE
+90250,Airdrie                              ,Airdrie                              ,51.268,-114.038,9,Airdrie                 ,Chinook Winds Park
+90302,Red Deer - Riverside Drive           ,Red Deer - Riverside Drive           ,52.299,-113.794,9,Red Deer                ,73 STREET & RIVERSIDE DRIVE
+90304,Red Deer - Lancaster                 ,Red Deer - Lancaster                 ,52.241,-113.765,9,Red Deer                ,11 Lancaster Drive
+90402,Crescent Heights                     ,Crescent Heights                     ,50.053,-110.688,9,Medicine Hat            ,12th ST NW & Division Ave.
+90502,Lethbridge                           ,Lethbridge                           ,49.716,-112.8,9,Lethbridge              ,
+90601,Fort Saskatchewan                    ,Fort Saskatchewan                    ,53.71,-113.222,9,Fort Saskatchewan       ,9209A-96 Ave
+90602,Range Road 220                       ,Range Road 220                       ,53.752,-113.126,9,Fort Saskatchewan       ,RGE RD 220 & RIVER ROAD
+90603,Ross Creek                           ,Ross Creek                           ,53.716,-113.2,9,Fort Saskatchewan       ,100 AVE EAST OF 109ST.
+90604,Scotford                             ,Scotford                             ,53.791,-113.079,9,Fort Saskatchewan       ,RGE RD 214 TWP RD 560
+90606,Bruderheim                           ,Bruderheim                           ,53.8,-112.928,9,Bruderheim              ,
+90607,Gibbons                              ,Gibbons                              ,53.827,-113.327,9,Gibbons                 ,Behind 4807 50 Ave
+90608,Redwater                             ,Redwater                             ,53.952,-113.106,9,Redwater                ,4704 49th Avenue
+90701,Athabasca Valley                     ,Valle de l'Athabasca                 ,56.733,-111.39,9,Fort McMurray           ,FRANKLIN AVENUE
+90702,Patricia McInnes                     ,Patricia McInnes                     ,56.752,-111.476,9,Fort McMurray           ,TIMBERLEA SUBDIVISION
+90801,Fort McKay                           ,Fort McKay                           ,57.189,-111.641,9,Fort McKay              ,MAIN STREET
+90806,Syncrude UE1                         ,Syncrude UE1                         ,57.149,-111.642,9,Fort McKay              ,
+91001,Esther                               ,Esther                               ,51.667,-110.2,9,Esther                  ,
+91101,Elk Island National Park             ,Parc national Elk Island             ,53.682,-112.868,9,Elk Island              ,NATIONAL PARK
+91301,Tomahawk                             ,Tomahawk                             ,53.373,-114.768,9,Tomahawk                ,SE 2 51 6 W5
+91401,Violet Grove                         ,Violet Grove                         ,53.142,-115.138,9,Violet Grove            ,SE 17 48 08 W5
+91501,Beaverlodge                          ,Beaverlodge                          ,55.197,-119.394,9,Beaverlodge             ,BEAVERLODGE RESEARCH FARM
+91601,Carrot Creek                         ,Carrot Creek                         ,53.607,-115.877,9,Carrot Creek            ,SE 31 53 13 W5
+91701,Steeper                              ,Steeper                              ,53.133,-117.091,9,Steeper                 ,NE 12 48 22 W5
+91801,Fort Chipewyan                       ,Fort Chipewyan                       ,58.7,-111.133,9,Fort Chipewyan          ,FORT CHIPEWYAN
+91901,Caroline                             ,Caroline                             ,51.95,-114.7,9,Caroline                ,16-30-034-5 W5
+92001,Grande Prairie - Henry Pirker Station,Grande Prairie - Henry Pirker Station,55.177,-118.806,9,Grande Prairie          ,10327 - 107 AVENUE
+92201,Lamont County                        ,Comt de Lamont                       ,53.76,-112.88,9,Lamont                  ,RGE RD 203 & TWP RD 550
+92601,Breton                               ,Breton                               ,53.09,-114.461,9,Breton                  ,Highway 20
+92801,Drayton Valley                       ,Drayton Valley                       ,53.22,-114.972,9,                        ,
+92901,Edson                                ,Edson                                ,53.587,-116.431,9,                        ,
+93101,Genesee                              ,Genesee                              ,53.302,-114.221,9,Thorsby                 ,Range Road 15
+93202,Hinton                               ,Hinton                               ,53.427,-117.544,9,Hinton                  ,
+93801,Meadows                              ,Meadows                              ,53.53,-114.636,9,Warburg                 ,Range Road 34
+93901,Power                                ,Power                                ,53.633,-114.42,9,Thorsby                 ,Range Road 11
+94202,Wagner 2                             ,Wagner 2                             ,53.494,-114.45,9,                        ,
+94301,Cold Lake South                      ,Cold Lake South                      ,54.458,-110.174,9,Bonnyville              ,5105-50th Avenue
+94401,St. Lina                             ,St. Lina                             ,54.216,-111.503,9,                        ,
+100103,New Westminster                      ,New Westminster                      ,49.227,-122.894,10,New Westminster         ,"351 E. Columbia Street, New Westminster, BC"
+100110,Kensington Park                      ,Kensington Park                      ,49.279,-122.971,10,GVRD - Burnaby          ,6400 E. HASTINGS & KENSINGTON
+100111,Rocky Pt. Park                       ,Rocky Pt. Park                       ,49.281,-122.849,10,GVRD - Port Moody       ,MOODY & ESPLANADE PORT MOODY
+100112,Robson Square                        ,Robson Square                        ,49.282,-123.121,10,GVRD - Vancouver        ,ROBSON/HORNBY
+100118,Kitsilano                            ,Kitsilano                            ,49.262,-123.163,10,GVRD - Vancouver        ,2550 WEST 10TH AVENUE
+100119,Burnaby South                        ,Burnaby South                        ,49.215,-122.986,10,GVRD - Burnaby          ,5455 RUMBLE STREET
+100121,Second Narrows                       ,Second Narrows                       ,49.302,-123.02,10,GVRD - Vancouver        ,75 RIVERSIDE DR. N. VANCOUVER
+100125,North Delta                          ,North Delta                          ,49.158,-122.902,10,GVRD - Delta            ,8544 116TH AVE. DELTA
+100126,Burnaby Mountain                     ,Burnaby Mountain                     ,49.28,-122.922,10,GVRD - Burnaby          ,RING ROAD BURNABY
+100127,Surrey East                          ,Surrey East                          ,49.133,-122.694,10,GVRD - Surrey           ,19000 & 72ND AVE. SURREY
+100128,Richmond South                       ,Richmond South                       ,49.142,-123.108,10,GVRD - Richimond        ,WILLIAMS & ARAGON RICHMOND
+100132,Mahon Park                           ,Mahon Park                           ,49.324,-123.084,10,GVRD - Vancouver        ,16TH ST. & JONES AVE NORTH VAN
+100134,Vancouver Intl. Airport              ,Vancouver Intl. Airport              ,49.186,-123.152,10,GVRD - Richmond         ,3153 TEMPLETON STREET
+100135,Coquitlam                            ,Coquitlam                            ,49.288,-122.791,10,GVRD - Coquitlam        ,1250 PINETREE WAY
+100138,Horsheshoe Bay                       ,Horsheshoe Bay                       ,49.368,-123.276,10,GVRD - Vancouver West   ,6350 MARINE DRIVE
+100140,Tsawwassen                           ,Tsawwassen                           ,49.01,-123.082,10,GVRD - Vancouver        ,
+100202,Prince George Plaza 400              ,Prince George Plaza 400              ,53.915,-122.742,10,Prince George           ,1011 4TH AVENUE
+100203,Prince George BC Rail Warehouse      ,Prince George BC Rail Warehouse      ,53.871,-122.744,10,Prince George           ,1108 INDUSTRIAL WAY
+100205,Prince George Gladstone School       ,Prince George Gladstone School       ,53.858,-122.761,10,Prince George           ,GLADSTONE SCHOOL
+100206,Prince George Lakewood               ,Prince George Lakewood               ,53.916,-122.796,10,Prince George           ,LAKEWOOD
+100212,Prince George Marsulex Acid Plant    ,Prince George Marsulex Acid Plant    ,53.842,-122.734,10,Prince George           ,
+100213,Prince George Denicola Ranch         ,Prince George Denicola Ranch         ,53.935,-122.681,10,Prince George           ,
+100214,Prince George Exploration Place      ,Prince George Exploration Place      ,53.905,-122.734,10,Prince George           ,
+100304,Victoria Topaz                       ,Victoria Topaz                       ,48.443,-123.363,10,Victoria                ,923 TOPAZ
+100308,Colwood City Hall                    ,Colwood City Hall                    ,48.424,-123.493,10,Victoria                ,3300 WISHART ROAD
+100312,Esquimalt Graving Dock               ,Esquimalt Graving Dock               ,48.437,-123.422,10,Esquimalt               ,825 Admirals Road
+100401,Kamloops Federal Building            ,Kamloops Federal Building            ,50.674,-120.333,10,Kamloops                ,317 SEYMOUR ST.
+100701,Kelowna College                      ,Kelowna College                      ,49.861,-119.475,10,Kelowna                 ,3333 COLLEGE WAY
+101003,Central Abbotsford                   ,Central Abbotsford                   ,49.043,-122.31,10,GVRD - Abbotsford       ,32995 BEVAN AVE.
+101005,Abbotsford Airport                   ,Abbotsford Airport                   ,49.022,-122.327,10,Abbotsford              ,1073 Columbia St
+101101,Chilliwack Airport                   ,Chilliwack Airport                   ,49.156,-121.941,10,GVRD-Chilliwack         ,46244 AIRPORT ROAD
+101202,Pitt Meadows                         ,Pitt Meadows                         ,49.245,-122.709,10,Pitt Meadows            ,18477 DEWDNY TRUNK
+101301,Langley Central                      ,Langley Central                      ,49.096,-122.566,10,Langley                 ,23752 52ND AVENUE
+101401,Hope Airport                         ,Hope Airport                         ,49.37,-121.499,10,Hope                    ,62715 AIRPORT ROAD
+101501,Maple Ridge                          ,Maple Ridge                          ,49.215,-122.582,10,Maple Ridge             ,23124 118TH AVENUE
+101603,Squamish Elementary                  ,Squamish Elementary                  ,49.705,-123.151,10,Squamish                ,38370 Buckley Ave
+101701,Quesnel Senior Secondary             ,Quesnel Senior Secondary             ,52.819,-122.492,10,Quesnel                 ,585 CALLANAN STREET
+101702,Quesnel Maple Drive                  ,Quesnel Maple Drive                  ,52.963,-122.451,10,Quesnel                 ,950 MOUNTAIN ASH ROAD
+101704,Quesnel West Correlieu School        ,Quesnel West Correlieu School        ,52.966,-122.517,10,Quesnel                 ,CORRELIEU SCHOOL
+101801,Creston PC School                    ,Creston PC School                    ,49.094,-116.513,10,creston                 ,PRINCE CHARLES SECONDARY SCHOOL
+101904,Cranbrook Muriel Baxter              ,Cranbrook Muriel Baxter              ,49.507,-115.754,10,Cranbrook               ,"3rd st. s, 20 ave s, Cranbrook, BC"
+102001,Saturna                              ,Saturna                              ,48.783,-123.133,10,Saturna                 ,SATURNA
+102102,Nanaimo Labieux Road                 ,Nanaimo Labieux Road                 ,49.201,-123.994,10,Nanaimo                 ,280 LABIEUX ROAD
+102103,Harmac                               ,Harmac                               ,49.099,-123.852,10,Nanaimo                 ,CEDAR 7 WOOBANK RD
+102201,Butler Park                          ,Butler Park                          ,49.096,-117.697,10,Trail                   ,BUTLER PARK
+102301,Powell River Cranberry Lake          ,Powell River Cranberry Lake          ,49.875,-124.517,10,Powell River            ,WILDLIFE SANCTUARY
+102302,Powell River Wildwood                ,Powell River Wildwood                ,49.888,-124.558,10,Powell River            ,WILDWOOD MOTORS
+102303,Powell River James Thompson School   ,Powell River James Thompson School   ,49.899,-124.563,10,Powell River            ,
+102401,Smithers                             ,Smithers                             ,54.783,-127.178,10,Smithers                ,4020 BROADWAY AVENUE
+102501,Terrace BC Access Centre             ,Terrace BC Access Centre             ,54.518,-128.598,10,Terrace                 ,104 - 3220 EBY STREET
+102503,Terrace Skeena Middle School         ,Terrace Skeena Middle School         ,54.522,-128.608,10,Terrace                 ,3411 Munroe Street
+102602,Port Alberni Elementary              ,Port Alberni Elementary              ,49.261,-124.806,10,Port Alberni            ,4645 Helen Street
+102701,Williams Lake Columneetza School     ,Williams Lake Columneetza School     ,52.142,-122.153,10,Williams Lake           ,1045 WESTERN AVENUE
+102706,Williams Lake CRD Library            ,Williams Lake CRD Library            ,52.131,-122.142,10,Williams Lake           ,180 NORTH 3RD AVE
+102801,Elk Falls Dogwood                    ,Elk Falls Dogwood                    ,50.017,-125.247,10,Campbell River          ,ADJACENT TO 660 WESTMERE
+103202,Golden Helipad                       ,Golden Helipad                       ,51.298,-116.967,10,Golden                  ,835 9TH AVENUE SOUTH
+103302,Nelson Kutenai Place                 ,Nelson Kutenai Place                 ,49.491,-117.295,10,Nelson                  ,333 Victoria Street
+103402,Revelstoke                           ,Revelstoke                           ,50.987,-118.188,10,Revelstoke              ,402 DOWNIE STREET
+103502,Castlegar Zinio Park                 ,Castlegar Zinio Park                 ,49.318,-117.669,10,Castlegar               ,801 9th Avenue
+103601,Agassiz                              ,Agassiz                              ,49.238,-121.762,10,Agassiz                 ,7170 Cheam Ave
+103702,Pine River Gas Plant                 ,Pine River Gas Plant                 ,55.575,-121.921,10,Pine River              ,Gas Plant Site
+103704,Pine River Hasler                    ,Pine River Hasler                    ,55.606,-121.972,10,Hasler Flat             ,
+103901,Kitimat Riverlodge                   ,Kitimat Riverlodge                   ,54.056,-128.674,10,Kitimat                 ,653 COLUMBIA STREET
+103902,Kitimat Haul Road                    ,Kitimat Haul Road                    ,54.03,-128.702,10,Kitimat                 ,Haulage Road
+103904,Kitimat Whitesail                    ,Kitimat Whitesail                    ,54.068,-128.64,10,Kitimat                 ,1332 Lahakas Blvd N
+103905,Kitimat Haisla Village               ,Kitimat Haisla Village               ,53.973,-128.65,10,Kitimat                 ,
+103906,Kitimat Rio Tinto Alcan              ,Kitimat Rio Tinto Alcan              ,54.019,-128.704,10,Kitimat                 ,
+104003,Vernon Science Centre                ,Vernon Science Centre                ,50.258,-119.267,10,Vernon                  ,2704 HIGHWAY 6
+104101,Grand Forks City Hall                ,Grand Forks City Hall                ,49.033,-118.433,10,Grand Forks             ,CITY HALL
+104301,Taylor Townsite                      ,Taylor Townsite                      ,56.151,-120.686,10,Taylor                  ,MCMAHON COMPLEX
+104302,Taylor South Hill                    ,Taylor South Hill                    ,56.106,-120.663,10,Taylor                  ,Pingle Creek Road
+104303,Bessborough 237 Road                 ,Bessborough 237 Road                 ,55.792,-120.484,10,Bessborough             ,237 Road
+104304,Farmington Community Hall            ,Farmington Community Hall            ,55.913,-120.532,10,Farmington              ,4794 parkland Road
+104305,Tomslake 197 Road East               ,Tomslake 197 Road East               ,55.59,-120.086,10,Tomslake                ,Tomslake 197 Road East
+104601,Telkwa                               ,Telkwa                               ,54.691,-127.055,10,Telkwa                  ,1304 BIRCH STREET
+104801,Duncan Deykin Avenue                 ,Duncan Deykin Avenue                 ,48.803,-123.645,10,Duncan                  ,6364 DEYKIN AVENUE
+104804,Duncan College Street                ,Duncan College Street                ,48.786,-123.717,10,Duncan                  ,1050 College Street
+105001,Whistler Meadow Park                 ,Whistler Meadow Park                 ,50.144,-122.961,10,Whisler                 ,MEADOW PARK
+105101,Houston Firehall                     ,Houston Firehall                     ,54.4,-126.646,10,Houston                 ,FIREHALL
+105201,Burns Lake Fire Centre               ,Burns Lake Fire Centre               ,54.233,-125.764,10,Burns Lake              ,FIRE CENTRE
+105301,Langdale Elementary                  ,Langdale Elementary                  ,49.442,-123.492,10,Langdale                ,FORRES ROAD
+105501,Fort St. John NP Cultural Centre     ,Fort St. John NP Cultural Centre     ,56.246,-120.849,10,Fort St. John           ,10015 100TH AVENUE
+105503,Doig River Cultural Centre           ,Doig River Cultural Centre           ,56.578,-120.498,10,Doig River              ,4356 Doig Road
+105504,Fort St John Key Learning Centre     ,Fort St John Key Learning Centre     ,56.245,-120.856,10,Fort St John            ,10511 99 Avenue
+106701,Crofton Substation                   ,Crofton Substation                   ,48.875,-123.65,10,Crofton                 ,
+106702,Crofton Georgia Heights              ,Crofton Georgia Heights              ,48.838,-123.655,10,Crofton                 ,
+106800,Ucluelet Amphitrite Point            ,Ucluelet Amphitrite Point            ,48.922,-125.541,10,Ucluelet                ,
+106900,Vanderhoof                           ,Vanderhoof                           ,54.016,-124.006,10,Vanderhoof              ,
+107000,Rumble Beach Hospital                ,Rumble Beach Hospital                ,50.426,-127.488,10,Rumble Beach            ,
+107001,Port Alice Lake Road                 ,Port Alice Lake Road                 ,50.367,-127.433,10,Port Alice              ,
+107100,Courtenay Elementary School          ,Courtenay Elementary School          ,49.683,-124.996,10,Courtenay               ,
+107200,Strathnaver Pellet Plant             ,Strathnaver Pellet Plant             ,53.307,-122.533,10,Strathnaver             ,
+119004,Steele Street Station                ,Steele Street Station                ,60.72,-135.059,11,Whitehorse              ,401 Steele Street
+129003,Yellowknife                          ,Yellowknife                          ,62.452,-114.364,12,Yellowknife             ,49th St and 52nd Ave
+129203,Inuvik                               ,Inuvik                               ,68.357,-133.714,12,Inuvik                  ,Bompas Street
+129501,Snare Rapids                         ,Snare Rapids                         ,63.509,-116.008,12,Snare Rapids            ,SNARE RAPIDS
+129601,Fort Smith                           ,Fort Smith                           ,60.004,-111.893,12,Fort Smith              ,95 Conibear Cres.
+129602,Wood Buffalo                         ,Wood Buffalo                         ,60.147,-113.638,12,                        ,
+129303,Waterlab                             ,Waterlab                             ,63.752,-68.522,13,Iqaluit                 ,Building 959 C
+129998,Arviat                               ,Arviat                               ,61.108,-94.058,13,Arviat                  ,
+129999,Kugluktuk                            ,Kugluktuk                            ,67.827,-115.093,13,Kugluktuk               ,

@@ -136,6 +136,7 @@ for i in lstProvince:
         lstNVT.append(p)
     j = j + 1
 
+
 for m in lstQC:
     indexofitem = lstID.index(m)
     name = lstName[indexofitem]
@@ -164,7 +165,7 @@ provinceDic = {
 testlst = []
 
 
-def abca(prov):
+def gettingprovlist(prov):
     for y in provinceDic[prov]:
         indexofitem = lstID.index(y)
         display = lstDisplay[indexofitem]
@@ -184,8 +185,8 @@ w, h = window.winfo_screenwidth(), window.winfo_screenheight()
 def vv(event):
     testlst.clear()
     aaaa = comboprov.get()
-    abca(aaaa)
-    combostations.config(values=testlst)
+    lsst = gettingprovlist(aaaa)
+    combostations.config(values=lsst)
 
 
 trylist = ["AB", "BC", "MB", "NB", 'NL', "NS", "ON", "PE", "QC", "SK", "NT", "NU", "YT"]

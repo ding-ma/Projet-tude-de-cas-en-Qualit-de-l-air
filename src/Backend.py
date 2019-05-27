@@ -32,18 +32,20 @@ lstName = []
 lstDisplay = []
 lstLatitude = []
 lstLongitude = []
+lstProvince = []
 for x in range(len(stationList)):
     line = stationList[x]
     ids = line[0]
     name = line[1]
     latitude = line[3]
     longitude = line[4]
+    province = line[5]
     lstDisplay.append(ids + ": " + name)
     lstID.append(ids)
     lstName.append(name)
     lstLatitude.append(latitude)
     lstLongitude.append(longitude)
-
+    lstProvince.append(province)
 
 #search algorithm
 def findWithStation(station):
@@ -93,6 +95,90 @@ def SearchNameID(userInput):
     else:
         return findWithID(userInput)
 
+
+lstNL = []
+lstPEI = []
+lstNS = []
+lstNB = []
+lstQC = []
+lstONT = []
+lstMAN = []
+lstSASK = []
+lstALB = []
+lstBC = []
+lstYK = []
+lstNWT = []
+lstNVT = []
+j = 0
+for i in lstProvince:
+    if i == "1":
+        a = lstID[j]
+        lstNL.append(a)
+    if i == "2":
+        b = lstID[j]
+        lstPEI.append(b)
+    if i == "3":
+        c = lstID[j]
+        lstNS.append(c)
+    if i == "4":
+        d = lstID[j]
+        lstNB.append(d)
+    if i == "5":
+        q = lstID[j]
+        lstQC.append(q)
+    if i == "6":
+        w = lstID[j]
+        lstONT.append(w)
+    if i == "7":
+        e = lstID[j]
+        lstMAN.append(e)
+    if i == "8":
+        r = lstID[j]
+        lstSASK.append(r)
+    if i == "9":
+        t = lstID[j]
+        lstALB.append(t)
+    if i == "10":
+        y = lstID[j]
+        lstBC.append(y)
+    if i == "11":
+        u = lstID[j]
+        lstNWT.append(u)
+    if i == "12":
+        o = lstID[j]
+        lstYK.append(o)
+    if i == "13":
+        p = lstID[j]
+        lstNVT.append(p)
+    j = j + 1
+
+prov = ["AB", "BC", "MB", "NB", 'NL', "NS", "ON", "PE", "QC", "SK", "NT", "NU", "YT"]
+
+provinceDic = {
+    "AB": lstALB,
+    "BC": lstBC,
+    "MB": lstMAN,
+    "NB": lstNB,
+    'NL': lstNL,
+    "NS": lstNS,
+    "ON": lstONT,
+    "PE": lstPEI,
+    "QC": lstQC,
+    "SK": lstSASK,
+    "NT": lstNWT,
+    "NU": lstNVT,
+    "YT": lstYK
+}
+
+provlist = []
+
+
+def gettingprovlist(prov):
+    for y in provinceDic[prov]:
+        indexofitem = lstID.index(y)
+        display = lstDisplay[indexofitem]
+        provlist.append(display)
+    return provlist
 
 ########
 
@@ -263,6 +349,14 @@ def particuleCheckBox(O3, NO2, others, PM25):
     formattedParticuleString = ' '.join(
         unformattedParticuleString[i:i + 2] for i in range(0, len(unformattedParticuleString), 2))
 
+
+def level(lv):
+    global lev
+    if lv is "":
+        lev = "93423264 76696048"
+    else:
+        lev = lv
+
 # rarc cmd
 # rarc -i /home/sair001/rarcdirectives/gemmach -tmpdir ./temp
 def rarcFile():
@@ -305,8 +399,8 @@ def bashFile():
             "\nFichierTICTAC=/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/operation.forecasts.mach/${DateDebut}" + sDay + modelHourBash + "_" + sTimeBash +
             "\nListeVersionsGEM=\"operation.forecasts.mach\""
             "\nListeEspeces=\"" + formattedParticuleString + "\""
-                                                             "\nListeNiveaux=\"93423264 76696048\""  # TODO confirm levels
-                                                             "\nListeJours=\"" + formattedDay + "\""
+                                                             "\nListeNiveaux=\"" + lev + "\""  # TODO confirm levels
+                                                                                         "\nListeJours=\"" + formattedDay + "\""
                                                                                                 "\nListePasse=\"" + modelHourSeparated + "\""
                                                                                                                                          "\nListeHeures=\"" + formattedSelectedTimeWithSpace + "\""
                                                                                                                                                                                                "\n################# Extraction#############"
@@ -365,11 +459,12 @@ def bashFile():
 
 
 tlcHours = (
-"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
-"21", "22", "23", "24")
+    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+    "21", "22", "23", "24")
 
 
-def locationExtraction(listIndex):
+def locationExtraction(iditem):
+    listIndex = lstID.index(iditem)
     name = lstName[listIndex]
     long = lstLongitude[listIndex]
     lat = lstLatitude[listIndex]
