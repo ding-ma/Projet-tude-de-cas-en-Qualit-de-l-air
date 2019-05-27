@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="993a9838-9207-46e0-aaef-0972cce94224" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Backend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.tcl" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.tcl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gemmach" beforeDir="false" afterPath="$PROJECT_DIR$/src/gemmach" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gemmachBashTest00.bash" beforeDir="false" afterPath="$PROJECT_DIR$/src/gemmachBashTest00.bash" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gemmachBashTest12.bash" beforeDir="false" afterPath="$PROJECT_DIR$/src/gemmachBashTest12.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/extract.tcl" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/logs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stations_DB.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/stations_DB.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,35 +13,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="2">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/tests.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="408">
-                    <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="22" />
-                    <folding>
-                      <element signature="e#0#10#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="209" column="29" selection-start-line="209" selection-start-column="29" selection-end-line="209" selection-end-column="29" />
+            <state relative-caret-position="2818">
+              <caret line="202" selection-start-line="202" selection-end-line="202" />
               <folding>
                 <element signature="e#23#38#0" expanded="true" />
               </folding>
@@ -59,28 +30,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gemmachBashTest00.bash">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gemmachBashTest12.bash">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+            <state relative-caret-position="391">
+              <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Backend.py">
+        <entry file="file://$PROJECT_DIR$/src/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="467" column="32" selection-start-line="467" selection-start-column="32" selection-end-line="467" selection-end-column="32" />
+            <state relative-caret-position="17">
+              <caret line="34" selection-start-line="34" selection-end-line="35" />
               <folding>
-                <element signature="e#23#33#0" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -147,10 +109,10 @@
         <option value="$PROJECT_DIR$/src/stationList-ASCII.csv" />
         <option value="$PROJECT_DIR$/src/dateVerification-inprogress.py" />
         <option value="$PROJECT_DIR$/src/output.py" />
-        <option value="$PROJECT_DIR$/src/tests.py" />
         <option value="$PROJECT_DIR$/src/aaa.py" />
         <option value="$PROJECT_DIR$/src/UI.py" />
         <option value="$PROJECT_DIR$/src/Backend.py" />
+        <option value="$PROJECT_DIR$/src/tests.py" />
       </list>
     </option>
   </component>
@@ -177,6 +139,12 @@
               <item name="Projet-tude-de-cas-en-Qualit-de-l-air" type="b2602c69:ProjectViewProjectNode" />
               <item name="Projet-tude-de-cas-en-Qualit-de-l-air" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet-tude-de-cas-en-Qualit-de-l-air" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet-tude-de-cas-en-Qualit-de-l-air" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gem" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -209,7 +177,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.UI">
+  <component name="RunManager" selected="Python.tests">
     <configuration name="gemmachBashTest.bash" type="BashConfigurationType" factoryName="Bash" temporary="true">
       <module name="Projet-tude-de-cas-en-Qualit-de-l-air" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -530,7 +498,14 @@
       <option name="project" value="LOCAL" />
       <updated>1558640661076</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="added the province drop down and manual add level in ui">
+      <created>1558966975862</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1558966975862</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView">
@@ -546,7 +521,7 @@
     <frame x="1912" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1601686" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.1601686" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Project Explorer" order="3" weight="0.32982087" />
@@ -554,14 +529,14 @@
       <window_info id="Job Explorer" order="5" weight="0.2971549" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290461" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49736565" visible="true" weight="0.20578778" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49683878" visible="true" weight="0.20578778" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2915327" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.20364416" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.23151125" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49947312" weight="0.22186495" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50263435" side_tool="true" weight="0.25294748" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50316125" side_tool="true" weight="0.20578778" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.24008575" />
       <window_info anchor="bottom" id="GitHub Pull Requests" order="11" sideWeight="0.49947312" weight="0.3290461" />
       <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49947312" weight="0.3290461" />
@@ -572,6 +547,33 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1601686" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Project Explorer" order="3" weight="0.32982087" />
+      <window_info id="DB Browser" order="4" weight="0.32982087" />
+      <window_info id="Job Explorer" order="5" weight="0.2971549" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3290461" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49683878" visible="true" weight="0.20578778" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.2915327" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.20364416" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.23151125" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49947312" weight="0.22186495" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50316125" side_tool="true" weight="0.20578778" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.24008575" />
+      <window_info anchor="bottom" id="GitHub Pull Requests" order="11" sideWeight="0.49947312" weight="0.3290461" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49947312" weight="0.3290461" />
+      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.3290461" />
+      <window_info anchor="bottom" id="Console" order="14" />
+      <window_info anchor="bottom" id="DB Execution Console" order="15" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -617,7 +619,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="testing git vcs" />
     <MESSAGE value="date input and error testing works" />
     <MESSAGE value="-" />
     <MESSAGE value="added the models" />
@@ -642,29 +643,13 @@
     <MESSAGE value="added leap year compability" />
     <MESSAGE value="end of day: working on last part with tcl for station based extraction" />
     <MESSAGE value="end of day: split the bash into 3 cathegories so the data are sorted by the model pass. working on last step for tcl script" />
-    <option name="LAST_COMMIT_MESSAGE" value="end of day: split the bash into 3 cathegories so the data are sorted by the model pass. working on last step for tcl script" />
+    <MESSAGE value="added the province drop down and manual add level in ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="added the province drop down and manual add level in ui" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Tets.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/paramiko/kex_ecdh_nist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/paramiko/transport.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="356" selection-start-line="356" selection-end-line="356" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/encodings/__init__.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/paramiko/client.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
@@ -806,16 +791,6 @@
     <entry file="file://$PROJECT_DIR$/src/Extract_Site_regeta_Profils_0Z_12Z.tcl">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dateVerification-inprogress.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="46" column="24" lean-forward="true" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/logs.log">
       <provider selected="true" editor-type-id="LogFileEditorProvider">
         <state relative-caret-position="7">
@@ -861,16 +836,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/aaa.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -901,24 +866,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gemmachBashTest00.bash">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/gem/gemmach00_000.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gem/gemmach00_002.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gem/gemmach01_000.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gem/gemmach00_001.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gemmachBashTest12.bash">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="209" column="29" selection-start-line="209" selection-start-column="29" selection-end-line="209" selection-end-column="29" />
+        <state relative-caret-position="2818">
+          <caret line="202" selection-start-line="202" selection-end-line="202" />
           <folding>
             <element signature="e#23#38#0" expanded="true" />
           </folding>
@@ -927,10 +897,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Backend.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="467" column="32" selection-start-line="467" selection-start-column="32" selection-end-line="467" selection-end-column="32" />
+        <state relative-caret-position="191">
+          <caret line="24" selection-start-line="24" selection-end-line="25" selection-end-column="26" />
           <folding>
             <element signature="e#23#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gemmachBashTest00.bash">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dateVerification-inprogress.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="676">
+          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="34" selection-start-line="34" selection-end-line="35" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
