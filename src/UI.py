@@ -202,12 +202,26 @@ extrationBtn.grid(column=10, row=3)
 
 
 def getLocation():
+    Bk.removeAllfile(
+        r'/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/out')
+    Bk.removeAllfile(r'/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/config')
     location = int(combostations.current())
     province = comboprov.get()
     locationlst = Bk.provinceDic[province]
     loc = locationlst[location]
     Bk.locationExtraction(loc)
-    #Bk.locationExtraction(location)
+    Bk.launchTCL()
+    Bk.removeEmptyFile(
+        r'/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/out')
+    output = open("output.csv", "w+")
+    alist = sorted(
+        os.listdir(
+            "/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/out/"))
+    for i in alist:
+        b = open(
+            "/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/out/" + i,
+            "r").read()
+        output.write(b)
 
 
 locationBtn = tk.Button(machTab, text="Get data at location", command=getLocation, width=15, height=1)

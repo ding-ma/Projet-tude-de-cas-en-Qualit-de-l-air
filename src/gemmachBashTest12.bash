@@ -1,21 +1,21 @@
 #!/bin/bash
 PathOut=/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest
 PathIn=/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach
-DateDebut=201901
-DateFin=201901
-ListeMois="01"
+DateDebut=201904
+DateFin=201904
+ListeMois="04"
 Annee=2019
 Tag1=TEST
 editfst=/fs/ssm/eccc/mrd/rpn/utils/16.2/ubuntu-14.04-amd64-64/bin/editfst
 Type=species
 Grille=regeta
-FichierTICTAC=/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/operation.forecasts.mach/${DateDebut}0212_000
+FichierTICTAC=/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/operation.forecasts.mach/${DateDebut}0512_000
 ListeVersionsGEM="operation.forecasts.mach"
 ListeEspeces="O3"
 ListeNiveaux="93423264 76696048"
-ListeJours="02 03"
+ListeJours="05"
 ListePasse="12"
-ListeHeures="000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 016 017 018 019 020 021 022 023 024 025 026 027 028"
+ListeHeures="000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 016 017 018 019 020 021 022 023"
 ################# Extraction#############
 for VersionGEM in  ${ListeVersionsGEM}
 do

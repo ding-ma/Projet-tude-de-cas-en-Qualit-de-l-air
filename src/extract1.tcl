@@ -39,7 +39,7 @@ proc AvgAllDom::Do { sp outTXT start end} {
     variable Data
     
     ####### ############################# set ouput TXT files
-    set FileOut $Data(PathOut)/$Data(TAG3)_${start}_$Data(point)_${sp}.txt
+    set FileOut $Data(PathOut)/$Data(TAG3)_${start}_$Data(point)_${sp}.csv
     file delete $FileOut
     
     # ouvrir le fichier FileOut pour des valeurs en format texte
@@ -137,11 +137,11 @@ proc AvgAllDom::Do { sp outTXT start end} {
 				    set value2 [format "%.3f" $value2]
 				    set value3 [format "%.3f" $value3]
 
-				    puts $fileId "${anMois}${day} $hour $levelML ${value2} ${value3}"
+				    puts $fileId "${anMois}${day},$hour,$levelML,${value2},${value3}"
 				} else {
 
 				    set value2 [format "%.3f" $value1]
-				    puts $fileId "${anMois}${day} $hour $levelML ${value2}"   
+				    puts $fileId "${anMois}${day},$hour,$levelML,${value2}"   
 				}
 
 

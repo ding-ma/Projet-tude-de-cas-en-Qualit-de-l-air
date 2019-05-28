@@ -1,9 +1,9 @@
 target = /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach
 filter = copy
 postprocess = nopost
-date = 2019,01,02,2019,01,03
+date = 2019,04,05,2019,04,05
 branche = operation.forecasts.mach
-ext = 000,001,002,003,004,005,006,007,008,009,010,011,012,013,014,015,016,017,018,019,020,021,022,023,024,025,026,027,028
+ext = 000,001,002,003,004,005,006,007,008,009,010,011,012,013,014,015,016,017,018,019,020,021,022,023
 heure = 12
 priority = online
 inc = 1

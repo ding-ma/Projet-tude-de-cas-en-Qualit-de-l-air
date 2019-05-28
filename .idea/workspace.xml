@@ -2,9 +2,63 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="993a9838-9207-46e0-aaef-0972cce94224" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/config.tcl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/extract.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Backend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_0.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_1.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_10.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_11.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_12.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_13.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_14.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_15.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_16.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_17.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_18.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_19.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_2.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_20.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_21.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_22.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_23.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_3.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_4.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_5.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_6.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_7.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_8.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config05_9.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_0.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_1.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_10.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_11.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_12.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_13.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_14.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_15.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_16.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_17.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_18.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_19.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_2.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_20.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_21.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_22.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_23.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_3.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_4.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_5.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_6.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_7.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_8.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config06_9.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/extract1.tcl" beforeDir="false" afterPath="$PROJECT_DIR$/src/extract1.tcl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gemmach" beforeDir="false" afterPath="$PROJECT_DIR$/src/gemmach" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gemmachBashTest00.bash" beforeDir="false" afterPath="$PROJECT_DIR$/src/gemmachBashTest00.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gemmachBashTest12.bash" beforeDir="false" afterPath="$PROJECT_DIR$/src/gemmachBashTest12.bash" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/logs.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/output.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/output.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,13 +67,35 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/tests.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="408">
+                    <caret line="24" column="129" selection-start-line="24" selection-start-column="125" selection-end-line="24" selection-end-column="129" />
+                    <folding>
+                      <element signature="e#0#9#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2818">
-              <caret line="202" selection-start-line="202" selection-end-line="202" />
+            <state relative-caret-position="404">
+              <caret line="212" column="23" lean-forward="true" selection-start-line="212" selection-start-column="23" selection-end-line="212" selection-end-column="23" />
               <folding>
                 <element signature="e#23#38#0" expanded="true" />
               </folding>
@@ -27,22 +103,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gemmachBashTest00.bash">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/tests.py">
+        <entry file="file://$PROJECT_DIR$/src/Backend.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="34" selection-start-line="34" selection-end-line="35" />
+            <state relative-caret-position="234">
+              <caret line="485" column="23" lean-forward="true" selection-start-line="485" selection-start-column="23" selection-end-line="485" selection-end-column="23" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#23#33#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,7 +146,7 @@
       <find>76696048</find>
       <find>table</find>
       <find>id</find>
-      <find>table</find>
+      <find>bot</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -110,9 +177,9 @@
         <option value="$PROJECT_DIR$/src/dateVerification-inprogress.py" />
         <option value="$PROJECT_DIR$/src/output.py" />
         <option value="$PROJECT_DIR$/src/aaa.py" />
+        <option value="$PROJECT_DIR$/src/tests.py" />
         <option value="$PROJECT_DIR$/src/UI.py" />
         <option value="$PROJECT_DIR$/src/Backend.py" />
-        <option value="$PROJECT_DIR$/src/tests.py" />
       </list>
     </option>
   </component>
@@ -127,7 +194,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -150,6 +216,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -177,7 +244,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tests">
+  <component name="RunManager" selected="Python.UI">
     <configuration name="gemmachBashTest.bash" type="BashConfigurationType" factoryName="Bash" temporary="true">
       <module name="Projet-tude-de-cas-en-Qualit-de-l-air" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -505,7 +572,14 @@
       <option name="project" value="LOCAL" />
       <updated>1558966975862</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="EOD: working on sorting the file name in exel sheet">
+      <created>1558987356566</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1558987356566</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView">
@@ -521,7 +595,7 @@
     <frame x="1912" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.1601686" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1601686" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Project Explorer" order="3" weight="0.32982087" />
@@ -619,7 +693,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="date input and error testing works" />
     <MESSAGE value="-" />
     <MESSAGE value="added the models" />
     <MESSAGE value="read/write gemmach files" />
@@ -644,7 +717,8 @@
     <MESSAGE value="end of day: working on last part with tcl for station based extraction" />
     <MESSAGE value="end of day: split the bash into 3 cathegories so the data are sorted by the model pass. working on last step for tcl script" />
     <MESSAGE value="added the province drop down and manual add level in ui" />
-    <option name="LAST_COMMIT_MESSAGE" value="added the province drop down and manual add level in ui" />
+    <MESSAGE value="EOD: working on sorting the file name in exel sheet" />
+    <option name="LAST_COMMIT_MESSAGE" value="EOD: working on sorting the file name in exel sheet" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
@@ -680,11 +754,6 @@
     <entry file="file://$PROJECT_DIR$/src/scratch.log" />
     <entry file="file://$PROJECT_DIR$/src/stationList.txt" />
     <entry file="file://$PROJECT_DIR$/src/stationList.csv">
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="255">
-          <caret line="30" column="32" lean-forward="true" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
-        </state>
-      </provider>
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3">
           <column index="0" width="100" />
@@ -696,6 +765,11 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="255">
+          <caret line="30" column="32" lean-forward="true" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -728,17 +802,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/stationList-ASCII.csv">
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state>
-          <caret column="16" selection-start-column="16" selection-end-column="16" />
-        </state>
-      </provider>
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="false" fixedHeaders="false" rowLines="3">
           <column index="0" width="100" />
           <column index="1" width="100" />
           <column index="2" width="100" />
           <column index="3" width="100" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -798,13 +872,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/extract.tcl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="68" column="25" lean-forward="true" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/extract.tcl" />
     <entry file="db://64a2d56a-0ba3-460c-98d5-7b935f59e801/consoles/Connection">
       <provider selected="true" editor-type-id="0.CONSOLE">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -816,13 +884,7 @@
     <entry file="file://$PROJECT_DIR$/src/aqhiMetadata.db">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config.tcl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.tcl" />
     <entry file="file://C:/Python34/Lib/string.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -836,15 +898,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/aaa.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#10#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aaa.py" />
     <entry file="file://$PROJECT_DIR$/src/gemmach">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -852,20 +906,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gemmachBashTest.bash">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="23" lean-forward="true" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/output.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gemmachBashTest.bash" />
+    <entry file="file://$PROJECT_DIR$/src/output.py" />
     <entry file="file://$PROJECT_DIR$/src/gem/gemmach00_000.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -885,22 +927,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI.py">
+    <entry file="file://$PROJECT_DIR$/src/dateVerification-inprogress.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2818">
-          <caret line="202" selection-start-line="202" selection-end-line="202" />
+        <state relative-caret-position="676">
+          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
           <folding>
-            <element signature="e#23#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Backend.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="24" selection-start-line="24" selection-end-line="25" selection-end-column="26" />
-          <folding>
-            <element signature="e#23#33#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -912,22 +944,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dateVerification-inprogress.py">
+    <entry file="file://$PROJECT_DIR$/src/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="676">
-          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+        <state relative-caret-position="408">
+          <caret line="24" column="129" selection-start-line="24" selection-start-column="125" selection-end-line="24" selection-end-column="129" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests.py">
+    <entry file="file://$PROJECT_DIR$/src/UI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="34" selection-start-line="34" selection-end-line="35" />
+        <state relative-caret-position="404">
+          <caret line="212" column="23" lean-forward="true" selection-start-line="212" selection-start-column="23" selection-end-line="212" selection-end-column="23" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#23#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Backend.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="485" column="23" lean-forward="true" selection-start-line="485" selection-start-column="23" selection-end-line="485" selection-end-column="23" />
+          <folding>
+            <element signature="e#23#33#0" expanded="true" />
           </folding>
         </state>
       </provider>

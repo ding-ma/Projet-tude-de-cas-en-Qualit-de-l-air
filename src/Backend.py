@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import csv
+import os
 import re
 import string
 
@@ -305,17 +306,20 @@ def modelCheckbox(h_00, h_12):
     else:
         modelHour = " "
 
+
+days = (
+    "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18"
+    , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31")
 # used for bashfile
 def listOfDays():
     global formattedDay
-    days = (
-        "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18"
-        , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31")
-    sIndex = days.index(sDay)
-    eIndex = days.index(eDay)
+    global startDateIndex
+    global endDateIndex
+    startDateIndex = days.index(sDay)
+    endDateIndex = days.index(eDay)
     unformattedDay = ""
-    for dayList in range(eIndex - sIndex + 1):
-        unformattedDay += days[sIndex + dayList]
+    for dayList in range(endDateIndex - startDateIndex + 1):
+        unformattedDay += days[startDateIndex + dayList]
     #for every 2 character, adds space
     formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
 
@@ -401,84 +405,146 @@ def bashFile():
             "\nListeEspeces=\"" + formattedParticuleString + "\""
                                                              "\nListeNiveaux=\"" + lev + "\""  # TODO confirm levels
                                                                                          "\nListeJours=\"" + formattedDay + "\""
-                                                                                                "\nListePasse=\"" + modelHourSeparated + "\""
-                                                                                                                                         "\nListeHeures=\"" + formattedSelectedTimeWithSpace + "\""
-                                                                                                                                                                                               "\n################# Extraction#############"
-                                                                                                                                                                                               "\nfor VersionGEM in  ${ListeVersionsGEM}"
-                                                                                                                                                                                               "\ndo"
-                                                                                                                                                                                               "\nFileOut1=${PathOut}/${VersionGEM}/${Tag1}.${DateDebut}_${DateFin}_${Grille}.fst"
-                                                                                                                                                                                               "\nif [  ${FileOut1}  ]; then"
-                                                                                                                                                                                               "\nrm -rf  ${FileOut1}"
-                                                                                                                                                                                               "\nelse"
-                                                                                                                                                                                               "\ncontinue"
-                                                                                                                                                                                               "\nfi"
-                                                                                                                                                                                               "\nFileIn=${FichierTICTAC}"
-                                                                                                                                                                                               "\n${editfst} -s ${FileIn} -d ${FileOut1} <<EOF"
-                                                                                                                                                                                               "\nDESIRE(-1,['>>','^^'],-1,-1,-1,-1,-1)"
-                                                                                                                                                                                               "\nEOF"
-                                                                                                                                                                                               "\nfor mois in ${ListeMois}"
-                                                                                                                                                                                               "\ndo"
-                                                                                                                                                                                               "\necho ${mois}"
-                                                                                                                                                                                               "\nfor jour in ${ListeJours}"
-                                                                                                                                                                                               "\ndo"
-                                                                                                                                                                                               "\nfor passe  in ${ListePasse}"
-                                                                                                                                                                                               "\ndo"
-                                                                                                                                                                                               "\nfor heure in ${ListeHeures}"
-                                                                                                                                                                                               "\ndo"
-                                                                                                                                                                                               "\necho ${heure}"
-                                                                                                                                                                                               "\nFileIn1=${PathIn}/${VersionGEM}/${DateDebut}${jour}${passe}_${heure}"
-                                                                                                                                                                                               "\nif [ ! ${FileIn1}  ]; then"
-                                                                                                                                                                                               "\ncontinue"
-                                                                                                                                                                                               "\nelse"
-                                                                                                                                                                                               "\necho \"-------------\""
-                                                                                                                                                                                               "\necho ${FileIn1} \"file does exist\""
-                                                                                                                                                                                               "\nfi"
-                                                                                                                                                                                               "\necho ${FileIn1}"
-                                                                                                                                                                                               "\nfor Espece in ${ListeEspeces}"
-                                                                                                                                                                                               "\ndo"
-                                                                                                                                                                                               "\nif [ \"$Espece\" = \"P0\" ] || [ \"$Espece\" = \"TCC\" ] ; then"
-                                                                                                                                                                                               "\n${editfst} -s ${FileIn1} -d ${FileOut1} <<EOF"
-                                                                                                                                                                                               "\nDESIRE (-1,\"$Espece\",-1, -1, 0, -1, -1)"
-                                                                                                                                                                                               "\nEOF"
-                                                                                                                                                                                               "\nelse"
-                                                                                                                                                                                               "\nfor niveau in  ${ListeNiveaux}"
-                                                                                                                                                                                               "\ndo"
-                                                                                                                                                                                               "\n${editfst} -s ${FileIn1} -d ${FileOut1} <<EOF"
-                                                                                                                                                                                               "\nDESIRE (-1,\"$Espece\",-1, -1, $niveau, -1, -1) "
-                                                                                                                                                                                               "\nEOF"
-                                                                                                                                                                                               "\ndone"
-                                                                                                                                                                                               "\nfi"
-                                                                                                                                                                                               "\ndone"
-                                                                                                                                                                                               "\ndone"
-                                                                                                                                                                                               "\ndone"
-                                                                                                                                                                                               "\ndone"
-                                                                                                                                                                                               "\ndone"
-                                                                                                                                                                                               "\ndone\n"
+                                                                                                                            "\nListePasse=\"" + modelHourSeparated + "\""
+                                                                                                                                                                     "\nListeHeures=\"" + formattedSelectedTimeWithSpace + "\""
+                                                                                                                                                                                                                           "\n################# Extraction#############"
+                                                                                                                                                                                                                           "\nfor VersionGEM in  ${ListeVersionsGEM}"
+                                                                                                                                                                                                                           "\ndo"
+                                                                                                                                                                                                                           "\nFileOut1=${PathOut}/${VersionGEM}/${Tag1}.${DateDebut}_${DateFin}_${Grille}.fst"
+                                                                                                                                                                                                                           "\nif [  ${FileOut1}  ]; then"
+                                                                                                                                                                                                                           "\nrm -rf  ${FileOut1}"
+                                                                                                                                                                                                                           "\nelse"
+                                                                                                                                                                                                                           "\ncontinue"
+                                                                                                                                                                                                                           "\nfi"
+                                                                                                                                                                                                                           "\nFileIn=${FichierTICTAC}"
+                                                                                                                                                                                                                           "\n${editfst} -s ${FileIn} -d ${FileOut1} <<EOF"
+                                                                                                                                                                                                                           "\nDESIRE(-1,['>>','^^'],-1,-1,-1,-1,-1)"
+                                                                                                                                                                                                                           "\nEOF"
+                                                                                                                                                                                                                           "\nfor mois in ${ListeMois}"
+                                                                                                                                                                                                                           "\ndo"
+                                                                                                                                                                                                                           "\necho ${mois}"
+                                                                                                                                                                                                                           "\nfor jour in ${ListeJours}"
+                                                                                                                                                                                                                           "\ndo"
+                                                                                                                                                                                                                           "\nfor passe  in ${ListePasse}"
+                                                                                                                                                                                                                           "\ndo"
+                                                                                                                                                                                                                           "\nfor heure in ${ListeHeures}"
+                                                                                                                                                                                                                           "\ndo"
+                                                                                                                                                                                                                           "\necho ${heure}"
+                                                                                                                                                                                                                           "\nFileIn1=${PathIn}/${VersionGEM}/${DateDebut}${jour}${passe}_${heure}"
+                                                                                                                                                                                                                           "\nif [ ! ${FileIn1}  ]; then"
+                                                                                                                                                                                                                           "\ncontinue"
+                                                                                                                                                                                                                           "\nelse"
+                                                                                                                                                                                                                           "\necho \"-------------\""
+                                                                                                                                                                                                                           "\necho ${FileIn1} \"file does exist\""
+                                                                                                                                                                                                                           "\nfi"
+                                                                                                                                                                                                                           "\necho ${FileIn1}"
+                                                                                                                                                                                                                           "\nfor Espece in ${ListeEspeces}"
+                                                                                                                                                                                                                           "\ndo"
+                                                                                                                                                                                                                           "\nif [ \"$Espece\" = \"P0\" ] || [ \"$Espece\" = \"TCC\" ] ; then"
+                                                                                                                                                                                                                           "\n${editfst} -s ${FileIn1} -d ${FileOut1} <<EOF"
+                                                                                                                                                                                                                           "\nDESIRE (-1,\"$Espece\",-1, -1, 0, -1, -1)"
+                                                                                                                                                                                                                           "\nEOF"
+                                                                                                                                                                                                                           "\nelse"
+                                                                                                                                                                                                                           "\nfor niveau in  ${ListeNiveaux}"
+                                                                                                                                                                                                                           "\ndo"
+                                                                                                                                                                                                                           "\n${editfst} -s ${FileIn1} -d ${FileOut1} <<EOF"
+                                                                                                                                                                                                                           "\nDESIRE (-1,\"$Espece\",-1, -1, $niveau, -1, -1) "
+                                                                                                                                                                                                                           "\nEOF"
+                                                                                                                                                                                                                           "\ndone"
+                                                                                                                                                                                                                           "\nfi"
+                                                                                                                                                                                                                           "\ndone"
+                                                                                                                                                                                                                           "\ndone"
+                                                                                                                                                                                                                           "\ndone"
+                                                                                                                                                                                                                           "\ndone"
+                                                                                                                                                                                                                           "\ndone"
+                                                                                                                                                                                                                           "\ndone\n"
         )
         print("saved!")
 
 
-tlcHours = (
+tcl = [
     "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
-    "21", "22", "23", "24")
+    "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39",
+    "40", "41", "42", "43", "44", "45", "46", "47", "48"]
 
+hour24 = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17",
+          "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
+          "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
 
 def locationExtraction(iditem):
     listIndex = lstID.index(iditem)
     name = lstName[listIndex]
     long = lstLongitude[listIndex]
     lat = lstLatitude[listIndex]
-    config = open("config.tcl", "w")
-    config.write(
-        "set Data(levels) \" 76696048\"\n"  # todo confirm levels
-        "set Data(MandatoryLevels) \" 76696048\"\n"
-        "set Data(Path)    /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach\n"
-        "set Data(PathOut) /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach\n"
-        "set Data(Start)      \"" + sYear + sMonth + "\"\n"
-                                                     "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                                                                                                "set Data(Eticket)     \"RAQDPS020\"\n"
-                                                                                                "set Data(point) \"" + name + "\"\n"
-                                                                                                                              "set Data(coord) \"" + lat + " " + long + "\"\n"
-                                                                                                                                                                        "set Data(days) \"" + sDay + "\"\n"  # todo confirm start day
-                                                                                                                                                                                                     "set Data(hours) \"1 2 3 4 5 6 7 8 9 10 11 12\"\n"
-    )
+    modelHourList = re.split(",", modelHour)
+    executehour = re.split(",", formattedSelectedTimeWithComma)
+    s = hours.index(executehour[0])
+    e = hours.index(executehour[-1])
+    particulelist = re.split(" ", formattedParticuleString)
+    if bothCheked == 1:
+        repo = ["00"]
+    if bothCheked == 2:
+        repo = ["12"]
+    if bothCheked == 3:
+        repo = ["00", "12"]
+    for r in repo:
+        for p in particulelist:
+            for modelH in modelHourList:
+                if modelH == "12":
+                    dayList = days[startDateIndex: endDateIndex + 2]
+                else:
+                    dayList = days[startDateIndex: endDateIndex + 1]
+                for d in dayList:
+                    for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
+                        config = open("config/" + d + hToName + modelH + p + ".tcl", "w")
+                        config.write(
+                            "set Data(SpLst)  \"" + p + "\" \n"
+                                                        "set Data(TAG1)   \"TEST" + modelH + ".201904_201904_regeta\"\n"
+                                                                                             "set Data(TAG3)   \"" + d + "" + hToName + "\"\n"
+                                                                                                                                        "set Data(outTXT)       \"SITE\" \n"
+                                                                                                                                        "set Data(levels) \" 76696048\"\n"  # todo confirm levels
+                                                                                                                                        "set Data(MandatoryLevels) \" 76696048\"\n"
+                                                                                                                                        "set Data(Path)    /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach\n"
+                                                                                                                                        "set Data(PathOut) /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/out\n"
+                                                                                                                                        "set Data(Start)      \"" + sYear + sMonth + "\"\n"
+                                                                                                                                                                                     "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                                                                                                                                                                                                                                "set Data(Eticket)     \"RAQDPS020\"\n"
+                                                                                                                                                                                                                                "set Data(point) \"" + name + "\"\n"
+                                                                                                                                                                                                                                                              "set Data(coord) \"" + lat + " " + long + "\"\n"
+                                                                                                                                                                                                                                                                                                        "set Data(days) \"" + str(
+                                d) + "\"\n"  # todo confirm start day
+                                     "set Data(hours) \"" + str(hToFile) + "\"\n"
+                        )
+    print("Done")
+
+
+def launchTCL():
+    os.system(" ls /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/config | sort -st '/' -k1,1")
+    for a in os.listdir('config'):
+        os.system("./extract1.tcl " + "config/" + a)
+
+
+docName = []
+
+
+def removeEmptyFile(path):
+    docList = os.listdir(path)
+    for doc in docList:
+        docPath = os.path.join(path, doc)
+        if os.path.isfile(docPath):
+            if os.path.getsize(docPath) == 0:
+                os.remove(docPath)
+        if os.path.isdir(docPath):
+            removeEmptyFile(docPath)
+
+
+Name = []
+
+
+def removeAllfile(path):
+    Name = os.listdir(path)
+    for doc in Name:
+        docPath = os.path.join(path, doc)
+        if os.path.isfile(docPath):
+            if os.path.getsize(docPath) > 0:
+                os.remove(docPath)
