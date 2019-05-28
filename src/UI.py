@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-import datetime
-import logging
 import os
 import tkinter as tk
 from tkinter import ttk
@@ -13,9 +11,6 @@ window = tk.Tk()
 w, h = window.winfo_screenwidth(), window.winfo_screenheight()
 window.geometry("%dx%d+0+0" % (w, h))
 # window.geometry("1500x1200")
-
-logging.basicConfig(filename='logs.log', level=logging.DEBUG)
-logging.info("Program Launched: " + str(datetime.datetime.now()))
 
 # Defines and places the notebook widget
 nb = ttk.Notebook(window)
@@ -163,14 +158,8 @@ searchBtn.grid(column=4, row=13, pady=(20, 0))
 # Bk.execute("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach")
 
 
-# logging doesnt work on linux server
-def Log():
-    myCmd = os.popen("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach").read()
-    logging.info(myCmd)
-
-
 def StartXRACR():
-    os.system("rarc -i /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/gemmach &")
+    os.system("rarc -i "+Bk.filelocation+"/gemmach &")
 
 
 def StartBash():
@@ -202,16 +191,16 @@ extrationBtn.grid(column=10, row=3)
 
 
 def getLocation():
-    Bk.removeAllfile(r'/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/out')
-    Bk.removeAllfile(r'/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/config')
+    Bk.removeAllfile(r''+Bk.filelocation+"/bash")
+    Bk.removeAllfile(r''+Bk.filelocation+"/config")
     location = int(combostations.current())
     province = comboprov.get()
     locationlst = Bk.provinceDic[province]
     loc = locationlst[location]
     Bk.locationExtraction(loc)
     Bk.launchTCL()
-    Bk.removeEmptyFile(r'/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/out')
-    Bk.sortAndGenerate("/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/out/")
+    Bk.removeEmptyFile(r''+Bk.filelocation+"/extracted")
+    Bk.sortAndGenerate(Bk.filelocation+"/extracted")
 
 
 locationBtn = tk.Button(machTab, text="Get data at location", command=getLocation, width=15, height=1)

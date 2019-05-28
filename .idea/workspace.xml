@@ -5,70 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Backend.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/extract1.tcl" beforeDir="false" afterPath="$PROJECT_DIR$/src/extract1.tcl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gem/gemmach00_000.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gem/gemmach00_001.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gem/gemmach00_002.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gem/gemmach00_003.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gem/gemmach00_004.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gem/gemmach01_000.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gem/gemmach01_001.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gem/gemmach01_002.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gem/gemmach01_003.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gem/gemmach01_004.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gemmach" beforeDir="false" afterPath="$PROJECT_DIR$/src/gemmach" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gemmachBashTest00.bash" beforeDir="false" afterPath="$PROJECT_DIR$/src/gemmachBashTest00.bash" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gemmachBashTest12.bash" beforeDir="false" afterPath="$PROJECT_DIR$/src/gemmachBashTest12.bash" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/logs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0500.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0501.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0502.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0503.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0504.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0505.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0506.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0507.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0508.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0509.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0510.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0511.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0512.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0513.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0514.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0515.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0516.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0517.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0518.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0519.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0520.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0521.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0522.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0523.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0600.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0601.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0602.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0603.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0604.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0605.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0606.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0607.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0608.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0609.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0610.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0611.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0612.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0613.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0614.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0615.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0616.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0617.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0618.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0619.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0620.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0621.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0622.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/0623.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/output.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,32 +15,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="4">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/tests.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="289">
-                    <caret line="17" selection-start-line="17" selection-end-line="20" selection-end-column="122" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="213" column="123" selection-start-line="213" selection-start-column="123" selection-end-line="213" selection-end-column="123" />
+            <state relative-caret-position="200">
+              <caret line="198" column="42" lean-forward="true" selection-start-line="198" selection-start-column="42" selection-end-line="198" selection-end-column="42" />
               <folding>
                 <element signature="e#23#38#0" expanded="true" />
               </folding>
@@ -110,11 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Backend.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="555" column="36" selection-start-line="555" selection-start-column="36" selection-end-line="555" selection-end-column="36" />
+            <state relative-caret-position="387">
+              <caret line="401" column="23" lean-forward="true" selection-start-line="401" selection-start-column="23" selection-end-line="401" selection-end-column="23" />
               <folding>
                 <element signature="e#23#33#0" expanded="true" />
               </folding>
@@ -154,6 +73,9 @@
       <find>table</find>
       <find>id</find>
       <find>bot</find>
+      <find>exet</find>
+      <find>rarc</find>
+      <find>bashf</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -185,8 +107,8 @@
         <option value="$PROJECT_DIR$/src/output.py" />
         <option value="$PROJECT_DIR$/src/aaa.py" />
         <option value="$PROJECT_DIR$/src/tests.py" />
-        <option value="$PROJECT_DIR$/src/Backend.py" />
         <option value="$PROJECT_DIR$/src/UI.py" />
+        <option value="$PROJECT_DIR$/src/Backend.py" />
       </list>
     </option>
   </component>
@@ -372,8 +294,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.UI" />
         <item itemvalue="Python.Backend" />
+        <item itemvalue="Python.UI" />
         <item itemvalue="Python.output" />
         <item itemvalue="Python.dateVerification-inprogress" />
         <item itemvalue="Bash.gemmachBashTest.bash" />
@@ -587,7 +509,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559052258725</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="gemmach done, backup before repo changes">
+      <created>1559066981897</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1559066981897</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TodoView">
@@ -600,10 +529,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.1601686" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1601686" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Project Explorer" order="3" weight="0.32982087" />
@@ -611,7 +540,7 @@
       <window_info id="Job Explorer" order="5" weight="0.2971549" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290461" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49683878" weight="0.20578778" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49683878" visible="true" weight="0.20578778" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2915327" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -638,7 +567,7 @@
       <window_info id="Job Explorer" order="5" weight="0.2971549" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290461" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49683878" visible="true" weight="0.20578778" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49683878" weight="0.20578778" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2915327" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -701,7 +630,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="added the models" />
     <MESSAGE value="read/write gemmach files" />
     <MESSAGE value="time select function" />
     <MESSAGE value="writting time in file works" />
@@ -726,13 +654,12 @@
     <MESSAGE value="added the province drop down and manual add level in ui" />
     <MESSAGE value="EOD: working on sorting the file name in exel sheet" />
     <MESSAGE value="trying out repo seperation" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying out repo seperation" />
+    <MESSAGE value="gemmach done, backup before repo changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="gemmach done, backup before repo changes" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/tkinter/__init__.py" />
     <entry file="file://C:/Python34/Lib/_bootlocale.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -899,13 +826,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/aaa.py" />
-    <entry file="file://$PROJECT_DIR$/src/gemmach">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gemmachBashTest.bash" />
     <entry file="file://$PROJECT_DIR$/src/output.py" />
     <entry file="file://$PROJECT_DIR$/src/gem/gemmach00_000.txt">
@@ -937,13 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gemmachBashTest00.bash">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/extract1.tcl">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -954,29 +867,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests.py">
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-1442825926/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" selection-start-line="17" selection-end-line="20" selection-end-column="122" />
+        <state relative-caret-position="238">
+          <caret line="5010" column="8" selection-start-line="5010" selection-start-column="8" selection-end-line="5010" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Backend.py">
+    <entry file="file://$PROJECT_DIR$/src/gemmach">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="555" column="36" selection-start-line="555" selection-start-column="36" selection-end-line="555" selection-end-column="36" />
-          <folding>
-            <element signature="e#23#33#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="3" column="28" lean-forward="true" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="61" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gemmachBashTest00.bash">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="213" column="123" selection-start-line="213" selection-start-column="123" selection-end-line="213" selection-end-column="123" />
+        <state relative-caret-position="200">
+          <caret line="198" column="42" lean-forward="true" selection-start-line="198" selection-start-column="42" selection-end-line="198" selection-end-column="42" />
           <folding>
             <element signature="e#23#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Backend.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="401" column="23" lean-forward="true" selection-start-line="401" selection-start-column="23" selection-end-line="401" selection-end-column="23" />
+          <folding>
+            <element signature="e#23#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
