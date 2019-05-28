@@ -2,6 +2,7 @@
 import csv
 import os
 import re
+import shutil
 import string
 
 # Notes: def modelChosen(model): always needs to be the last function!
@@ -396,7 +397,7 @@ def bashFile():
             "\nDateFin=" + eYear + eMonth +
             "\nListeMois=\"" + formattedMonthlist + "\""
                                                     "\nAnnee=" + sYear +  # not used
-            "\nTag1=TEST"
+            "\nTag1=TEST"+modelHourSeparated+
             "\neditfst=/fs/ssm/eccc/mrd/rpn/utils/16.2/ubuntu-14.04-amd64-64/bin/editfst"
             "\nType=species"
             "\nGrille=regeta"
@@ -472,6 +473,10 @@ hour24 = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11"
           "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
 
 def locationExtraction(iditem):
+    deletelist = os.listdir("/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/out/")
+    for d in deletelist:
+        shutil.rmtree(
+            "/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/out/" + d)
     listIndex = lstID.index(iditem)
     name = lstName[listIndex]
     long = lstLongitude[listIndex]
@@ -481,40 +486,34 @@ def locationExtraction(iditem):
     s = hours.index(executehour[0])
     e = hours.index(executehour[-1])
     particulelist = re.split(" ", formattedParticuleString)
-    if bothCheked == 1:
-        repo = ["00"]
-    if bothCheked == 2:
-        repo = ["12"]
-    if bothCheked == 3:
-        repo = ["00", "12"]
-    for r in repo:
-        for p in particulelist:
-            for modelH in modelHourList:
-                if modelH == "12":
-                    dayList = days[startDateIndex: endDateIndex + 2]
-                else:
-                    dayList = days[startDateIndex: endDateIndex + 1]
-                for d in dayList:
-                    for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
-                        config = open("config/" + d + hToName + modelH + p + ".tcl", "w")
-                        config.write(
-                            "set Data(SpLst)  \"" + p + "\" \n"
-                                                        "set Data(TAG1)   \"TEST" + modelH + ".201904_201904_regeta\"\n"
-                                                                                             "set Data(TAG3)   \"" + d + "" + hToName + "\"\n"
-                                                                                                                                        "set Data(outTXT)       \"SITE\" \n"
-                                                                                                                                        "set Data(levels) \" 76696048\"\n"  # todo confirm levels
-                                                                                                                                        "set Data(MandatoryLevels) \" 76696048\"\n"
-                                                                                                                                        "set Data(Path)    /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach\n"
-                                                                                                                                        "set Data(PathOut) /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/out\n"
-                                                                                                                                        "set Data(Start)      \"" + sYear + sMonth + "\"\n"
-                                                                                                                                                                                     "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                                                                                                                                                                                                                                "set Data(Eticket)     \"RAQDPS020\"\n"
-                                                                                                                                                                                                                                "set Data(point) \"" + name + "\"\n"
-                                                                                                                                                                                                                                                              "set Data(coord) \"" + lat + " " + long + "\"\n"
-                                                                                                                                                                                                                                                                                                        "set Data(days) \"" + str(
-                                d) + "\"\n"  # todo confirm start day
-                                     "set Data(hours) \"" + str(hToFile) + "\"\n"
-                        )
+    for p in particulelist:
+        for modelH in modelHourList:
+            if modelH == "12":
+                dayList = days[startDateIndex: endDateIndex + 2]
+            else:
+                dayList = days[startDateIndex: endDateIndex + 1]
+            for d in dayList:
+                for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
+                    config = open("config/" +p+ d + hToName + modelH +".tcl", "w")
+                    config.write(
+                        "set Data(SpLst)  \"" + p + "\" \n"
+                        "set Data(TAG1)   \"TEST" + modelH + ".201904_201904_regeta\"\n"
+                        "set Data(TAG3)   \"" + d + "" + hToName + "\"\n"
+                        "set Data(outTXT)       \"SITE\" \n"
+                        "set Data(PASSE) \""+modelH+"\"\n"
+                        "set Data(levels) \" 76696048\"\n"  # todo confirm levels
+                        "set Data(MandatoryLevels) \" 76696048\"\n"
+                        "set Data(Path)    /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach\n"
+                        "set Data(PathOut) /space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/bashtest/operation.forecasts.mach/out\n"
+                        "set Data(Start)      \"" + sYear + sMonth + "\"\n"
+                        "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                        "set Data(Eticket)     \"RAQDPS020\"\n"
+                        "set Data(point) \"" + name + "\"\n"
+                        "set Data(coord) \"" + lat + " " + long + "\"\n"
+                        "set Data(days) \"" + str(
+                        d) + "\"\n"  # todo confirm start day
+                        "set Data(hours) \"" + str(hToFile) + "\"\n"
+                    )
     print("Done")
 
 
@@ -539,8 +538,6 @@ def removeEmptyFile(path):
 
 
 Name = []
-
-
 def removeAllfile(path):
     Name = os.listdir(path)
     for doc in Name:
@@ -548,3 +545,18 @@ def removeAllfile(path):
         if os.path.isfile(docPath):
             if os.path.getsize(docPath) > 0:
                 os.remove(docPath)
+
+def sortAndGenerate(destination):
+    particulelist = re.split(" ", formattedParticuleString)
+    modelHourList = re.split(",", modelHour)
+    for m in modelHourList:
+        for p in particulelist:
+            if not os.path.exists(destination + m + p):
+                os.makedirs(destination + m + p)
+            for f in os.listdir(destination):
+                if f.endswith("_" + m + p + ".csv"):
+                    shutil.move(destination + f, destination + m + p)
+            file = open("output" + m + p + ".csv", "w+")
+            for i in os.listdir(destination + m + p):
+                b = open(destination + m + p + "/" + i).read()
+                file.write(b)

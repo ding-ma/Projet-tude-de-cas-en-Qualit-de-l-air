@@ -39,7 +39,7 @@ proc AvgAllDom::Do { sp outTXT start end} {
     variable Data
     
     ####### ############################# set ouput TXT files
-    set FileOut $Data(PathOut)/$Data(TAG3)_${start}_$Data(point)_${sp}.csv
+    set FileOut $Data(PathOut)/$Data(TAG3)_${start}_$Data(point)_$Data(PASSE)${sp}.csv
     file delete $FileOut
     
     # ouvrir le fichier FileOut pour des valeurs en format texte
