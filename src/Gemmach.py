@@ -36,7 +36,6 @@ filedirectory = next(os.walk('.'))[1]
 stationFile = open("stations_DB.csv", "r")
 reader = csv.reader(stationFile)
 stationList = list(reader)
-
 # creates list based on csv entry
 lstID = []
 lstName = []
@@ -497,6 +496,10 @@ def locationExtraction(iditem):
     s = hours.index(executehour[0])
     e = hours.index(executehour[-1])
     particulelist = re.split(" ", formattedParticuleString)
+    if sYear+sMonth+sDay > "20160907":
+        level = "76696048"
+    else:
+        level = "93423264"
     for p in particulelist:
         for modelH in modelHourList:
             if modelH == "12":
@@ -508,12 +511,12 @@ def locationExtraction(iditem):
                     config = open("config/" +p+ d + hToName + modelH +".tcl", "w")
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
-                        "set Data(TAG1)   \"BashOut" + modelH + ".201904_201904_regeta\"\n"
+                        "set Data(TAG1)   \"BashOut" + modelH + "."+sYear+sDay+"_"+eYear+eDay+"_regeta\"\n"
                         "set Data(TAG3)   \"" + d + "" + hToName + "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \""+modelH+"\"\n"
-                        "set Data(levels) \" 76696048\"\n"  # todo confirm levels
-                        "set Data(MandatoryLevels) \" 76696048\"\n"
+                        "set Data(levels) \" "+level+"\"\n"  # todo confirm levels
+                        "set Data(MandatoryLevels) \" "+level+"\"\n"
                         "set Data(Path)    "+filelocation+"/bash\n"
                         "set Data(PathOut) "+filelocation+"/extracted\n"
                         "set Data(Start)      \"" + sYear + sMonth + "\"\n"
@@ -569,8 +572,8 @@ def sortAndGenerate(destination):
             for f in os.listdir(destination):
                 if f.endswith("_" + m + p + ".csv"):
                     shutil.move(destination + f, destination + m + p)
-            file = open("output/"+"ID"+locationID +"__"+m + p + ".csv", "w+")
+            file = open("output/"+"ID"+locationID +"___"+m + p+"___Start"+sYear+sMonth+sDay +"___End"+eYear+eMonth+eDay+ ".csv", "w+")
             for i in sorted(os.listdir(destination + m + p)):
                 b = open(destination + m + p + "/" + i).read()
                 file.write(b)
-    print("Job Done, see folder-->" + filelocation+"/output")
+    print("\nJob done, see folder-->" + filelocation+"/output")

@@ -1,19 +1,19 @@
 #!/bin/bash
 PathOut=M:\Projet-tude-de-cas-en-Qualit-de-l-air\src/bash
 PathIn=M:\Projet-tude-de-cas-en-Qualit-de-l-air\src/rarc
-DateDebut=123411
-DateFin=123411
-ListeMois="11"
-Annee=1234
+DateDebut=201501
+DateFin=201501
+ListeMois="01"
+Annee=2015
 Tag1=BashOut00
 editfst=/fs/ssm/eccc/mrd/rpn/utils/16.2/ubuntu-14.04-amd64-64/bin/editfst
 Type=species
 Grille=regeta
-FichierTICTAC=M:\Projet-tude-de-cas-en-Qualit-de-l-air\src/rarc/operation.forecasts.mach/${DateDebut}1100_000
+FichierTICTAC=M:\Projet-tude-de-cas-en-Qualit-de-l-air\src/rarc/operation.forecasts.mach/${DateDebut}0200_000
 ListeVersionsGEM="operation.forecasts.mach"
-ListeEspeces="O3 N2 AF"
+ListeEspeces="O3"
 ListeNiveaux="93423264 76696048"
-ListeJours="11"
+ListeJours="02"
 ListePasse="00"
 ListeHeures="000"
 ################# Extraction#############
