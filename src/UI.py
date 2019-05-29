@@ -11,7 +11,6 @@ window = tk.Tk()
 w, h = window.winfo_screenwidth(), window.winfo_screenheight()
 window.geometry("%dx%d+0+0" % (w, h))
 # window.geometry("1500x1200")
-
 # Defines and places the notebook widget
 nb = ttk.Notebook(window)
 nb.grid(row=1, column=0, columnspan=50, rowspan=49, sticky='NESW')
@@ -165,11 +164,14 @@ def StartXRACR():
 def StartBash():
     if Bk.bothCheked is 1:
         os.system("./gemmachBashTest00.bash &")
+        print("Done, file located at -->"+Bk.filelocation+"/bash")
     if Bk.bothCheked is 2:
         os.system("./gemmachBashTest12.bash &")
+        print("Done, file located at -->" + Bk.filelocation + "/bash")
     if Bk.bothCheked is 3:
         os.system("./gemmachBashTest00.bash &")
         os.system("./gemmachBashTest12.bash &")
+        print("Done, file located at -->" + Bk.filelocation + "/bash")
 
 
 btn = tk.Button(machTab, text="Write to file (1)", command=Clicked, width=15, height=1)
@@ -191,7 +193,7 @@ extrationBtn.grid(column=10, row=3)
 
 
 def getLocation():
-    Bk.removeAllfile(r''+Bk.filelocation+"/bash")
+    #Bk.removeAllfile(r''+Bk.filelocation+"/bash")
     Bk.removeAllfile(r''+Bk.filelocation+"/config")
     location = int(combostations.current())
     province = comboprov.get()
@@ -200,10 +202,10 @@ def getLocation():
     Bk.locationExtraction(loc)
     Bk.launchTCL()
     Bk.removeEmptyFile(r''+Bk.filelocation+"/extracted")
-    Bk.sortAndGenerate(Bk.filelocation+"/extracted")
+    Bk.sortAndGenerate(Bk.filelocation+"/extracted/")
 
 
-locationBtn = tk.Button(machTab, text="Get data at location", command=getLocation, width=15, height=1)
+locationBtn = tk.Button(machTab, text="Get data at location (4)", command=getLocation, width=15, height=1)
 locationBtn.grid(column=10, row=15)
 ###########################################
 #           end of Gem-mach Tab           #

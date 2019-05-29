@@ -1,12 +1,28 @@
 import os
+import re
+import shutil
 
 filelocation = os.getcwd()
+formattedParticuleString = "O3 AF"
+modelHour = "00"
 
-directories = ["bash", "config", "rarc", "output", "extracted"]
+def sortAndGenerate(destination):
+    print(destination)
+    particulelist = re.split(" ", formattedParticuleString)
+    modelHourList = re.split(",", modelHour)
+    for m in modelHourList:
+        for p in particulelist:
+            print(os.path.exists(destination + m + p))
+            if not os.path.exists(destination + m + p):
+                os.makedirs(destination + m + p)
+            for f in os.listdir(destination):
+                if f.endswith("_" + m + p + ".csv"):
+                    shutil.move(destination + f, destination + m + p)
+            file = open("output" + m + p + ".csv", "w+")
+            for i in os.listdir(destination + m + p):
+                b = open(destination + m + p + "/" + i).read()
 
-for i in directories:
-    if not os.path.exists(filelocation+"/"+i):
-        os.mkdir(filelocation+"/"+i)
+                file.write(b)
 
-filedirectory = next(os.walk('.'))[1]
-print(filelocation)
+
+sortAndGenerate(filelocation+"/extracted/")

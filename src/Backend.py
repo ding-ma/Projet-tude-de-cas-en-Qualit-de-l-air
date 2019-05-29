@@ -13,7 +13,7 @@ directories = ["bash", "config", "rarc", "output", "extracted"]
 for i in directories:
     if not os.path.exists(filelocation+"/"+i):
         os.mkdir(filelocation+"/"+i)
-
+os.system("chmod -R 777 "+ filelocation)
 filedirectory = next(os.walk('.'))[1]
 
 # to connect to host, not working
@@ -407,7 +407,7 @@ def bashFile():
             "\nDateFin=" + eYear + eMonth +
             "\nListeMois=\"" + formattedMonthlist + "\""
             "\nAnnee=" + sYear +  # not used
-            "\nTag1=TEST"+modelHourSeparated+
+            "\nTag1=BashOut"+modelHourSeparated+
             "\neditfst=/fs/ssm/eccc/mrd/rpn/utils/16.2/ubuntu-14.04-amd64-64/bin/editfst"
             "\nType=species"
             "\nGrille=regeta"
@@ -421,7 +421,7 @@ def bashFile():
             "\n################# Extraction#############"
             "\nfor VersionGEM in  ${ListeVersionsGEM}"
             "\ndo"
-            "\nFileOut1=${PathOut}/${VersionGEM}/${Tag1}.${DateDebut}_${DateFin}_${Grille}.fst"
+            "\nFileOut1=${PathOut}/${Tag1}.${DateDebut}_${DateFin}_${Grille}.fst"
             "\nif [  ${FileOut1}  ]; then"
             "\nrm -rf  ${FileOut1}"
             "\nelse"
@@ -486,10 +486,12 @@ def locationExtraction(iditem):
     deletelist = os.listdir(filelocation+"/extracted")
     for d in deletelist:
         shutil.rmtree(filelocation+"/extracted/" + d)
+    global locationID
     listIndex = lstID.index(iditem)
     name = lstName[listIndex]
     long = lstLongitude[listIndex]
     lat = lstLatitude[listIndex]
+    locationID = lstID[listIndex]
     modelHourList = re.split(",", modelHour)
     executehour = re.split(",", formattedSelectedTimeWithComma)
     s = hours.index(executehour[0])
@@ -506,13 +508,13 @@ def locationExtraction(iditem):
                     config = open("config/" +p+ d + hToName + modelH +".tcl", "w")
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
-                        "set Data(TAG1)   \"TEST" + modelH + ".201904_201904_regeta\"\n"
+                        "set Data(TAG1)   \"BashOut" + modelH + ".201904_201904_regeta\"\n"
                         "set Data(TAG3)   \"" + d + "" + hToName + "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \""+modelH+"\"\n"
                         "set Data(levels) \" 76696048\"\n"  # todo confirm levels
                         "set Data(MandatoryLevels) \" 76696048\"\n"
-                        "set Data(Path)    "+filelocation+"/bash/operation.forecasts.mach\n"
+                        "set Data(Path)    "+filelocation+"/bash\n"
                         "set Data(PathOut) "+filelocation+"/extracted\n"
                         "set Data(Start)      \"" + sYear + sMonth + "\"\n"
                         "set Data(End)      \"" + eYear + eMonth + "\"\n"
@@ -527,7 +529,8 @@ def locationExtraction(iditem):
 
 
 def launchTCL():
-    os.system(" ls "+filelocation+"/"+filedirectory[1]+" | sort -st '/' -k1,1")
+    os.system(" ls "+filelocation+"/config | sort -st '/' -k1,1")
+    os.system("chmod -R 777 "+ filelocation+"/config")
     for a in os.listdir('config'):
         os.system("./extract1.tcl " + "config/" + a)
 
@@ -558,6 +561,7 @@ def removeAllfile(path):
 def sortAndGenerate(destination):
     particulelist = re.split(" ", formattedParticuleString)
     modelHourList = re.split(",", modelHour)
+    os.system(" ls " + filelocation + "/extracted | sort -st '/' -k1,1")
     for m in modelHourList:
         for p in particulelist:
             if not os.path.exists(destination + m + p):
@@ -565,7 +569,8 @@ def sortAndGenerate(destination):
             for f in os.listdir(destination):
                 if f.endswith("_" + m + p + ".csv"):
                     shutil.move(destination + f, destination + m + p)
-            file = open("output" + m + p + ".csv", "w+")
-            for i in os.listdir(destination + m + p):
+            file = open("output/"+"ID"+locationID +"__"+m + p + ".csv", "w+")
+            for i in sorted(os.listdir(destination + m + p)):
                 b = open(destination + m + p + "/" + i).read()
                 file.write(b)
+    print("Job Done, see folder-->" + filelocation+"/output")

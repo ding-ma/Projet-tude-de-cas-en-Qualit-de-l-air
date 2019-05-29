@@ -1,25 +1,25 @@
 #!/bin/bash
-PathOut= M:\Projet-tude-de-cas-en-Qualit-de-l-air\src/aaa
-PathIn= M:\Projet-tude-de-cas-en-Qualit-de-l-air\src/aaa/operation.forecasts.mach
-DateDebut=201901
-DateFin=201901
-ListeMois="01"
-Annee=2019
-Tag1=TEST00
+PathOut=M:\Projet-tude-de-cas-en-Qualit-de-l-air\src/bash
+PathIn=M:\Projet-tude-de-cas-en-Qualit-de-l-air\src/rarc
+DateDebut=123411
+DateFin=123411
+ListeMois="11"
+Annee=1234
+Tag1=BashOut00
 editfst=/fs/ssm/eccc/mrd/rpn/utils/16.2/ubuntu-14.04-amd64-64/bin/editfst
 Type=species
 Grille=regeta
-FichierTICTAC=M:\Projet-tude-de-cas-en-Qualit-de-l-air\src/aaa/operation.forecasts.mach/${DateDebut}0100_000
+FichierTICTAC=M:\Projet-tude-de-cas-en-Qualit-de-l-air\src/rarc/operation.forecasts.mach/${DateDebut}1100_000
 ListeVersionsGEM="operation.forecasts.mach"
-ListeEspeces="O3"
+ListeEspeces="O3 N2 AF"
 ListeNiveaux="93423264 76696048"
-ListeJours="01"
+ListeJours="11"
 ListePasse="00"
-ListeHeures="000 001 002"
+ListeHeures="000"
 ################# Extraction#############
 for VersionGEM in  ${ListeVersionsGEM}
 do
-FileOut1=${PathOut}/${VersionGEM}/${Tag1}.${DateDebut}_${DateFin}_${Grille}.fst
+FileOut1=${PathOut}/${Tag1}.${DateDebut}_${DateFin}_${Grille}.fst
 if [  ${FileOut1}  ]; then
 rm -rf  ${FileOut1}
 else
