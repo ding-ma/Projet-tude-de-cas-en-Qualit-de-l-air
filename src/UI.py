@@ -3,7 +3,7 @@ import os
 import tkinter as tk
 from tkinter import ttk
 
-import Gemmach as GM
+import Gemmach as Gm
 
 # initial setting
 window = tk.Tk()
@@ -22,27 +22,28 @@ nb.add(machTab, text="Gem-Mach")
 
 def Clicked():
     sDate = enteredDate.get()
-    GM.inputStartDate(sDate)
+    Gm.inputStartDate(sDate)
 
     eDate = enteredEndDate.get()
-    GM.inputEndDate(eDate)
+    Gm.inputEndDate(eDate)
 
     sTime = sHourcombo.get()
     eTime = eHourCombo.get()
-    GM.time(sTime, eTime)
+    Gm.time(sTime, eTime)
 
     h_00 = var_00.get()
     h_12 = var_12.get()
-    GM.modelCheckbox(h_00, h_12)
+    Gm.modelCheckbox(h_00, h_12)
 
     O3 = var_O3.get()
     NO2 = var_NO2.get()
     others = otherVariable.get()
     PM25 = var_PM25.get()
-    GM.particuleCheckBox(O3, NO2, others, PM25)
+    Gm.particuleCheckBox(O3, NO2, others, PM25)
 
-    GM.level(levelEntry.get())
-    GM.rarcFile()
+    Gm.level(levelEntry.get())
+    Gm.rarcFile()
+
 
 rarcLabel = tk.Label(machTab, text="Rarc Settings", font="20")
 rarcLabel.grid(column=0, row=0)
@@ -61,14 +62,14 @@ enteredEndDate.grid(column=1, row=2)
 # Start Hours
 sHourLabel = tk.Label(machTab, text="Choose the start time")
 sHourLabel.grid(column=2, row=1)
-sHourcombo = ttk.Combobox(machTab, values=GM.hours, state='readonly')
+sHourcombo = ttk.Combobox(machTab, values=Gm.hours, state='readonly')
 sHourcombo.grid(column=2, row=2)
 sHourcombo.current(0)
 
 # End Hours
 eHourLabel = tk.Label(machTab, text="Choose the end time")
 eHourLabel.grid(column=3, row=1, padx=15)
-eHourCombo = ttk.Combobox(machTab, values=GM.hours, state='readonly')
+eHourCombo = ttk.Combobox(machTab, values=Gm.hours, state='readonly')
 eHourCombo.grid(column=3, row=2, padx=15)
 eHourCombo.current(0)
 
@@ -93,13 +94,13 @@ moleculeLabel.grid(column=0, row=11)
 otherLabel = tk.Label(machTab, text="Others, add no space e.g. UVTT")
 otherLabel.grid(column=4, row=11)
 var_O3 = tk.BooleanVar(value=True)
-O3_Checkbutton = tk.Checkbutton(machTab, text="O3", variable = var_O3)
+O3_Checkbutton = tk.Checkbutton(machTab, text="O3", variable=var_O3)
 O3_Checkbutton.grid(column=1, row=11)
 var_NO2 = tk.BooleanVar()
-NO2_Checkbutton = tk.Checkbutton(machTab, text ="NO2", variable = var_NO2)
+NO2_Checkbutton = tk.Checkbutton(machTab, text="NO2", variable=var_NO2)
 NO2_Checkbutton.grid(column=2, row=11)
 var_PM25 = tk.BooleanVar()
-PM25_Checkbutton = tk.Checkbutton(machTab, text ="PM2.5", variable = var_PM25)
+PM25_Checkbutton = tk.Checkbutton(machTab, text="PM2.5", variable=var_PM25)
 PM25_Checkbutton.grid(column=3, row=11)
 otherVariable = tk.Entry(machTab, width=13)
 otherVariable.grid(column=5, row=11)
@@ -110,25 +111,26 @@ levelLabel.grid(column=4, row=1)
 levelEntry = tk.Entry(machTab, width=15)
 levelEntry.grid(column=4, row=2)
 
+
 # stations
 def combined(event):
-    GM.provlist.clear()
+    Gm.provlist.clear()
     name = comboprov.get()
-    provlist = GM.gettingprovlist(name)
+    provlist = Gm.gettingprovlist(name)
     combostations.config(values=provlist)
 
 
-comboprov = ttk.Combobox(machTab, values=GM.prov, width=10, state='readonly')
+comboprov = ttk.Combobox(machTab, values=Gm.prov, width=10, state='readonly')
 comboprov.grid(column=0, row=14)
 comboprov.bind('<<ComboboxSelected>>', combined)
 comboprov.current(0)
 
-combostations = ttk.Combobox(machTab, values=GM.gettingprovlist("AB"), width=30, state='readonly')
+combostations = ttk.Combobox(machTab, values=Gm.gettingprovlist("AB"), width=30, state='readonly')
 combostations.grid(column=1, row=14)
 combostations.current(1)
 
-locationLabel = ttk.Label(machTab, text = "Get Data At Location", font = 20)
-locationLabel.grid(column=0, row=13, pady=(15,0))
+locationLabel = ttk.Label(machTab, text="Get Data At Location", font=20)
+locationLabel.grid(column=0, row=13, pady=(15, 0))
 # stationCombo = ttk.Combobox(machTab, values=Bk.lstDisplay, state='readonly')
 # stationCombo.grid(column=0, row=13, pady=(20, 0))
 # stationCombo.current(0)
@@ -140,7 +142,7 @@ stationSearchField.grid(column=3, row=14, pady=(20, 0))
 
 def SearchNameID():
     userInput = stationSearchField.get()
-    displayString = GM.SearchNameID(userInput)
+    displayString = Gm.SearchNameID(userInput)
     stationSearchLabel.config(text=displayString)
 
 
@@ -148,6 +150,8 @@ stationSearchLabel = tk.Label(machTab, text=displayString)
 stationSearchLabel.grid(column=2, row=14, pady=(20, 0), padx=(60, 0))
 searchBtn = tk.Button(machTab, text="Search", command=SearchNameID)
 searchBtn.grid(column=4, row=14, pady=(20, 0))
+
+
 ####
 
 
@@ -160,20 +164,20 @@ searchBtn.grid(column=4, row=14, pady=(20, 0))
 
 
 def StartXRACR():
-    os.system("rarc -i " + GM.filelocation + "/gemmach &")
+    os.system("rarc -i " + Gm.filelocation + "/gemmach &")
 
 
 def StartBash():
-    if GM.bothCheked is 1:
+    if Gm.bothCheked is 1:
         os.system("./gemmachBashTest00.bash &")
-        print("Done, file located at -->" + GM.filelocation + "/bash")
-    if GM.bothCheked is 2:
+        print("Done, file located at -->" + Gm.filelocation + "/bash")
+    if Gm.bothCheked is 2:
         os.system("./gemmachBashTest12.bash &")
-        print("Done, file located at -->" + GM.filelocation + "/bash")
-    if GM.bothCheked is 3:
+        print("Done, file located at -->" + Gm.filelocation + "/bash")
+    if Gm.bothCheked is 3:
         os.system("./gemmachBashTest00.bash &")
         os.system("./gemmachBashTest12.bash &")
-        print("Done, file located at -->" + GM.filelocation + "/bash")
+        print("Done, file located at -->" + Gm.filelocation + "/bash")
 
 
 btn = tk.Button(machTab, text="Write to file (1)", command=Clicked, width=15, height=1)
@@ -195,16 +199,16 @@ extrationBtn.grid(column=10, row=3)
 
 
 def getLocation():
-    #Bk.removeAllfile(r''+Bk.filelocation+"/bash")
-    GM.removeAllfile(r'' + GM.filelocation + "/config")
+    # Bk.removeAllfile(r''+Bk.filelocation+"/bash")
+    Gm.removeAllfile(r'' + Gm.filelocation + "/config")
     location = int(combostations.current())
     province = comboprov.get()
-    locationlst = GM.provinceDic[province]
+    locationlst = Gm.provinceDic[province]
     loc = locationlst[location]
-    GM.locationExtraction(loc)
-    GM.launchTCL()
-    GM.removeEmptyFile(r'' + GM.filelocation + "/extracted")
-    GM.sortAndGenerate(GM.filelocation + "/extracted/")
+    Gm.locationExtraction(loc)
+    Gm.launchTCL()
+    Gm.removeEmptyFile(r'' + Gm.filelocation + "/extracted")
+    Gm.sortAndGenerate(Gm.filelocation + "/extracted/")
 
 
 locationBtn = tk.Button(machTab, text="Get data at location (4)", command=getLocation, width=17, height=1)
@@ -222,19 +226,19 @@ fireWorkTab = ttk.Frame(nb)
 nb.add(fireWorkTab, text="FireWork")
 
 # tab for help
-help = ttk.Frame(nb)
-nb.add(help, text="Help/Info")
+helptab = ttk.Frame(nb)
+nb.add(helptab, text="Help/Info")
 
-gemmachinfo = tk.Label(help, text = "GEMMACH - How it works:\n"
-                                    "Step 1: user enters all necesary info\n"
-                                    "Step 2: uses RARC command line settings to extract data from CMC server\n"
-                                    "Step 3: the bash script will isolate the corresponding polluant into a .fst file \n"
-                                    "Step 4: the tcl script will get the polluant data at a specific point on the map \n"
-                                    "GEMMACH - INFO:\n"
-                                    "- ALWAYS write to file when you are changing some settings\n "
-                                    "- Sometimes 00 has bugs, make sure to unselect and reselect it\n"
-                                    "- If the .fst already exists, you may skip the according step\n"
-                                    "")
+gemmachinfo = tk.Label(helptab, text="GEMMACH - How it works:\n"
+                                     "Step 1: user enters all necesary info\n"
+                                     "Step 2: uses RARC command line settings to extract data from CMC server\n"
+                                     "Step 3: the bash script will isolate the corresponding polluant into a .fst file \n"
+                                     "Step 4: the tcl script will get the polluant data at a specific point on the map \n"
+                                     "GEMMACH - INFO:\n"
+                                     "- ALWAYS write to file when you are changing some settings\n "
+                                     "- Sometimes 00 has bugs, make sure to unselect and reselect it\n"
+                                     "- If the .fst already exists, you may skip the according step\n"
+                                     "")
 gemmachinfo.grid(column=0, row=0)
 
 window.mainloop()

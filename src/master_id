@@ -1,0 +1,463 @@
+00010102 |          A1  ST. JOHN'S                     NL  4734N 5243W   6             010 3N2 00010102 SJO                      
+00010301 |          A1  CORNERBROOK                    NL  4857N 5803W   0             010 3N2 00010301 CRB                      
+00010400 |          A1  CENTRAL NEWFOUNDLAND           NL  4857N 5433W 141             010 3N2 00010400 CNF                      
+00010401 |          A1  MOUNT PEARL                    NL  4730N 5248W 135             010 3N2 00010401 MTP                      
+00010501 |          A1  GRAND FALLS - WINDSOR          NL  4856N 5540W  62             010 3N2 00010501 GFW                      
+00010601 |          A1  GOOSE BAY                      NL  5318N 6022W  32             010 3N2 00010601 GBY                      
+00010602 |          A1  CORNER BROOK                   NL  4857N 5755W  99             010 3N2 00010602 CBR                      
+00010701 |          A1  FERROLE POINT                  NL  5101N 5706W   4             010 3N2 00010701 FPT                      
+00010801 |          A1  PORT AU CHOIX                  NL  5043N 5722W  18             010 3N2 00010801 PCX                      
+00010901 |          A1  MARYSTOWN/BURIN                NL  4706N 5512W   0             010 3N2 00010901 MAB                      
+00011001 |          A1  LABRADOR CITY - SMOKEY MOUNTAI NL  5257N 6655W 540             010 3N2 00011001 LBC                      
+00011002 |          A1  FIREHALL-LABRADORCITY2         NL  5257N 6655W 558             010 3N2 00011002 FRH                      
+00020104 |          A1  CHARLOTTETOWN 2                PE  4614N 6308W   4             010 4A3 00020104 CHL                      
+00020301 |          A1  WELLINGTON                     PE  4627N 6400W   7             010 4A3 00020301 WLN                      
+00020401 |          A1  SOUTHAMPTON                    PE  4623N 6235W  30             010 4A3 00020401 STH                      
+00030101 |          A1  DALTECH                        NS  4439N 6334W  29             010 4A3 00030101 DLT                      
+00030113 |          A1  JOHNSTON BUILDING              NS  4439N 6334W  18             010 4A3 00030113 JNB                      
+00030118 |          A1  ROY BUILDING                   NS  4439N 6334W  24             010 4A3 00030118 HLF                      
+00030120 |          A1  LAKE MAJOR                     NS  4443N 6329W  68             010 4A3 00030120 LMA                      
+00030201 |          A1  PORT HAWKESBURY                NS  4537N 6122W  12             010 4A3 00030201 PHB                      
+00030202 |          A1  PORT HAWKESBURY PLAYGROUND     NS  4537N 6121W  25             010 4A3 00030202 PWP                      
+00030310 |          A1  WELTON STREET SYDNEY           NS  4609N 6010W  27             010 4A3 00030310 WST                      
+00030311 |          A1  WHITNEY PIER FIRE STATION      NS  4610N 6011W  30             010 4A3 00030311 SYD                      
+00030501 |          A1  KEJIMKUJIK NATIONAL PARK       NS  4426N 6512W 120             010 4A3 00030501 KEJ                      
+00030502 |          A1  KEJIMKUJIK SITE B              NS  4424N 6512W 127             010 4A3 00030502 KJM                      
+00030701 |          A1  AYLESFORD MOUNTAIN             NS  4504N 6450W 236             010 4A3 00030701 AYL                      
+00030801 |          A1  DAYTON                         NS  4350N 6605W  33             010 4A3 00030801 DAY                      
+00030901 |          A1  PICTOU                         NS  4541N 6242W  11             010 4A3 00030901 PCT                      
+00031001 |          A1  SABLE ISLAND                   NS  4356N 5954W   9             010 4A3 00031001 SBI                      
+00031101 |          A1  KENTVILLE                      NS  4504N 6429W  58             010 4A3 00031101 KNT                      
+00031201 |          A1  GRANTON                        NS  4538N 6244W  43             010 4A3 00031201 GRT                      
+00040103 |          A1  ABERDEEN STREET                NB  4557N 6639W  10             010 4A3 00040103 FRD                      
+00040203 |          A1  FOREST HILLS                   NB  4519N 6600W  40             010 4A3 00040203 FHL                      
+00040205 |          A1  REGIONAL CENTER                NB  4515N 6605W  56             010 4A3 00040205 RGC                      
+00040206 |          A1  CUSTOMS BUILDING               NB  4516N 6604W  10             010 4A3 00040206 CBL                      
+00040207 |          A1  WEST SIDE                      NB  4515N 6605W  59             010 4A3 00040207 SJW                      
+00040208 |          A1  CHAMPLAIN HEIGHTS SCHOOL       NB  4517N 6600W  45             010 4A3 00040208 CMS                      
+00040209 |          A1  CASTLE STREET                  NB  4517N 6603W  29             010 4A3 00040209 CAS                      
+00040302 |          A1  MONCTON                        NB  4606N 6447W  12             010 4A3 00040302 MOC                      
+00040601 |          A1  BLISSVILLE - SUNBURY COUNTY    NB  4536N 6634W  11             010 4A3 00040601 BVL                      
+00040701 |          A1  NORTON - KINGS COUNTY          NB  4539N 6542W  20             010 4A3 00040701 NRT                      
+00040801 |          A1  CANTERBURY                     NB  4557N 6729W 153             010 4A3 00040801 CNT                      
+00040901 |          A1  ST. ANDREWS                    NB  4505N 6704W  57             010 4A3 00040901 SAN                      
+00041001 |          A1  CAMPOBELLO ISLAND              NB  4452N 6657W  28             010 4A3 00041001 CBI                      
+00041101 |          A1  ST. LEONARD                    NB  4709N 6750W 245             010 4A3 00041101 SLD                      
+00041201 |          A1  LOWER NEWCASTLE                NB  4704N 6525W  19             010 4A3 00041201 LNC                      
+00041302 |          A1  BATHURST                       NB  4737N 6538W  17             010 4A3 00041302 BAT                      
+00050102 |          A2  JARDIN BOTANIQUE               QC  4534N 7334W   0             010 5E4 00050102 BOT                      
+00050103 |          A2  SAINT-JEAN-BABTISTE            QC  4538N 7330W  12             010 5E4 00050103 SJB                      
+00050104 |          A2  ONTARIO                        QC  4531N 7334W  29             010 5E4 00050104 OTR                      
+00050109 |          A2  DUNCAN & DECARIE               QC  4530N 7340W  46             010 5E4 00050109 DUN                      
+00050110 |          A2  PARC-PILON                     QC  4536N 7338W  26             010 5E4 00050110 PIL                      
+00050113 |          A2  CHOMEDEY                       QC  4533N 7345W  40             010 5E4 00050113 CHM                      
+00050119 |          A2  BOURASSA                       QC  4531N 7329W  30             010 5E4 00050119 BSS                      
+00050122 |          A2  PARC SORBONNE                  QC  4527N 7329W  17             010 5E4 00050122 SRB                      
+00050124 |          A2  ANJOU                          QC  4536N 7333W   0             010 5E4 00050124 ANJ                      
+00050125 |          A2  CENTRE RECR. EDOUARD RIVEST    QC  4538N 7330W   0             010 5E4 00050125 CER                      
+00050126 |          A2  SAINTE-ANNE DE BELLEVUE        QC  4526N 7356W  39             010 5E4 00050126 SAB                      
+00050127 |          A2  SAINT-MICHEL                   QC  4534N 7337W   0             010 5E4 00050127 SMI                      
+00050128 |          A2  AEROPORT DE MONTREAL 1         QC  4528N 7344W  33             010 5E4 00050128 AM1                      
+00050129 |          A2  RIVIERES-DES-PRAIRIES          QC  4539N 7334W  28             010 5E4 00050129 RDP                      
+00050131 |          A2  HOCHELAGA-MAISONNEUVE          QC  4532N 7332W  20             010 5E4 00050131 HCH                      
+00050132 |          A2  AEROPORT DE MONTREAL 3         QC  4528N 7347W  32             010 5E4 00050132 AM3                      
+00050133 |          A2  CHENIER                        QC  4536N 7333W  37             010 5E4 00050133 CHN                      
+00050134 |          A2  MOLSON                         QC  4533N 7334W  50             010 5E4 00050134 MOL                      
+00050135 |          A2  CASERNE 17                     QC  4536N 7338W  33             010 5E4 00050135 A17                      
+00050136 |          A2  ST-DOMINIQUE                   QC  4531N 7334W  42             010 5E4 00050136 SSD                      
+00050137 |          A2  PARC VAILLANT                  QC  4542N 7339W  30             010 5E4 00050137 VLL                      
+00050138 |          A2  YORK-ROBERVAL                  QC  4528N 7335W  25             010 5E4 00050138 ROV                      
+00050204 |          A2  HULL (ILE)                     QC  4526N 7544W  49             010 5E4 00050204 HLL                      
+00050308 |          A2  DES SABLES                     QC  4649N 7113W   4             010 5E4 00050308 SBL                      
+00050310 |          A2  SAINT-CHARLES GARNIER          QC  4648N 7115W  74             010 5E4 00050310 SCG                      
+00050311 |          A2  PARC PRIMEVERES                QC  4646N 7122W  25             010 5E4 00050311 PPM                      
+00050403 |          A2  PARC WEBSTER                   QC  4524N 7153W 185             010 5E4 00050403 PWB                      
+00050404 |          A2  PARC CAMBRON                   QC  4525N 7152W 208             010 5E4 00050404 PCA                      
+00050504 |          A2  UNIVERSITE CHICOUTIMI          QC  4825N 7103W  92             010 5E4 00050504 UCH                      
+00050603 |          A2  ECOLE MURDOCH                  QC  4815N 7901W 302             010 5E4 00050603 EMU                      
+00050604 |          A2  PARC TREMBLAY                  QC  4814N 7859W 290             010 5E4 00050604 PTR                      
+00050803 |          A2  TROIS-RIVIERES-MEES            QC  4621N 7233W  18             010 5E4 00050803 3RM                      
+00050902 |          A2  PARC BERTHIER                  QC  4826N 7111W 102             010 5E4 00050902 PBE                      
+00051201 |          A2  FRIGON                         QC  4633N 7244W 111             010 5E4 00051201 FGN                      
+00051501 |          A2  ZEPHIRIN                       QC  4603N 7240W  54             010 5E4 00051501 ZPH                      
+00051801 |          A2  ECOLE MARTEL 2                 QC  4603N 7308W  19             010 5E4 00051801 EM2                      
+00051802 |          A2  GEORGE                         QC  4603N 7307W  29             010 5E4 00051802 GEO                      
+00051901 |          A2  ROUTE 385 (FORESTVILLE)        QC  4851N 6906W 172             010 5E4 00051901 FRS                      
+00052001 |          A2  CHARETTE                       QC  4626N 7254W 116             010 5E4 00052001 CHA                      
+00052201 |          A2  SAINT-SIMON                    QC  4543N 7250W  40             010 5E4 00052201 SSI                      
+00052301 |          A2  SAINT-FAUSTIN                  QC  4602N 7429W 395             010 5E4 00052301 SFN                      
+00052401 |          A2  LA PECHE                       QC  4537N 7601W 193             010 5E4 00052401 PEC                      
+00052601 |          A2  VARENNES 1                     QC  4543N 7323W  20             010 5E4 00052601 VR1                      
+00052602 |          A2  VARENNES 2                     QC  4540N 7326W  16             010 5E4 00052602 VR2                      
+00052701 |          A2  TEMISCAMING                    QC  4643N 7906W 250             010 5E4 00052701 TMS                      
+00052801 |          A2  AUCLAIR                        QC  4744N 6842W 326             010 5E4 00052801 ACL                      
+00053201 |          A2  PEMONCA                        QC  4849N 7244W 223             010 5E4 00053201 PEM                      
+00053301 |          A2  DESCHAMBAULT-RAMCO             QC  4641N 7158W  50             010 5E4 00053301 DST                      
+00053401 |          A2  CATHERINE                      QC  4650N 7137W 127             010 5E4 00053401 CTH                      
+00053501 |          A2  FRANCOIS                       QC  4701N 7052W  54             010 5E4 00053501 FRN                      
+00053601 |          A2  NOTRE-DAME DU ROSAIRE          QC  4651N 7027W 422             010 5E4 00053601 NDR                      
+00053701 |          A2  HILAIRE                        QC  4549N 7051W 502             010 5E4 00053701 HLR                      
+00053801 |          A2  TINGWICK                       QC  4554N 7157W 258             010 5E4 00053801 TIN                      
+00053901 |          A2  EDOUARD                        QC  4739N 7217W 363             010 5E4 00053901 EDR                      
+00054102 |          A2  MONT SUTTON/ROUND TOP RIDGE    QC  4505N 7233W 745             010 5E4 00054102 MST                      
+00054201 |          A2  CHAPAIS                        QC  4949N 7459W 368             010 5E4 00054201 CAP                      
+00054301 |          A2  VILLEROY                       QC  4626N 7156W   0             010 5E4 00054301 VIL                      
+00054401 |          A2  SAINT-ANICET                   QC  4507N 7417W  49             010 5E4 00054401 ANI                      
+00054501 |          A2  L'ASSOMPTION                   QC  4549N 7326W  12             010 5E4 00054501 ASM                      
+00054601 |          A2  MURDOCHVILLE-PARC              QC  4857N 6530W 537             010 5E4 00054601 MUR                      
+00054703 |          A2  BECANCOUR (ARENA)              QC  4621N 7226W   8             010 5E4 00054703 BCR                      
+00054801 |          A2  STUKELY                        QC  4522N 7216W 330             010 5E4 00054801 STU                      
+00054901 |          A2  DITTON                         QC  4522N 7115W 476             010 5E4 00054901 DTN                      
+00055001 |          A2  MONT SAINT-MICHEL              QC  4646N 7526W 257             010 5E4 00055001 MSM                      
+00055101 |          A2  BELL                           QC  4826N 7712W 310             010 5E4 00055101 BLL                      
+00055201 |          A2  LEMIEUX                        QC  4618N 7204W  92             010 5E4 00055201 LMX                      
+00055301 |          A2  L'ACADIE                       QC  4518N 7321W  44             010 5E4 00055301 LCD                      
+00055401 |          A2  ROY                            QC  4622N 7231W  20             010 5E4 00055401 ROY                      
+00055501 |          A2  FRELIGHSBURG                   QC  4503N 7252W 176             010 5E4 00055501 FRL                      
+00055601 |          A2  MINGAN                         QC  5016N 6413W   2             010 5E4 00055601 MNG                      
+00055702 |          A2  PARC GEORGES MARANDA           QC  4648N 7110W 106             010 5E4 00055702 PGN                      
+00060104 |          A3  OTTAWA DOWNTOWN                ON  4526N 7541W  72             010 5E4 00060104 OTC                      
+00060106 |          A3  OTTAWA CENTRAL                 ON  4523N 7543W  77             010 5E4 00060106 OTT                      
+00060204 |          A3  WINDSOR DOWNTOWN               ON  4219N 8303W 185             010 5E4 00060204 WDN                      
+00060211 |          A3  WINDSOR WEST                   ON  4218N 8304W 180             010 5E4 00060211 GWI                      
+00060212 |          A3  WINDSOR E                      ON  4217N 8306W   0             010 5E4 00060212 EWI                      
+00060213 |          A3  WINDSOR F                      ON  4219N 8260W   0             010 5E4 00060213 FWI                      
+00060214 |          A3  WINDSOR D                      ON  4215N 8301W   0             010 5E4 00060214 DWI                      
+00060215 |          A3  WINDSOR B                      ON  4218N 8257W   0             010 5E4 00060215 BWI                      
+00060216 |          A3  WINDSOR C                      ON  4219N 8251W   0             010 5E4 00060216 CWI                      
+00060304 |          A3  KINGSTON                       ON  4413N 7631W  88             010 5E4 00060304 KST                      
+00060410 |          A3  TORONTO EAST                   ON  4345N 7916W 168             010 5E4 00060410 TRE                      
+00060413 |          A3  ETOBICOKE                      ON  4339N 7935W 157             010 5E4 00060413 ETO                      
+00060415 |          A3  MISSISSAUGA B                  ON  4334N 7937W 106             010 5E4 00060415 MIB                      
+00060418 |          A3  TORONTO G                      ON  4340N 7927W   0             010 5E4 00060418 TRG                      
+00060421 |          A3  TORONTO NORTH                  ON  4347N 7925W 190             010 5E4 00060421 TRN                      
+00060424 |          A3  TORONTO DOWNTOWN               ON  4340N 7923W 105             010 5E4 00060424 TRD                      
+00060426 |          A3  TORONTO E                      ON  4330N 7936W  77             010 5E4 00060426 TR2                      
+00060427 |          A3  TORONTO F                      ON  4340N 7924W   0             010 5E4 00060427 TRF                      
+00060428 |          A3  BRAMPTON                       ON  4342N 7947W 229             010 5E4 00060428 BRM                      
+00060429 |          A3  ETOBICOKE B                    ON  4337N 7931W 112             010 5E4 00060429 ETB                      
+00060430 |          A3  TORONTO WEST                   ON  4343N 7933W 141             010 5E4 00060430 TRW                      
+00060431 |          A3  DOWNSVIEW                      ON  4347N 7928W 205             010 5E4 00060431 DOW                      
+00060432 |          A3  FRANK MCKECHNIE COMMERCIAL CNT ON  4337N 7939W 176             010 5E4 00060432 FMC                      
+00060434 |          A3  MISSISSAUGA                    ON  4333N 7940W 113             010 5E4 00060434 MSS                      
+00060436 |          A3  HANLAN'S POINT(TORONTO ISLAND) ON  4337N 7923W  76             010 5E4 00060436 HAN                      
+00060437 |          A3  YORK UNIVERSITY                ON  4346N 7930W 186             010 5E4 00060437 YOR                      
+00060511 |          A3  467 BEACH BLVD.                ON  4317N 7947W   0             010 5E4 00060511 HAE                      
+00060512 |          A3  HAMILTON DOWNTOWN              ON  4315N 7952W  90             010 5E4 00060512 HAD                      
+00060513 |          A3  HAMILTON MOUNTAIN              ON  4314N 7952W 210             010 5E4 00060513 HAM                      
+00060515 |          A3  HAMILTON WEST                  ON  4315N 7954W  99             010 5E4 00060515 HMW                      
+00060516 |          A3  HARBOUR BAY FRONT              ON  4329N 7955W   0             010 5E4 00060516 HDD                      
+00060517 |          A3  CONFEDERATION PARK             ON  4315N 7945W   0             010 5E4 00060517 HCP                      
+00060520 |          A3  GERTRUDE & DEPEW ST.           ON  4315N 7949W   0             010 5E4 00060520 HCC                      
+00060605 |          A3  SUDBURY C                      ON  4630N 8060W   0             010 5E4 00060605 SUC                      
+00060607 |          A3  SUDBURY B                      ON  4628N 8059W 269             010 5E4 00060607 SUB                      
+00060608 |          A3  SUDBURY D                      ON  4628N 8104W   0             010 5E4 00060608 SDD                      
+00060609 |          A3  SUDBURY                        ON  4629N 8058W 260             010 5E4 00060609 SUD                      
+00060610 |          A3  SUDBURY                        ON  4630N 8100W 270             010 5E4 00060610 SUY                      
+00060707 |          A3  SAULT STE MARIE 2              ON  4632N 8421W   0             010 5E4 00060707 SS2                      
+00060708 |          A3  SAULT STE MARIE 3              ON  4631N 8423W   0             010 5E4 00060708 SS3                      
+00060709 |          A3  SAULT STE MARIE                ON  4632N 8419W 244             010 5E4 00060709 SSM                      
+00060807 |          A3  THUNDER BAY B                  ON  4822N 8917W   0             010 5E4 00060807 TBB                      
+00060808 |          A3  THUNDER BAY                    ON  4823N 8917W 192             010 5E4 00060808 THB                      
+00060809 |          A3  THUNDER BAY C                  ON  4823N 8917W 187             010 5E4 00060809 TBC                      
+00060903 |          A3  LONDON                         ON  4300N 8112W 270             010 5E4 00060903 LND                      
+00060904 |          A3  LONDON                         ON  4258N 8112W 245             010 5E4 00060904 LOD                      
+00061004 |          A3  SARNIA                         ON  4259N 8224W 178             010 5E4 00061004 SAR                      
+00061005 |          A3  SARNIA EAST                    ON  4257N 8212W   0             010 5E4 00061005 SAE                      
+00061006 |          A3  SARNIA SOUTH                   ON  4258N 8224W   0             010 5E4 00061006 SAS                      
+00061008 |          A3  SARNIA                         ON  4259N 8225W 178             010 5E4 00061008 SA1                      
+00061009 |          A3  SARNIA                         ON  4259N 8224W 182             010 5E4 00061009 SA2                      
+00061104 |          A3  PETERBOROUGH                   ON  4418N 7821W 225             010 5E4 00061104 PRB                      
+00061201 |          A3  MEMORIAL PARK (CORNWALL)       ON  4501N 7444W  51             010 5E4 00061201 COR                      
+00061302 |          A3  ST CATHARINES                  ON  4310N 7914W 104             010 5E4 00061302 SCT                      
+00061303 |          A3  ST CATHARINES B                ON  4309N 7915W   0             010 5E4 00061303 SCB                      
+00061402 |          A3  BRANTFORD                      ON  4308N 8018W 205             010 5E4 00061402 BNF                      
+00061502 |          A3  KITCHENER                      ON  4327N 8030W 325             010 5E4 00061502 KTC                      
+00061602 |          A3  OAKVILLE B                     ON  4324N 7944W  96             010 5E4 00061602 OKB                      
+00061603 |          A3  OAKVILLE                       ON  4329N 7942W 165             010 5E4 00061603 OKL                      
+00061702 |          A3  OSHAWA                         ON  4357N 7854W 155             010 5E4 00061702 OSA                      
+00061802 |          A3  GUELPH                         ON  4333N 8016W 328             010 5E4 00061802 GUL                      
+00061902 |          A3  BEAR CREEK                     ON  4232N 8223W 182             010 5E4 00061902 BER                      
+00062001 |          A3  NORTH BAY                      ON  4619N 7927W 219             010 5E4 00062001 NBA                      
+00062201 |          A3  MERLIN                         ON  4215N 8213W 193             010 5E4 00062201 MER                      
+00062401 |          A3  PARKHILL                       ON  4310N 8141W   0             010 5E4 00062401 PKH                      
+00062501 |          A3  TIVERTON                       ON  4419N 8133W 226             010 5E4 00062501 TIV                      
+00062601 |          A3  SIMCOE                         ON  4251N 8016W 240             010 5E4 00062601 SIM                      
+00062701 |          A3  LONG POINT PROV PARK           ON  4235N 8023W   0             010 5E4 00062701 LPP                      
+00063001 |          A3  BURLINGTON                     ON  4319N 7948W  78             010 5E4 00063001 BLT                      
+00063201 |          A3  STOUFFVILLE                    ON  4358N 7916W 264             010 5E4 00063201 STV                      
+00063301 |          A3  DORSET                         ON  4513N 7856W 318             010 5E4 00063301 DOR                      
+00063601 |          A3  LONGWOODS                      ON  4253N 8129W   0             010 5E4 00063601 LNW                      
+00063701 |          A3  GRAND BEND                     ON  4320N 8145W 186             010 5E4 00063701 GBE                      
+00063802 |          A3  NANTICOKE                      ON  4250N 8002W   0             010 5E4 00063802 NAN                      
+00064001 |          A3  EXPERIMENTAL LAKES             ON  4940N 9343W 387             010 6C5 00064001 FKD                      
+00064101 |          A3  ALGOMA                         ON  4702N 8423W 382             010 5E4 00064101 ALG                      
+00064401 |          A3  EGBERT                         ON  4414N 7947W 252             010 5E4 00064401 EGB                      
+00064502 |          A3  FT FRANCES                     ON  4838N 9323W   0             010 5E4 00064502 FTF                      
+00064601 |          A3  PT PETRE                       ON  4351N 7709W   0             010 5E4 00064601 PTP                      
+00064801 |          A3  BEACHVILLE                     ON  4306N 8052W   0             010 5E4 00064801 BEV                      
+00064901 |          A3  THOROLD                        ON  4307N 7912W   0             010 5E4 00064901 THR                      
+00065001 |          A3  BARRIE                         ON  4423N 7942W 225             010 5E4 00065001 BAR                      
+00065101 |          A3  NEWMARKET                      ON  4403N 7929W 268             010 5E4 00065101 NMR                      
+00065201 |          A3  PARRY SOUND                    ON  4520N 8002W 176             010 5E4 00065201 PSD                      
+00065301 |          A3  PORT STANLEY                   ON  4240N 8110W 212             010 5E4 00065301 PSL                      
+00065401 |          A3  WATER TREATMENT PLANT (BELLEVI ON  4409N 7724W  76             010 5E4 00065401 BLV                      
+00065501 |          A3  BURNT ISLAND                   ON  4548N 8257W 183             010 5E4 00065501 BIS                      
+00065601 |          A3  ESSEX                          ON  4210N 8250W 215             010 5E4 00065601 ESX                      
+00065701 |          A3  MORRISBURG                     ON  4454N 7511W  82             010 5E4 00065701 MRG                      
+00065801 |          A3  CHATHAM                        ON  4224N 8212W 179             010 5E4 00065801 CTM                      
+00065901 |          A3  PICKLE LAKE                    ON  5127N 9013W 388             010 5E4 00065901 PKL                      
+00066001 |          A3  FRASERDALE                     ON  4953N 8134W 213             010 5E4 00066001 FRA                      
+00066101 |          A3  BONNER LAKE                    ON  4923N 8207W 240             010 5E4 00066101 BOL                      
+00066201 |          A3  PETAWAWA                       ON  4600N 7726W 174             010 5E4 00066201 PEW                      
+00070118 |          A4  CITY OF WINNIPEG FLOOD PUMP ST MB  4956N 9707W 226             010 6C5 00070118 FPS                      
+00070119 |          A4  WINNIPEG - 65 ELLEN STREET     MB  4954N 9709W 226             010 6C5 00070119 ELL                      
+00070203 |          A4  ASSINIBOINE COMM. COLLEGE      MB  4951N 9955W 380             010 6C5 00070203 BDN                      
+00070301 |          A4  FLIN FLON                      MB  5446N10153W 333             010 6C5 00070301 PBU                      
+00070501 |          A4  THOMPSON                       MB  5545N 9752W 205             010 6C5 00070501 THO                      
+00080110 |          A4  REGINA                         SK  5027N10437W 577             010 6C5 00080110 REG                      
+00080211 |          A4  CORMAN PARK                    SK  5208N10640W 484             010 6C5 00080211 SKT                      
+00080402 |          A4  PRINCE ALBERT                  SK  5312N10545W 432             010 6C5 00080402 PAL                      
+00080901 |          A4  BRATT'S LAKE                   SK  5012N10412W 578             010 6C5 00080901 BLK                      
+00081001 |          A4  SPEEDY CREEK                   SK  5017N10749W 747             010 6C5 00081001 SPC                      
+00082001 |          A4  PINEHOUSE LAKE                 SK  5530N10643W 404             010 6C5 00082001 PNL                      
+00090120 |          A5  EDMONTON SOUTH                 AB  5330N11332W 670             010 7M6 00090120 EMS                      
+00090121 |          A5  EDMONTON EAST                  AB  5333N11322W 673             010 7M6 00090121 EES                      
+00090130 |          A5  EDMONTON CENTRAL               AB  5333N11330W 669             010 7M6 00090130 EMC                      
+00090131 |          A5  SHERWOOD PARK                  AB  5332N11319W   0             010 7M6 00090131 SHP                      
+00090132 |          A5  EDMONTON MCINTYRE              AB  5329N11328W 680             010 7M6 00090132 EDM                      
+00090133 |          A5  WOODCROFT                      AB  5334N11334W 674             010 7M6 00090133 ENW                      
+00090218 |          A5  CALGARY EAST                   AB  5101N11402W1031             010 7M6 00090218 CLE                      
+00090222 |          A5  CALGARY NORTH-WEST             AB  5105N11409W1115             010 7M6 00090222 CNW                      
+00090227 |          A5  CALGARY CENTRAL                AB  5103N11405W1049             010 7M6 00090227 CLC                      
+00090228 |          A5  CALGARY CENTRAL 2              AB  5103N11405W1049             010 7M6 00090228 CC2                      
+00090229 |          A5  CALGARY SOUTHEAST              AB  5057N11358W1032             010 7M6 00090229 CA0                      
+00090302 |          A5  RED DEER - RIVERSIDE DRIVE     AB  5218N11348W 849             010 7M6 00090302 RDR                      
+00090304 |          A5  RED DEER - LANCASTER           AB  5214N11346W 907             010 7M6 00090304 RLA                      
+00090402 |          A5  CRESCENT HEIGHTS               AB  5003N11041W 706             010 7M6 00090402 MED                      
+00090502 |          A5  LETHBRIDGE                     AB  4943N11248W 919             010 7M6 00090502 LBR                      
+00090601 |          A5  FORT SASKATCHEWAN              AB  5343N11313W 616             010 7M6 00090601 FSK                      
+00090602 |          A5  RANGE ROAD 220                 AB  5345N11308W 631             010 7M6 00090602 RR2                      
+00090603 |          A5  ROSS CREEK                     AB  5343N11312W 618             010 7M6 00090603 ROC                      
+00090604 |          A5  SCOTFORD                       AB  5347N11305W 624             010 7M6 00090604 SCO                      
+00090605 |          A5  STATION 401                    AB  5343N11310W 624             010 7M6 00090605 ST4                      
+00090606 |          A5  BRUDERHEIM                     AB  5348N11256W 631             010 7M6 00090606 BRU                      
+00090701 |          A5  FORT MCMURRAY ATHABASCA VALLEY AB  5644N11123W 250             010 7M6 00090701 FMA                      
+00090702 |          A5  FORT MCMURRAY PATRICIA MCINNES AB  5645N11129W 362             010 7M6 00090702 FMP                      
+00090703 |          A5  MILLENNIUM                     AB  5654N11123W   0             010 7M6 00090703 MIL                      
+00090801 |          A5  FORT MCKAY                     AB  5711N11138W 270             010 7M6 00090801 FMK                      
+00090802 |          A5  LOWER CAMP                     AB  5702N11130W 251             010 7M6 00090802 LOC                      
+00090803 |          A5  MILDRED LAKE                   AB  5703N11134W 319             010 7M6 00090803 MDL                      
+00090804 |          A5  MANNIX                         AB  5658N11129W 346             010 7M6 00090804 MAN                      
+00090805 |          A5  BUFFALO VIEWPOINT              AB  5660N11136W 340             010 7M6 00090805 BUV                      
+00090806 |          A5  SYNCRUDE UE1                   AB  5709N11139W 268             010 7M6 00090806 SYN                      
+00091001 |          A5  ESTHER                         AB  5140N11012W 706             010 7M6 00091001 ESR                      
+00091101 |          A5  ELK ISLAND NATIONAL PARK       AB  5341N11252W 713             010 7M6 00091101 EIN                      
+00091201 |          A5  HIGHTOWER RIDGE                AB  5339N11811W1487             010 7M6 00091201 HTR                      
+00091301 |          A5  TOMAHAWK                       AB  5322N11446W 791             010 7M6 00091301 TMH                      
+00091401 |          A5  VIOLET GROVE                   AB  5309N11508W 917             010 7M6 00091401 VGR                      
+00091501 |          A5  BEAVERLODGE                    AB  5512N11924W 746             010 7M6 00091501 BLG                      
+00091601 |          A5  CARROT CREEK                   AB  5336N11553W 861             010 7M6 00091601 CCR                      
+00091701 |          A5  STEEPER                        AB  5308N11705W1425             010 7M6 00091701 STE                      
+00091801 |          A5  FORT CHIPEWYAN                 AB  5842N11108W 210             010 7M6 00091801 FTC                      
+00091901 |          A5  CAROLINE                       AB  5157N11442W1141             010 7M6 00091901 CAR                      
+00092001 |          A5  HENRY PIRKER STATION           AB  5511N11848W 656             010 7M6 00092001 GRP                      
+00092101 |          A5  ALBIAN MINE SITE               AB  5717N11132W 296             010 7M6 00092101 ASI                      
+00092201 |          A5  LAMONT                         AB  5346N11253W 722             010 7M6 00092201 LAT                      
+00092301 |          A5  REDWATER                       AB  5351N11306W 629             010 7M6 00092301 RED                      
+00092401 |          A5  ACME GRAINGER                  AB  5129N11320W 844             010 7M6 00092401 ACM                      
+00092601 |          A5  BRETON                         AB  5305N11428W 833             010 7M6 00092601 BRE                      
+00092701 |          A5  CROSSFIELD-CARSTAIRS(PORTABLE) AB  5118N11400W 890             010 7M6 00092701 CCA                      
+00092801 |          A5  DRAYTON VALLEY                 AB  5313N11458W 876             010 7M6 00092801 DRV                      
+00092901 |          A5  EDSON                          AB  5335N11626W 927             010 7M6 00092901 EDS                      
+00093001 |          A5  EVERGREEN PARK                 AB  5507N11844W 645             010 7M6 00093001 EVP                      
+00093101 |          A5  GENESEE                        AB  5318N11413W 771             010 7M6 00093101 GEN                      
+00093202 |          A5  HINTON                         AB  5326N11733W 984             010 7M6 00093202 HIN                      
+00093301 |          A5  JAMES RIVER                    AB  5133N11422W1045             010 7M6 00093301 JRI                      
+00093401 |          A5  LACOMBE                        AB  5117N11326W 850             010 7M6 00093401 LAM                      
+00093501 |          A5  LIBERTY PARK                   AB  5207N11330W 884             010 7M6 00093501 LPA                      
+00093601 |          A5  LIMESTONE MOUNTAIN             AB  5156N11526W2106             010 7M6 00093601 LIM                      
+00093701 |          A5  MALMO                          AB  5226N11306W 823             010 7M6 00093701 MLM                      
+00093801 |          A5  MEADOWS                        AB  5332N11438W 735             010 7M6 00093801 MEA                      
+00093901 |          A5  POWERS                         AB  5338N11425W 775             010 7M6 00093901 POW                      
+00094001 |          A5  SMOKY HEIGHTS                  AB  5524N11817W 638             010 7M6 00094001 SHT                      
+00094101 |          A5  SUNDRE TOWNSIDE                AB  5129N11423W1085             010 7M6 00094101 SUT                      
+00094201 |          A5  WAGNER                         AB  5323N11425W 750             010 7M6 00094201 WA1                      
+00094202 |          A5  WAGNER 2                       AB  5330N11427W 776             010 7M6 00094202 WG2                      
+00094301 |          A5  COLD LAKE SOUTH                AB  5427N11010W 556             010 7M6 00094301 CDL                      
+00094401 |          A5  ST. LINA                       AB  5413N11130W 680             010 7M6 00094401 SLA                      
+00100051 |          A6  CROFTON SUBSTATION             BC  4853N12339W   0             010 8P7 00100051 CRO                      
+00100082 |          A6  QUADRA ISLAND - CAPE MUDGE VIL BC  5001N12512W   0             010 8P7 00100082 CMV                      
+00100110 |          A6  KENSINGTON PARK                BC  4917N12258W 106             010 8P7 00100110 KNP                      
+00100111 |          A6  ROCKY PT. PARK                 BC  4917N12251W   7             010 8P7 00100111 RPP                      
+00100112 |          A6  ROBSON SQUARE                  BC  4917N12307W  34             010 8P7 00100112 RSQ                      
+00100118 |          A6  KITSILANO                      BC  4916N12310W  34             010 8P7 00100118 KLN                      
+00100119 |          A6  BURNABY SOUTH                  BC  4913N12259W 120             010 8P7 00100119 BRS                      
+00100121 |          A6  SECOND NARROWS                 BC  4918N12301W   5             010 8P7 00100121 SDN                      
+00100125 |          A6  NORTH DELTA                    BC  4909N12254W 113             010 8P7 00100125 NOD                      
+00100126 |          A6  BURNABY MOUNTAIN               BC  4917N12255W 336             010 8P7 00100126 BRB                      
+00100127 |          A6  SURREY EAST                    BC  4908N12242W  87             010 8P7 00100127 SRY                      
+00100128 |          A6  RICHMOND SOUTH                 BC  4909N12306W   5             010 8P7 00100128 RMS                      
+00100129 |          A6  PORT COQUITLAM NORTH           BC  4917N12244W  35             010 8P7 00100129 PCN                      
+00100131 |          A6  SEYMOUR FALLS                  BC  4926N12258W 222             010 8P7 00100131 SEF                      
+00100132 |          A6  MAHON PARK                     BC  4919N12305W  71             010 8P7 00100132 MNP                      
+00100133 |          A6  BURMOUNT                       BC  4916N12256W 159             010 8P7 00100133 BUR                      
+00100134 |          A6  VANCOUVER INTL. AIRPORT        BC  4911N12309W   3             010 8P7 00100134 VIA                      
+00100135 |          A6  DOUGLAS COLLEGE                BC  4917N12247W  39             010 8P7 00100135 DGC                      
+00100136 |          A6  CAPITOL HILL                   BC  4917N12259W 204             010 8P7 00100136 CAH                      
+00100137 |          A6  BURNABY NORTH                  BC  4917N12300W 104             010 8P7 00100137 BUN                      
+00100138 |          A6  HORSHESHOE BAY                 BC  4922N12317W  62             010 8P7 00100138 HOB                      
+00100140 |          A6  TSAWWASSEN                     BC  4901N12305W  53             010 8P7 00100140 TWW                      
+00100202 |          A6  PRINCE GEORGE PLAZA 400        BC  5355N12245W 571             010 8P7 00100202 PRP                      
+00100203 |          A6  PRINCE GEORGE BC RAIL WAREHOUS BC  5352N12245W 595             010 8P7 00100203 PRS                      
+00100204 |          A6  VAN BIEN SCHOOL                BC  5353N12246W   0             010 8P7 00100204 VBS                      
+00100205 |          A6  PRINCE GEORGE GLADSTONE SCHOOL BC  5351N12246W 618             010 8P7 00100205 GLS                      
+00100206 |          A6  PRINCE GEORGE LAKEWOOD         BC  5355N12248W 607             010 8P7 00100206 LAK                      
+00100207 |          A6  CNR SITE                       BC  5353N12244W   0             010 8P7 00100207 CNR                      
+00100209 |          A6  GLENVIEW SCHOOL                BC  5360N12247W 750             010 8P7 00100209 GES                      
+00100210 |          A6  PRINCE GEORGE CBC TRANSMITTER  BC  5354N12242W 736             010 8P7 00100210 CBC                      
+00100211 |          A6  PRINCE GEORGE JAIL             BC  5354N12243W 628             010 8P7 00100211 PGJ                      
+00100212 |          A6  PRINCE GEORGE MARSULEX ACID PL BC  5350N12244W 595             010 8P7 00100212 MAR                      
+00100214 |          A6  PRINCE GEORGE EXPLORATION PLAC BC  5354N12244W 576             010 8P7 00100214 PGX                      
+00100304 |          A6  VICTORIA TOPAZ                 BC  4827N12322W  31             010 8P7 00100304 VIC                      
+00100305 |          A6  OAK BAY REC. CENTRE            BC  4826N12319W   0             010 8P7 00100305 OBR                      
+00100306 |          A6  CAMOSUN COLLEGE                BC  4829N12325W   0             010 8P7 00100306 CAC                      
+00100307 |          A6  ROYAL ROADS UNIVERSITY         BC  4826N12328W   5             010 8P7 00100307 RRU                      
+00100308 |          A6  COLWOOD CITY HALL              BC  4825N12330W  78             010 8P7 00100308 CCH                      
+00100309 |          A6  KEATING                        BC  4834N12324W   0             010 8P7 00100309 KEA                      
+00100310 |          A6  BRAEFOOT                       BC  4828N12321W   0             010 8P7 00100310 BRA                      
+00100311 |          A6  DND HOSPITAL AIR STATION       BC  4826N12325W   0             010 8P7 00100311 DND                      
+00100312 |          A6  ESQUIMALT GRAVING DOCK         BC  4826N12325W  28             010 8P7 00100312 EGD                      
+00100314 |          A6  SAANICH STELLYS CROSS ROAD     BC  4835N12327W   0             010 8P7 00100314 SCR                      
+00100316 |          A6  LANGFORD LAKEWOOD ELEMENTARY S BC  4828N12330W  97             010 8P7 00100316 LES                      
+00100317 |          A6  JAMES BAY DANIELS ELECTRONICS  BC  4825N12323W  11             010 8P7 00100317 JBD                      
+00100401 |          A6  FEDERAL BUILDING               BC  5040N12020W 374             010 8P7 00100401 FEB                      
+00100402 |          A6  KAMLOOPS BROCKLEHURST          BC  5042N12024W 342             010 8P7 00100402 KAM                      
+00100602 |          A6  AIR - MOE OFFICE               BC  4933N11935W   0             010 8P7 00100602 MOE                      
+00100701 |          A6  KELOWNA COLLEGE                BC  4952N11928W 346             010 8P7 00100701 KEL                      
+00100702 |          A6  KELOWNA                        BC  4952N11929W 363             010 8P7 00100702 KEW                      
+00100801 |          A6  KEREMEOS CENTRAL               BC  4912N11950W 414             010 8P7 00100801 KER                      
+00101003 |          A6  CENTRAL ABBOTSFORD             BC  4903N12219W  59             010 8P7 00101003 CAB                      
+00101005 |          A6  ABBOTSFORD AIRPORT             BC  4901N12220W  65             010 8P7 00101005 ABA                      
+00101101 |          A6  CHILLIWACK AIRPORT             BC  4909N12156W  12             010 8P7 00101101 CHW                      
+00101202 |          A6  MEADOWLANDS ELEM. SCHOOL       BC  4915N12243W   2             010 8P7 00101202 MES                      
+00101301 |          A6  LANGLEY CENTRAL                BC  4906N12234W  90             010 8P7 00101301 LAC                      
+00101401 |          A6  HOPE AIRPORT                   BC  4922N12130W  40             010 8P7 00101401 HOA                      
+00101501 |          A6  GOLDEN EARS ELEM. SCHOOL       BC  4913N12235W  50             010 8P7 00101501 GEA                      
+00101601 |          A6  SQUAMISH                       BC  4942N12309W   7             010 8P7 00101601 SQ1                      
+00101602 |          A6  SQU GOVERNMENT BUILDING        BC  4942N12309W   0             010 8P7 00101602 SQ2                      
+00101603 |          A6  SQUAMISH ELEMENTARY            BC  4942N12309W   6             010 8P7 00101603 SQE                      
+00101701 |          A6  QUESNEL SENIOR SECONDARY       BC  5259N12230W 743             010 8P7 00101701 QUS                      
+00101702 |          A6  QUESNEL MAPLE DRIVE            BC  5258N12227W 615             010 8P7 00101702 QUM                      
+00101703 |          A6  QUESNEL PINECREST CENTRE       BC  5300N12231W 505             010 8P7 00101703 QUC                      
+00101704 |          A6  CORRELIEU SCHOOL               BC  5258N12231W 478             010 8P7 00101704 COS                      
+00101801 |          A6  CRESTON PC SCHOOL              BC  4906N11631W 607             010 8P7 00101801 CPC                      
+00101803 |          A6  CRESTON PIPER FARMS            BC  4901N11632W 415             010 8P7 00101803 CPF                      
+00101903 |          A6  CRANBROOK GREEN                BC  4931N11545W   0             010 8P7 00101903 CRG                      
+00102001 |          A6  SATURNA                        BC  4847N12308W 102             010 8P7 00102001 SAT                      
+00102102 |          A6  LABIEUX ROAD                   BC  4912N12200W 113             010 8P7 00102102 NNA                      
+00102103 |          A6  HARMAC                         BC  4906N12351W  48             010 8P7 00102103 HAR                      
+00102201 |          A6  BUTLER PARK                    BC  4906N11742W 423             010 8P7 00102201 BUT                      
+00102202 |          A6  TRAIL WEST                     BC  4906N11742W   0             010 8P7 00102202 TWE                      
+00102203 |          A6  SECHEKT TRAIL BAY MALL         BC  4928N12346W   0             010 8P7 00102203 SEC                      
+00102301 |          A6  CRANBERRY LAKE                 BC  4952N12431W 211             010 8P7 00102301 CRA                      
+00102302 |          A6  WILDWOOD MOTORS                BC  4953N12433W 135             010 8P7 00102302 MOT                      
+00102303 |          A6  POWELL RIVER JAMES THOMPSON SC BC  4954N12434W 142             010 8P7 00102303 PRT                      
+00102401 |          A6  SMITHERS ST JOSEPHS            BC  5447N12711W 496             010 8P7 00102401 SMT                      
+00102501 |          A6  TERRACE BC ACCESS CENTRE       BC  5431N12836W  67             010 8P7 00102501 TER                      
+00102502 |          A6  BC HYDRO BUILDING              BC  5431N12834W   0             010 8P7 00102502 BCH                      
+00102503 |          A6  TERRACE SKEENA MIDDLE SCHOOL   BC  5431N12836W  81             010 8P7 00102503 SKE                      
+00102601 |          A6  PORT ALBERNI TOWNSIDE          BC  4914N12449W   6             010 8P7 00102601 PAT                      
+00102602 |          A6  PORT ALBERNI ELEMENTARY        BC  4916N12448W  21             010 8P7 00102602 OIE                      
+00102701 |          A6  WILLIAMS LAKE COLUMNEETZA SCHO BC  5209N12209W 631             010 8P7 00102701 WKC                      
+00102702 |          A6  SKYLINE SCHOOL                 BC  5208N12209W 682             010 8P7 00102702 SKS                      
+00102703 |          A6  FIREHALL                       BC  5208N12208W   0             010 8P7 00102703 FIH                      
+00102704 |          A6  WATER TOWER                    BC  5208N12207W   0             010 8P7 00102704 TWR                      
+00102705 |          A6  168 MILE ROAD                  BC  5210N12209W   0             010 8P7 00102705 MLR                      
+00102706 |          A6  WILLIAMS LAKE CRD LIBRARY      BC  5208N12209W 610             010 8P7 00102706 WLL                      
+00102801 |          A6  ELK FALLS DOGWOOD              BC  5001N12515W  64             010 8P7 00102801 ELF                      
+00102802 |          A6  TYEE SPIT                      BC  5003N12515W   7             010 8P7 00102802 TYE                      
+00102901 |          A6  B.C. ACCESS CENTRE             BC  5139N12117W   0             010 8P7 00102901 BCA                      
+00103001 |          A6  JOHNSON LAKE                   BC  4955N11544W   0             010 8P7 00103001 JHL                      
+00103101 |          A6  FOREST SERVICE COMPOUND        BC  5031N11602W   0             010 8P7 00103101 FSC                      
+00103102 |          A6  RADIUM PM10                    BC  5022N11603W   0             010 8P7 00103102 RAD                      
+00103201 |          A6  LADY GREY SCHOOL               BC  5118N11658W   0             010 8P7 00103201 LGS                      
+00103202 |          A6  GOLDEN HOSPITAL                BC  5118N11658W 792             010 8P7 00103202 GHO                      
+00103203 |          A6  GOLDEN CPR                     BC  5116N11656W 862             010 8P7 00103203 GCP                      
+00103204 |          A6  GOLDEN GOLF COURSE             BC  5120N11700W 800             010 8P7 00103204 GCO                      
+00103205 |          A6  GOLDEN TOWNSITE                BC  5118N11658W 860             010 8P7 00103205 GTO                      
+00103301 |          A6  GOVERNMENT BUILDING            BC  4930N11717W   0             010 8P7 00103301 GBU                      
+00103302 |          A6  NELSON KUTENAI PLACE           BC  4929N11718W 563             010 8P7 00103302 NLS                      
+00103401 |          A6  FIREHALL                       BC  5059N11812W   0             010 8P7 00103401 FEH                      
+00103501 |          A6  SENIOR CITIZEN CENTRE          BC  4918N11740W   0             010 8P7 00103501 SCC                      
+00103502 |          A6  CASTLEGAR ZINIO PARK           BC  4919N11740W 487             010 8P7 00103502 CIK                      
+00103601 |          A6  AGASSIZ                        BC  4914N12146W  23             010 8P7 00103601 SSZ                      
+00103602 |          A6  MISSION SECONDARY SCHOOL       BC  4905N12211W   0             010 8P7 00103602 MIS                      
+00103701 |          A6  CHETWYND                       BC  5542N12138W   0             010 8P7 00103701 CHE                      
+00103702 |          A6  PINE RIVER GAS PLANT           BC  5535N12155W1160             010 8P7 00103702 PRG                      
+00103704 |          A6  PINE RIVER HASLER              BC  5536N12158W 603             010 8P7 00103704 PIN                      
+00103801 |          A6  FORT ST. JAMES                 BC  5427N12415W   0             010 8P7 00103801 FSJ                      
+00103901 |          A6  RIVERLODGE                     BC  5403N12840W  19             010 8P7 00103901 RVR                      
+00103902 |          A6  KITIMAT HAUL ROAD              BC  5402N12842W  11             010 8P7 00103902 KHR                      
+00103903 |          A6  KITIMAT RAIL                   BC  5404N12841W   0             010 8P7 00103903 KRA                      
+00103904 |          A6  KITIMAT WHITESAIL              BC  5404N12838W  94             010 8P7 00103904 KWH                      
+00103905 |          A6  KITIMAT HAISLA VILLAGE         BC  5358N12839W   5             010 8P7 00103905 KVI                      
+00103906 |          A6  KITIMAT RIO TINTO ALCAN        BC  5401N12842W  20             010 8P7 00103906 RTA                      
+00104001 |          A6  RCMP BUILDING                  BC  5016N11916W   0             010 8P7 00104001 RCM                      
+00104002 |          A6  COLDSTREAM RANCH               BC  5013N11912W   0             010 8P7 00104002 COL                      
+00104003 |          A6  VERNON SCIENCE CENTRE          BC  5015N11916W 388             010 8P7 00104003 VSC                      
+00104101 |          A6  GRAND FORKS CITY HALL          BC  4902N11826W 517             010 8P7 00104101 CIH                      
+00104201 |          A6  MERRIT SCHOOL                  BC  5007N12048W   0             010 8P7 00104201 MEC                      
+00104301 |          A6  TAYLOR TOWNSITE                BC  5609N12041W 475             010 8P7 00104301 TAT                      
+00104302 |          A6  TAYLOR SOUTH HILL              BC  5606N12040W 689             010 8P7 00104302 TSH                      
+00104303 |          A6  BESSBOROUGH 237 ROAD           BC  5548N12029W 831             010 8P7 00104303 BSR                      
+00104304 |          A6  FARMINGTON COMMUNITY HALL      BC  5555N12032W 698             010 8P7 00104304 FAC                      
+00104305 |          A6  TOMSLAKE 197 ROAD EAST         BC  5535N12005W 769             010 8P7 00104305 TOM                      
+00104401 |          A6  PORT EDWARD PACIFIC            BC  5413N13017W  12             010 8P7 00104401 PEP                      
+00104501 |          A6  QUADAR ISLAND LIGHTHOUSE       BC  5000N12512W   0             010 8P7 00104501 QIL                      
+00104601 |          A6  TELKWA                         BC  5441N12703W 515             010 8P7 00104601 TEL                      
+00104701 |          A6  GALLOWAY RAPIDS                BC  5416N13016W   3             010 8P7 00104701 GAR                      
+00104801 |          A6  DUNCAN DEYKIN AVENUE           BC  4848N12339W  31             010 8P7 00104801 DDA                      
+00104802 |          A6  CUNCAN SCRAN SCHOOL            BC  5614N12049W   0             010 8P7 00104802 CSS                      
+00104803 |          A6  DUNCAN CAIRNSMORE              BC  4847N12343W  33             010 8P7 00104803 DNC                      
+00104901 |          A6  GENELLE                        BC  4912N11742W   0             010 8P7 00104901 GEL                      
+00105001 |          A6  WHISTLER MEADOW PARK           BC  5009N12258W 639             010 8P7 00105001 WHS                      
+00105101 |          A6  HOUSTON FIREHALL               BC  5424N12639W 600             010 8P7 00105101 HOF                      
+00105201 |          A6  BURNS LAKE FIRE CENTRE         BC  5414N12546W 716             010 8P7 00105201 FCE                      
+00105301 |          A6  LANGDALE ELEMENTARY            BC  4927N12330W  91             010 8P7 00105301 LAN                      
+00105401 |          A6  BOSTON BAR RCMP STATION        BC  4952N12127W   0             010 8P7 00105401 BBR                      
+00105501 |          A6  FORT ST. JOHN NP CULTURAL CENT BC  5615N12051W 683             010 8P7 00105501 NCC                      
+00105502 |          A6  FORT ST-JOHN - FEHR RESIDENCE  BC  5615N12046W 674             010 8P7 00105502 FSF                      
+00105503 |          A6  DOIG RIVER CULTURAL CENTRE     BC  5635N12030W 646             010 8P7 00105503 DRC                      
+00105504 |          A6  FORT ST JOHN KEY LEARNING CENT BC  5615N12051W 679             010 8P7 00105504 LC1                      
+00105601 |          A6  OSOYOOS SHAW GARDENS           BC  4902N11926W 297             010 8P7 00105601 OSG                      
+00105604 |          A6  OSOYOOS CANADA CUSTOMS         BC  4900N11928W 301             010 8P7 00105604 OYC                      
+00105701 |          A6  W.E. GRAHAM SCHOOL ROOF        BC  4946N11728W   0             010 8P7 00105701 GSR                      
+00105801 |          A6  STEWART                        BC  5557N12959W   0             010 8P7 00105801 STW                      
+00105901 |          A6  CASTLEGAR FIRE HALL            BC  5000N11500W   0             010 8P7 00105901 CFH                      
+00105902 |          A6  KOKANEE PARK                   BC  5000N11500W   0             010 8P7 00105902 KPA                      
+00106001 |          A6  HEIMBECKER'S PROPERTY          BC  5319N12011W   0             010 8P7 00106001 HEP                      
+00106101 |          A6  VALEMOUNT                      BC  5250N11915W   0             010 8P7 00106101 VAL                      
+00106201 |          A6  COMINCO STATION                BC  4856N11747W   0             010 8P7 00106201 CST                      
+00106301 |          A6  NEW AIYANSH                    BC  5513N12905W   0             010 8P7 00106301 NEA                      
+00106401 |          A6  ROBSON                         BC  4920N11742W 411             010 8P7 00106401 ROB                      
+00106502 |          A6  FORT NELSON CHALO SCHOOL       BC  5845N12240W 385             010 8P7 00106502 FNC                      
+00106701 |          A6  CROFTON SUBSTATION             BC  4852N12339W  35             010 8P7 00106701 CNS                      
+00106702 |          A6  CROFTON GEORGIA HEIGHTS        BC  4850N12339W 142             010 8P7 00106702 ESW                      
+00106800 |          A6  UCLUELET AMPHITRITE POINT      BC  4855N12532W  14             010 8P7 00106800 UAP                      
+00106900 |          A6  VANDERHOOF                     BC  5401N12400W 638             010 8P7 00106900 VND                      
+00107000 |          A6  RUMBLE BEACH HOSPITAL          BC  5026N12729W  22             010 8P7 00107000 RLE                      
+00107001 |          A6  PORT ALICE LAKE ROAD           BC  5022N12726W  61             010 8P7 00107001 PAR                      
+00107100 |          A6  COURTENAY ELEMENTARY SCHOOL    BC  4941N12300W  28             010 8P7 00107100 CNE                      
+00107200 |          A6  STRATHNAVER MEADOWBANK         BC  5318N12231W 670             010 8P7 00107200 STM                      
+00119003 |          A6  NAPS HOUSE                     YK  6043N13503W 673             010 8P7 00119003 NAH                      
+00119004 |          A6  STEELE STREET STATION          YK  6043N13504W 641             010 8P7 00119004 SSS                      
+00129001 |          A6  POST OFFICE SITE               NT  6227N11422W 187             010 8P7 00129001 POS                      
+00129003 |          A6  SIR JOHN FRANKLIN HS           NT  6227N11422W 190             010 8P7 00129003 SJF                      
+00129103 |          A6  FORT LIARD                     NT  6014N12328W 289             010 8P7 00129103 FLI                      
+00129203 |          A6  INUVIK                         NT  6821N13343W  30             010 8P7 00129203 INU                      
+00129302 |          A6  WILDLIFE SERVICES GARAGE       NU  6345N 6831W  14             010 8P7 00129302 SEG                      
+00129303 |          A6  WATERLAB                       NU  6345N 6831W  27             010 8P7 00129303 WTL                      
+00129501 |          A6  SNARE RAPIDS                   NT  6331N11600W 230             010 8P7 00129501 SHR                      
+00129601 |          A6  FORT SMITH                     NT  6000N11154W 207             010 8P7 00129601 FOS                      
+00129602 |          A6  WOOD BUFFALO PARK              NT  6009N11338W 284             010 8P7 00129602 WOP                      

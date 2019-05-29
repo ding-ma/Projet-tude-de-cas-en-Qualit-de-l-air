@@ -294,13 +294,13 @@ def time(sTime, eTime):
         unformattedSelectedTime[i:i + 3] for i in range(0, len(unformattedSelectedTime), 3))
 
 
+bothCheked = 0
 def modelCheckbox(h_00, h_12):
     global modelHour
     global modelHourBash
     global bothCheked
     h_00 = int(h_00)
     h_12 = int(h_12)
-    bothCheked = 0
     if (h_00 is True and h_12 is False) or (h_00 is 1 and h_12 is 0):
         modelHour = "00"
         modelHourBash = "00"
