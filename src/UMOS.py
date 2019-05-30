@@ -1,23 +1,146 @@
 import csv
 import os
+import re
+import shutil
+
+filelocation = os.getcwd()
+
+oddMonths = ("01", "03", "05", "07", "09", "11")
+evenMonths = ("04", "06", "08", "10", "12")
 
 
-# with open("2018012000.txt", "r") as f:
-#     result = '\n'.join(f.readlines())
-#
-# with open("output.csv", "w+") as f:
-#     for line in result.split('\n'):
-#         line = line.replace('|', ',')
-#         f.write(line + '\n')
+#formats the start date
+def inputStartDate(sDate):
+    global sYear
+    global sMonth
+    global sDay
+    #splits the entry into a tuple
+    unformatattedDate = sDate.split("/")
+    sYear = unformatattedDate[0]
+    sMonth = unformatattedDate[1]
+    sDay = unformatattedDate[2]
+    # checks for leap year
+    if int(sYear) % 4 == 0 and int(sYear) % 100 != 0 or int(sYear) % 400 == 0:
+        leap = True
+    else:
+        leap = False
+    #checks if the user input is correct
+    if len(sYear) != 4 or len(sMonth) != 2 or sMonth > "12" or len(sDay) != 2:
+        dateErrors()
+    elif leap is True and int(sDay) > 29 and sMonth == "02":
+        dateErrors()
+    elif leap is False and sMonth == "02" and int(sDay) > 28:
+        dateErrors()
+    elif sMonth in oddMonths and int(sDay) > 31:
+        dateErrors()
+    elif sMonth in evenMonths and int(sDay) > 30:
+        dateErrors()
+    else:
+        print("Start Date: " + sYear, sMonth, sDay)
 
-def toCSV():
-    for a in os.listdir("csvconvert"):
-        with open("csvconvert\\"+a, "r") as infile, open("csvconverted\\"+a+".csv",'w') as outfile:
-            for line in infile:
-                withcomma = line.replace('|',',')
-                withoutspace = withcomma.replace(" ", "")
-                outfile.write(withoutspace)
 
+# end date
+def inputEndDate(eDate):
+    global eYear
+    global eMonth
+    global eDay
+    unformatattedDate = eDate.split("/")
+    eYear = unformatattedDate[0]
+    eMonth = unformatattedDate[1]
+    eDay = unformatattedDate[2]
+    # checks for leap year
+    if int(eYear) % 4 == 0 and int(eYear) % 100 != 0 or int(eYear) % 400 == 0:
+        leap = True
+    else:
+        leap = False
+
+    if len(eYear) != 4 or len(eMonth) != 2 or eMonth > "12" or len(eDay) != 2:
+        dateErrors()
+    elif leap is True and eMonth == "02" and int(eDay) > 29:
+        dateErrors()
+    elif leap is False and eMonth == "02" and int(eDay) > 28:
+        dateErrors()
+    elif eMonth in oddMonths and int(eDay) > 31:
+        dateErrors()
+    elif eMonth in evenMonths and int(eDay) > 30:
+        dateErrors()
+    elif sMonth > eMonth:
+        dateErrors()
+    elif sMonth == eMonth and sDay > eDay:
+        dateErrors()
+    else:
+        print("End Date: " + eYear, eMonth, eDay)
+
+
+def dateErrors():
+    raise Exception("Date format error, please check what you have entered")
+
+def modelCheckbox(h_00, h_12):
+    global modelHour
+    global modelHourBash
+    global bothCheked
+    global modelHourList
+    h_00 = int(h_00)
+    h_12 = int(h_12)
+    if (h_00 is True and h_12 is False) or (h_00 is 1 and h_12 is 0):
+        modelHour = "00"
+        modelHourBash = "00"
+        bothCheked = 1
+    elif (h_12 is True and h_00 is False) or (h_00 is 0 and h_12 is 1):
+        modelHour = "12"
+        modelHourBash = "12"
+        bothCheked = 2
+    elif (h_12 and h_00 is True) or (h_00 is 1 and h_12 is 1):
+        modelHour = "00,12"
+        modelHourBash = "00"
+        bothCheked = 3
+    else:
+        modelHour = " "
+    modelHourList = re.split(",", modelHour)
+
+def rarcFile():
+    umosFile = open("umos", "w")
+    umosFile.write(
+        "target = "+filelocation+"/rarc\n"
+        "filter = copy\n"
+        "postprocess = nopost\n"
+        "date = "
+        # start
+        + sYear + "," + sMonth + "," + sDay + ","
+        # end
+        + eYear + "," + eMonth + "," + eDay +
+        "\nbranche = operation.umos.aq.prevision\n"
+        "ext = noextension\n"
+        "heure = "+modelHour+"\n"
+        "priority = online\n"
+        "inc = 1\n"
+        "#\n")
+    print("UMOS File Saved")
+
+def particuleCheckBoxAndTime(O3, NO2, PM25, loc):
+    global formattedParticuleString
+    O3 = int(O3)
+    NO2 = int(NO2)
+    PM25 = int(PM25)
+    stringO3 = ""
+    stringNO2 = ""
+    stringPM25 = ""
+    if O3 is 1:
+        stringO3 = "O3"
+    if NO2 is 1:
+        stringNO2 = "N2"
+    if PM25 is 1:
+        stringPM25 = "P2"
+    unformattedParticuleString = stringO3 + stringNO2 + stringPM25
+    # for every 2 character, add space
+    formattedParticuleString = ' '.join(unformattedParticuleString[i:i + 2] for i in range(0, len(unformattedParticuleString), 2))
+    moleculeList = re.split(" ", formattedParticuleString)
+    for h in modelHourList:
+        for mol in moleculeList:
+            os.system(
+                "cmcarc -x 'prevision.csv/" + mol.lower() + "sp3.*' -f " + filelocation + "/rarc/operation.umos.aq.prevision/" + sYear+sMonth+sDay+h+ "_")
+    print("\nFile Extracted, Getting Location Data")
+    getDataAtLocation(loc)
 
 
 file = open("UMOS_Ref.csv", "r")
@@ -33,30 +156,33 @@ for x in range(len(UMOSRefList)):
     UMOSID = line[2]
     lstUMOSID.append(UMOSID)
 
-referenceDict = dict(zip(lstUMOSID,lstStationID))
+referenceDict = dict(zip(lstStationID,lstUMOSID))
 
-file = open("csvconverted\\2017010212_csv.csv", "r")
-reader = csv.reader(file)
-lsttoconvert = list(reader)
-reflst = []
-#list of letters
-print(lsttoconvert)
-# for y in range(len(lsttoconvert)):
-#     line = lsttoconvert[y]
-#     ref = line[2]
-#     reflst.append(ref)
-#
-# f = open("out.csv", "w")
-# #list of numbers
-# lsta = []
-#
-# l=3
-# for row in lsttoconvert[3:]:
-#     a = row[2]
-#     b = referenceDict[a]
-#     lsttoconvert[l][2] = b
-#     l=l+1
-#
-# print(lsttoconvert)
-# # for q in lsttoconvert:
-# #     print(q)
+Name = []
+def removeAllfile(path):
+    Name = os.listdir(path)
+    for doc in Name:
+        docPath = os.path.join(path, doc)
+        if os.path.isfile(docPath):
+            if os.path.getsize(docPath) > 0:
+                os.remove(docPath)
+
+
+def getDataAtLocation(locationID):
+    stationCode = referenceDict[locationID]
+    for sub in os.listdir("prevision.csv"):
+        for file in os.listdir("prevision.csv/" + sub):
+            os.system(
+                "cat " + filelocation + "/prevision.csv/" + sub + "/" + file + "| grep " + stationCode + " > " + filelocation + "/UMOSTreating/" + file + sub)
+        for untreated in os.listdir("UMOSTreating"):
+            with open("UMOSTreating/" + untreated, "r") as infile, open("output/UMOS__ID"+locationID + untreated + ".csv",
+                                                                        'w') as outfile:
+                outfile.write("Date_Orig,Date_Valid,Code_Stn(ID),Lat,Lon,Vertical,Var,Value\n")
+                for line in infile:
+                    withcomma = line.replace('|', ',')
+                    withoutspace = withcomma.replace(" ", "")
+                    changeName = withoutspace.replace(stationCode, locationID)
+                    outfile.write(changeName)
+    print("Job done, see folder-->" + filelocation+"/output")
+    removeAllfile(r''+filelocation + "/UMOSTreating")
+    shutil.rmtree("prevision.csv")

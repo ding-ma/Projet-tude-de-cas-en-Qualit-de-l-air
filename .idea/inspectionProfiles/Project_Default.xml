@@ -33,6 +33,7 @@
           <option value="Backend.month" />
           <option value="Backend.day" />
           <option value="tests.aaa" />
+          <option value="UI.umosTab" />
         </list>
       </option>
     </inspection_tool>

@@ -8,7 +8,7 @@ import string
 # Notes: def modelChosen(model): always needs to be the last function!
 filelocation = os.getcwd()
 
-directories = ["bash", "config", "rarc", "output", "extracted"]
+directories = ["bash", "config", "rarc", "output", "extracted", "UMOSTreating"]
 
 for i in directories:
     if not os.path.exists(filelocation+"/"+i):
@@ -344,6 +344,7 @@ def listofMonth():
         unformattedMonthList += listMonth[sIndex + monthList]
         formattedMonthlist = ' '.join(unformattedMonthList[i:i + 2] for i in range(0, len(unformattedMonthList), 2))
 
+
 def particuleCheckBox(O3, NO2, others, PM25):
     global formattedParticuleString
     O3 = int(O3)
@@ -391,7 +392,7 @@ def rarcFile():
         "inc = 1\n"
         "#\n")
     bashFile()
-    print("File Saved")
+    print("Gem-Mach File Saved")
 
 
 def bashFile():
@@ -402,8 +403,8 @@ def bashFile():
             "#!/bin/bash\n"
             "PathOut="+filelocation+"/bash"
             "\nPathIn="+filelocation+"/rarc"
-            "\nDateDebut=" + sYear + sMonth +
-            "\nDateFin=" + eYear + eMonth +
+            "\nDateDebut=" + sYear + sMonth+
+            "\nDateFin=" + eYear + eMonth + eDay+
             "\nListeMois=\"" + formattedMonthlist + "\""
             "\nAnnee=" + sYear +  # not used
             "\nTag1=BashOut"+modelHourSeparated+
@@ -420,7 +421,7 @@ def bashFile():
             "\n################# Extraction#############"
             "\nfor VersionGEM in  ${ListeVersionsGEM}"
             "\ndo"
-            "\nFileOut1=${PathOut}/${Tag1}.${DateDebut}_${DateFin}_${Grille}.fst"
+            "\nFileOut1=${PathOut}/${Tag1}.${DateDebut}"+sDay+"_${DateFin}_${Grille}.fst"
             "\nif [  ${FileOut1}  ]; then"
             "\nrm -rf  ${FileOut1}"
             "\nelse"
@@ -511,7 +512,7 @@ def locationExtraction(iditem):
                     config = open("config/" +p+ d + hToName + modelH +".tcl", "w")
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
-                        "set Data(TAG1)   \"BashOut" + modelH + "."+sYear+sDay+"_"+eYear+eDay+"_regeta\"\n"
+                        "set Data(TAG1)   \"BashOut" + modelH + "."+sYear+sMonth+sDay+"_"+eYear+eMonth+eDay+"_regeta\"\n"
                         "set Data(TAG3)   \"" + d + "" + hToName + "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \""+modelH+"\"\n"
@@ -573,6 +574,7 @@ def sortAndGenerate(destination):
                 if f.endswith("_" + m + p + ".csv"):
                     shutil.move(destination + f, destination + m + p)
             file = open("output/"+"ID"+locationID +"___"+m + p+"___Start"+sYear+sMonth+sDay +"___End"+eYear+eMonth+eDay+ ".csv", "w+")
+            file.write("Date,Time,Height,Value\n")
             for i in sorted(os.listdir(destination + m + p)):
                 b = open(destination + m + p + "/" + i).read()
                 file.write(b)

@@ -4,6 +4,7 @@ import tkinter as tk
 from tkinter import ttk
 
 import Gemmach as Gm
+import UMOS as Um
 
 # initial setting
 window = tk.Tk()
@@ -20,7 +21,7 @@ machTab = ttk.Frame(nb)
 nb.add(machTab, text="Gem-Mach")
 
 
-def Clicked():
+def GemClicked():
     sDate = enteredDate.get()
     Gm.inputStartDate(sDate)
 
@@ -43,6 +44,11 @@ def Clicked():
 
     Gm.level(levelEntry.get())
     Gm.rarcFile()
+
+    Um.inputStartDate(sDate)
+    Um.inputEndDate(eDate)
+    Um.modelCheckbox(h_00, h_12)
+    Um.rarcFile()
 
 
 rarcLabel = tk.Label(machTab, text="Rarc Settings", font="20")
@@ -180,7 +186,7 @@ def StartBash():
         print("Done, file located at -->" + Gm.filelocation + "/bash")
 
 
-btn = tk.Button(machTab, text="Write to file (1)", command=Clicked, width=15, height=1)
+btn = tk.Button(machTab, text="Write to file (1)", command=GemClicked, width=15, height=1)
 btn.grid(column=10, row=1, pady=5)
 
 scriptBtn = tk.Button(machTab, text="Start Script (3)", command=StartBash, width=15, height=1)
@@ -221,6 +227,29 @@ locationBtn.grid(column=10, row=14)
 umosTab = ttk.Frame(nb)
 nb.add(umosTab, text="UMOS")
 
+
+def UMOSClicked():
+    os.system("rarc -i " + Gm.filelocation + "/umos & ")
+
+
+UMOSBtnExt = tk.Button(umosTab, text="Start Extraction(1)", command = UMOSClicked, width=17, height=1)
+UMOSBtnExt.grid(column=0, row=0)
+
+
+def UMOSGetLocation():
+    location = int(combostations.current())
+    province = comboprov.get()
+    locationlst = Gm.provinceDic[province]
+    loc = locationlst[location]
+    O3 = var_O3.get()
+    NO2 = var_NO2.get()
+    PM25 = var_PM25.get()
+    Um.particuleCheckBoxAndTime(O3, NO2, PM25, loc)
+
+
+
+UMOSBtnGetFile = tk.Button(umosTab, text="Get Data at location", command = UMOSGetLocation, width=17, height=1)
+UMOSBtnGetFile.grid(column=0, row=1)
 # tab for FireWork
 fireWorkTab = ttk.Frame(nb)
 nb.add(fireWorkTab, text="FireWork")
