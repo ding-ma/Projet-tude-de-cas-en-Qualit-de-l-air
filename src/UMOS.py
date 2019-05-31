@@ -1,4 +1,5 @@
 import csv
+import glob
 import os
 import re
 import shutil
@@ -8,6 +9,20 @@ filelocation = os.getcwd()
 oddMonths = ("01", "03", "05", "07", "09", "11")
 evenMonths = ("04", "06", "08", "10", "12")
 
+file = open("UMOS_Ref.csv", "r")
+reader = csv.reader(file)
+UMOSRefList = list(reader)
+lstStationID = []
+lstUMOSID = []
+
+for x in range(len(UMOSRefList)):
+    line = UMOSRefList[x]
+    stationID = line[1]
+    lstStationID.append(stationID)
+    UMOSID = line[2]
+    lstUMOSID.append(UMOSID)
+
+referenceDict = dict(zip(lstStationID,lstUMOSID))
 
 #formats the start date
 def inputStartDate(sDate):
@@ -70,6 +85,8 @@ def inputEndDate(eDate):
         dateErrors()
     else:
         print("End Date: " + eYear, eMonth, eDay)
+    if int(eYear+eMonth+eDay)<20170105:
+        return False
 
 
 def dateErrors():
@@ -98,27 +115,39 @@ def modelCheckbox(h_00, h_12):
         modelHour = " "
     modelHourList = re.split(",", modelHour)
 
-def rarcFile():
-    umosFile = open("umos", "w")
-    umosFile.write(
-        "target = "+filelocation+"/rarc\n"
-        "filter = copy\n"
-        "postprocess = nopost\n"
-        "date = "
-        # start
-        + sYear + "," + sMonth + "," + sDay + ","
-        # end
-        + eYear + "," + eMonth + "," + eDay +
-        "\nbranche = operation.umos.aq.prevision\n"
-        "ext = noextension\n"
-        "heure = "+modelHour+"\n"
-        "priority = online\n"
-        "inc = 1\n"
-        "#\n")
-    print("UMOS File Saved")
 
-def particuleCheckBoxAndTime(O3, NO2, PM25, loc):
-    global formattedParticuleString
+days = (
+    "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18"
+    , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31")
+
+
+def getDataAtLocationPre2017(locationID, molecule, modelHourList):
+    stationCode = referenceDict[locationID]
+    startDateIndex = days.index(sDay)
+    endDateIndex = days.index(eDay)
+    daylst = days[startDateIndex:endDateIndex + 1]
+    for m in molecule:
+        for sub in os.listdir("rarc/operation.umos.aq.prevision.csv."+m.lower()+"sp3"):
+            for d in daylst:
+                for h in modelHourList:
+                    if sub == sYear+sMonth+d+h+"_csv":
+                        os.system("cat " + filelocation + "/rarc/operation.umos.aq.prevision.csv." + m.lower() + "sp3/" + sYear+sMonth+d+h + "_csv | grep "+ stationCode +" > " + filelocation + "/UMOSTreating/" + sYear+sMonth+d+h + "_csv")
+        for untreated in os.listdir("UMOSTreating"):
+            with open("UMOSTreating/" + untreated, "r") as infile, open(
+                    "output/UMOS__ID" + locationID +"__"+ untreated +m.lower()+ ".csv",
+                    'w') as outfile:
+                outfile.write("Date_Orig,Date_Valid,Code_Stn(ID),Lat,Lon,Vertical,Var,Value\n")
+                for line in infile:
+                    withcomma = line.replace('|', ',')
+                    withoutspace = withcomma.replace(" ", "")
+                    changeName = withoutspace.replace(stationCode, locationID)
+                    outfile.write(changeName)
+    print("Job done, see folder-->" + filelocation + "/output")
+    removeAllfile(r'' + filelocation + "/UMOSTreating")
+
+
+def particuleCheckBoxAndTime(O3, NO2, PM25, loc, datesplit, active):
+    global moleculeList
     O3 = int(O3)
     NO2 = int(NO2)
     PM25 = int(PM25)
@@ -135,28 +164,60 @@ def particuleCheckBoxAndTime(O3, NO2, PM25, loc):
     # for every 2 character, add space
     formattedParticuleString = ' '.join(unformattedParticuleString[i:i + 2] for i in range(0, len(unformattedParticuleString), 2))
     moleculeList = re.split(" ", formattedParticuleString)
-    for h in modelHourList:
-        for mol in moleculeList:
-            os.system(
-                "cmcarc -x 'prevision.csv/" + mol.lower() + "sp3.*' -f " + filelocation + "/rarc/operation.umos.aq.prevision/" + sYear+sMonth+sDay+h+ "_")
-    print("\nFile Extracted, Getting Location Data")
-    getDataAtLocation(loc)
+    if datesplit is not False:
+        for h in modelHourList:
+            for mol in moleculeList:
+                os.system(
+                    "cmcarc -x 'prevision.csv/" + mol.lower() + "sp3.*' -f " + filelocation + "/rarc/operation.umos.aq.prevision/" + sYear+sMonth+sDay+h+ "_")
+        if active is True:
+            getDataAtLocation(loc)
+            print("\nFile Extracted, Getting Location Data")
+    else:
+        if active is True:
+            getDataAtLocationPre2017(loc, moleculeList, modelHourList)
 
 
-file = open("UMOS_Ref.csv", "r")
-reader = csv.reader(file)
-UMOSRefList = list(reader)
-lstStationID = []
-lstUMOSID = []
+def rarcFile(datesplit):
+    for filename in glob.glob("rarc/umos*"):
+        os.remove(filename)
+    if datesplit is not False:
+        umosFile = open("rarc/umos", "w")
+        umosFile.write(
+            "target = "+filelocation+"/rarc\n"
+            "filter = copy\n"
+            "postprocess = nopost\n"
+            "date = "
+            # start
+            + sYear + "," + sMonth + "," + sDay + ","
+            # end
+            + eYear + "," + eMonth + "," + eDay +
+            "\nbranche = operation.umos.aq.prevision\n"
+            "ext = noextension\n"
+            "heure = "+modelHour+"\n"
+            "priority = online\n"
+            "inc = 1\n"
+            "#\n")
+        print("UMOS File Saved")
+    else:
+        for l in moleculeList:
+            umosFile = open("rarc/umos"+l, "w")
+            umosFile.write(
+                "target = " + filelocation + "/rarc\n"
+                                             "filter = copy\n"
+                                             "postprocess = nopost\n"
+                                             "date = "
+                # start
+                + sYear + "," + sMonth + "," + sDay + ","
+                # end
+                + eYear + "," + eMonth + "," + eDay +
+                "\nbranche = operation.umos.aq.prevision.csv."+l.lower()+"sp3\n"
+                "ext = ***\n"
+                "heure = " + modelHour + "\n"
+                                         "priority = online\n"
+                                         "inc = 1\n"
+                                         "#\n")
+        print("UMOS File Saved")
 
-for x in range(len(UMOSRefList)):
-    line = UMOSRefList[x]
-    stationID = line[1]
-    lstStationID.append(stationID)
-    UMOSID = line[2]
-    lstUMOSID.append(UMOSID)
-
-referenceDict = dict(zip(lstStationID,lstUMOSID))
 
 Name = []
 def removeAllfile(path):
@@ -175,7 +236,7 @@ def getDataAtLocation(locationID):
             os.system(
                 "cat " + filelocation + "/prevision.csv/" + sub + "/" + file + "| grep " + stationCode + " > " + filelocation + "/UMOSTreating/" + file + sub)
         for untreated in os.listdir("UMOSTreating"):
-            with open("UMOSTreating/" + untreated, "r") as infile, open("output/UMOS__ID"+locationID + untreated + ".csv",
+            with open("UMOSTreating/" + untreated, "r") as infile, open("output/UMOS__ID"+locationID +"__"+ untreated + ".csv",
                                                                         'w') as outfile:
                 outfile.write("Date_Orig,Date_Valid,Code_Stn(ID),Lat,Lon,Vertical,Var,Value\n")
                 for line in infile:

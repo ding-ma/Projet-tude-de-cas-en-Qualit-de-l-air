@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import glob
 import os
 import tkinter as tk
 from tkinter import ttk
@@ -27,7 +28,6 @@ def GemClicked():
 
     eDate = enteredEndDate.get()
     Gm.inputEndDate(eDate)
-
     sTime = sHourcombo.get()
     eTime = eHourCombo.get()
     Gm.time(sTime, eTime)
@@ -46,9 +46,15 @@ def GemClicked():
     Gm.rarcFile()
 
     Um.inputStartDate(sDate)
-    Um.inputEndDate(eDate)
+    datesplit = Um.inputEndDate(eDate)
     Um.modelCheckbox(h_00, h_12)
-    Um.rarcFile()
+    location = int(combostations.current())
+    province = comboprov.get()
+    locationlst = Gm.provinceDic[province]
+    loc = locationlst[location]
+    active = False
+    Um.particuleCheckBoxAndTime(O3, NO2, PM25, loc,datesplit, active)
+    Um.rarcFile(datesplit)
 
 
 rarcLabel = tk.Label(machTab, text="Rarc Settings", font="20")
@@ -229,7 +235,8 @@ nb.add(umosTab, text="UMOS")
 
 
 def UMOSClicked():
-    os.system("rarc -i " + Gm.filelocation + "/umos & ")
+    for filename in glob.glob("rarc/umos*"):
+        os.system("rarc -i " + Gm.filelocation + "/" + filename + " &")
 
 
 UMOSBtnExt = tk.Button(umosTab, text="Start Extraction(1)", command = UMOSClicked, width=17, height=1)
@@ -244,7 +251,12 @@ def UMOSGetLocation():
     O3 = var_O3.get()
     NO2 = var_NO2.get()
     PM25 = var_PM25.get()
-    Um.particuleCheckBoxAndTime(O3, NO2, PM25, loc)
+    eDate = enteredEndDate.get()
+    Gm.inputEndDate(eDate)
+    datesplit = Um.inputEndDate(eDate)
+    active = True
+    Um.particuleCheckBoxAndTime(O3, NO2, PM25, loc, datesplit, active)
+
 
 
 
@@ -270,4 +282,12 @@ gemmachinfo = tk.Label(helptab, text="GEMMACH - How it works:\n"
                                      "")
 gemmachinfo.grid(column=0, row=0)
 
+umosinfo = tk.Label(helptab, text = "UMOS Info\n"
+                                    "There is a separation of file directory in the archives at 2017 Jan 07\n"
+                                    "But the output and functionality of the application still remains the same\n"
+                                    "UMOSTreating Folder is a temporary folder, it is normal that there are no files in it because they are deleted after the app finish running")
+umosinfo.grid(column=1, row=0)
 window.mainloop()
+
+# notes: active var for particuleCheckBoxAndTime allowed me to use the same code for different purposes, when you write
+# file, you dont want to get the location right now because the file may not be extracted yet

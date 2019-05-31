@@ -21,7 +21,7 @@ filedirectory = next(os.walk('.'))[1]
 #     host = "sci-eccc-in.science.gc.ca"
 #     host = "199.212.17.148"
 #     user = "sair001"
-#     passw= "1AiqaCom!"
+    #     passw= "1AiqaCom!"
 #     port = 22
 #     client = paramiko.SSHClient()ll
 
@@ -573,7 +573,7 @@ def sortAndGenerate(destination):
             for f in os.listdir(destination):
                 if f.endswith("_" + m + p + ".csv"):
                     shutil.move(destination + f, destination + m + p)
-            file = open("output/"+"ID"+locationID +"___"+m + p+"___Start"+sYear+sMonth+sDay +"___End"+eYear+eMonth+eDay+ ".csv", "w+")
+            file = open("output/GEM__"+"ID"+locationID +"___"+m + p+"___Start"+sYear+sMonth+sDay +"___End"+eYear+eMonth+eDay+ ".csv", "w+")
             file.write("Date,Time,Height,Value\n")
             for i in sorted(os.listdir(destination + m + p)):
                 b = open(destination + m + p + "/" + i).read()

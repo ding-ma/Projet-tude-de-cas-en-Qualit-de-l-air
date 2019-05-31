@@ -1,56 +1,12 @@
-# import os
-# import csv
-#
-# filelocation = os.getcwd()
-#
-# # for l in os.listdir(filelocation+"/rarc/operation.umos.aq.prevision/prevision.csv"):
-# #     for f in os.listdir(filelocation+"/rarc/operation.umos.aq.prevision/prevision.csv/"+l):
-# #         print(f)
-# mollst = ["O3", "N2", "P2"]
-# date = "20190304"
-# passe = "00"
-# for ss in mollst:
-#     os.system("cmcarc -x 'prevision.csv/"+ss.lower()+"sp3.*' -f "+filelocation+"/rarc/operation.umos.aq.prevision/"+date+passe+"_")
-#
-#
-# stationEntered = "105001"
-#
-# file = open("UMOS_Ref.csv", "r")
-# reader = csv.reader(file)
-# UMOSRefList = list(reader)
-# lstStationID = []
-# lstUMOSID = []
-#
-# for x in range(len(UMOSRefList)):
-#     line = UMOSRefList[x]
-#     stationID = line[1]
-#     lstStationID.append(stationID)
-#     UMOSID = line[2]
-#     lstUMOSID.append(UMOSID)
-#
-# referenceDict = dict(zip(lstStationID,lstUMOSID))
-#
-# val = referenceDict[stationEntered]
-#
-# for sub in os.listdir("prevision.csv"):
-#     for file in os.listdir("prevision.csv/"+sub):
-#         os.system("cat "+filelocation+"/prevision.csv/"+sub+"/"+file +"| grep "+val+" > "+filelocation+"/UMOSTreating/"+file+sub)
-#     for untreated in os.listdir("UMOSTreating"):
-#         with open("UMOSTreating/"+untreated, "r") as infile, open("output/UMOS__"+untreated+".csv",'w') as outfile:
-#             for line in infile:
-#                 withcomma = line.replace('|',',')
-#                 withoutspace = withcomma.replace(" ", "")
-#                 changeName = withoutspace.replace(val, stationEntered)
-#                 outfile.write(changeName)
+days = (
+    "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18"
+    , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31")
 
+sDay = "00"
+eDay = "05"
 
-import datetime
-import re
-inputdate ="03"
-form = re.split("0", inputdate)
+startDateIndex = days.index(sDay)
+endDateIndex = days.index(eDay)
 
-ini = datetime.date(2016,int(form[1]),30)
-end = ini+datetime.timedelta(days=4)
-if len(str(end.month)) !=2:
-    a = "0"+str(end.month)
-    print(a)
+daylst = days[startDateIndex:endDateIndex+1]
+print(daylst)

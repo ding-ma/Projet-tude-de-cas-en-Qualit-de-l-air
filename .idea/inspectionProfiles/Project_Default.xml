@@ -34,6 +34,7 @@
           <option value="Backend.day" />
           <option value="tests.aaa" />
           <option value="UI.umosTab" />
+          <option value="UMOS.moleculeList" />
         </list>
       </option>
     </inspection_tool>
