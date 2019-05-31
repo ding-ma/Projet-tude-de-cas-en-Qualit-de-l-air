@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import collections
 import csv
 import os
 import re
@@ -21,7 +22,7 @@ filedirectory = next(os.walk('.'))[1]
 #     host = "sci-eccc-in.science.gc.ca"
 #     host = "199.212.17.148"
 #     user = "sair001"
-#     passw= "1AiqaCom!"
+    #     passw= "1AiqaCom!"
 #     port = 22
 #     client = paramiko.SSHClient()ll
 
@@ -199,6 +200,27 @@ def gettingprovlist(prov):
 oddMonths = ("01", "03", "05", "07", "09", "11")
 evenMonths = ("04", "06", "08", "10", "12")
 
+monthDict = collections.OrderedDict()
+
+monthDict['January'] = '01'
+monthDict['February'] = '02'
+monthDict['March'] = '03'
+monthDict['April'] = '04'
+monthDict['May'] = '05'
+monthDict['June'] = '06'
+monthDict['July'] = '07'
+monthDict['August'] = '08'
+monthDict['September'] = '09'
+monthDict['October'] = '10'
+monthDict['November'] = '11'
+monthDict['December'] = '12'
+
+years = ("2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012",
+            "2013", "2014", "2015", "2016",
+            "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029",
+            "2030", "2031", "2032", "2033",
+            "2034", "2035", "2036", "2037", "2038", "2039", "2040", "2041", "2042", "2043", "2044", "2045", "2046",
+            "2047", "2048", "2049", "2050")
 
 #formats the start date
 def inputStartDate(sDate):
@@ -206,7 +228,8 @@ def inputStartDate(sDate):
     global sMonth
     global sDay
     #splits the entry into a tuple
-    unformatattedDate = sDate.split("/")
+    print(sDate)
+    unformatattedDate = re.split("/", sDate)
     sYear = unformatattedDate[0]
     sMonth = unformatattedDate[1]
     sDay = unformatattedDate[2]
@@ -573,7 +596,7 @@ def sortAndGenerate(destination):
             for f in os.listdir(destination):
                 if f.endswith("_" + m + p + ".csv"):
                     shutil.move(destination + f, destination + m + p)
-            file = open("output/"+"ID"+locationID +"___"+m + p+"___Start"+sYear+sMonth+sDay +"___End"+eYear+eMonth+eDay+ ".csv", "w+")
+            file = open("output/GEM__"+"ID"+locationID +"___"+m + p+"___Start"+sYear+sMonth+sDay +"___End"+eYear+eMonth+eDay+ ".csv", "w+")
             file.write("Date,Time,Height,Value\n")
             for i in sorted(os.listdir(destination + m + p)):
                 b = open(destination + m + p + "/" + i).read()

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import glob
 import os
 import tkinter as tk
 from tkinter import ttk
@@ -20,13 +21,23 @@ nb.grid(row=1, column=0, columnspan=50, rowspan=49, sticky='NESW')
 machTab = ttk.Frame(nb)
 nb.add(machTab, text="Gem-Mach")
 
+def sDate():
+    year = yearCombo.get()
+    month = Gm.monthDict[monthCombo.get()]
+    startDate = startDateCombo.get()
+    return year+"/"+month+"/"+startDate
+
+def eDate():
+    month = Gm.monthDict[monthCombo.get()]
+    year = yearCombo.get()
+    endDate = endDateCombo.get()
+    return year + "/" + month + "/" + endDate
 
 def GemClicked():
-    sDate = enteredDate.get()
-    Gm.inputStartDate(sDate)
-
-    eDate = enteredEndDate.get()
-    Gm.inputEndDate(eDate)
+    a = sDate()
+    b = eDate()
+    Gm.inputStartDate(a)
+    Gm.inputEndDate(b)
 
     sTime = sHourcombo.get()
     eTime = eHourCombo.get()
@@ -45,25 +56,41 @@ def GemClicked():
     Gm.level(levelEntry.get())
     Gm.rarcFile()
 
-    Um.inputStartDate(sDate)
-    Um.inputEndDate(eDate)
+    Um.inputStartDate(a)
+    datesplit = Um.inputEndDate(b)
     Um.modelCheckbox(h_00, h_12)
-    Um.rarcFile()
+    location = int(combostations.current())
+    province = comboprov.get()
+    locationlst = Gm.provinceDic[province]
+    loc = locationlst[location]
+    active = False
+    Um.particuleCheckBoxAndTime(O3, NO2, PM25, loc,datesplit, active)
+    Um.rarcFile(datesplit)
 
 
 rarcLabel = tk.Label(machTab, text="Rarc Settings", font="20")
 rarcLabel.grid(column=0, row=0)
 # Start date
-startDateLabel = tk.Label(machTab, text="Enter Start Date (YYYY/MM/DD)")
-startDateLabel.grid(column=0, row=1)
-enteredDate = tk.Entry(machTab, width=13)
-enteredDate.grid(column=1, row=1)
+yearCombo = ttk.Combobox(machTab, values = list(Gm.years),state='readonly')
+yearCombo.grid(column=0, row=1)
+yearCombo.current(10)
 
+monthCombo = ttk.Combobox(machTab, values = list(Gm.monthDict.keys()), state = 'readonly')
+monthCombo.grid(column=1, row=1)
+monthCombo.current(1)
+
+startDateCombo = ttk.Combobox(machTab, values = Gm.days[1:], state = 'readonly')
+startDateCombo.grid(column=0, row=2)
+startDateCombo.current(0)
+
+endDateCombo = ttk.Combobox(machTab, values = Gm.days[1:], state = 'readonly')
+endDateCombo.grid(column=1, row=2)
+endDateCombo.current(0)
 # Start date
-endDateLabel = tk.Label(machTab, text="Enter End Date (YYYY/MM/DD)")
-endDateLabel.grid(column=0, row=2)
-enteredEndDate = tk.Entry(machTab, width=13)
-enteredEndDate.grid(column=1, row=2)
+# endDateLabel = tk.Label(machTab, text="Enter End Date (YYYY/MM/DD)")
+# endDateLabel.grid(column=0, row=2)
+# enteredEndDate = tk.Entry(machTab, width=13)
+# enteredEndDate.grid(column=1, row=2)
 
 # Start Hours
 sHourLabel = tk.Label(machTab, text="Choose the start time")
@@ -197,7 +224,8 @@ extrationBtn.grid(column=10, row=2)
 
 
 def testing():
-    print(os.path.isdir("gem"))
+    #print(os.path.isdir("gem"))
+    print(sDate())
 
 
 extrationBtn = tk.Button(machTab, text="Check if file exist", command=testing, width=15, height=1)
@@ -229,7 +257,8 @@ nb.add(umosTab, text="UMOS")
 
 
 def UMOSClicked():
-    os.system("rarc -i " + Gm.filelocation + "/umos & ")
+    for filename in glob.glob("rarc/umos*"):
+        os.system("rarc -i " + Gm.filelocation + "/" + filename + " &")
 
 
 UMOSBtnExt = tk.Button(umosTab, text="Start Extraction(1)", command = UMOSClicked, width=17, height=1)
@@ -244,7 +273,12 @@ def UMOSGetLocation():
     O3 = var_O3.get()
     NO2 = var_NO2.get()
     PM25 = var_PM25.get()
-    Um.particuleCheckBoxAndTime(O3, NO2, PM25, loc)
+    b = eDate()
+    Gm.inputEndDate(b)
+    datesplit = Um.inputEndDate(b)
+    active = True
+    Um.particuleCheckBoxAndTime(O3, NO2, PM25, loc, datesplit, active)
+
 
 
 
@@ -270,4 +304,12 @@ gemmachinfo = tk.Label(helptab, text="GEMMACH - How it works:\n"
                                      "")
 gemmachinfo.grid(column=0, row=0)
 
+umosinfo = tk.Label(helptab, text = "UMOS Info\n"
+                                    "There is a separation of file directory in the archives at 2017 Jan 07\n"
+                                    "But the output and functionality of the application still remains the same\n"
+                                    "UMOSTreating Folder is a temporary folder, it is normal that there are no files in it because they are deleted after the app finish running")
+umosinfo.grid(column=1, row=0)
 window.mainloop()
+
+# notes: active var for particuleCheckBoxAndTime allowed me to use the same code for different purposes, when you write
+# file, you dont want to get the location right now because the file may not be extracted yet

@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="993a9838-9207-46e0-aaef-0972cce94224" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gemmach.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gemmach.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UMOS.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UMOS.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gemmach" beforeDir="false" afterPath="$PROJECT_DIR$/src/gemmach" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gemmachBashTest00.bash" beforeDir="false" afterPath="$PROJECT_DIR$/src/gemmachBashTest00.bash" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gemmachBashTest12.bash" beforeDir="false" afterPath="$PROJECT_DIR$/src/gemmachBashTest12.bash" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,40 +16,53 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/UI.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="207">
+                    <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/UI.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-322">
-              <caret line="207" column="24" lean-forward="true" selection-start-line="207" selection-start-column="21" selection-end-line="207" selection-end-column="24" />
-              <folding>
-                <element signature="e#23#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="732">
-              <caret line="576" column="46" selection-start-line="576" selection-start-column="46" selection-end-line="576" selection-end-column="46" />
+            <state relative-caret-position="398">
+              <caret line="565" lean-forward="true" selection-start-line="565" selection-end-line="565" />
               <folding>
-                <element signature="e#23#33#0" expanded="true" />
+                <element signature="e#23#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/tests.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gemmachBashTest00.bash">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="602">
-              <caret line="53" column="18" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
-              <folding>
-                <element signature="e#1585#1600#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="187">
+              <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gemmachBashTest12.bash">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="30" column="3" lean-forward="true" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -59,10 +70,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UMOS.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="596">
-              <caret line="172" column="43" lean-forward="true" selection-start-line="172" selection-start-column="43" selection-end-line="172" selection-end-column="43" />
+            <state relative-caret-position="229">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,13 +90,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>start p</find>
-      <find>starttime</find>
-      <find>time</find>
-      <find>20</find>
-      <find>write</find>
-      <find>bashl</find>
-      <find>yyy</find>
       <find>76696048</find>
       <find>table</find>
       <find>id</find>
@@ -109,6 +113,13 @@
       <find>h_12</find>
       <find>h</find>
       <find>shutil</find>
+      <find>get locat</find>
+      <find>File Extracted, Getting Location Data</find>
+      <find>UMOS*</find>
+      <find>write to file</find>
+      <find>glob</find>
+      <find>glob.</find>
+      <find>getDataAtLocation</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -140,16 +151,17 @@
         <option value="$PROJECT_DIR$/src/output.py" />
         <option value="$PROJECT_DIR$/src/aaa.py" />
         <option value="$PROJECT_DIR$/src/Backend.py" />
-        <option value="$PROJECT_DIR$/src/UI.py" />
+        <option value="$PROJECT_DIR$/UMOS.py" />
+        <option value="$PROJECT_DIR$/src/tests.py" />
         <option value="$PROJECT_DIR$/src/Gemmach.py" />
         <option value="$PROJECT_DIR$/src/UMOS.py" />
-        <option value="$PROJECT_DIR$/src/tests.py" />
+        <option value="$PROJECT_DIR$/src/UI.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="211" />
-    <option name="y" value="-14" />
+    <option name="x" value="2948" />
+    <option name="y" value="-10" />
     <option name="width" value="974" />
     <option name="height" value="999" />
   </component>
@@ -202,7 +214,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tests">
+  <component name="RunManager" selected="Python.UI">
     <configuration name="Backend" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Projet-tude-de-cas-en-Qualit-de-l-air" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -332,16 +344,16 @@
     <list>
       <item itemvalue="Python.tests" />
       <item itemvalue="Python.Backend" />
-      <item itemvalue="Python.UI" />
-      <item itemvalue="Python.output" />
-      <item itemvalue="Python.UMOS" />
       <item itemvalue="Python.Gemmach" />
+      <item itemvalue="Python.UI" />
+      <item itemvalue="Python.UMOS" />
+      <item itemvalue="Python.output" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.UI" />
-        <item itemvalue="Python.UMOS" />
         <item itemvalue="Python.Gemmach" />
+        <item itemvalue="Python.UMOS" />
         <item itemvalue="Python.Backend" />
         <item itemvalue="Python.output" />
       </list>
@@ -589,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559159839992</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="done with umos for date before Jan 8 2017">
+      <created>1559324786017</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1559324786017</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView">
@@ -602,10 +621,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1601686" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19968387" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Project Explorer" order="3" weight="0.32982087" />
@@ -703,7 +722,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="installed 3.4.3 on computer" />
     <MESSAGE value="check button works now :)" />
     <MESSAGE value="ui updated and start button works on linux servers" />
     <MESSAGE value="logging works on windows but not on linux servers" />
@@ -728,20 +746,12 @@
     <MESSAGE value="gem-mach done, adding a help tab" />
     <MESSAGE value="added date change for level (2016 sept 7)" />
     <MESSAGE value="EOD: working on file management for UMOS" />
-    <option name="LAST_COMMIT_MESSAGE" value="EOD: working on file management for UMOS" />
+    <MESSAGE value="done with umos for date before Jan 8 2017" />
+    <option name="LAST_COMMIT_MESSAGE" value="done with umos for date before Jan 8 2017" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python34/Lib/subprocess.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="655" selection-start-line="655" selection-end-line="655" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/log.txt" />
-    <entry file="file://$PROJECT_DIR$/src/logging.basicConfig(filename" />
     <entry file="file://$PROJECT_DIR$/src/scratch.log" />
     <entry file="file://$PROJECT_DIR$/src/stationList.txt" />
     <entry file="file://$PROJECT_DIR$/src/stationList.csv" />
@@ -882,6 +892,28 @@
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/gemmach">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/umos" />
+    <entry file="file://C:/Python34/Lib/glob.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3/datetime.pyi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="242" column="12" lean-forward="true" selection-start-line="242" selection-start-column="12" selection-end-line="242" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gemmachBashTest00.bash">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -891,61 +923,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gemmachBashTest12.bash">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="41" column="43" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gemmach">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/umos">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-322">
-          <caret line="207" column="24" lean-forward="true" selection-start-line="207" selection-start-column="21" selection-end-line="207" selection-end-column="24" />
-          <folding>
-            <element signature="e#23#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="732">
-          <caret line="576" column="46" selection-start-line="576" selection-start-column="46" selection-end-line="576" selection-end-column="46" />
-          <folding>
-            <element signature="e#23#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UMOS.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="172" column="43" lean-forward="true" selection-start-line="172" selection-start-column="43" selection-end-line="172" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="510">
+          <caret line="30" column="3" lean-forward="true" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="53" column="18" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
+        <state relative-caret-position="323">
+          <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UMOS.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
           <folding>
-            <element signature="e#1585#1600#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="565" lean-forward="true" selection-start-line="565" selection-end-line="565" />
+          <folding>
+            <element signature="e#23#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
