@@ -73,11 +73,11 @@ rarcLabel.grid(column=0, row=0)
 # Start date
 yearCombo = ttk.Combobox(machTab, values = list(Gm.years),state='readonly')
 yearCombo.grid(column=0, row=1)
-yearCombo.current(10)
+yearCombo.current(18)
 
 monthCombo = ttk.Combobox(machTab, values = list(Gm.monthDict.keys()), state = 'readonly')
 monthCombo.grid(column=1, row=1)
-monthCombo.current(1)
+monthCombo.current(0)
 
 startDateCombo = ttk.Combobox(machTab, values = Gm.days[1:], state = 'readonly')
 startDateCombo.grid(column=0, row=2)
@@ -139,7 +139,7 @@ otherVariable = tk.Entry(machTab, width=13)
 otherVariable.grid(column=5, row=11)
 
 # manual add level
-levelLabel = tk.Label(machTab, text="Enter Level (optinal)")
+levelLabel = tk.Label(machTab, text="Enter Level (optional)")
 levelLabel.grid(column=4, row=1)
 levelEntry = tk.Entry(machTab, width=15)
 levelEntry.grid(column=4, row=2)
@@ -284,6 +284,8 @@ def UMOSGetLocation():
 
 UMOSBtnGetFile = tk.Button(umosTab, text="Get Data at location", command = UMOSGetLocation, width=17, height=1)
 UMOSBtnGetFile.grid(column=0, row=1)
+
+
 # tab for FireWork
 fireWorkTab = ttk.Frame(nb)
 nb.add(fireWorkTab, text="FireWork")

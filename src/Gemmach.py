@@ -6,11 +6,9 @@ import re
 import shutil
 import string
 
-# Notes: def modelChosen(model): always needs to be the last function!
+#code to create repos and make sure everything is executable
 filelocation = os.getcwd()
-
 directories = ["bash", "config", "rarc", "output", "extracted", "UMOSTreating"]
-
 for i in directories:
     if not os.path.exists(filelocation+"/"+i):
         os.mkdir(filelocation+"/"+i)
@@ -386,7 +384,11 @@ def particuleCheckBox(O3, NO2, others, PM25):
     # for every 2 character, add space
     formattedParticuleString = ' '.join(
         unformattedParticuleString[i:i + 2] for i in range(0, len(unformattedParticuleString), 2))
+    return formattedParticuleString
 
+
+def get_formattedParticuleString():
+    return formattedParticuleString
 
 def level(lv):
     global lev
@@ -493,7 +495,7 @@ def bashFile():
             "\ndone"
 "\ndone\n"
         )
-        print("saved!")
+        print("Bash File Saved!")
 
 
 tcl = [
