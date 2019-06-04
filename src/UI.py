@@ -6,6 +6,7 @@ from tkinter import ttk
 
 import Gemmach as Gm
 import UMOS as Um
+import UMOSMist as Umist
 
 # initial setting
 window = tk.Tk()
@@ -51,7 +52,7 @@ def GemClicked():
     NO2 = var_NO2.get()
     others = otherVariable.get()
     PM25 = var_PM25.get()
-    Gm.particuleCheckBox(O3, NO2, others, PM25)
+    particules = Gm.particuleCheckBox(O3, NO2, others, PM25)
 
     Gm.level(levelEntry.get())
     Gm.rarcFile()
@@ -66,6 +67,20 @@ def GemClicked():
     active = False
     Um.particuleCheckBoxAndTime(O3, NO2, PM25, loc,datesplit, active)
     Um.rarcFile(datesplit)
+
+    location = int(combostations.current())
+    province = comboprov.get()
+    locationlst = Gm.provinceDic[province]
+    loc = locationlst[location]
+
+    sTime = sHourcombo.get()
+    eTime = eHourCombo.get()
+    Umist.time(sTime, eTime)
+    Umist.inputStartDate(a)
+    Umist.inputEndDate(b)
+    Umist.modelCheckbox(h_00, h_12)
+    Umist.rarcFile()
+    Umist.bashFile(particules,loc)
 
 
 rarcLabel = tk.Label(machTab, text="Rarc Settings", font="20")
@@ -280,15 +295,41 @@ def UMOSGetLocation():
     Um.particuleCheckBoxAndTime(O3, NO2, PM25, loc, datesplit, active)
 
 
-
-
 UMOSBtnGetFile = tk.Button(umosTab, text="Get Data at location", command = UMOSGetLocation, width=17, height=1)
 UMOSBtnGetFile.grid(column=0, row=1)
 
+def MISTClicked():
+    if Umist.bothCheked is 1:
+        os.system("./UmosMist00.bash &")
+        print("Done, file located at -->" + Umist.filelocation + "/bash")
+    if Umist.bothCheked is 2:
+        os.system("./UmosMist12.bash &")
+        print("Done, file located at -->" + Umist.filelocation + "/bash")
+    if Umist.bothCheked is 3:
+        os.system("./UmosMist00.bash &")
+        os.system("./UmosMist12.bash &")
+        print("Done, file located at -->" + Umist.filelocation + "/bash")
 
+
+def MISTRARC():
+    os.system("rarc -i " + Umist.filelocation + "/UMist &")
+
+def MistGetLocation():
+    Umist.launchTCL()
+
+
+mistBashBtn = tk.Button(umosTab, text = "Bash - Mist", command = MISTClicked, width=17, height=1)
+mistBashBtn.grid(column=3, row=1)
+
+mistExtraction = tk.Button(umosTab, text = "Start Extraction, Mist", command =MISTRARC, width=17, height=1)
+mistExtraction.grid(column=2, row=0)
+
+mistTCLBtn = tk.Button(umosTab, text = "Get Data Location, Mist", command = MistGetLocation ,width=17, height=1)
+mistTCLBtn.grid(column=2, row=1)
 # tab for FireWork
 fireWorkTab = ttk.Frame(nb)
 nb.add(fireWorkTab, text="FireWork")
+
 
 # tab for help
 helptab = ttk.Frame(nb)

@@ -4,7 +4,7 @@ postprocess = nopost
 date = 2018,01,01,2018,01,01
 branche = operation.forecasts.mach
 ext = 000
-heure = 00
+heure = 00,12
 priority = online
 inc = 1
 #
