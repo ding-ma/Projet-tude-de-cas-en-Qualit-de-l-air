@@ -285,7 +285,7 @@ def TCLConfig(formattedParticuleString, loc):
                 dayList = days[startDateIndex: endDateIndex + 1]
             for d in dayList:
                 for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
-                    config = open("config/MIST_" + p + d + hToName + modelH + ".tcl", "w")
+                    config = open("configMIST/MIST_" + p + d + hToName + modelH + ".tcl", "w")
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
                         "set Data(TAG1)   \"UMOSmist" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
@@ -295,13 +295,13 @@ def TCLConfig(formattedParticuleString, loc):
                         "set Data(levels) \" -1\"\n"  # todo confirm levels
                         "set Data(MandatoryLevels) \" 1\"\n"
                         "set Data(Path)    " + filelocation + "/bash\n"
-                        "set Data(PathOut) " + filelocation + "/extracted\n"
+                        "set Data(PathOut) " + filelocation + "/extractedMist\n"
                         "set Data(Start)      \"" + sYear + sMonth + "\"\n"
                         "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                        "set Data(Eticket)     \"RAQDPS020\"\n"
+                        "set Data(Eticket)     \"CAPAMIST\"\n"
                         "set Data(point) \"" + name + "\"\n"
                         "set Data(coord) \"" + lat + " " + long + "\"\n"
-                        "set Data(ID) \"ID" +loc+"\"\n"        
+                        "#set Data(ID) \"ID" +loc+"\"\n"        
                         "set Data(PASSE) \""+modelH+"\"\n"
                         "set Data(days) \"" + str(d) + "\"\n"  # todo confirm start day
                         "set Data(hours) \"" + str(hToFile) + "\"\n"
@@ -311,9 +311,9 @@ def TCLConfig(formattedParticuleString, loc):
 
 def launchTCL():
     os.system(" ls "+filelocation+"/config | sort -st '/' -k1,1")
-    os.system("chmod -R 777 "+ filelocation+"/config")
-    for a in os.listdir('config'):
-        os.system("./extractMIST.tcl " + "config/" + a)
+    os.system("chmod -R 777 "+ filelocation+"/configMIST")
+    for a in os.listdir('configMIST'):
+        os.system("./extract1.tcl " + "configMIST/" + a)
 
 
 def removeEmptyFile(path):
@@ -339,7 +339,7 @@ def removeAllfile(path):
 def sortAndGenerate(destination):
     particulelist = re.split(" ", fpp)
     modelHourList = re.split(",", modelHour)
-    os.system(" ls " + filelocation + "/extracted | sort -st '/' -k1,1")
+    os.system(" ls " + filelocation + "/extractedMist | sort -st '/' -k1,1")
     for m in modelHourList:
         for p in particulelist:
             if not os.path.exists(destination + m + p):

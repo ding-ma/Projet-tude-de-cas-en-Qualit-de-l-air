@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import glob
 import os
+import shutil
 import tkinter as tk
 from tkinter import ttk
 
@@ -73,6 +74,7 @@ def GemClicked():
     locationlst = Gm.provinceDic[province]
     loc = locationlst[location]
 
+    Umist.removeAllfile(r'' + Umist.filelocation + "/configMIST")
     sTime = sHourcombo.get()
     eTime = eHourCombo.get()
     Umist.time(sTime, eTime)
@@ -315,7 +317,11 @@ def MISTRARC():
     os.system("rarc -i " + Umist.filelocation + "/UMist &")
 
 def MistGetLocation():
+    shutil.rmtree("extractedMist")
+    os.mkdir("extractedMist")
     Umist.launchTCL()
+    Umist.removeEmptyFile(r'' + Umist.filelocation + "/extractedMist")
+    Umist.sortAndGenerate(Umist.filelocation + "/extractedMist/")
 
 
 mistBashBtn = tk.Button(umosTab, text = "Bash - Mist", command = MISTClicked, width=17, height=1)
