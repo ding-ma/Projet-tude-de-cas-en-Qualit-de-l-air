@@ -5,6 +5,7 @@ import shutil
 import tkinter as tk
 from tkinter import ttk
 
+import FireWork as Fw
 import Gemmach as Gm
 import UMOS as Um
 import UMOSMist as Umist
@@ -75,14 +76,21 @@ def GemClicked():
     loc = locationlst[location]
 
     Umist.removeAllfile(r'' + Umist.filelocation + "/configMIST")
-    sTime = sHourcombo.get()
-    eTime = eHourCombo.get()
     Umist.time(sTime, eTime)
     Umist.inputStartDate(a)
     Umist.inputEndDate(b)
     Umist.modelCheckbox(h_00, h_12)
     Umist.rarcFile()
     Umist.bashFile(particules,loc)
+
+    Fw.level(levelEntry.get())
+    Fw.removeAllfile(r'' + Fw.filelocation + "/configFw")
+    Fw.time(sTime, eTime)
+    Fw.inputStartDate(a)
+    Fw.inputEndDate(b)
+    Fw.modelCheckbox(h_00, h_12)
+    Fw.rarcFile()
+    Fw.bashFile(particules, loc)
 
 
 rarcLabel = tk.Label(machTab, text="Rarc Settings", font="20")
@@ -92,9 +100,19 @@ yearCombo = ttk.Combobox(machTab, values = list(Gm.years),state='readonly')
 yearCombo.grid(column=0, row=1)
 yearCombo.current(18)
 
+
+def monthChanger(evt):
+    a = sDate()
+    b = Gm.inputStartDate(a)
+    startDateCombo.config(values =b)
+    endDateCombo.config(values =b)
+
+
 monthCombo = ttk.Combobox(machTab, values = list(Gm.monthDict.keys()), state = 'readonly')
 monthCombo.grid(column=1, row=1)
 monthCombo.current(0)
+monthCombo.bind('<<ComboboxSelected>>', monthChanger)
+yearCombo.bind('<<ComboboxSelected>>', monthChanger)
 
 startDateCombo = ttk.Combobox(machTab, values = Gm.days[1:-2], state = 'readonly')
 startDateCombo.grid(column=0, row=2)
@@ -332,10 +350,42 @@ mistExtraction.grid(column=2, row=0)
 
 mistTCLBtn = tk.Button(umosTab, text = "Get Data Location, Mist", command = MistGetLocation ,width=17, height=1)
 mistTCLBtn.grid(column=2, row=1)
+
 # tab for FireWork
+def FwRarc():
+    os.system("rarc -i " + Umist.filelocation + "/FireWork &")
+
+def FwClicked():
+    if Fw.bothCheked is 1:
+        os.system("./FireWork00.bash &")
+        print("Done, file located at -->" + Fw.filelocation + "/bash")
+    if Fw.bothCheked is 2:
+        os.system("./FireWork12.bash &")
+        print("Done, file located at -->" + Fw.filelocation + "/bash")
+    if Fw.bothCheked is 3:
+        os.system("./FireWork00.bash &")
+        os.system("./FireWork12.bash &")
+        print("Done, file located at -->" + Fw.filelocation + "/bash")
+
+def FwGetLocation():
+    shutil.rmtree("extractedFw")
+    os.mkdir("extractedFw")
+    Fw.launchTCL()
+    Fw.removeEmptyFile(r'' + Fw.filelocation + "/extractedFw")
+    Fw.sortAndGenerate(Fw.filelocation + "/extractedFw/")
+
+
 fireWorkTab = ttk.Frame(nb)
 nb.add(fireWorkTab, text="FireWork")
 
+fwBashBtn = tk.Button(fireWorkTab, text = "Bash FW", command = FwClicked,width=17, height=1)
+fwBashBtn.grid(column=0, row=1)
+
+fwRarcBtn = tk.Button(fireWorkTab, text = "Rarc, Fw", command = FwRarc, width=17, height=1)
+fwRarcBtn.grid(column=0, row=0)
+
+fwTCLbtn = tk.Button(fireWorkTab, text = "Get Data at Location", command = FwGetLocation, width=17, height=1)
+fwTCLbtn.grid(column=1, row=0)
 
 # tab for help
 helptab = ttk.Frame(nb)

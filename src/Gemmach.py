@@ -8,7 +8,7 @@ import string
 
 #code to create repos and make sure everything is executable
 filelocation = os.getcwd()
-directories = ["bash", "config", "rarc", "output", "extracted", "UMOSTreating", "configMIST", "extractedMist"]
+directories = ["bash", "config", "rarc", "output", "extracted", "UMOSTreating", "configMIST", "extractedMist", "configFw", "extractedFw"]
 for i in directories:
     if not os.path.exists(filelocation+"/"+i):
         os.mkdir(filelocation+"/"+i)
@@ -192,11 +192,9 @@ def gettingprovlist(prov):
 
 ########
 
-# change filename to gemmach
 
-
-oddMonths = ("01", "03", "05", "07", "09", "11")
-evenMonths = ("04", "06", "08", "10", "12")
+oddMonths = ("01", "03", "05", "07", "08", "10", "12")
+evenMonths = ("04", "06", "09", "11")
 
 #this is IMPORTANT, otherwise the hashtable will not give this in order
 monthDict = collections.OrderedDict()
@@ -250,7 +248,6 @@ def inputStartDate(sDate):
     global sMonth
     global sDay
     #splits the entry into a tuple
-    print(sDate)
     unformatattedDate = re.split("/", sDate)
     sYear = unformatattedDate[0]
     sMonth = unformatattedDate[1]
@@ -260,6 +257,16 @@ def inputStartDate(sDate):
         leap = True
     else:
         leap = False
+
+    if sMonth in oddMonths:
+        return days[1:-2]
+    if sMonth in evenMonths:
+        return days[1:-3]
+    if leap is True and int(sMonth) is 2:
+        return days[1:-4]
+    if leap is False and int(sMonth) is 2:
+        return days[1:-5]
+
     #checks if the user input is correct
     if len(sYear) != 4 or len(sMonth) != 2 or sMonth > "12" or len(sDay) != 2:
         dateErrors()

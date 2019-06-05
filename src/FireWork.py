@@ -123,7 +123,7 @@ def dateErrors():
 
 
 def rarcFile():
-    file = open("UMist", "w")
+    file = open("FireWork", "w")
     file.write(
         "target = "+filelocation+"/rarc\n"
         "filter = copy\n"
@@ -133,19 +133,26 @@ def rarcFile():
         + sYear + "," + sMonth + "," + sDay + ","
         # end
         + eYear + "," + eMonth + "," + eDay +
-        "\nbranche = operation.scribeMat.mist.aq\n"
-        "ext = ***" 
+        "\nbranche = operation.forecasts.firework.mach\n"
+        "ext = " + formattedSelectedTimeWithComma +
         "\nheure = " + modelHour +
         "\npriority = online\n"
         "inc = 1\n"
         "#\n")
-    print("Umos -Mist RARC File Saved")
+    print("Fire-Work RARC File Saved")
+
+def level(lv):
+    global lev
+    if lv is "":
+        lev = "93423264 76696048"
+    else:
+        lev = lv
 
 
 def bashFile(formattedParticuleString, loc):
     modelHourList = re.split(",", modelHour)
     for modelHourSeparated in modelHourList:
-        fileBash = open("UmosMist" + modelHourSeparated + ".bash", 'w')
+        fileBash = open("FireWork" + modelHourSeparated + ".bash", 'w')
         fileBash.write(
             "#!/bin/bash\n"
             "PathOut="+filelocation+"/bash"
@@ -154,24 +161,24 @@ def bashFile(formattedParticuleString, loc):
             "\nDateFin=" + eYear + eMonth + eDay+
             "\nListeMois=\"" + formattedMonthlist + "\""
             "\nAnnee=" + sYear +  # not used
-            "\nTag1=UMOSmist"+modelHourSeparated+
+            "\nTag1=FW"+modelHourSeparated+
             "\neditfst=/fs/ssm/eccc/mrd/rpn/utils/16.2/ubuntu-14.04-amd64-64/bin/editfst"
             "\nType=species"
             "\nGrille=regeta"
-            "\nFichierTICTAC="+filelocation+"/rarc/operation.scribeMat.mist.aq/${DateDebut}"+modelHourSeparated+"_mist_anal"
-            "\nListeVersionsGEM=\"operation.scribeMat.mist.aq\""
+            "\nFichierTICTAC="+filelocation+"/rarc/operation.forecasts.firework.mach/${DateDebut}"+modelHourSeparated+ "_" + sTimeBash +
+            "\nListeVersionsGEM=\"operation.forecasts.firework.mach\""
             "\nListeEspeces=\"" + formattedParticuleString + "\""
-            "\nListeNiveaux=\"-1\""  # TODO confirm levels
-            "\nListeJours=\"-1\""
-            "\nListePasse=\"-1\""
-            "\nListeHeures=\"-1\""
+            "\nListeNiveaux=\"" + lev + "\""  # TODO confirm levels
+            "\nListeJours=\"" + formattedDay + "\""
+            "\nListePasse=\"" + modelHourSeparated + "\""
+            "\nListeHeures=\"" + formattedSelectedTimeWithSpace + "\""
             "\n################# Extraction#############"
             "\nfor VersionGEM in  ${ListeVersionsGEM}"
             "\ndo"
             "\nFileOut1=${PathOut}/${Tag1}.${DateDebut}_${DateFin}_${Grille}.fst"
             "\nif [  ${FileOut1}  ]; then"
             "\nrm -rf  ${FileOut1}"
-            "\nelse"
+            "\nelse"    
             "\ncontinue"
             "\nfi"
             "\nFileIn=${FichierTICTAC}"
@@ -188,7 +195,7 @@ def bashFile(formattedParticuleString, loc):
             "\nfor heure in ${ListeHeures}"
             "\ndo"
             "\necho ${heure}"
-            "\nFileIn1=${PathIn}/${VersionGEM}/${DateDebut}"+modelHourSeparated+"_mist_anal"
+            "\nFileIn1=${PathIn}/${VersionGEM}/${DateDebut}${passe}_${heure}"
             "\nif [ ! ${FileIn1}  ]; then"
             "\ncontinue"
             "\nelse"
@@ -217,7 +224,7 @@ def bashFile(formattedParticuleString, loc):
             "\ndone"
             "\ndone\n"
         )
-    print("UMOS-Mist Bash File Saved!")
+    print("Fire-Work Bash File Saved!")
     TCLConfig(formattedParticuleString, loc)
 
 
@@ -239,15 +246,12 @@ def time(sTime, eTime):
         unformattedSelectedTime[i:i + 3] for i in range(0, len(unformattedSelectedTime), 3))
 
 
-
-
-
 def TCLConfig(formattedParticuleString, loc):
     global fpp
     global locationId
     locationId = loc
     fpp = formattedParticuleString
-    removeAllfile(r'' + Gm.filelocation + "/config")
+    removeAllfile(r'' + Gm.filelocation + "/configFw")
     particulelist = re.split(" ", formattedParticuleString)
     modelHourList = re.split(",", modelHour)
     listIndex = Gm.lstID.index(loc)
@@ -265,20 +269,20 @@ def TCLConfig(formattedParticuleString, loc):
                 dayList = Gm.days[startDateIndex: endDateIndex + 1]
             for d in dayList:
                 for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
-                    config = open("configMIST/MIST_" + p + d + hToName + modelH + ".tcl", "w")
+                    config = open("configFw/Fw_" + p + d + hToName + modelH + ".tcl", "w")
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
-                        "set Data(TAG1)   \"UMOSmist" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                        "set Data(TAG1)   \"FW" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
                         "set Data(TAG3)   \"" + d + "" + hToName + "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \"" + modelH + "\"\n"
                         "set Data(levels) \" -1\"\n"  # todo confirm levels
                         "set Data(MandatoryLevels) \" 1\"\n"
                         "set Data(Path)    " + filelocation + "/bash\n"
-                        "set Data(PathOut) " + filelocation + "/extractedMist\n"
+                        "set Data(PathOut) " + filelocation + "/extractedFw\n"
                         "set Data(Start)      \"" + sYear + sMonth + "\"\n"
                         "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                        "set Data(Eticket)     \"CAPAMIST\"\n"
+                        "set Data(Eticket)     \"RAQDPS019FW\"\n"
                         "set Data(point) \"" + name + "\"\n"
                         "set Data(coord) \"" + lat + " " + long + "\"\n"
                         "#set Data(ID) \"ID" +loc+"\"\n"        
@@ -290,10 +294,10 @@ def TCLConfig(formattedParticuleString, loc):
 
 
 def launchTCL():
-    os.system(" ls "+filelocation+"/config | sort -st '/' -k1,1")
-    os.system("chmod -R 777 "+ filelocation+"/configMIST")
-    for a in os.listdir('configMIST'):
-        os.system("./extract1.tcl " + "configMIST/" + a)
+    os.system(" ls "+filelocation+"/configFw | sort -st '/' -k1,1")
+    os.system("chmod -R 777 "+ filelocation+"/configFw")
+    for a in os.listdir('configFw'):
+        os.system("./extract1.tcl " + "configFw/" + a)
 
 
 def removeEmptyFile(path):
@@ -319,7 +323,7 @@ def removeAllfile(path):
 def sortAndGenerate(destination):
     particulelist = re.split(" ", fpp)
     modelHourList = re.split(",", modelHour)
-    os.system(" ls " + filelocation + "/extractedMist | sort -st '/' -k1,1")
+    os.system(" ls " + filelocation + "/extractedFw | sort -st '/' -k1,1")
     for m in modelHourList:
         for p in particulelist:
             if not os.path.exists(destination + m + p):
@@ -327,7 +331,7 @@ def sortAndGenerate(destination):
             for f in os.listdir(destination):
                 if f.endswith("_" + m + p + ".csv"):
                     shutil.move(destination + f, destination + m + p)
-            file = open("output/UMOS-Mist__"+"ID"+locationId +"___"+m + p+"___Start"+sYear+sMonth+sDay +"___End"+eYear+eMonth+eDay+ ".csv", "w+")
+            file = open("output/FW__"+"ID"+locationId +"___"+m + p+"___Start"+sYear+sMonth+sDay +"___End"+eYear+eMonth+eDay+ ".csv", "w+")
             file.write("Date,Time,Height,Value\n")
             for i in sorted(os.listdir(destination + m + p)):
                 b = open(destination + m + p + "/" + i).read()

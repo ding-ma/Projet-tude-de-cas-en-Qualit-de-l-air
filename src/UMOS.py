@@ -38,6 +38,7 @@ def inputStartDate(sDate):
         leap = True
     else:
         leap = False
+
     #checks if the user input is correct
     if len(sYear) != 4 or len(sMonth) != 2 or sMonth > "12" or len(sDay) != 2:
         dateErrors()
