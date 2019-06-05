@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="993a9838-9207-46e0-aaef-0972cce94224" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/FireWork.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FireWork.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FireWork.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gemmach.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gemmach.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UMOS.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UMOS.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UMOSMist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UMOSMist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests.py" afterDir="false" />
     </list>
     <list id="907627cc-b390-404d-92ca-b82bb5948891" name="changed ui for date entry, dropbox" comment="changed ui for date entry, dropbox&#10;&#10;(cherry picked from commit 2f4aa07e39a3bdfdaad2fabc35416c24e44b5482)">
       <changelist_data name="Ding Ma" email="ding.ma@mail.mcgill.ca" date="1559324784000" />
@@ -23,8 +24,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/UI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-66">
-              <caret line="366" column="31" selection-start-line="366" selection-start-column="21" selection-end-line="366" selection-end-column="31" />
+            <state relative-caret-position="255">
+              <caret line="111" selection-start-line="111" selection-end-line="111" />
               <folding>
                 <element signature="e#23#34#0" expanded="true" />
               </folding>
@@ -33,10 +34,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FireWork">
+        <entry file="file://$PROJECT_DIR$/src/UMOSMist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="-705">
+              <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="10149">
+              <caret line="597" column="9" lean-forward="true" selection-start-line="597" selection-start-column="9" selection-end-line="597" selection-end-column="9" />
+              <folding>
+                <element signature="e#23#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -44,10 +60,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FireWork.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1898">
-              <caret line="152" column="44" selection-start-line="152" selection-start-column="44" selection-end-line="152" selection-end-column="44" />
+            <state relative-caret-position="244">
+              <caret line="316" column="41" lean-forward="true" selection-start-line="316" selection-start-column="41" selection-end-line="316" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UMOS.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="94">
+              <caret line="114" selection-start-line="114" selection-end-line="114" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -64,16 +89,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>oddm</find>
-      <find>formattedParticuleString</find>
-      <find>datesplit</find>
-      <find>particule</find>
-      <find>./</find>
-      <find>get</find>
       <find>*</find>
       <find>bash</find>
       <find>delete</find>
-      <find>tcl</find>
       <find>get data at</find>
       <find>fpp</find>
       <find>cmcarc</find>
@@ -90,10 +108,17 @@
       <find>operation</find>
       <find>lev</find>
       <find>Gm.level(levelEntry.get())</find>
-      <find>level</find>
       <find>fire-wor</find>
       <find>bashf</find>
       <find>UMOSmist</find>
+      <find>-R</find>
+      <find>tcl</find>
+      <find>76696048</find>
+      <find>level</find>
+      <find>eti</find>
+      <find>etic</find>
+      <find>data</find>
+      <find>print</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -129,11 +154,11 @@
         <option value="$PROJECT_DIR$/src/UMOS-Mist.py" />
         <option value="$PROJECT_DIR$/src/mistbash.bash" />
         <option value="$PROJECT_DIR$/src/tests.py" />
-        <option value="$PROJECT_DIR$/src/UMOS.py" />
         <option value="$PROJECT_DIR$/src/Gemmach.py" />
         <option value="$PROJECT_DIR$/src/UMOSMist.py" />
-        <option value="$PROJECT_DIR$/src/UI.py" />
+        <option value="$PROJECT_DIR$/src/UMOS.py" />
         <option value="$PROJECT_DIR$/src/FireWork.py" />
+        <option value="$PROJECT_DIR$/src/UI.py" />
       </list>
     </option>
   </component>
@@ -629,7 +654,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559741419475</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="firework module is now added">
+      <created>1559747405622</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1559747405622</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView">
@@ -754,7 +786,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="rarc and script works for extracting variable from fst, working on the list of stations" />
     <MESSAGE value="test.py : search id/station name works with a single command" />
     <MESSAGE value="did some further testing on the name/id search" />
     <MESSAGE value="end of day commit" />
@@ -779,7 +810,8 @@
     <MESSAGE value="fixed bug, was a tag error X.X" />
     <MESSAGE value="end of day added 2x &quot;00&quot; for the days in order to fix the out of bound problem" />
     <MESSAGE value="changed all the dates, month, hours into one place" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed all the dates, month, hours into one place" />
+    <MESSAGE value="firework module is now added" />
+    <option name="LAST_COMMIT_MESSAGE" value="firework module is now added" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
@@ -878,13 +910,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gemmach">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/umos" />
     <entry file="file://C:/Python34/Lib/glob.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -977,40 +1002,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UMOS.py">
+    <entry file="file://$PROJECT_DIR$/src/FireWork12.bash">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="48" column="28" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UMOSMist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="212" column="20" lean-forward="true" selection-start-line="212" selection-start-column="20" selection-end-line="212" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="490" column="12" lean-forward="true" selection-start-line="490" selection-start-column="12" selection-end-line="490" selection-end-column="84" />
-          <folding>
-            <element signature="e#23#41#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="323">
+          <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -1021,27 +1016,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FireWork12.bash">
+    <entry file="file://$PROJECT_DIR$/src/gemmach">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FireWork.py">
+    <entry file="file://$PROJECT_DIR$/src/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1898">
-          <caret line="152" column="44" selection-start-line="152" selection-start-column="44" selection-end-line="152" selection-end-column="44" />
+        <state relative-caret-position="102">
+          <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UMOSMist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-705">
+          <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/UMOS.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="114" selection-start-line="114" selection-end-line="114" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FireWork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="316" column="41" lean-forward="true" selection-start-line="316" selection-start-column="41" selection-end-line="316" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10149">
+          <caret line="597" column="9" lean-forward="true" selection-start-line="597" selection-start-column="9" selection-end-line="597" selection-end-column="9" />
+          <folding>
+            <element signature="e#23#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/UI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-66">
-          <caret line="366" column="31" selection-start-line="366" selection-start-column="21" selection-end-line="366" selection-end-column="31" />
+        <state relative-caret-position="255">
+          <caret line="111" selection-start-line="111" selection-end-line="111" />
           <folding>
             <element signature="e#23#34#0" expanded="true" />
           </folding>

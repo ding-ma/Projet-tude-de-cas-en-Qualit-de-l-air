@@ -6,8 +6,8 @@ import shutil
 
 import Gemmach as Gm
 
+#creates a dictionary based on the station ID and 3 letter Code
 filelocation = Gm.filelocation
-
 file = open("UMOS_Ref.csv", "r")
 reader = csv.reader(file)
 UMOSRefList = list(reader)
@@ -50,8 +50,6 @@ def inputStartDate(sDate):
         dateErrors()
     elif sMonth in Gm.evenMonths and int(sDay) > 30:
         dateErrors()
-    else:
-        print("Start Date: " + sYear, sMonth, sDay)
 
 
 # end date
@@ -83,8 +81,7 @@ def inputEndDate(eDate):
         dateErrors()
     elif sMonth == eMonth and sDay > eDay:
         dateErrors()
-    else:
-        print("End Date: " + eYear, eMonth, eDay)
+    #used to distinguish which archive to go see
     if int(eYear+eMonth+eDay)<20170105:
         return False
 
@@ -114,8 +111,6 @@ def modelCheckbox(h_00, h_12):
     else:
         modelHour = " "
     modelHourList = re.split(",", modelHour)
-
-
 
 
 def getDataAtLocationPre2017(locationID, molecule, modelHourList):

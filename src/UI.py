@@ -36,6 +36,7 @@ def eDate():
     endDate = endDateCombo.get()
     return year + "/" + month + "/" + endDate
 
+#this function just writes all the user input into all files
 def GemClicked():
     a = sDate()
     b = eDate()
@@ -101,6 +102,7 @@ yearCombo.grid(column=0, row=1)
 yearCombo.current(18)
 
 
+# these are binded together in order to dynamicaly change the days displayed according to the year and month
 def monthChanger(evt):
     a = sDate()
     b = Gm.inputStartDate(a)
@@ -108,16 +110,20 @@ def monthChanger(evt):
     endDateCombo.config(values =b)
 
 
+#month combobox
 monthCombo = ttk.Combobox(machTab, values = list(Gm.monthDict.keys()), state = 'readonly')
 monthCombo.grid(column=1, row=1)
 monthCombo.current(0)
 monthCombo.bind('<<ComboboxSelected>>', monthChanger)
 yearCombo.bind('<<ComboboxSelected>>', monthChanger)
 
+
+#start date combobox
 startDateCombo = ttk.Combobox(machTab, values = Gm.days[1:-2], state = 'readonly')
 startDateCombo.grid(column=0, row=2)
 startDateCombo.current(0)
 
+#end date combobox
 endDateCombo = ttk.Combobox(machTab, values = Gm.days[1:-2], state = 'readonly')
 endDateCombo.grid(column=1, row=2)
 endDateCombo.current(0)
@@ -151,6 +157,7 @@ var_12 = tk.BooleanVar()
 hours12_Checkbutton = tk.Checkbutton(machTab, text="12", variable=var_12)
 hours12_Checkbutton.grid(column=2, row=10)
 
+
 bashLabel = tk.Label(machTab, text="Bash Script Settings", font="20")
 bashLabel.grid(column=0, row=9, pady=(10, 0))
 # molecule checkbox
@@ -174,7 +181,7 @@ otherVariable = tk.Entry(machTab, width=13)
 otherVariable.grid(column=5, row=11)
 
 # manual add level
-levelLabel = tk.Label(machTab, text="Enter Level (optional)")
+levelLabel = tk.Label(machTab, text="Enter Level (optional, default: 76696048/93423264)")
 levelLabel.grid(column=4, row=1)
 levelEntry = tk.Entry(machTab, width=15)
 levelEntry.grid(column=4, row=2)
@@ -188,11 +195,13 @@ def combined(event):
     combostations.config(values=provlist)
 
 
+#province combobox
 comboprov = ttk.Combobox(machTab, values=Gm.prov, width=10, state='readonly')
 comboprov.grid(column=0, row=14)
 comboprov.bind('<<ComboboxSelected>>', combined)
 comboprov.current(0)
 
+#stations from the province combobox
 combostations = ttk.Combobox(machTab, values=Gm.gettingprovlist("AB"), width=30, state='readonly')
 combostations.grid(column=1, row=14)
 combostations.current(1)
@@ -213,7 +222,7 @@ def SearchNameID():
     displayString = Gm.SearchNameID(userInput)
     stationSearchLabel.config(text=displayString)
 
-
+#suff for the search
 stationSearchLabel = tk.Label(machTab, text=displayString)
 stationSearchLabel.grid(column=2, row=14, pady=(20, 0), padx=(60, 0))
 searchBtn = tk.Button(machTab, text="Search", command=SearchNameID)
@@ -236,6 +245,7 @@ def StartXRACR():
 
 
 def StartBash():
+    os.system("chmod -R 777 " + Fw.filelocation)
     if Gm.bothCheked is 1:
         os.system("./gemmachBashTest00.bash &")
         print("Done, file located at -->" + Gm.filelocation + "/bash")
@@ -315,10 +325,11 @@ def UMOSGetLocation():
     Um.particuleCheckBoxAndTime(O3, NO2, PM25, loc, datesplit, active)
 
 
-UMOSBtnGetFile = tk.Button(umosTab, text="Get Data at location", command = UMOSGetLocation, width=17, height=1)
+UMOSBtnGetFile = tk.Button(umosTab, text="Get Data at location (2)", command = UMOSGetLocation, width=17, height=1)
 UMOSBtnGetFile.grid(column=0, row=1)
 
 def MISTClicked():
+    os.system("chmod -R 777 " + Fw.filelocation)
     if Umist.bothCheked is 1:
         os.system("./UmosMist00.bash &")
         print("Done, file located at -->" + Umist.filelocation + "/bash")
@@ -356,6 +367,7 @@ def FwRarc():
     os.system("rarc -i " + Umist.filelocation + "/FireWork &")
 
 def FwClicked():
+    os.system("chmod -R 777 " + Fw.filelocation)
     if Fw.bothCheked is 1:
         os.system("./FireWork00.bash &")
         print("Done, file located at -->" + Fw.filelocation + "/bash")
@@ -378,13 +390,13 @@ def FwGetLocation():
 fireWorkTab = ttk.Frame(nb)
 nb.add(fireWorkTab, text="FireWork")
 
-fwBashBtn = tk.Button(fireWorkTab, text = "Bash FW", command = FwClicked,width=17, height=1)
+fwBashBtn = tk.Button(fireWorkTab, text = "Bash Fw", command = FwClicked,width=17, height=1)
 fwBashBtn.grid(column=0, row=1)
 
 fwRarcBtn = tk.Button(fireWorkTab, text = "Rarc, Fw", command = FwRarc, width=17, height=1)
 fwRarcBtn.grid(column=0, row=0)
 
-fwTCLbtn = tk.Button(fireWorkTab, text = "Get Data at Location", command = FwGetLocation, width=17, height=1)
+fwTCLbtn = tk.Button(fireWorkTab, text = "Get Data Location, Fw", command = FwGetLocation, width=17, height=1)
 fwTCLbtn.grid(column=1, row=0)
 
 # tab for help
@@ -396,18 +408,53 @@ gemmachinfo = tk.Label(helptab, text="GEMMACH - How it works:\n"
                                      "Step 2: uses RARC command line settings to extract data from CMC server\n"
                                      "Step 3: the bash script will isolate the corresponding polluant into a .fst file \n"
                                      "Step 4: the tcl script will get the polluant data at a specific point on the map \n"
-                                     "GEMMACH - INFO:\n"
+                                     "\nGEMMACH - INFO:\n"
                                      "- ALWAYS write to file when you are changing some settings\n "
                                      "- Sometimes 00 has bugs, make sure to unselect and reselect it\n"
                                      "- If the .fst already exists, you may skip the according step\n"
-                                     "")
+                                     )
 gemmachinfo.grid(column=0, row=0)
 
-umosinfo = tk.Label(helptab, text = "UMOS Info\n"
+umosinfo = tk.Label(helptab, text = "UMOS - How it works:\n"
+                                    "Step 1: All the information will be written once you press \"Write to file (1)\" in the Gem tab\n"
+                                    "Step 2: Use Rarc if the files are not extracted already\n"
+                                    "Step 3: Get the data at the chosen station\n"
+                                    "\nUMOS Info\n"
                                     "There is a separation of file directory in the archives at 2017 Jan 07\n"
                                     "But the output and functionality of the application still remains the same\n"
-                                    "UMOSTreating Folder is a temporary folder, it is normal that there are no files in it because they are deleted after the app finish running")
+                                    "UMOSTreating Folder is a temporary folder, it is normal that there are no files in it because they are deleted after the app finish running\n")
 umosinfo.grid(column=1, row=0)
+
+umosMistinfo = tk.Label(helptab, text = "UMOS-Mist - How it works:\n"
+                                        "Same concept as Gemmach\n"
+                                        "Step 1: Takes all the information entered when you press \"Write to file (1)\" in the Gem tab\n"
+                                        "Step 2: Use Rarc if the files are not extracted already\n"
+                                        "Step 3: Use the Bash button to isolate the interested molecule and level \n"
+                                        "Step 4: Get the data at the chosen station\n")
+umosMistinfo.grid(column=0, row=1)
+
+fwInfo = tk.Label(helptab, text = "FireWork - How it works: \n"
+                                  "Same concept as Gemmach\n"
+                                  "The files are automatically generated from the gemmach tab\n"
+                                  "Step 1: use extract file if the files are not extracted\n"
+                                  "Step 2: Use the Bash button to isolate the interested molecule and level\n"
+                                  "Step 3: Get the data at the chosen station\n"
+                                  "! Warning! FireWork model does not run all year long, it might be normal if it gives you nothing if you try to run this in the middle of the winter :)\n")
+fwInfo.grid(column=1, row=1)
+
+notesInfo = tk.Label(helptab, text = "Notes:\n"
+                                     "-If you want the data at another location, change it in the Gemmach Tab and press WRITE TO FILE so it updates everything, "
+                                     "you do not need to go through the entire process again. \nJust press \"get data at location\" it will generate a new csv file with the new station\n"
+                                     "- By default the level value are: 93423264(before Septemember 9 2016) 76696048 (After that date)\n"
+                                     "- Always consult the commandline text of the program to see what is going on\n"
+                                     "- It is normal that there is error #8 while running Gemmach,UmosMist, and FireWork script for getting data at location"
+                                     "since they rely on some empty fields\n"
+                                     "- If RARC gives you a grand total of 0, it means that the file already exists in the folder OR the file does not exis in the archives\n"
+                                     "- If there are hours that needs to be added, consult Gemmach.py file, make sure to add the time to 3 lists\n"
+                                     "- if there are stations that needs to be added, add them to the \"station_DB.csv\", add them to the END and fill the entire ROW with the corresponding data"
+                                     "- If the eticket needs to be changed, see Gemmach.py to change them")
+notesInfo.grid(column=0, row=3)
+
 window.mainloop()
 
 # notes: active var for particuleCheckBoxAndTime allowed me to use the same code for different purposes, when you write

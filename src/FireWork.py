@@ -4,6 +4,7 @@ import shutil
 
 import Gemmach as Gm
 
+Eticket = Gm.EticketFW
 filelocation = Gm.filelocation
 
 def inputStartDate(sDate):
@@ -32,8 +33,6 @@ def inputStartDate(sDate):
         dateErrors()
     elif sMonth in Gm.evenMonths and int(sDay) > 30:
         dateErrors()
-    else:
-        print("Start Date: " + sYear, sMonth, sDay)
 
 
 # end date
@@ -66,7 +65,6 @@ def inputEndDate(eDate):
     elif sMonth == eMonth and sDay > eDay:
         dateErrors()
     else:
-        print("End Date: " + eYear, eMonth, eDay)
         listOfDays()
         listofMonth()
 
@@ -144,7 +142,7 @@ def rarcFile():
 def level(lv):
     global lev
     if lv is "":
-        lev = "93423264 76696048"
+        lev = "76696048 93423264"
     else:
         lev = lv
 
@@ -282,7 +280,7 @@ def TCLConfig(formattedParticuleString, loc):
                         "set Data(PathOut) " + filelocation + "/extractedFw\n"
                         "set Data(Start)      \"" + sYear + sMonth + "\"\n"
                         "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                        "set Data(Eticket)     \"RAQDPS019FW\"\n"
+                        "set Data(Eticket)     \""+Eticket+"\"\n"
                         "set Data(point) \"" + name + "\"\n"
                         "set Data(coord) \"" + lat + " " + long + "\"\n"
                         "#set Data(ID) \"ID" +loc+"\"\n"        

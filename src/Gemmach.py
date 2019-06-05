@@ -6,6 +6,51 @@ import re
 import shutil
 import string
 
+# Setings used for the entire program, change/ add as needed
+
+# This format is used to bash and rarc scripts
+hours = (
+    "000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015",
+    "016",
+    "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029", "030", "031", "032",
+    "033",
+    "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047", "048")
+
+# This format is used for the tcl script
+tcl = [
+    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+    "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39",
+    "40", "41", "42", "43", "44", "45", "46", "47", "48"]
+
+# This format is used to sort the files
+hour24 = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17",
+          "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
+          "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
+
+# Change etiquette here - Gemmach
+EticketGEM = "RAQDPS020"
+
+# For UMOS
+EticketUMOS = "CAPAMIST"
+
+# For Firework
+EticketFW = "RAQDPS019FW"
+
+#Do not touch the rest!
+##################################################
+
+years = ("2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012",
+         "2013", "2014", "2015", "2016",
+         "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029",
+         "2030", "2031", "2032", "2033",
+         "2034", "2035", "2036", "2037", "2038", "2039", "2040", "2041", "2042", "2043", "2044", "2045", "2046",
+         "2047", "2048", "2049", "2050")
+
+days = (
+    "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18"
+    , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "01", "02")
+
+
 #code to create repos and make sure everything is executable
 filelocation = os.getcwd()
 directories = ["bash", "config", "rarc", "output", "extracted", "UMOSTreating", "configMIST", "extractedMist", "configFw", "extractedFw"]
@@ -14,22 +59,6 @@ for i in directories:
         os.mkdir(filelocation+"/"+i)
 os.system("chmod -R 777 "+ filelocation)
 filedirectory = next(os.walk('.'))[1]
-
-# to connect to host, not working
-# def CMCServerConnection():  # add arguments to change user/pass
-#     host = "sci-eccc-in.science.gc.ca"
-#     host = "199.212.17.148"
-#     user = "sair001"
-    #     passw= "1AiqaCom!"
-#     port = 22
-#     client = paramiko.SSHClient()ll
-
-#     client.set_missing_host_key_policy(paramiko.WarningPolicy())
-#     print(" Connecting to %s \n with username: %s... \n" % (host, user))
-#     client.connect(hostname=host, port=port, username=user,password=passw)
-#     print("connected")
-#     stdin, stdout, stderr = client.exec_command("alias")
-#     print(stderr.readlines)
 
 # search for StationID or StationName
 stationFile = open("stations_DB.csv", "r")
@@ -164,6 +193,7 @@ for i in lstProvince:
 
 prov = ["AB", "BC", "MB", "NB", 'NL', "NS", "ON", "PE", "QC", "SK", "NT", "NU", "YT"]
 
+#returns list of all the stations based on the selected province
 provinceDic = {
     "AB": lstALB,
     "BC": lstBC,
@@ -211,36 +241,6 @@ monthDict['October'] = '10'
 monthDict['November'] = '11'
 monthDict['December'] = '12'
 
-#date time used for the entire program
-
-hours = (
-    "000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015",
-    "016",
-    "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029", "030", "031", "032",
-    "033",
-    "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047", "048")
-
-tcl = [
-    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
-    "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39",
-    "40", "41", "42", "43", "44", "45", "46", "47", "48"]
-
-hour24 = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17",
-          "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
-          "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
-
-years = ("2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012",
-         "2013", "2014", "2015", "2016",
-         "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029",
-         "2030", "2031", "2032", "2033",
-         "2034", "2035", "2036", "2037", "2038", "2039", "2040", "2041", "2042", "2043", "2044", "2045", "2046",
-         "2047", "2048", "2049", "2050")
-
-days = (
-    "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18"
-    , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "01", "02")
-
-#####
 
 #formats the start date
 def inputStartDate(sDate):
@@ -258,6 +258,7 @@ def inputStartDate(sDate):
     else:
         leap = False
 
+    #this is used for changing the combobox in the UI
     if sMonth in oddMonths:
         return days[1:-2]
     if sMonth in evenMonths:
@@ -266,6 +267,7 @@ def inputStartDate(sDate):
         return days[1:-4]
     if leap is False and int(sMonth) is 2:
         return days[1:-5]
+    ###
 
     #checks if the user input is correct
     if len(sYear) != 4 or len(sMonth) != 2 or sMonth > "12" or len(sDay) != 2:
@@ -296,7 +298,7 @@ def inputEndDate(eDate):
         leap = True
     else:
         leap = False
-
+    # error checking
     if len(eYear) != 4 or len(eMonth) != 2 or eMonth > "12" or len(eDay) != 2:
         dateErrors()
     elif leap is True and eMonth == "02" and int(eDay) > 29:
@@ -414,13 +416,14 @@ def get_formattedParticuleString():
 
 def level(lv):
     global lev
+    #if nothing inputed by user, keep as default
     if lv is "":
-        lev = "93423264 76696048"
+        lev = "76696048 93423264"
+    # else, change to what the user wrote
     else:
         lev = lv
 
-# rarc cmd
-# rarc -i /home/sair001/rarcdirectives/gemmach -tmpdir ./temp
+#generating rarc script
 def rarcFile():
     file = open("gemmach", "w")
     file.write(
@@ -441,7 +444,7 @@ def rarcFile():
     bashFile()
     print("Gem-Mach File Saved")
 
-
+#generates bash script
 def bashFile():
     modelHourList = re.split(",", modelHour)
     for modelHourSeparated in modelHourList:
@@ -515,11 +518,15 @@ def bashFile():
             "\ndone"
             "\ndone"
             "\ndone"
-"\ndone\n"
+            "\ndone\n"
         )
         print("Bash File Saved!")
 
 
+#generates script at the chosen location
+# What this does is it generates a TCL config file for EVERY hour, EVERY molecule, and every day, this is why there is a lot of file
+# This is to bypass the 12h empty date bug from the tcl script
+# a lot of 0kb file will be generated from running this script but they are deleted after
 def locationExtraction(iditem):
     deletelist = os.listdir(filelocation+"/extracted")
     for d in deletelist:
@@ -535,10 +542,6 @@ def locationExtraction(iditem):
     s = hours.index(executehour[0])
     e = hours.index(executehour[-1])
     particulelist = re.split(" ", formattedParticuleString)
-    if sYear+sMonth+sDay > "20160907":
-        level = "76696048"
-    else:
-        level = "93423264"
     for p in particulelist:
         for modelH in modelHourList:
             if modelH == "12":
@@ -554,13 +557,13 @@ def locationExtraction(iditem):
                         "set Data(TAG3)   \"" + d + "" + hToName + "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \""+modelH+"\"\n"
-                        "set Data(levels) \" "+level+"\"\n"  # todo confirm levels
-                        "set Data(MandatoryLevels) \" "+level+"\"\n"
+                        "set Data(levels) \" -1""\"\n"  # todo confirm levels
+                        "set Data(MandatoryLevels) \" 1""\"\n"
                         "set Data(Path)    "+filelocation+"/bash\n"
                         "set Data(PathOut) "+filelocation+"/extracted\n"
                         "set Data(Start)      \"" + sYear + sMonth + "\"\n"
                         "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                        "set Data(Eticket)     \"RAQDPS020\"\n"
+                        "set Data(Eticket)     \""+EticketGEM+"\"\n"
                         "set Data(point) \"" + name + "\"\n"
                         "set Data(coord) \"" + lat + " " + long + "\"\n"
                         "set Data(days) \"" + str(
@@ -570,6 +573,7 @@ def locationExtraction(iditem):
     print("Done")
 
 
+#runs all the file generated,  it is normal to see Error #8 while running
 def launchTCL():
     os.system(" ls "+filelocation+"/config | sort -st '/' -k1,1")
     os.system("chmod -R 777 "+ filelocation+"/config")
@@ -577,9 +581,8 @@ def launchTCL():
         os.system("./extract1.tcl " + "config/" + a)
 
 
+#removes empty file that are generated
 docName = []
-
-
 def removeEmptyFile(path):
     docList = os.listdir(path)
     for doc in docList:
@@ -591,6 +594,7 @@ def removeEmptyFile(path):
             removeEmptyFile(docPath)
 
 
+#deletes all file after the script is done running
 Name = []
 def removeAllfile(path):
     Name = os.listdir(path)
@@ -600,6 +604,8 @@ def removeAllfile(path):
             if os.path.getsize(docPath) > 0:
                 os.remove(docPath)
 
+
+#sorts and generates a CSV file in the output folder
 def sortAndGenerate(destination):
     particulelist = re.split(" ", formattedParticuleString)
     modelHourList = re.split(",", modelHour)
