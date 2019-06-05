@@ -4,10 +4,7 @@ import shutil
 
 import Gemmach as Gm
 
-filelocation = os.getcwd()
-
-oddMonths = ("01", "03", "05", "07", "09", "11")
-evenMonths = ("04", "06", "08", "10", "12")
+filelocation = Gm.filelocation
 
 def inputStartDate(sDate):
     global sYear
@@ -31,9 +28,9 @@ def inputStartDate(sDate):
         dateErrors()
     elif leap is False and sMonth == "02" and int(sDay) > 28:
         dateErrors()
-    elif sMonth in oddMonths and int(sDay) > 31:
+    elif sMonth in Gm.oddMonths and int(sDay) > 31:
         dateErrors()
-    elif sMonth in evenMonths and int(sDay) > 30:
+    elif sMonth in Gm.evenMonths and int(sDay) > 30:
         dateErrors()
     else:
         print("Start Date: " + sYear, sMonth, sDay)
@@ -60,9 +57,9 @@ def inputEndDate(eDate):
         dateErrors()
     elif leap is False and eMonth == "02" and int(eDay) > 28:
         dateErrors()
-    elif eMonth in oddMonths and int(eDay) > 31:
+    elif eMonth in Gm.oddMonths and int(eDay) > 31:
         dateErrors()
-    elif eMonth in evenMonths and int(eDay) > 30:
+    elif eMonth in Gm.evenMonths and int(eDay) > 30:
         dateErrors()
     elif sMonth > eMonth:
         dateErrors()
@@ -97,31 +94,28 @@ def modelCheckbox(h_00, h_12):
         modelHour = " "
 
 
-days = (
-    "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18"
-    , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "00", "00")
 # used for bashfile
 
 def listOfDays():
     global formattedDay
     global startDateIndex
     global endDateIndex
-    startDateIndex = days.index(sDay)
-    endDateIndex = days.index(eDay)
+    startDateIndex = Gm.days.index(sDay)
+    endDateIndex = Gm.days.index(eDay)
     unformattedDay = ""
     for dayList in range(endDateIndex - startDateIndex + 1):
-        unformattedDay += days[startDateIndex + dayList]
+        unformattedDay += Gm.days[startDateIndex + dayList]
     #for every 2 character, adds space
     formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
 
 def listofMonth():
     global formattedMonthlist
-    listMonth = ("00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")
-    sIndex = listMonth.index(sMonth)
-    eIndex = listMonth.index(eMonth)
+
+    sIndex = Gm.listMonth.index(sMonth)
+    eIndex = Gm.listMonth.index(eMonth)
     unformattedMonthList = ""
     for monthList in range(eIndex - sIndex + 1):
-        unformattedMonthList += listMonth[sIndex + monthList]
+        unformattedMonthList += Gm.listMonth[sIndex + monthList]
         formattedMonthlist = ' '.join(unformattedMonthList[i:i + 2] for i in range(0, len(unformattedMonthList), 2))
 
 def dateErrors():
@@ -233,11 +227,11 @@ def time(sTime, eTime):
     global sTimeBash
     sTimeBash = sTime
     #gets index then generates a list within the index
-    sIndex = hours.index(sTime)
-    eIndex = hours.index(eTime)
+    sIndex = Gm.hours.index(sTime)
+    eIndex = Gm.hours.index(eTime)
     unformattedSelectedTime = ""
     for timeList in range(eIndex - sIndex + 1):
-        unformattedSelectedTime += hours[sIndex + timeList]
+        unformattedSelectedTime += Gm.hours[sIndex + timeList]
     # for every 3 character
     formattedSelectedTimeWithComma = ','.join(
         unformattedSelectedTime[i:i + 3] for i in range(0, len(unformattedSelectedTime), 3))
@@ -245,21 +239,7 @@ def time(sTime, eTime):
         unformattedSelectedTime[i:i + 3] for i in range(0, len(unformattedSelectedTime), 3))
 
 
-hours = (
-    "000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015",
-    "016",
-    "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029", "030", "031", "032",
-    "033",
-    "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047", "048")
 
-tcl = [
-    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
-    "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39",
-    "40", "41", "42", "43", "44", "45", "46", "47", "48"]
-
-hour24 = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17",
-          "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
-          "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
 
 
 def TCLConfig(formattedParticuleString, loc):
@@ -275,16 +255,16 @@ def TCLConfig(formattedParticuleString, loc):
     long = Gm.lstLongitude[listIndex]
     lat = Gm.lstLatitude[listIndex]
     executehour = re.split(",", formattedSelectedTimeWithComma)
-    s = hours.index(executehour[0])
-    e = hours.index(executehour[-1])
+    s = Gm.hours.index(executehour[0])
+    e = Gm.hours.index(executehour[-1])
     for p in particulelist:
         for modelH in modelHourList:
             if modelH == "12":
-                dayList = days[startDateIndex: endDateIndex + 2]
+                dayList = Gm.days[startDateIndex: endDateIndex + 2]
             else:
-                dayList = days[startDateIndex: endDateIndex + 1]
+                dayList = Gm.days[startDateIndex: endDateIndex + 1]
             for d in dayList:
-                for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
+                for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
                     config = open("configMIST/MIST_" + p + d + hToName + modelH + ".tcl", "w")
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"

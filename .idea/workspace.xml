@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="993a9838-9207-46e0-aaef-0972cce94224" name="Default Changelist" comment="fixed bug, was a tag error X.X">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+    <list default="true" id="993a9838-9207-46e0-aaef-0972cce94224" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gemmach.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gemmach.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UMOS.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UMOS.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UMOSMist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UMOSMist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests.py" afterDir="false" />
     </list>
     <list id="907627cc-b390-404d-92ca-b82bb5948891" name="changed ui for date entry, dropbox" comment="changed ui for date entry, dropbox&#10;&#10;(cherry picked from commit 2f4aa07e39a3bdfdaad2fabc35416c24e44b5482)">
       <changelist_data name="Ding Ma" email="ding.ma@mail.mcgill.ca" date="1559324784000" />
@@ -22,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="320" column="21" selection-start-line="320" selection-start-column="21" selection-end-line="320" selection-end-column="21" />
+            <state relative-caret-position="2890">
+              <caret line="170" lean-forward="true" selection-start-line="170" selection-end-line="170" />
               <folding>
                 <element signature="e#23#34#0" expanded="true" />
               </folding>
@@ -32,24 +33,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/UMOSMist.py">
+        <entry file="file://$PROJECT_DIR$/src/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="339" column="38" selection-start-line="339" selection-start-column="38" selection-end-line="339" selection-end-column="38" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="238">
+              <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UMOSMist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="15" lean-forward="true" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
+            <state relative-caret-position="-544">
+              <caret line="13" column="16" lean-forward="true" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
               <folding>
-                <element signature="e#23#41#0" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,10 +56,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UMOS.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="231" column="34" selection-start-line="231" selection-start-column="34" selection-end-line="231" selection-end-column="34" />
+            <state relative-caret-position="1870">
+              <caret line="110" column="22" lean-forward="true" selection-start-line="110" selection-start-column="22" selection-end-line="110" selection-end-column="22" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="669">
+              <caret line="245" selection-start-line="245" selection-end-line="245" />
+              <folding>
+                <element signature="e#23#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,8 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>h</find>
-      <find>shutil</find>
       <find>get locat</find>
       <find>File Extracted, Getting Location Data</find>
       <find>UMOS*</find>
@@ -108,13 +116,15 @@
       <find>config</find>
       <find>fpp</find>
       <find>cmcarc</find>
+      <find>days</find>
+      <find>odd</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="DM" />
         <option value="Ding Ma &lt;ding.ma@mail.mcgill.ca&gt;" />
+        <option value="DM" />
         <option value="ding.ma@mail.mcgill.ca" />
         <option value="d" />
         <option value="Ma &lt;ding.ma@ec.gc.ca&gt;" />
@@ -122,6 +132,7 @@
     </option>
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -140,19 +151,19 @@
         <option value="$PROJECT_DIR$/src/aaa.py" />
         <option value="$PROJECT_DIR$/src/Backend.py" />
         <option value="$PROJECT_DIR$/UMOS.py" />
-        <option value="$PROJECT_DIR$/src/UMOS.py" />
-        <option value="$PROJECT_DIR$/src/tests.py" />
         <option value="$PROJECT_DIR$/src/UMOS-Mist.py" />
         <option value="$PROJECT_DIR$/src/mistbash.bash" />
-        <option value="$PROJECT_DIR$/src/UMOSMist.py" />
         <option value="$PROJECT_DIR$/src/UI.py" />
+        <option value="$PROJECT_DIR$/src/tests.py" />
+        <option value="$PROJECT_DIR$/src/UMOS.py" />
+        <option value="$PROJECT_DIR$/src/UMOSMist.py" />
         <option value="$PROJECT_DIR$/src/Gemmach.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2788" />
-    <option name="y" value="-16" />
+    <option name="x" value="447" />
+    <option name="y" value="-8" />
     <option name="width" value="974" />
     <option name="height" value="999" />
   </component>
@@ -161,6 +172,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -177,7 +189,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -621,7 +632,21 @@
       <option name="project" value="LOCAL" />
       <updated>1559662366002</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="fixed bug, was a tag error X.X">
+      <created>1559672532603</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1559672532603</updated>
+    </task>
+    <task id="LOCAL-00039" summary="end of day added 2x &quot;00&quot; for the days in order to fix the out of bound problem">
+      <created>1559678011954</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1559678011954</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TodoView">
@@ -634,10 +659,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49930266" visible="true" weight="0.19739583" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49930266" visible="true" weight="0.19739583" />
       <window_info id="Structure" order="1" sideWeight="0.5006974" side_tool="true" weight="0.19968387" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Project Explorer" order="3" weight="0.32982087" />
@@ -645,7 +670,7 @@
       <window_info id="Job Explorer" order="5" weight="0.2971549" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290461" />
-      <window_info anchor="bottom" x="11" y="323" width="1898" height="404" id="Run" maximized="true" order="2" sideWeight="0.4953125" weight="0.19581152" />
+      <window_info active="true" anchor="bottom" x="11" y="323" width="1898" height="404" id="Run" maximized="true" order="2" sideWeight="0.4953125" visible="true" weight="0.19581152" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2910995" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -746,7 +771,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="added hours list and bashfile write" />
     <MESSAGE value="end of day commit:&#10;-added check button for particules" />
     <MESSAGE value="rarc and script works for extracting variable from fst, working on the list of stations" />
     <MESSAGE value="test.py : search id/station name works with a single command" />
@@ -771,7 +795,8 @@
     <MESSAGE value="working on UMOS-mist code" />
     <MESSAGE value="umos mist date/hour seperation is bugging with tcl" />
     <MESSAGE value="fixed bug, was a tag error X.X" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bug, was a tag error X.X" />
+    <MESSAGE value="end of day added 2x &quot;00&quot; for the days in order to fix the out of bound problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="end of day added 2x &quot;00&quot; for the days in order to fix the out of bound problem" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
@@ -876,13 +901,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/temp2.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
         <state>
           <caret column="442" lean-forward="true" selection-start-column="442" selection-end-column="442" />
         </state>
-      </provider>
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gemmach">
@@ -918,13 +943,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="2" lean-forward="true" selection-start-line="17" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="20" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -991,10 +1009,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/UI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="320" column="21" selection-start-line="320" selection-start-column="21" selection-end-line="320" selection-end-column="21" />
+        <state relative-caret-position="2890">
+          <caret line="170" lean-forward="true" selection-start-line="170" selection-end-line="170" />
           <folding>
             <element signature="e#23#34#0" expanded="true" />
           </folding>
@@ -1003,8 +1028,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UMOS.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="231" column="34" selection-start-line="231" selection-start-column="34" selection-end-line="231" selection-end-column="34" />
+        <state relative-caret-position="1870">
+          <caret line="110" column="22" lean-forward="true" selection-start-line="110" selection-start-column="22" selection-end-line="110" selection-end-column="22" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -1013,8 +1038,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UMOSMist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="339" column="38" selection-start-line="339" selection-start-column="38" selection-end-line="339" selection-end-column="38" />
+        <state relative-caret-position="-544">
+          <caret line="13" column="16" lean-forward="true" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -1023,8 +1048,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="15" lean-forward="true" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
+        <state relative-caret-position="669">
+          <caret line="245" selection-start-line="245" selection-end-line="245" />
           <folding>
             <element signature="e#23#41#0" expanded="true" />
           </folding>

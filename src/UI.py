@@ -96,11 +96,11 @@ monthCombo = ttk.Combobox(machTab, values = list(Gm.monthDict.keys()), state = '
 monthCombo.grid(column=1, row=1)
 monthCombo.current(0)
 
-startDateCombo = ttk.Combobox(machTab, values = Gm.days[1:], state = 'readonly')
+startDateCombo = ttk.Combobox(machTab, values = Gm.days[1:-2], state = 'readonly')
 startDateCombo.grid(column=0, row=2)
 startDateCombo.current(0)
 
-endDateCombo = ttk.Combobox(machTab, values = Gm.days[1:], state = 'readonly')
+endDateCombo = ttk.Combobox(machTab, values = Gm.days[1:-2], state = 'readonly')
 endDateCombo.grid(column=1, row=2)
 endDateCombo.current(0)
 # Start date

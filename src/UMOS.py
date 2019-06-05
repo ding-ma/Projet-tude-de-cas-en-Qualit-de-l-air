@@ -4,10 +4,9 @@ import os
 import re
 import shutil
 
-filelocation = os.getcwd()
+import Gemmach as Gm
 
-oddMonths = ("01", "03", "05", "07", "09", "11")
-evenMonths = ("04", "06", "08", "10", "12")
+filelocation = Gm.filelocation
 
 file = open("UMOS_Ref.csv", "r")
 reader = csv.reader(file)
@@ -46,9 +45,9 @@ def inputStartDate(sDate):
         dateErrors()
     elif leap is False and sMonth == "02" and int(sDay) > 28:
         dateErrors()
-    elif sMonth in oddMonths and int(sDay) > 31:
+    elif sMonth in Gm.oddMonths and int(sDay) > 31:
         dateErrors()
-    elif sMonth in evenMonths and int(sDay) > 30:
+    elif sMonth in Gm.evenMonths and int(sDay) > 30:
         dateErrors()
     else:
         print("Start Date: " + sYear, sMonth, sDay)
@@ -75,9 +74,9 @@ def inputEndDate(eDate):
         dateErrors()
     elif leap is False and eMonth == "02" and int(eDay) > 28:
         dateErrors()
-    elif eMonth in oddMonths and int(eDay) > 31:
+    elif eMonth in Gm.oddMonths and int(eDay) > 31:
         dateErrors()
-    elif eMonth in evenMonths and int(eDay) > 30:
+    elif eMonth in Gm.evenMonths and int(eDay) > 30:
         dateErrors()
     elif sMonth > eMonth:
         dateErrors()
@@ -116,16 +115,13 @@ def modelCheckbox(h_00, h_12):
     modelHourList = re.split(",", modelHour)
 
 
-days = (
-    "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18"
-    , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "00", "00")
 
 
 def getDataAtLocationPre2017(locationID, molecule, modelHourList):
     stationCode = referenceDict[locationID]
-    startDateIndex = days.index(sDay)
-    endDateIndex = days.index(eDay)
-    daylst = days[startDateIndex:endDateIndex + 1]
+    startDateIndex = Gm.days.index(sDay)
+    endDateIndex = Gm.days.index(eDay)
+    daylst = Gm.days[startDateIndex:endDateIndex + 1]
     for m in molecule:
         for sub in os.listdir("rarc/operation.umos.aq.prevision.csv."+m.lower()+"sp3"):
             for d in daylst:
