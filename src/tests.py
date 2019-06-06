@@ -1,7 +1,8 @@
 import csv
+import difflib
 import re
 
-stationFile = open("aaaa.csv", "r")
+stationFile = open("stations.csv", "r")
 reader = csv.reader(stationFile)
 stationList = list(reader)
 # creates list based on csv entry
@@ -30,11 +31,13 @@ for x in range(len(stationList)):
 def findx(input):
     i = 0
     for r in lstName:
+        difflib.get_close_matches(input, str(r))
         if re.search(input, r):
             return i
         i = i + 1
 
-
-st = "Toronto Downtown"
-index = findx(" "+st)
-print(lstID[index])
+while True:
+    a = difflib.get_close_matches(input(), lstName, n=1, cutoff=.4)
+    print(a)
+    # ids = lstName.index(a[0])
+    # print(lstID[ids])

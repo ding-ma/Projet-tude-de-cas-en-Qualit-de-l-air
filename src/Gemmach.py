@@ -1,5 +1,6 @@
 import collections
 import csv
+import difflib
 import os
 import re
 import shutil
@@ -105,12 +106,11 @@ def findWithStation(station):
 
 #returns the index of the item if it exist else, it returns false, gets around the item out of bound problem
 def isStationFound(StationInput):
-    ii = 0
-    for ID in lstName:
-        if re.search(StationInput, ID):
-            return ii
-        ii = ii + 1
-    return False
+    a = difflib.get_close_matches(StationInput, lstName, n=1, cutoff=.4)
+    if a is []:
+        return False
+    else:
+        return lstName.index(a[0])
 
 
 #same logic for searching with ID

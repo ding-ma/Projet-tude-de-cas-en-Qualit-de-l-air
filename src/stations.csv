@@ -1,12 +1,12 @@
 id,name_en_ CA,name_fr_ CA,lat,lon,province,city,address
 10102, St. John's, St. John's,47.56,-52.711,1, St. John's,354 WATERSTREET
 10401, Mount Pearl, Mount Pearl,47.505,-52.795,1, Mount Pearl, OLDPLACENTIAROAD
-10501, Grand Falls- Windsor, Grand Falls- Windsor,48.927,-55.66,1, Grand Falls- Windsor, SCOTTAVENUE
+10501, Grand Falls-Windsor, Grand Falls- Windsor,48.927,-55.66,1, Grand Falls- Windsor, SCOTTAVENUE
 10601, Goose Bay, Goose Bay,53.305,-60.364,1, Happy Valley- Goose Bay, Abbott Drive
 10602, Corner Brook, Corner Brook,48.952,-57.922,1, Corner Brook, Macpherson Avenue
 10801, Portau Choix, Portau Choix,50.711,-57.364,1, Portau Choix, Portau Choix
 10901, Marystown/ Burin, Marystown/ Burin,47.099,-55.199,1, Burin,
-11002, FIREHALL- LABRADORCITY2, FIREHALL- LABRADORCITY2,52.945,-66.91,1, Labrador City,317 Hudson Drive
+11002, FIREHALL-LABRADORCITY2, FIREHALL- LABRADORCITY2,52.945,-66.91,1, Labrador City,317 Hudson Drive
 20104, Charlottetown, Charlottetown,46.233,-63.137,2, Charlottetown,3 BRIGHTONROAD
 20301, Wellington, Wellington,46.45,-64,2, Wellington,40 HACKMATACKRD.( ROUTE125)
 20401, Southampton, Southampton,46.388,-62.581,2, Southampton,2580 CARDIGANROAD( ROUTE313)
@@ -33,9 +33,9 @@ id,name_en_ CA,name_fr_ CA,lat,lon,province,city,address
 50113, Chomedey, Chomedey,45.548,-73.747,5, Laval,1160 BOULPIEIX
 50119, Bourassa, Bourassa,45.522,-73.488,5, Longueuil, FACEAU1819 RUEVICTORIA
 50122, Parc Sorbonne, Parc Sorbonne,45.449,-73.481,5, Brossard,8405avenue Sorbonne
-50126, Sainte- Anne-de- Bellevue, Sainte- Anne-de- Bellevue,45.427,-73.929,5, Montreal,"20965 CH. SAINTE- MARIE, STE- ANNEd B"
-50128, Aeroport De Montreal, Aeroportde Montreal,45.468,-73.741,5, Montreal,"90- Arue Herv- Saint- Martin, Dorval"
-50129, Riviere-des- Prairies, Riviere-des- Prairies,45.652,-73.574,5, Montreal,12400 WILFRID- OUELLETTE
+50126, Sainte-Anne-de-Bellevue, Sainte- Anne-de- Bellevue,45.427,-73.929,5, Montreal,"20965 CH. SAINTE- MARIE, STE- ANNEd B"
+50128, Aeroport de Montreal, Aeroportde Montreal,45.468,-73.741,5, Montreal,"90- Arue Herv- Saint- Martin, Dorval"
+50129, Riviere-des-Prairies, Riviere-des- Prairies,45.652,-73.574,5, Montreal,12400 WILFRID- OUELLETTE
 50131, Hochelaga- Maisonneuve, Hochelaga- Maisonneuve,45.54,-73.541,5, Montreal,3250 STE- CATHERINEEST
 50133, Chenier, Chenier,45.602,-73.542,5, Anjou,8200 ARue Chenier
 50134, Saint- Joseph( Molson), Saint- Joseph( Molson),45.543,-73.572,5, Montreal,2580 St- Joseph Est
@@ -50,7 +50,7 @@ id,name_en_ CA,name_fr_ CA,lat,lon,province,city,address
 50404, Parc Cambron, Parc Cambron,45.413,-71.874,5, Sherbrooke,"655, RUEPAPINEAU"
 50504, University Chicoutimi, Universit Chicoutimi,48.416,-71.053,5, Saguenay,"789 Coul. Destudiants, Chicoutimi"
 50604, Parc Tremblay, Parc Tremblay,48.234,-78.983,5, Rouyin- Noranda,1570 RUEPARADIS
-50803, TROIS- RIVIERES- MEES, TROIS- RIVIERES- MEES,46.357,-72.546,5, Trois- Rivieres," Mauricie English Elementary School,rue Whitehead"
+50803, TROIS-RIVIERES-MEES, TROIS- RIVIERES- MEES,46.357,-72.546,5, Trois- Rivieres," Mauricie English Elementary School,rue Whitehead"
 51201, Frigon, Frigon,46.554,-72.736,5, Shawinigan,363 RUEFRIGON
 51501, Zephirin, Zephirin,46.043,-72.66,5, St- Zephirin-de- Courval,701 RANGSAINT- MICHEL
 52001, Charette, Charette,46.441,-72.893,5, Charette, AUNORDDU1702 ERANG
@@ -60,9 +60,9 @@ id,name_en_ CA,name_fr_ CA,lat,lon,province,city,address
 52701, Temiscaming, Temiscaming,46.721,-79.1,5, Tmiscaming, RUEBOUCHER
 52801, Auclair, Auclair,47.733,-68.707,5, Auclair,66 Rang St- Grgoire Nord
 53201, Pemonca, Pemonca,48.81,-72.739,5, La Dor," Route167, La Dor"
-53301, Deschambault- Ramco, Deschambault- Ramco,46.682,-71.968,5, Deschambault,"334,3 ERANG- DESHAMBAULT"
+53301, Deschambault-Ramco, Deschambault- Ramco,46.682,-71.968,5, Deschambault,"334,3 ERANG- DESHAMBAULT"
 53501, Franois, Franois,47.015,-70.864,5, Saint- Franois," Faceau198 Royale,led' Orlans"
-53601, Notre- Damedu Rosaire, Notre- Damedu Rosaire,46.851,-70.453,5, Notre- Dame- Du- Rosaire, RANGST- LOUIS
+53601, Notre-Dame du Rosaire, Notre- Damedu Rosaire,46.851,-70.453,5, Notre- Dame- Du- Rosaire, RANGST- LOUIS
 53701, Hilaire, Hilaire,45.825,-70.856,5, St- Hilaire- De- Dorset, RANGDORSET
 53801, Tingwick, Tingwick,45.908,-71.949,5, Tingwick, CHEMINRADARETWARWICK
 53901,douard,douard,47.647,-72.291,5, Lac-douard, Derrirel'hpitalvillage
@@ -71,9 +71,9 @@ id,name_en_ CA,name_fr_ CA,lat,lon,province,city,address
 54401, Saint- Anicet, Saint- Anicet,45.117,-74.283,5, Saint- Anicet,1128 DELAGUERRE
 54703, Bcancour, Bcancour,46.35,-72.433,5, Bcancour,8310 Boul. Becancour
 54901, Ditton, Ditton,45.374,-71.25,5, La Patrie, RANGPETITCANADAOUEST
-55001, Mont Saint- Michel, Mont Saint- Michel,46.769,-75.432,5, Ferme Neuve,2154e Rang Gravel
+55001, Mont Saint-Michel, Mont Saint- Michel,46.769,-75.432,5, Ferme Neuve,2154e Rang Gravel
 55101, Bell, Bell,48.433,-77.2,5, Senneterre, Chemin Rivire Bell
-55301, L' Acadie, L' Acadie,45.294,-73.349,5, Saint- Jean- Sur- Richelieu," FERMEEXP.,1134 ROUTE219"
+55301, L'Acadie, L' Acadie,45.294,-73.349,5, Saint- Jean- Sur- Richelieu," FERMEEXP.,1134 ROUTE219"
 55401, Roy, Roy,46.362,-72.51,5, Trois- Rivire, Intersectiondesrues Dorvalet Roy
 55501, Frelighsburg, Frelighsburg,45.052,-72.862,5, Frelighsburg, FRELIGHSBURG
 55601, Mingan, Mingan,50.267,-64.217,5, Mingan, MINGAN
