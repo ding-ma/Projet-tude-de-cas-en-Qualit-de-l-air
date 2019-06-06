@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import collections
 import csv
 import os
@@ -11,10 +10,9 @@ import string
 # This format is used to bash and rarc scripts
 hours = (
     "000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015",
-    "016",
-    "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029", "030", "031", "032",
-    "033",
-    "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047", "048")
+    "016", "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029", "030", "031",
+    "032", "033", "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047",
+    "048")
 
 # This format is used for the tcl script
 tcl = [
@@ -26,6 +24,11 @@ tcl = [
 hour24 = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17",
           "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
           "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
+
+# extra hours if needed to be added
+# ,"49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72"
+# ,"049","050","051","052","053","054","055","056","057","058","059","060","061","062","063","064","065","066","067","068","069","070","071","072"
+
 
 # Change etiquette here - Gemmach
 EticketGEM = "RAQDPS020"
@@ -61,7 +64,7 @@ os.system("chmod -R 777 "+ filelocation)
 filedirectory = next(os.walk('.'))[1]
 
 # search for StationID or StationName
-stationFile = open("stations_DB.csv", "r")
+stationFile = open("aaaa.csv", "r")
 reader = csv.reader(stationFile)
 stationList = list(reader)
 # creates list based on csv entry
@@ -89,6 +92,7 @@ for x in range(len(stationList)):
 #search algorithm
 def findWithStation(station):
     index = isStationFound(string.capwords(station))
+    print(string.capwords(station))
     if index is False:
         return "ID not found, invalid station name"
     else:

@@ -13,12 +13,15 @@ import UMOSMist as Umist
 # initial setting
 window = tk.Tk()
 # window.attributes('-zoomed', True)
-w, h = window.winfo_screenwidth(), window.winfo_screenheight()
+#w, h = window.winfo_screenwidth(), window.winfo_screenheight()
+w,h = 1225,890
 window.geometry("%dx%d+0+0" % (w, h))
+window.title("NAME")
 # window.geometry("1500x1200")
 # Defines and places the notebook widget
 nb = ttk.Notebook(window)
-nb.grid(row=1, column=0, columnspan=50, rowspan=49, sticky='NESW')
+nb.grid(row=1, column=0, columnspan=50, rowspan=100, sticky='NESW')
+
 
 # Adds tab for Gem-Mach
 machTab = ttk.Frame(nb)
@@ -359,7 +362,7 @@ mistBashBtn.grid(column=3, row=1)
 mistExtraction = tk.Button(umosTab, text = "Start Extraction, Mist", command =MISTRARC, width=17, height=1)
 mistExtraction.grid(column=2, row=0)
 
-mistTCLBtn = tk.Button(umosTab, text = "Get Data Location, Mist", command = MistGetLocation ,width=17, height=1)
+mistTCLBtn = tk.Button(umosTab, text = "Get Data Location, Mist", command = MistGetLocation,width=17, height=1)
 mistTCLBtn.grid(column=2, row=1)
 
 # tab for FireWork
@@ -401,7 +404,7 @@ fwTCLbtn.grid(column=1, row=0)
 
 # tab for help
 helptab = ttk.Frame(nb)
-nb.add(helptab, text="Help/Info")
+nb.add(helptab, text="Help/Info", )
 
 gemmachinfo = tk.Label(helptab, text="GEMMACH - How it works:\n"
                                      "Step 1: user enters all necesary info\n"
@@ -412,26 +415,28 @@ gemmachinfo = tk.Label(helptab, text="GEMMACH - How it works:\n"
                                      "- ALWAYS write to file when you are changing some settings\n "
                                      "- Sometimes 00 has bugs, make sure to unselect and reselect it\n"
                                      "- If the .fst already exists, you may skip the according step\n"
-                                     )
-gemmachinfo.grid(column=0, row=0)
+                                     ,justify = "left")
+gemmachinfo.grid(column=0, row=2,sticky='w')
 
 umosinfo = tk.Label(helptab, text = "UMOS - How it works:\n"
-                                    "Step 1: All the information will be written once you press \"Write to file (1)\" in the Gem tab\n"
+                                    "Step 1: Takes all the information entered with \"Write to file (1)\" in Gem tab\n"
                                     "Step 2: Use Rarc if the files are not extracted already\n"
                                     "Step 3: Get the data at the chosen station\n"
                                     "\nUMOS Info\n"
                                     "There is a separation of file directory in the archives at 2017 Jan 07\n"
                                     "But the output and functionality of the application still remains the same\n"
-                                    "UMOSTreating Folder is a temporary folder, it is normal that there are no files in it because they are deleted after the app finish running\n")
-umosinfo.grid(column=1, row=0)
+                                    "UMOSTreating Folder is a temporary folder, it is normal that there are no files in it because they are deleted after the app finish running\n"
+                    ,justify = "left")
+umosinfo.place(x=425,y=315)
 
 umosMistinfo = tk.Label(helptab, text = "UMOS-Mist - How it works:\n"
                                         "Same concept as Gemmach\n"
-                                        "Step 1: Takes all the information entered when you press \"Write to file (1)\" in the Gem tab\n"
+                                        "Step 1: Takes all the information entered with \"Write to file (1)\" in Gem tab\n"
                                         "Step 2: Use Rarc if the files are not extracted already\n"
                                         "Step 3: Use the Bash button to isolate the interested molecule and level \n"
-                                        "Step 4: Get the data at the chosen station\n")
-umosMistinfo.grid(column=0, row=1)
+                                        "Step 4: Get the data at the chosen station\n"
+                        ,justify = "left")
+umosMistinfo.grid(column=0, row=1, sticky='w')
 
 fwInfo = tk.Label(helptab, text = "FireWork - How it works: \n"
                                   "Same concept as Gemmach\n"
@@ -439,9 +444,10 @@ fwInfo = tk.Label(helptab, text = "FireWork - How it works: \n"
                                   "Step 1: use extract file if the files are not extracted\n"
                                   "Step 2: Use the Bash button to isolate the interested molecule and level\n"
                                   "Step 3: Get the data at the chosen station\n"
-                                  "! Warning! FireWork model does not run all year long, it might be normal if it gives you nothing if you try to run this in the middle of the winter :)\n")
-fwInfo.grid(column=1, row=1)
-
+                                  "! Warning! FireWork model does not run all year long, it might be normal if \nit gives you nothing if you try to run this in the middle of the winter :)"
+                  ,justify = "left")
+fwInfo.place(x=425,y=180)
+#fwInfo.grid(column=1, row=1)
 notesInfo = tk.Label(helptab, text = "Notes:\n"
                                      "-If you want the data at another location, change it in the Gemmach Tab and press WRITE TO FILE so it updates everything, "
                                      "you do not need to go through the entire process again. \nJust press \"get data at location\" it will generate a new csv file with the new station\n"
@@ -451,10 +457,17 @@ notesInfo = tk.Label(helptab, text = "Notes:\n"
                                      "since they rely on some empty fields\n"
                                      "- If RARC gives you a grand total of 0, it means that the file already exists in the folder OR the file does not exis in the archives\n"
                                      "- If there are hours that needs to be added, consult Gemmach.py file, make sure to add the time to 3 lists\n"
-                                     "- if there are stations that needs to be added, add them to the \"station_DB.csv\", add them to the END and fill the entire ROW with the corresponding data"
-                                     "- If the eticket needs to be changed, see Gemmach.py to change them")
-notesInfo.grid(column=0, row=3)
+                                     "- if there are stations that needs to be added, add them to the \"station_DB.csv\", add them to the END and fill the entire ROW with the corresponding data\n"
+                                     "- If the eticket needs to be changed, see Gemmach.py to change them\n"
+                                     "- This program will automatically generate the working directories and make sure to include the 2 csv files!\n",
+                     justify = "left")
+notesInfo.grid(column=0, row=0)
+#https://www.python-course.eu/tkinter_text_widget.php
 
+img = tk.PhotoImage(file = "smog-montreal.gif")
+imglabal = tk.Label(window,image = img)
+imglabal.grid(column=0, row=50, pady = (325,0), sticky='w')
+#imglabal.grid(column=0, row=50, pady = (325,0), sticky='w')
 window.mainloop()
 
 # notes: active var for particuleCheckBoxAndTime allowed me to use the same code for different purposes, when you write
