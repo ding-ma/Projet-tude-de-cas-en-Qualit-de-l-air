@@ -2,54 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="993a9838-9207-46e0-aaef-0972cce94224" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Book1.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FireWork" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FireWork00.bash" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FireWork12.bash" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ID50128___12AF___Start20190529___End20190529.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ID50128___12N2___Start20190529___End20190529.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ID50128___12O3___Start20190529___End20190529.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LINEAR.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NEAREST.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NOTHING.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Thumbs.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/UI.spec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/UMOS-Mist_201905_Dorval_N2.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/UMOS__ID90121__2016090812_csvp2.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/UMist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/UMistConfig00.tcl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/UmosMist00.bash" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/UmosMist12.bash" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/build/UI/Analysis-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/build/UI/COLLECT-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/build/UI/EXE-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/build/UI/PKG-00.pkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/build/UI/PKG-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/build/UI/PYZ-00.pyz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/build/UI/PYZ-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/build/UI/Tree-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/build/UI/Tree-01.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/build/UI/UI.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/build/UI/UI.exe.manifest" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/build/UI/base_library.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/build/UI/warn-UI.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/build/UI/xref-UI.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/configFw/Fw_O3010000.tcl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/configFw/Fw_O3010012.tcl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/configFw/Fw_O3020012.tcl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/configMIST.tcl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/configMIST/MIST_O3010000.tcl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/configMIST/MIST_O3010012.tcl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/configMIST/MIST_O3020012.tcl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/extractMIST.tcl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mistbash.bash" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/rarc/umos" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/smog-montreal - Copy.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/smog-montreal.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stations.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Gemmach.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gemmach.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests.py" afterDir="false" />
     </list>
     <list id="907627cc-b390-404d-92ca-b82bb5948891" name="changed ui for date entry, dropbox" comment="changed ui for date entry, dropbox&#10;&#10;(cherry picked from commit 2f4aa07e39a3bdfdaad2fabc35416c24e44b5482)">
@@ -61,34 +14,12 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="2">
-      <content type="file-editors">
-        <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="255">
-                    <caret line="93" column="52" selection-start-line="93" selection-start-column="52" selection-end-line="93" selection-end-column="52" />
-                    <folding>
-                      <element signature="e#0#18#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UMOSMist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="17">
               <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -100,10 +31,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="13" column="16" lean-forward="true" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+            <state relative-caret-position="238">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#0#20#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,10 +43,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="344" column="45" selection-start-line="344" selection-start-column="45" selection-end-line="344" selection-end-column="45" />
+            <state relative-caret-position="516">
+              <caret line="466" selection-start-line="466" selection-end-line="468" selection-end-column="59" />
               <folding>
                 <element signature="e#23#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="108" column="72" lean-forward="true" selection-start-line="108" selection-start-column="72" selection-end-line="108" selection-end-column="72" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -200,8 +143,8 @@
         <option value="$PROJECT_DIR$/src/UMOS.py" />
         <option value="$PROJECT_DIR$/src/FireWork.py" />
         <option value="$PROJECT_DIR$/src/UI.py" />
-        <option value="$PROJECT_DIR$/src/tests.py" />
         <option value="$PROJECT_DIR$/src/Gemmach.py" />
+        <option value="$PROJECT_DIR$/src/tests.py" />
       </list>
     </option>
   </component>
@@ -261,7 +204,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.UI">
+  <component name="RunManager" selected="Python.tests">
     <configuration name="Backend" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Projet-tude-de-cas-en-Qualit-de-l-air" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -346,7 +289,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="output" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="dateVerification-inprogress" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Projet-tude-de-cas-en-Qualit-de-l-air" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -358,7 +301,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/output.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/dateVerification-inprogress.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -394,15 +337,15 @@
       <item itemvalue="Python.Gemmach" />
       <item itemvalue="Python.UI" />
       <item itemvalue="Python.UMOS" />
-      <item itemvalue="Python.output" />
+      <item itemvalue="Python.dateVerification-inprogress" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.UI" />
+        <item itemvalue="Python.dateVerification-inprogress" />
         <item itemvalue="Python.Gemmach" />
         <item itemvalue="Python.UMOS" />
         <item itemvalue="Python.Backend" />
-        <item itemvalue="Python.output" />
       </list>
     </recent_temporary>
   </component>
@@ -718,7 +661,21 @@
       <option name="project" value="LOCAL" />
       <updated>1559834522892</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="searching by station name now works.">
+      <created>1559842929745</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1559842929745</updated>
+    </task>
+    <task id="LOCAL-00045" summary="improved searching algorithm with difflib">
+      <created>1559845125397</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1559845125397</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TodoView">
@@ -734,7 +691,7 @@
     <frame x="1912" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49930266" visible="true" weight="0.19739583" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49930266" visible="true" weight="0.19739583" />
       <window_info id="Structure" order="1" sideWeight="0.5006974" side_tool="true" weight="0.19968387" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Project Explorer" order="3" weight="0.32982087" />
@@ -742,14 +699,14 @@
       <window_info id="Job Explorer" order="5" weight="0.2971549" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32879582" />
-      <window_info active="true" anchor="bottom" x="11" y="323" width="1898" height="404" id="Run" maximized="true" order="2" sideWeight="0.49427083" visible="true" weight="0.19581152" />
+      <window_info anchor="bottom" x="11" y="323" width="1898" height="404" id="Run" maximized="true" order="2" sideWeight="0.49375" visible="true" weight="0.16020942" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2910995" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.20364416" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.23151125" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49947312" weight="0.22186495" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50572914" side_tool="true" weight="0.19581152" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50625" side_tool="true" weight="0.16020942" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.24008575" />
       <window_info anchor="bottom" id="GitHub Pull Requests" order="11" sideWeight="0.49947312" weight="0.3290461" />
       <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49947312" weight="0.3290461" />
@@ -843,8 +800,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="end of day commit" />
-    <MESSAGE value="updated UI" />
     <MESSAGE value="end of day commit:&#10;-working on last step of gem-mach, extracting data from a specific point with tcl script.&#10;-did some work on date verification, left it aside for later" />
     <MESSAGE value="working example for ping google server, adapt to our need" />
     <MESSAGE value="added leap year compability" />
@@ -868,7 +823,9 @@
     <MESSAGE value="firework module is now added" />
     <MESSAGE value="added comments and explanation on how the code works" />
     <MESSAGE value="backup, playing with search algorithm" />
-    <option name="LAST_COMMIT_MESSAGE" value="backup, playing with search algorithm" />
+    <MESSAGE value="searching by station name now works." />
+    <MESSAGE value="improved searching algorithm with difflib" />
+    <option name="LAST_COMMIT_MESSAGE" value="improved searching algorithm with difflib" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
@@ -889,16 +846,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-1442825926/math.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="313" column="44" lean-forward="true" selection-start-line="313" selection-start-column="44" selection-end-line="313" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/output.txt" />
-    <entry file="file://$PROJECT_DIR$/src/-a" />
-    <entry file="file://$PROJECT_DIR$/src/Extract_Site_regeta_Profils_0Z_12Z.tcl" />
     <entry file="file://$PROJECT_DIR$/src/logs.log" />
     <entry file="file://$PROJECT_DIR$/src/extract.tcl" />
     <entry file="db://64a2d56a-0ba3-460c-98d5-7b935f59e801/consoles/Connection">
@@ -921,16 +868,6 @@
     <entry file="file://$PROJECT_DIR$/src/gem/gemmach00_002.txt" />
     <entry file="file://$PROJECT_DIR$/src/gem/gemmach01_000.txt" />
     <entry file="file://$PROJECT_DIR$/src/gem/gemmach00_001.txt" />
-    <entry file="file://$PROJECT_DIR$/src/dateVerification-inprogress.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="676">
-          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python34/Lib/shutil.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1101,9 +1038,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Thumbs.db">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/smog-montreal - Copy.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dateVerification-inprogress.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="48" lean-forward="true" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stations.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="722">
+          <caret line="280" column="8" selection-start-line="280" selection-start-column="8" selection-end-line="280" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python34/Lib/difflib.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-302">
+          <caret line="687" column="4" selection-start-line="687" selection-start-column="4" selection-end-line="687" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="108" column="72" lean-forward="true" selection-start-line="108" selection-start-column="72" selection-end-line="108" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/UMOSMist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="17">
           <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -1113,8 +1093,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="344" column="45" selection-start-line="344" selection-start-column="45" selection-end-line="344" selection-end-column="45" />
+        <state relative-caret-position="516">
+          <caret line="466" selection-start-line="466" selection-end-line="468" selection-end-column="59" />
           <folding>
             <element signature="e#23#34#0" expanded="true" />
           </folding>
@@ -1123,20 +1103,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="13" column="16" lean-forward="true" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="93" column="52" selection-start-line="93" selection-start-column="52" selection-end-line="93" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
