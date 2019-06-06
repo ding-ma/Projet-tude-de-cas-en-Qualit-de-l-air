@@ -1,0 +1,17 @@
+set Data(SpLst)  "O3" 
+set Data(TAG1)   "UMOSmist00.20180101_20180101_regeta"
+set Data(TAG3)   "UMOS-Mist00"
+set Data(outTXT)       "SITE" 
+set Data(PASSE) "00"
+set Data(levels) " -1 "
+set Data(MandatoryLevels) " 1 "
+set Data(Path)    M:\Projet-tude-de-cas-en-Qualit-de-l-air\src/bash
+set Data(PathOut) M:\Projet-tude-de-cas-en-Qualit-de-l-air\src/output
+set Data(Start)      "201801"
+set Data(End)      "201801"
+set Data(Eticket)     "CAPAMIST"
+set Data(point) "Edmonton East                        "
+set Data(coord) "53.548 -113.367"
+set Data(ID) "ID90121"
+set Data(days) "01"
+set Data(hours) "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23"

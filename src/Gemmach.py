@@ -64,7 +64,7 @@ os.system("chmod -R 777 "+ filelocation)
 filedirectory = next(os.walk('.'))[1]
 
 # search for StationID or StationName
-stationFile = open("aaaa.csv", "r")
+stationFile = open("stations.csv", "r")
 reader = csv.reader(stationFile)
 stationList = list(reader)
 # creates list based on csv entry
@@ -92,7 +92,6 @@ for x in range(len(stationList)):
 #search algorithm
 def findWithStation(station):
     index = isStationFound(string.capwords(station))
-    print(string.capwords(station))
     if index is False:
         return "ID not found, invalid station name"
     else:
@@ -100,13 +99,17 @@ def findWithStation(station):
         stationID = lstID[index]
         stationLongitude = lstLongitude[index]
         stationLatitude = lstLatitude[index]
-        return string.capwords(station) + " (" + stationID + ") Lat: " + stationLatitude + " Lon: " + stationLongitude
+        stationName = lstName[index]
+        return stationName + " (" + stationID + ") Lat: " + stationLatitude + " Lon: " + stationLongitude
 
 
 #returns the index of the item if it exist else, it returns false, gets around the item out of bound problem
 def isStationFound(StationInput):
-    if StationInput in lstName:
-        return lstName.index(StationInput)
+    ii = 0
+    for ID in lstName:
+        if re.search(StationInput, ID):
+            return ii
+        ii = ii + 1
     return False
 
 
@@ -134,7 +137,7 @@ def SearchNameID(userInput):
     patten = re.compile('\D')
     #if there are no digit, search by name. else, search with ID
     if patten.findall(userInput):
-        return findWithStation(userInput)
+        return findWithStation(" "+userInput)
     else:
         return findWithID(userInput)
 
