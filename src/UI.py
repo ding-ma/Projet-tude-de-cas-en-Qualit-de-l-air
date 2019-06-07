@@ -421,6 +421,13 @@ ImgCombo.current(0)
 
 ImgBtn = tk.Button(fireWorkTab, text = "Get corresponding Images", command = getImg, width=17, height=1)
 ImgBtn.grid(column=1, row=1)
+
+def IMRARC():
+    os.system("rarc -i " + Gm.filelocation + "/image &")
+
+
+ImgRarcBtn = tk.Button(fireWorkTab, text = "Rarc, Im", command = IMRARC,width=17, height=1)
+ImgRarcBtn.grid(column=0, row=1)
 # tab for help
 helptab = ttk.Frame(nb)
 nb.add(helptab, text="Help/Info", )
