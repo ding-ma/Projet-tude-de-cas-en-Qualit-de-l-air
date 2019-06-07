@@ -178,6 +178,7 @@ def generateImage(location):
             # convert -delay 35 -loop 0 *.png aa.gif
             # convert -delay 35 -loop 0 2019060400_054_GM_north@america@gemmach_I_GEMMACH_o3@sfc@001* D55.gif
             # cmcarc -x 2019060400_054_GM_north@america@gemmach_I_GEMMACH_o3@sfc@.* -f 2019060400_north@america@gemmach
+
             def purge(dir, pattern):
                 for f in os.listdir(dir):
                     if re.search(pattern, f):
@@ -196,10 +197,4 @@ def generateImage(location):
     print("\nJob done, see folder-->" + filelocation+"/output")
 
 
-shutil.rmtree("imgTemp")
-os.mkdir("imgTemp")
-inputStartDate("2019/03/05")
-inputEndDate("2019/03/05")
-modelCheckbox(1,1)
-particuleCheckBox(1,1,"",1)
-generateImage("east")
+

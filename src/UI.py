@@ -97,9 +97,11 @@ def GemClicked():
     Fw.rarcFile()
     Fw.bashFile(particules, loc)
 
-    Im.inputEndDate(a)
+    Im.inputStartDate(a)
     Im.inputEndDate(b)
+    Im.time(sTime, eTime)
     Im.modelCheckbox(h_00,h_12)
+    Im.particuleCheckBox(O3, NO2, others, PM25)
     Im.RarcFile()
 
 
@@ -408,6 +410,17 @@ fwRarcBtn.grid(column=0, row=0)
 fwTCLbtn = tk.Button(fireWorkTab, text = "Get Data Location, Fw", command = FwGetLocation, width=17, height=1)
 fwTCLbtn.grid(column=1, row=0)
 
+def getImg():
+    location = ImgCombo.get()
+    Im.generateImage(location)
+
+
+ImgCombo = ttk.Combobox(fireWorkTab, values=["east", "west","north@america"], width=20, state='readonly')
+ImgCombo.grid(column=1, row=2)
+ImgCombo.current(0)
+
+ImgBtn = tk.Button(fireWorkTab, text = "Get corresponding Images", command = getImg, width=17, height=1)
+ImgBtn.grid(column=1, row=1)
 # tab for help
 helptab = ttk.Frame(nb)
 nb.add(helptab, text="Help/Info", )
