@@ -7,6 +7,7 @@ from tkinter import ttk
 
 import FireWork as Fw
 import Gemmach as Gm
+import Images as Im
 import UMOS as Um
 import UMOSMist as Umist
 
@@ -95,6 +96,11 @@ def GemClicked():
     Fw.modelCheckbox(h_00, h_12)
     Fw.rarcFile()
     Fw.bashFile(particules, loc)
+
+    Im.inputEndDate(a)
+    Im.inputEndDate(b)
+    Im.modelCheckbox(h_00,h_12)
+    Im.RarcFile()
 
 
 rarcLabel = tk.Label(machTab, text="Rarc Settings", font="20")

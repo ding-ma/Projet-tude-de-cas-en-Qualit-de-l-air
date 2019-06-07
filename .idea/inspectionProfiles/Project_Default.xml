@@ -35,6 +35,8 @@
           <option value="tests.aaa" />
           <option value="UI.umosTab" />
           <option value="UMOS.moleculeList" />
+          <option value="tests.self" />
+          <option value="Images.time.sleep" />
         </list>
       </option>
     </inspection_tool>

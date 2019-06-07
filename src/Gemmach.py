@@ -248,7 +248,6 @@ monthDict['October'] = '10'
 monthDict['November'] = '11'
 monthDict['December'] = '12'
 
-
 #formats the start date
 def inputStartDate(sDate):
     global sYear
@@ -417,9 +416,6 @@ def particuleCheckBox(O3, NO2, others, PM25):
         unformattedParticuleString[i:i + 2] for i in range(0, len(unformattedParticuleString), 2))
     return formattedParticuleString
 
-
-def get_formattedParticuleString():
-    return formattedParticuleString
 
 def level(lv):
     global lev

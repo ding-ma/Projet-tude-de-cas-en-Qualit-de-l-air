@@ -23,5 +23,3 @@ def run():
         # os.mkdir("imgTemp")
         print("remaking dir")
 
-
-run()
