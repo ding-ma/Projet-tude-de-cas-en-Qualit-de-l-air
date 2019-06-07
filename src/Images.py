@@ -2,8 +2,30 @@ import os
 import re
 import shutil
 
+import Gemmach as Gm
 
-def run():
+filelocation = Gm.filelocation
+
+def RarcFile():
+    file = open("image", "w")
+    file.write(
+        "target = " + filelocation + "/rarc\n"
+                                     "filter = copy\n"
+                                     "postprocess = nopost\n"
+                                     "date = "
+        # start
+        + Gm.sYear + "," + sMonth + "," + sDay + ","
+        # end
+        + eYear + "," + eMonth + "," + eDay +
+        "\nbranche = operation.forecasts.mach\n"
+        "ext = " + formattedSelectedTimeWithComma +
+        "\nheure = " + modelHour +
+        "\npriority = online\n"
+        "inc = 1\n"
+        "#\n")
+    print("Image File Saved")
+
+def generateImage():
     molecules = ["o3"]
     for m in molecules:
         os.system("cmcarc -x 2019060400_054_GM_north@america@gemmach_I_GEMMACH_"+m+"@sfc@001.* -f "+os.getcwd()+ "/rarc/operation.images.chronos/2019060400_north@america@gemmach")
@@ -22,6 +44,3 @@ def run():
         # shutil.rmtree("imgTemp")
         # os.mkdir("imgTemp")
         print("remaking dir")
-
-
-run()
