@@ -102,6 +102,12 @@ def GemClicked():
     Im.time(sTime, eTime)
     Im.modelCheckbox(h_00,h_12)
     Im.particuleCheckBox(O3, NO2, others, PM25)
+    East = var_east.get()
+    EastZoom = var_eastZoom.get()
+    NA = var_NA.get()
+    NAGem = var_NAGem.get()
+    West = var_west.get()
+    Im.locationCheckBox(East,EastZoom,NA,NAGem,West)
     Im.RarcFile()
     Im.UMOSRarcFile()
 
@@ -231,8 +237,9 @@ stationSearchField.grid(column=3, row=14, pady=(20, 0))
 
 def SearchNameID():
     userInput = stationSearchField.get()
-    displayString = Gm.SearchNameID(userInput)
-    stationSearchLabel.config(text=displayString)
+    dString = Gm.SearchNameID(userInput)
+    stationSearchLabel.config(text=dString)
+
 
 #suff for the search
 stationSearchLabel = tk.Label(machTab, text=displayString)
@@ -240,7 +247,27 @@ stationSearchLabel.grid(column=2, row=14, pady=(20, 0), padx=(60, 0))
 searchBtn = tk.Button(machTab, text="Search", command=SearchNameID)
 searchBtn.grid(column=4, row=14, pady=(20, 0))
 
+#chronos, gem
+#east,east@coast@zoom,north@america,north@america@gemmach,west
 
+var_east = tk.BooleanVar(value=True)
+East_Checkbtn = tk.Checkbutton(machTab, text = "East", variable = var_east)
+East_Checkbtn.grid(column=3, row=10)
+var_eastZoom = tk.BooleanVar()
+EastZoom_Checkbtn = tk.Checkbutton(machTab, text = "Zoomed East", variable = var_eastZoom)
+EastZoom_Checkbtn.grid(column=4, row=10)
+var_NA = tk.BooleanVar()
+NorthAmerica_Checkbtn = tk.Checkbutton(machTab, text = "North America", variable = var_NA)
+NorthAmerica_Checkbtn.grid(column=5, row=10)
+var_NAGem = tk.BooleanVar()
+NAGem_Checkbtn = tk.Checkbutton(machTab, text = "NA - GEM", variable = var_NAGem)
+NAGem_Checkbtn.grid(column=6, row=10)
+var_west = tk.BooleanVar()
+West_Checkbtn = tk.Checkbutton(machTab, text = "West", variable = var_west)
+West_Checkbtn.grid(column=7, row=10)
+#umos
+
+imageExtCombo = ttk.Combobox(machTab, values = ["east", ""])
 ####
 
 
@@ -411,12 +438,20 @@ fwRarcBtn.grid(column=0, row=0)
 fwTCLbtn = tk.Button(fireWorkTab, text = "Get Data Location, Fw", command = FwGetLocation, width=17, height=1)
 fwTCLbtn.grid(column=1, row=0)
 
+giflst =[]
 def getImg():
     location = ImgCombo.get()
     Im.generateImage(location)
+    #update list
+    giflst.clear()
+    gif = os.listdir("output")
+    for g in gif:
+        if g.endswith(".gif"):
+            giflst.append(g)
+    animateCombo.config(values=sorted(giflst))
 
 
-ImgCombo = ttk.Combobox(fireWorkTab, values=["east", "west","north@america"], width=20, state='readonly')
+ImgCombo = ttk.Combobox(fireWorkTab, values=["east", "west","north@america", "north@america@gemmach"], width=20, state='readonly')
 ImgCombo.grid(column=1, row=2)
 ImgCombo.current(0)
 
@@ -431,7 +466,6 @@ UmosImgLocation = ttk.Combobox(fireWorkTab, values = ["@sfc_", "@sfc@diff_"], st
 UmosImgLocation.grid(column=1, row=3)
 UmosImgLocation.current(0)
 
-giflst =[]
 gifs = os.listdir("output")
 for g in gifs:
     if g.endswith(".gif"):
@@ -471,7 +505,7 @@ ImgUmosRarcBtn.grid(column=0, row=2)
 
 animateCombo = ttk.Combobox(fireWorkTab, values =sorted(giflst),width=45, height=10, state='readonly')
 animateCombo.grid(column=1, row=5)
-animateCombo.current(0)
+#animateCombo.current(0)
 
 
 def animate():

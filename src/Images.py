@@ -148,6 +148,16 @@ def particuleCheckBox(O3, NO2, others, PM25):
     formattedParticuleString = ' '.join(
         unformattedParticuleString[i:i + 2] for i in range(0, len(unformattedParticuleString), 2))
 
+#east,east@coast@zoom,north@america,north@america@gemmach,west
+def locationCheckBox(East, EastZoom,NA,NAGem,West):
+    global rarcString
+    East = int(East)
+    EastZoom = int(EastZoom)
+    NA = int(NA)
+    NAGem = int(NAGem)
+    West = int(West)
+    if East is 1:
+        
 
 def RarcFile():
     file = open("image", "w")
