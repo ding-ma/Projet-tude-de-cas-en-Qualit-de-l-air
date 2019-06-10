@@ -230,10 +230,9 @@ def generateUMOSImage(location, t):
             print("extracted: "+m+h)
             purge(os.getcwd(),sYear+sMonth+sDay+h+"_054_UA_"+location+"_I_UMOS@GEMMACH_"+m+t+".*")
             print("generating gif: "+m+h)
-
             os.system(
                 "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" +sYear+sMonth+sDay+h+"_054_UA_"+location+"_I_UMOS@GEMMACH_"+m+t+"* "
-                + filelocation + "/output/UMOS__" + sYear + sMonth + sDay + h + m+"_" + location + ".gif")
+                + filelocation + "/output/UMOS__" + sYear + sMonth + sDay + h + m+"_" + location +t+ ".gif")
             shutil.rmtree("imgTemp")
             os.mkdir("imgTemp")
             print("remaking dir")

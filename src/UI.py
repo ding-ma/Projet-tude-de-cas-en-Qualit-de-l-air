@@ -420,19 +420,35 @@ ImgCombo = ttk.Combobox(fireWorkTab, values=["east", "west","north@america"], wi
 ImgCombo.grid(column=1, row=2)
 ImgCombo.current(0)
 
-ImgBtn = tk.Button(fireWorkTab, text = "Get corresponding Images, GM", command = getImg, width=17, height=1)
+ImgBtn = tk.Button(fireWorkTab, text = "Get Images, GM", command = getImg, width=17, height=1)
 ImgBtn.grid(column=1, row=1)
 
-UmosImgCombo = ttk.Combobox(fireWorkTab, values=["north@america", "east", "west", "north@america@gemmach"])
+UmosImgCombo = ttk.Combobox(fireWorkTab, values=["north@america", "east", "west", "north@america@gemmach"], state='readonly')
 UmosImgCombo.grid(column=0, row=3)
+UmosImgCombo.current(0)
 
-UmosImgLocation = ttk.Combobox(fireWorkTab, values = ["@sfc_", "@sfc@diff_"])
+UmosImgLocation = ttk.Combobox(fireWorkTab, values = ["@sfc_", "@sfc@diff_"], state='readonly')
 UmosImgLocation.grid(column=1, row=3)
+UmosImgLocation.current(0)
+
+giflst =[]
+gifs = os.listdir("output")
+for g in gifs:
+    if g.endswith(".gif"):
+        giflst.append(g)
+
 
 def getUMOSimg():
-    type = UmosImgCombo.get()
+    t = UmosImgCombo.get()
     location = UmosImgLocation.get()
-    Im.generateUMOSImage(type,location)
+    Im.generateUMOSImage(t,location)
+    #this part updates the list
+    giflst.clear()
+    gif = os.listdir("output")
+    for g in gif:
+        if g.endswith(".gif"):
+            giflst.append(g)
+    animateCombo.config(values = sorted(giflst))
 
 
 UmosImgBtn = tk.Button(fireWorkTab, text ="Get img, UM", command = getUMOSimg,width=17, height=1)
@@ -442,8 +458,29 @@ def IMRARC():
     os.system("rarc -i " + Gm.filelocation + "/image &")
 
 
-ImgRarcBtn = tk.Button(fireWorkTab, text = "Rarc, Im", command = IMRARC,width=17, height=1)
+ImgRarcBtn = tk.Button(fireWorkTab, text = "Rarc, Im-Gm", command = IMRARC,width=17, height=1)
 ImgRarcBtn.grid(column=0, row=1)
+
+def UmosImgRarc():
+    os.system("rarc -i " + Gm.filelocation + "/imageUMOS &")
+
+
+ImgUmosRarcBtn = tk.Button(fireWorkTab, text = "Rarc, Im-Um", command =UmosImgRarc,width=17, height=1)
+ImgUmosRarcBtn.grid(column=0, row=2)
+
+
+animateCombo = ttk.Combobox(fireWorkTab, values =sorted(giflst),width=45, height=10, state='readonly')
+animateCombo.grid(column=1, row=5)
+animateCombo.current(0)
+
+
+def animate():
+    index = animateCombo.current()
+    os.system("animate output/"+sorted(giflst)[index]+" &")
+
+
+animateBtn = tk.Button(fireWorkTab, text = "Animate GIF", command = animate,width=17, height=1)
+animateBtn.grid(column=0, row=5)
 # tab for help
 helptab = ttk.Frame(nb)
 nb.add(helptab, text="Help/Info", )
