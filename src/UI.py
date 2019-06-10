@@ -440,8 +440,7 @@ fwTCLbtn.grid(column=1, row=0)
 
 giflst =[]
 def getImg():
-    location = ImgCombo.get()
-    Im.generateImage(location)
+    Im.generateImage()
     #update list
     giflst.clear()
     gif = os.listdir("output")
@@ -451,19 +450,11 @@ def getImg():
     animateCombo.config(values=sorted(giflst))
 
 
-ImgCombo = ttk.Combobox(fireWorkTab, values=["east", "west","north@america", "north@america@gemmach"], width=20, state='readonly')
-ImgCombo.grid(column=1, row=2)
-ImgCombo.current(0)
-
 ImgBtn = tk.Button(fireWorkTab, text = "Get Images, GM", command = getImg, width=17, height=1)
 ImgBtn.grid(column=1, row=1)
 
-UmosImgCombo = ttk.Combobox(fireWorkTab, values=["north@america", "east", "west", "north@america@gemmach"], state='readonly')
-UmosImgCombo.grid(column=0, row=3)
-UmosImgCombo.current(0)
-
 UmosImgLocation = ttk.Combobox(fireWorkTab, values = ["@sfc_", "@sfc@diff_"], state='readonly')
-UmosImgLocation.grid(column=1, row=3)
+UmosImgLocation.grid(column=1, row=4)
 UmosImgLocation.current(0)
 
 gifs = os.listdir("output")
@@ -473,9 +464,8 @@ for g in gifs:
 
 
 def getUMOSimg():
-    t = UmosImgCombo.get()
-    location = UmosImgLocation.get()
-    Im.generateUMOSImage(t,location)
+    t = UmosImgLocation.get()
+    Im.generateUMOSImage(t)
     #this part updates the list
     giflst.clear()
     gif = os.listdir("output")
@@ -503,7 +493,7 @@ ImgUmosRarcBtn = tk.Button(fireWorkTab, text = "Rarc, Im-Um", command =UmosImgRa
 ImgUmosRarcBtn.grid(column=0, row=2)
 
 
-animateCombo = ttk.Combobox(fireWorkTab, values =sorted(giflst),width=45, height=10, state='readonly')
+animateCombo = ttk.Combobox(fireWorkTab, values =sorted(giflst),width=55, height=10, state='readonly')
 animateCombo.grid(column=1, row=5)
 #animateCombo.current(0)
 
