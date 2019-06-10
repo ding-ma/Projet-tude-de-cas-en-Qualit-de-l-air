@@ -150,14 +150,32 @@ def particuleCheckBox(O3, NO2, others, PM25):
 
 #east,east@coast@zoom,north@america,north@america@gemmach,west
 def locationCheckBox(East, EastZoom,NA,NAGem,West):
+    global locationlst
     global rarcString
     East = int(East)
     EastZoom = int(EastZoom)
     NA = int(NA)
     NAGem = int(NAGem)
     West = int(West)
+    strEast = ""
+    strEastZoom = ""
+    strNA = ""
+    strNAGem = ""
+    strWest = ""
     if East is 1:
-        
+        strEast = "east,"
+    if EastZoom is 1:
+        strEastZoom = "east@coast@zoom,"
+    if NA is 1:
+        strNA = "north@america,"
+    if NAGem is 1:
+        strNAGem = "north@america@gemmach,"
+    if West is 1:
+        strWest = "west,"
+    rarcString = strEast + strEastZoom+strNA+strNAGem+strWest
+    tempList = re.split(",", rarcString)
+    locationlst = tempList[:-1]
+
 
 def RarcFile():
     file = open("image", "w")
@@ -171,7 +189,7 @@ def RarcFile():
         # end
         + eYear + "," + eMonth + "," + eDay +
         "\nbranche = operation.images.chronos\n"
-        "ext = " + formattedSelectedTimeWithComma +
+        "ext = " + rarcString +
         "\nheure = " + modelHour +
         "\npriority = online\n"
         "inc = 1\n"
@@ -190,16 +208,17 @@ def UMOSRarcFile():
         # end
         + eYear + "," + eMonth + "," + eDay +
         "\nbranche = operation.images.umoscr\n"
-        "ext = " + formattedSelectedTimeWithComma +
+        "ext = " + rarcString +
         "\nheure = " + modelHour +
         "\npriority = online\n"
         "inc = 1\n"
         "#\n")
     print("UMOS Image File Saved")
 
-def generateImage(location):
+def generateImage():
     molecules = particulelst
     modelhourlist = re.split(",", modelHour)
+    for location in locationlst
     for m in molecules:
         for h in modelhourlist:
             os.system("cmcarc -x "+sYear+sMonth+sDay+h+"_054_GM_"+location+"_I_GEMMACH_"+m+"@sfc@001.* -f "+os.getcwd()+ "/rarc/operation.images.chronos/"+sYear+sMonth+sDay+h+"_"+location)

@@ -4,7 +4,6 @@
     <list default="true" id="993a9838-9207-46e0-aaef-0972cce94224" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Images.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Images.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI.py" afterDir="false" />
     </list>
     <list id="907627cc-b390-404d-92ca-b82bb5948891" name="changed ui for date entry, dropbox" comment="changed ui for date entry, dropbox&#10;&#10;(cherry picked from commit 2f4aa07e39a3bdfdaad2fabc35416c24e44b5482)">
       <changelist_data name="Ding Ma" email="ding.ma@mail.mcgill.ca" date="1559324784000" />
@@ -17,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Images.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="151" column="20" selection-start-line="151" selection-start-column="4" selection-end-line="151" selection-end-column="20" />
+            <state relative-caret-position="616">
+              <caret line="242" column="37" selection-start-line="221" selection-start-column="8" selection-end-line="242" selection-end-column="37" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -50,14 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="252" column="35" selection-start-line="252" selection-start-column="35" selection-end-line="252" selection-end-column="35" />
-              <folding>
-                <element signature="e#23#34#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="363">
+              <caret line="231" lean-forward="true" selection-start-line="231" selection-end-line="231" />
             </state>
           </provider>
         </entry>
@@ -142,8 +138,8 @@
         <option value="$PROJECT_DIR$/src/FireWork.py" />
         <option value="$PROJECT_DIR$/src/Gemmach.py" />
         <option value="$PROJECT_DIR$/src/tests.py" />
-        <option value="$PROJECT_DIR$/src/Images.py" />
         <option value="$PROJECT_DIR$/src/UI.py" />
+        <option value="$PROJECT_DIR$/src/Images.py" />
       </list>
     </option>
   </component>
@@ -358,13 +354,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557412480438</updated>
-    </task>
-    <task id="LOCAL-00004" summary="added the models">
-      <created>1557508814106</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1557508814106</updated>
     </task>
     <task id="LOCAL-00005" summary="added the models">
       <created>1557508826979</created>
@@ -702,7 +691,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560186239630</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="backup before location checkbox automation">
+      <created>1560190749933</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1560190749933</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TodoView">
@@ -726,7 +722,7 @@
       <window_info id="Job Explorer" order="5" weight="0.2971549" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32879582" />
-      <window_info active="true" anchor="bottom" x="11" y="323" width="1898" height="404" id="Run" maximized="true" order="2" sideWeight="0.49270833" visible="true" weight="0.16020942" />
+      <window_info active="true" anchor="bottom" x="11" y="323" width="1898" height="404" id="Run" maximized="true" order="2" sideWeight="0.49270833" visible="true" weight="0.28691098" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2910995" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -827,7 +823,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="trying out repo seperation" />
     <MESSAGE value="gemmach done, backup before repo changes" />
     <MESSAGE value="EOD: debugging the paths for linux" />
     <MESSAGE value="gem-mach done, adding a help tab" />
@@ -852,7 +847,8 @@
     <MESSAGE value="eod: works for gemmach images, working on umos" />
     <MESSAGE value="Umos img generation works" />
     <MESSAGE value="added animate function in the program" />
-    <option name="LAST_COMMIT_MESSAGE" value="added animate function in the program" />
+    <MESSAGE value="backup before location checkbox automation" />
+    <option name="LAST_COMMIT_MESSAGE" value="backup before location checkbox automation" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
@@ -1032,6 +1028,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="231" lean-forward="true" selection-start-line="231" selection-end-line="231" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/UMOS.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6">
@@ -1044,27 +1054,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Images.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="151" column="20" selection-start-line="151" selection-start-column="4" selection-end-line="151" selection-end-column="20" />
+        <state relative-caret-position="616">
+          <caret line="242" column="37" selection-start-line="221" selection-start-column="8" selection-end-line="242" selection-end-column="37" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="252" column="35" selection-start-line="252" selection-start-column="35" selection-end-line="252" selection-end-column="35" />
-          <folding>
-            <element signature="e#23#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
