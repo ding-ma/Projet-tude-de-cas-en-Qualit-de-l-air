@@ -103,6 +103,7 @@ def GemClicked():
     Im.modelCheckbox(h_00,h_12)
     Im.particuleCheckBox(O3, NO2, others, PM25)
     Im.RarcFile()
+    Im.UMOSRarcFile()
 
 
 rarcLabel = tk.Label(machTab, text="Rarc Settings", font="20")
@@ -419,8 +420,23 @@ ImgCombo = ttk.Combobox(fireWorkTab, values=["east", "west","north@america"], wi
 ImgCombo.grid(column=1, row=2)
 ImgCombo.current(0)
 
-ImgBtn = tk.Button(fireWorkTab, text = "Get corresponding Images", command = getImg, width=17, height=1)
+ImgBtn = tk.Button(fireWorkTab, text = "Get corresponding Images, GM", command = getImg, width=17, height=1)
 ImgBtn.grid(column=1, row=1)
+
+UmosImgCombo = ttk.Combobox(fireWorkTab, values=["north@america", "east", "west", "north@america@gemmach"])
+UmosImgCombo.grid(column=0, row=3)
+
+UmosImgLocation = ttk.Combobox(fireWorkTab, values = ["@sfc_", "@sfc@diff_"])
+UmosImgLocation.grid(column=1, row=3)
+
+def getUMOSimg():
+    type = UmosImgCombo.get()
+    location = UmosImgLocation.get()
+    Im.generateUMOSImage(type,location)
+
+
+UmosImgBtn = tk.Button(fireWorkTab, text ="Get img, UM", command = getUMOSimg,width=17, height=1)
+UmosImgBtn.grid(column=0, row=4)
 
 def IMRARC():
     os.system("rarc -i " + Gm.filelocation + "/image &")

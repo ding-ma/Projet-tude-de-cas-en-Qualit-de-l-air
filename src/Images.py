@@ -160,14 +160,32 @@ def RarcFile():
         + sYear + "," + sMonth + "," + sDay + ","
         # end
         + eYear + "," + eMonth + "," + eDay +
-        "\nbranche = operation.forecasts.mach\n"
+        "\nbranche = operation.images.chronos\n"
         "ext = " + formattedSelectedTimeWithComma +
         "\nheure = " + modelHour +
         "\npriority = online\n"
         "inc = 1\n"
         "#\n")
-    print("Image File Saved")
+    print("Gem Image File Saved")
 
+def UMOSRarcFile():
+    file = open("imageUMOS", "w")
+    file.write(
+        "target = " + filelocation + "/rarc\n"
+                                     "filter = copy\n"
+                                     "postprocess = nopost\n"
+                                     "date = "
+        # start
+        + sYear + "," + sMonth + "," + sDay + ","
+        # end
+        + eYear + "," + eMonth + "," + eDay +
+        "\nbranche = operation.images.umoscr\n"
+        "ext = " + formattedSelectedTimeWithComma +
+        "\nheure = " + modelHour +
+        "\npriority = online\n"
+        "inc = 1\n"
+        "#\n")
+    print("UMOS Image File Saved")
 
 def generateImage(location):
     molecules = particulelst
@@ -190,11 +208,34 @@ def generateImage(location):
 
             os.system(
                 "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" + sYear + sMonth + sDay + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001* "
-                + filelocation + "/output/" + sYear + sMonth + sDay + h + m+"_" + location + ".gif")
+                + filelocation + "/output/GEM__" + sYear + sMonth + sDay + h + m+"_" + location + ".gif")
             shutil.rmtree("imgTemp")
             os.mkdir("imgTemp")
             print("remaking dir")
     print("\nJob done, see folder-->" + filelocation+"/output")
 
 
+def generateUMOSImage(location, t):
+    molecules = particulelst
+    modelhourlist = re.split(",", modelHour)
+    for m in molecules:
+        for h in modelhourlist:
+            os.system("cmcarc -x "+sYear+sMonth+sDay+h+"_054_UA_"+location+"_I_UMOS@GEMMACH_"+m+t+".* -f "+os.getcwd()+ "/rarc/operation.images.umoscr/"+sYear+sMonth+sDay+h+"_"+location)
+
+            def purge(dir, pattern):
+                for f in os.listdir(dir):
+                    if re.search(pattern, f):
+                        shutil.move(f, os.getcwd()+"/imgTemp")
+
+            print("extracted: "+m+h)
+            purge(os.getcwd(),sYear+sMonth+sDay+h+"_054_UA_"+location+"_I_UMOS@GEMMACH_"+m+t+".*")
+            print("generating gif: "+m+h)
+
+            os.system(
+                "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" +sYear+sMonth+sDay+h+"_054_UA_"+location+"_I_UMOS@GEMMACH_"+m+t+"* "
+                + filelocation + "/output/UMOS__" + sYear + sMonth + sDay + h + m+"_" + location + ".gif")
+            shutil.rmtree("imgTemp")
+            os.mkdir("imgTemp")
+            print("remaking dir")
+    print("\nJob done, see folder-->" + filelocation+"/output")
 
