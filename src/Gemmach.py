@@ -141,6 +141,12 @@ def SearchNameID(userInput):
     else:
         return findWithID(userInput)
 
+def returnName(ID):
+    index = isIDFound(ID)
+    if index is False:
+        return "Station not in database"
+    return lstName[index]
+
 
 lstNL = []
 lstPEI = []
