@@ -10,6 +10,7 @@ import Gemmach as Gm
 import Images as Im
 import UMOS as Um
 import UMOSMist as Umist
+import forecast as Fc
 
 # initial setting
 window = tk.Tk()
@@ -70,15 +71,10 @@ def GemClicked():
     location = int(combostations.current())
     province = comboprov.get()
     locationlst = Gm.provinceDic[province]
-    loc = locationlst[location]
+    locID = locationlst[location]
     active = False
-    Um.particuleCheckBoxAndTime(O3, NO2, PM25, loc,datesplit, active)
+    Um.particuleCheckBoxAndTime(O3, NO2, PM25, locID,datesplit, active)
     Um.rarcFile(datesplit)
-
-    location = int(combostations.current())
-    province = comboprov.get()
-    locationlst = Gm.provinceDic[province]
-    loc = locationlst[location]
 
     Umist.removeAllfile(r'' + Umist.filelocation + "/configMIST")
     Umist.time(sTime, eTime)
@@ -86,7 +82,7 @@ def GemClicked():
     Umist.inputEndDate(b)
     Umist.modelCheckbox(h_00, h_12)
     Umist.rarcFile()
-    Umist.bashFile(particules,loc)
+    Umist.bashFile(particules,locID)
 
     Fw.level(levelEntry.get())
     Fw.removeAllfile(r'' + Fw.filelocation + "/configFw")
@@ -95,7 +91,7 @@ def GemClicked():
     Fw.inputEndDate(b)
     Fw.modelCheckbox(h_00, h_12)
     Fw.rarcFile()
-    Fw.bashFile(particules, loc)
+    Fw.bashFile(particules, locID)
 
     Im.inputStartDate(a)
     Im.inputEndDate(b)
@@ -110,6 +106,12 @@ def GemClicked():
     Im.locationCheckBox(East,EastZoom,NA,NAGem,West)
     Im.RarcFile()
     Im.UMOSRarcFile()
+
+    Fc.inputStartDate(a)
+    Fc.inputEndDate(b)
+    Fc.time(sTime,eTime)
+    Fc.particuleCheckBox(O3, NO2, others, PM25)
+    Fc.rarcFile()
 
 
 rarcLabel = tk.Label(machTab, text="Rarc Settings", font="20")
@@ -322,8 +324,8 @@ def getLocation():
     location = int(combostations.current())
     province = comboprov.get()
     locationlst = Gm.provinceDic[province]
-    loc = locationlst[location]
-    Gm.locationExtraction(loc)
+    locID = locationlst[location]
+    Gm.locationExtraction(locID)
     Gm.launchTCL()
     Gm.removeEmptyFile(r'' + Gm.filelocation + "/extracted")
     Gm.sortAndGenerate(Gm.filelocation + "/extracted/")
@@ -353,7 +355,7 @@ def UMOSGetLocation():
     location = int(combostations.current())
     province = comboprov.get()
     locationlst = Gm.provinceDic[province]
-    loc = locationlst[location]
+    locID = locationlst[location]
     O3 = var_O3.get()
     NO2 = var_NO2.get()
     PM25 = var_PM25.get()
@@ -361,7 +363,7 @@ def UMOSGetLocation():
     Gm.inputEndDate(b)
     datesplit = Um.inputEndDate(b)
     active = True
-    Um.particuleCheckBoxAndTime(O3, NO2, PM25, loc, datesplit, active)
+    Um.particuleCheckBoxAndTime(O3, NO2, PM25, locID, datesplit, active)
 
 
 UMOSBtnGetFile = tk.Button(umosTab, text="Get Data at location (2)", command = UMOSGetLocation, width=17, height=1)
@@ -505,6 +507,26 @@ def animate():
 
 animateBtn = tk.Button(fireWorkTab, text = "Animate GIF", command = animate,width=17, height=1)
 animateBtn.grid(column=0, row=5)
+
+def RarcForecast():
+    os.system("rarc -i " + Gm.filelocation + "/forecast &")
+
+
+forecastRarcBtn = tk.Button(fireWorkTab,text = "Rarc, FC", command=RarcForecast, width=17, height=1)
+forecastRarcBtn.grid(column=0, row=6)
+
+def forecastGetLocation():
+    location = int(combostations.current())
+    province = comboprov.get()
+    locationlst = Gm.provinceDic[province]
+    locID = locationlst[location]
+    Fc.generateFromDB(locID)
+
+
+forecastLocationBtn = tk.Button(fireWorkTab, text = "Get at location", command=forecastGetLocation, width=17, height=1)
+forecastLocationBtn.grid(column=1, row=6)
+
+
 # tab for help
 helptab = ttk.Frame(nb)
 nb.add(helptab, text="Help/Info", )
@@ -567,9 +589,9 @@ notesInfo = tk.Label(helptab, text = "Notes:\n"
 notesInfo.grid(column=0, row=0)
 #https://www.python-course.eu/tkinter_text_widget.php
 
-img = tk.PhotoImage(file = "smog-montreal.gif")
-imglabal = tk.Label(window,image = img)
-imglabal.grid(column=0, row=50, pady = (325,0), sticky='w')
+# img = tk.PhotoImage(file = "smog-montreal.gif")
+# imglabal = tk.Label(window,image = img)
+# imglabal.grid(column=0, row=50, pady = (325,0), sticky='w')
 #imglabal.grid(column=0, row=50, pady = (325,0), sticky='w')
 window.mainloop()
 
