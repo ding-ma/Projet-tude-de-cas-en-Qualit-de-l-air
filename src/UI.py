@@ -68,10 +68,7 @@ def GemClicked():
     Um.inputStartDate(a)
     datesplit = Um.inputEndDate(b)
     Um.modelCheckbox(h_00, h_12)
-    location = int(combostations.current())
-    province = comboprov.get()
-    locationlst = Gm.provinceDic[province]
-    locID = locationlst[location]
+    locID = getComboboxLocation()
     active = False
     Um.particuleCheckBoxAndTime(O3, NO2, PM25, locID,datesplit, active)
     Um.rarcFile(datesplit)
@@ -321,10 +318,7 @@ extrationBtn.grid(column=10, row=3)
 def getLocation():
     # Bk.removeAllfile(r''+Bk.filelocation+"/bash")
     Gm.removeAllfile(r'' + Gm.filelocation + "/config")
-    location = int(combostations.current())
-    province = comboprov.get()
-    locationlst = Gm.provinceDic[province]
-    locID = locationlst[location]
+    locID = getComboboxLocation()
     Gm.locationExtraction(locID)
     Gm.launchTCL()
     Gm.removeEmptyFile(r'' + Gm.filelocation + "/extracted")
@@ -352,10 +346,7 @@ UMOSBtnExt.grid(column=0, row=0)
 
 
 def UMOSGetLocation():
-    location = int(combostations.current())
-    province = comboprov.get()
-    locationlst = Gm.provinceDic[province]
-    locID = locationlst[location]
+    locID = getComboboxLocation()
     O3 = var_O3.get()
     NO2 = var_NO2.get()
     PM25 = var_PM25.get()
@@ -516,11 +507,16 @@ forecastRarcBtn = tk.Button(fireWorkTab,text = "Rarc, FC", command=RarcForecast,
 forecastRarcBtn.grid(column=0, row=6)
 
 def forecastGetLocation():
+    locID = getComboboxLocation()
+    Fc.generateFromDB(locID)
+
+
+def getComboboxLocation():
     location = int(combostations.current())
     province = comboprov.get()
     locationlst = Gm.provinceDic[province]
     locID = locationlst[location]
-    Fc.generateFromDB(locID)
+    return locID
 
 
 forecastLocationBtn = tk.Button(fireWorkTab, text = "Get at location", command=forecastGetLocation, width=17, height=1)
