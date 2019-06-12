@@ -2,6 +2,7 @@ import datetime
 import os
 import re
 import sqlite3 as sql
+from datetime import timedelta
 
 import Gemmach as Gm
 
@@ -149,42 +150,51 @@ fstdDict = {
 
 lstofSpecies = []
 def generateFromDB(stationID):
-    date = sYear+sMonth+sDay
-    lstofSpeciesFST = formattedParticuleString.split(" ")
-    for et in lstofSpeciesFST:
-        lstofSpecies.append(fstdDict[et])
-    sqlfilelst = []
-    path = "/rarc/operation.forecasts.aqhi.basedonnees/"
-    for a in os.listdir(filelocation + path):
-        if a.startswith(date) and a.endswith("_observation.db"):
-            sqlfilelst.append(a)
-    templst = []
-    for e,s in zip(lstofSpecies, lstofSpeciesFST):
-        print("Extracting " + s + " from database...")
-        for sqlfile in sorted(sqlfilelst):
-            connection = sql.connect(filelocation + path + sqlfile)
-            c = connection.cursor()
-            # forcast
-            # c.execute("SELECT type,name,sql,tbl_name FROM main.sqlite_master;")
-            # c.execute("SELECT COUNT(*) FROM (SELECT _rowid_,* FROM main.forecast WHERE station LIKE '%"+station+"%' ESCAPE '\\' AND specie LIKE '%"+species+"%' ESCAPE '\\' );")
-            # c.execute("SELECT _rowid_,* FROM main.forecast WHERE station LIKE '%"+station+"%' ESCAPE '\\' AND specie LIKE '%"+species+"%' ESCAPE '\\' ORDER BY date ASC;")
+    sDate = datetime.date(int(sYear),int(sMonth),int(sDay))
+    eDate = datetime.date(int(eYear),int(eMonth),int(eDay))
+    delta = eDate-sDate
+    daylst = []
+    for i in range(delta.days + 1):
+        a = sDate + timedelta(days=i)
+        print(a.strftime("%Y%m%d"))
+        daylst.append(a)
+    for d in daylst:
+        date = str(d)
+        lstofSpeciesFST = formattedParticuleString.split(" ")
+        for et in lstofSpeciesFST:
+            lstofSpecies.append(fstdDict[et])
+        sqlfilelst = []
+        path = "/rarc/operation.forecasts.aqhi.basedonnees/"
+        for a in os.listdir(filelocation + path):
+            if a.startswith(date) and a.endswith("_observation.db"):
+                sqlfilelst.append(a)
+        templst = []
+        for e,s in zip(lstofSpecies, lstofSpeciesFST):
+            print("Extracting " + s + " from database...")
+            for sqlfile in sorted(sqlfilelst):
+                connection = sql.connect(filelocation + path + sqlfile)
+                c = connection.cursor()
+                # forcast
+                # c.execute("SELECT type,name,sql,tbl_name FROM main.sqlite_master;")
+                # c.execute("SELECT COUNT(*) FROM (SELECT _rowid_,* FROM main.forecast WHERE station LIKE '%"+station+"%' ESCAPE '\\' AND specie LIKE '%"+species+"%' ESCAPE '\\' );")
+                # c.execute("SELECT _rowid_,* FROM main.forecast WHERE station LIKE '%"+station+"%' ESCAPE '\\' AND specie LIKE '%"+species+"%' ESCAPE '\\' ORDER BY date ASC;")
 
-            # for obs
-            c.execute("SELECT COUNT(*) FROM (SELECT _rowid_,* FROM main.observation );")
-            c.execute(
-                "SELECT _rowid_,* FROM main.observation WHERE station LIKE " + stationID + " AND (specie LIKE " + e + ") ORDER BY _rowid_ ASC;")
-            for i in c.fetchall():
-                date = datetime.datetime.utcfromtimestamp(i[3]).strftime('%Y%m%d')
-                hour = datetime.datetime.utcfromtimestamp(i[3]).strftime('%H')
-                concentration = str(i[5])
-                writestr = date + "," + hour + "," + concentration
-                templst.append(writestr)
+                # for obs
+                c.execute("SELECT COUNT(*) FROM (SELECT _rowid_,* FROM main.observation );")
+                c.execute(
+                    "SELECT _rowid_,* FROM main.observation WHERE station LIKE " + stationID + " AND (specie LIKE " + e + ") ORDER BY _rowid_ ASC;")
+                for i in c.fetchall():
+                    d = datetime.datetime.utcfromtimestamp(i[3]).strftime('%Y%m%d')
+                    hour = datetime.datetime.utcfromtimestamp(i[3]).strftime('%H')
+                    concentration = str(i[5])
+                    writestr = d + "," + hour + "," + concentration
+                    templst.append(writestr)
 
-        print("Writing to file\n")
-        file = open("output/OBS__ID" + stationID + "__" + date + "_" + s + ".csv", "w+")
-        # (11, 10102, 8, 1559984400, 25, 5.0)
-        file.write("Date,Hour,Value\n")
-        for l in templst:
-            file.write(l + "\n")
-        templst.clear()
+            print("Writing to file\n")
+            file = open("output/OBS__ID" + stationID + "__" + date + "_" + s + ".csv", "w+")
+            # (11, 10102, 8, 1559984400, 25, 5.0)
+            file.write("Date,Hour,Value\n")
+            for l in templst:
+                file.write(l + "\n")
+            templst.clear()
     print("Job done, see folder-->" + filelocation + "/output\n")
