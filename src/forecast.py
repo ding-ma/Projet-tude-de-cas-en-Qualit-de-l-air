@@ -156,10 +156,9 @@ def generateFromDB(stationID):
     daylst = []
     for i in range(delta.days + 1):
         a = sDate + timedelta(days=i)
-        print(a.strftime("%Y%m%d"))
         daylst.append(a)
     for d in daylst:
-        date = str(d)
+        date = str(d.strftime("%Y%m%d"))
         lstofSpeciesFST = formattedParticuleString.split(" ")
         for et in lstofSpeciesFST:
             lstofSpecies.append(fstdDict[et])
