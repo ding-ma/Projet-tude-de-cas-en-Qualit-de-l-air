@@ -39,7 +39,7 @@ EticketGEM = "RAQDPS020"
 EticketUMOS = "CAPAMIST"
 
 # For Firework
-EticketFW = "RAQDPS019FW"
+EticketFW = "RAQDPS020FW"
 
 #Do not touch the rest!
 ##################################################
@@ -551,8 +551,7 @@ def locationExtraction(iditem):
                             "set Data(Eticket)     \""+EticketGEM+"\"\n"
                             "set Data(point) \"" + name + "\"\n"
                             "set Data(coord) \"" + lat + " " + long + "\"\n"
-                            "set Data(days) \"" + str(
-                            d) + "\"\n"  # todo confirm start day
+                            "set Data(days) \"" + str(d) + "\"\n"  # todo confirm start day
                             "set Data(hours) \"" + str(hToFile) + "\"\n"
                         )
     print("Done")

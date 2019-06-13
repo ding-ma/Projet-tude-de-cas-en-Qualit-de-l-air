@@ -434,7 +434,7 @@ fireWorkTab = ttk.Frame(nb)
 nb.add(fireWorkTab, text="FireWork")
 
 fwBashBtn = tk.Button(fireWorkTab, text = "Bash Fw", command = FwClicked,width=17, height=1)
-fwBashBtn.grid(column=0, row=1)
+fwBashBtn.grid(column=2, row=0)
 
 fwRarcBtn = tk.Button(fireWorkTab, text = "Rarc, Fw", command = FwRarc, width=17, height=1)
 fwRarcBtn.grid(column=0, row=0)

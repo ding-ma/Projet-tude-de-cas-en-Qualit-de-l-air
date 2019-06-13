@@ -151,11 +151,11 @@ def bashFile(formattedParticuleString, loc):
             "\nDateDebutMois="+sMonth+
             "\nListeMois=\"" + formattedMonthlist + "\""
             "\nAnnee=" + sYear +  # not used
-            "\nTag1=BashOut"+modelHourSeparated+
+            "\nTag1=FW"+modelHourSeparated+
             "\neditfst=/fs/ssm/eccc/mrd/rpn/utils/16.2/ubuntu-14.04-amd64-64/bin/editfst"
             "\nType=species"
             "\nGrille=regeta"
-            "\nFichierTICTAC="+filelocation+"/rarc/operation.forecasts.firework.mach/${DateDebut}"+ sDay + modelHourBash + "_" + sTimeBash +
+            "\nFichierTICTAC="+filelocation+"/rarc/operation.forecasts.firework.mach/${Annee}${DateDebutMois}" + sDay + modelHourBash + "_" + sTimeBash +
             "\nListeVersionsGEM=\"operation.forecasts.firework.mach\""
             "\nListeEspeces=\"" + formattedParticuleString + "\""
             "\nListeNiveaux=\"" + lev + "\""  # TODO confirm levels
@@ -275,9 +275,7 @@ def TCLConfig(formattedParticuleString, loc):
                             "set Data(End)      \"" + eYear + eMonth + "\"\n"
                             "set Data(Eticket)     \""+Eticket+"\"\n"
                             "set Data(point) \"" + name + "\"\n"
-                            "set Data(coord) \"" + lat + " " + long + "\"\n"
-                            "#set Data(ID) \"ID" +loc+"\"\n"        
-                            "set Data(PASSE) \""+modelH+"\"\n"
+                            "set Data(coord) \"" + lat + " " + long + "\"\n"   
                             "set Data(days) \"" + str(d) + "\"\n"  # todo confirm start day
                             "set Data(hours) \"" + str(hToFile) + "\"\n"
                         )
