@@ -5,6 +5,7 @@ import os
 import re
 import shutil
 import string
+from datetime import date, timedelta
 
 # Setings used for the entire program, change/ add as needed
 
@@ -255,80 +256,34 @@ monthDict['November'] = '11'
 monthDict['December'] = '12'
 
 #formats the start date
-def inputStartDate(sDate):
+def inputStartDate(sD):
     global sYear
     global sMonth
     global sDay
+    global sDate
     #splits the entry into a tuple
-    unformatattedDate = re.split("/", sDate)
+    unformatattedDate = re.split("/", sD)
     sYear = unformatattedDate[0]
     sMonth = unformatattedDate[1]
     sDay = unformatattedDate[2]
-    # checks for leap year
-    if int(sYear) % 4 == 0 and int(sYear) % 100 != 0 or int(sYear) % 400 == 0:
-        leap = True
-    else:
-        leap = False
-
-    #this is used for changing the combobox in the UI
-    if sMonth in oddMonths:
-        return days[1:-2]
-    if sMonth in evenMonths:
-        return days[1:-3]
-    if leap is True and int(sMonth) is 2:
-        return days[1:-4]
-    if leap is False and int(sMonth) is 2:
-        return days[1:-5]
-    ###
-
-    #checks if the user input is correct
-    if len(sYear) != 4 or len(sMonth) != 2 or sMonth > "12" or len(sDay) != 2:
-        dateErrors()
-    elif leap is True and int(sDay) > 29 and sMonth == "02":
-        dateErrors()
-    elif leap is False and sMonth == "02" and int(sDay) > 28:
-        dateErrors()
-    elif sMonth in oddMonths and int(sDay) > 31:
-        dateErrors()
-    elif sMonth in evenMonths and int(sDay) > 30:
-        dateErrors()
-    else:
-        print("Start Date: " + sYear, sMonth, sDay)
+    sDate = date(int(sYear),int(sMonth),int(sDay))
+    print("Start Date: " + sDate.strftime("%Y %m %d"))
 
 
 # end date
-def inputEndDate(eDate):
+def inputEndDate(eD):
     global eYear
     global eMonth
     global eDay
-    unformatattedDate = eDate.split("/")
+    global eDate
+    unformatattedDate = eD.split("/")
     eYear = unformatattedDate[0]
     eMonth = unformatattedDate[1]
     eDay = unformatattedDate[2]
-    # checks for leap year
-    if int(eYear) % 4 == 0 and int(eYear) % 100 != 0 or int(eYear) % 400 == 0:
-        leap = True
-    else:
-        leap = False
-    # error checking
-    if len(eYear) != 4 or len(eMonth) != 2 or eMonth > "12" or len(eDay) != 2:
-        dateErrors()
-    elif leap is True and eMonth == "02" and int(eDay) > 29:
-        dateErrors()
-    elif leap is False and eMonth == "02" and int(eDay) > 28:
-        dateErrors()
-    elif eMonth in oddMonths and int(eDay) > 31:
-        dateErrors()
-    elif eMonth in evenMonths and int(eDay) > 30:
-        dateErrors()
-    elif sMonth > eMonth:
-        dateErrors()
-    elif sMonth == eMonth and sDay > eDay:
-        dateErrors()
-    else:
-        print("End Date: " + eYear, eMonth, eDay)
-        listOfDays()
-        listofMonth()
+    eDate = date(int(eYear), int(eMonth), int(eDay))
+    print("End Date: " + eDate.strftime("%Y %m %d"))
+    listOfDays()
+    listofMonth()
 
 
 def dateErrors():
@@ -376,16 +331,47 @@ def modelCheckbox(h_00, h_12):
         modelHour = " "
 
 
+def datecounter(Type,modelh):
+    global daylst
+    global daylst12
+    global montlst
+    daylst = []
+    daylst12 =[]
+    montlst = []
+    unformattedDay = ""
+    unformattedMonth = ""
+    datedelta = eDate - sDate
+    if modelh is 00:
+        for ww in range(datedelta.days+1):
+            count = sDate + timedelta(days=ww)
+            day = count.strftime("%d")
+            daylst.append(day)
+            unformattedDay +=day
+            month = count.strftime("%m")
+            unformattedMonth += month
+            montlst.append(month)
+        if Type is 1:
+            return unformattedDay
+        if Type is 2:
+            return unformattedMonth
+    if modelh is 12:
+        for ww in range(datedelta.days + 3):
+            count = sDate + timedelta(days=ww)
+            day = count.strftime("%d")
+            daylst12.append(day)
+        return daylst12
+
 # used for bashfile
 def listOfDays():
     global formattedDay
-    global startDateIndex
-    global endDateIndex
-    startDateIndex = days.index(sDay)
-    endDateIndex = days.index(eDay)
-    unformattedDay = ""
-    for dayList in range(endDateIndex - startDateIndex + 1):
-        unformattedDay += days[startDateIndex + dayList]
+    # global startDateIndex
+    # global endDateIndex
+    unformattedDay = datecounter(1,00)
+    # startDateIndex = days.index(sDay)
+    # endDateIndex = days.index(eDay)
+    # unformattedDay = ""
+    # for cc in range(len(daylst)):
+    #     unformattedDay += days[startDateIndex + dayList]
     #for every 2 character, adds space
     formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
 
@@ -396,10 +382,8 @@ def listofMonth():
     global formattedMonthlist
     sIndex = listMonth.index(sMonth)
     eIndex = listMonth.index(eMonth)
-    unformattedMonthList = ""
-    for monthList in range(eIndex - sIndex + 1):
-        unformattedMonthList += listMonth[sIndex + monthList]
-        formattedMonthlist = ' '.join(unformattedMonthList[i:i + 2] for i in range(0, len(unformattedMonthList), 2))
+    unformattedMonthList = datecounter(2,00)
+    formattedMonthlist = ' '.join(unformattedMonthList[i:i + 2] for i in range(0, len(unformattedMonthList), 2))
 
 
 def particuleCheckBox(O3, NO2, others, PM25):
@@ -462,7 +446,7 @@ def bashFile():
             "#!/bin/bash\n"
             "PathOut="+filelocation+"/bash"
             "\nPathIn="+filelocation+"/rarc"
-            "\nDateDebut=" + sYear + sMonth+
+            "\nDateDebut=" + sYear + sMonth+ sDay+
             "\nDateFin=" + eYear + eMonth + eDay+
             "\nListeMois=\"" + formattedMonthlist + "\""
             "\nAnnee=" + sYear +  # not used
@@ -480,7 +464,7 @@ def bashFile():
             "\n################# Extraction#############"
             "\nfor VersionGEM in  ${ListeVersionsGEM}"
             "\ndo"
-            "\nFileOut1=${PathOut}/${Tag1}.${DateDebut}"+sDay+"_${DateFin}_${Grille}.fst"
+            "\nFileOut1=${PathOut}/${Tag1}.${DateDebut}_${DateFin}_${Grille}.fst"
             "\nif [  ${FileOut1}  ]; then"
             "\nrm -rf  ${FileOut1}"
             "\nelse"
@@ -554,9 +538,9 @@ def locationExtraction(iditem):
     for p in particulelist:
         for modelH in modelHourList:
             if modelH == "12":
-                dayList = days[startDateIndex: endDateIndex + 2]
+                dayList = datecounter(0,12)
             else:
-                dayList = days[startDateIndex: endDateIndex + 1]
+                dayList = daylst
             for d in dayList:
                 for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
                     config = open("config/" +p+ d + hToName + modelH +".tcl", "w")

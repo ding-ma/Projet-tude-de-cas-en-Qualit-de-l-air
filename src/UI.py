@@ -29,23 +29,24 @@ nb.grid(row=1, column=0, columnspan=50, rowspan=100, sticky='NESW')
 machTab = ttk.Frame(nb)
 nb.add(machTab, text="Gem-Mach")
 
-def sDate():
-    year = yearCombo.get()
-    month = Gm.monthDict[monthCombo.get()]
-    startDate = startDateCombo.get()
-    return year+"/"+month+"/"+startDate
-
-def eDate():
-    month = Gm.monthDict[monthCombo.get()]
-    year = yearCombo.get()
-    endDate = endDateCombo.get()
-    return year + "/" + month + "/" + endDate
+# def sDate():
+#     year = yearCombo.get()
+#     month = Gm.monthDict[monthCombo.get()]
+#     startDate = startDateCombo.get()
+#     return year+"/"+month+"/"+startDate
+#
+# def eDate():
+#     month = Gm.monthDict[monthCombo.get()]
+#     year = yearCombo.get()
+#     endDate = endDateCombo.get()
+#     return year + "/" + month + "/" + endDate
 
 #this function just writes all the user input into all files
 def GemClicked():
-    a = sDate()
-    b = eDate()
+    a = enteredDate.get()
     Gm.inputStartDate(a)
+
+    b = enteredEndDate.get()
     Gm.inputEndDate(b)
 
     sTime = sHourcombo.get()
@@ -114,36 +115,46 @@ def GemClicked():
 rarcLabel = tk.Label(machTab, text="Rarc Settings", font="20")
 rarcLabel.grid(column=0, row=0)
 # Start date
-yearCombo = ttk.Combobox(machTab, values = list(Gm.years),state='readonly')
-yearCombo.grid(column=0, row=1)
-yearCombo.current(18)
-
+# yearCombo = ttk.Combobox(machTab, values = list(Gm.years),state='readonly')
+# yearCombo.grid(column=0, row=1)
+# yearCombo.current(18)
 
 # these are binded together in order to dynamicaly change the days displayed according to the year and month
-def monthChanger(evt):
-    a = sDate()
-    b = Gm.inputStartDate(a)
-    startDateCombo.config(values =b)
-    endDateCombo.config(values =b)
+# def monthChanger(evt):
+#     a = sDate()
+#     b = Gm.inputStartDate(a)
+#     startDateCombo.config(values =b)
+#     endDateCombo.config(values =b)
+#
+#
+# #month combobox
+# monthCombo = ttk.Combobox(machTab, values = list(Gm.monthDict.keys()), state = 'readonly')
+# monthCombo.grid(column=1, row=0)
+# monthCombo.current(0)
+# monthCombo.bind('<<ComboboxSelected>>', monthChanger)
+# yearCombo.bind('<<ComboboxSelected>>', monthChanger)
+# Start date
+startDateLabel = tk.Label(machTab, text="Enter Start Date (YYYY/MM/DD)")
+startDateLabel.grid(column=0, row=1)
+enteredDate = tk.Entry(machTab, width=13)
+enteredDate.grid(column=1, row=1)
 
-
-#month combobox
-monthCombo = ttk.Combobox(machTab, values = list(Gm.monthDict.keys()), state = 'readonly')
-monthCombo.grid(column=1, row=1)
-monthCombo.current(0)
-monthCombo.bind('<<ComboboxSelected>>', monthChanger)
-yearCombo.bind('<<ComboboxSelected>>', monthChanger)
+# End date
+endDateLabel = tk.Label(machTab, text="Enter End Date (YYYY/MM/DD)")
+endDateLabel.grid(column=0, row=2)
+enteredEndDate = tk.Entry(machTab, width=13)
+enteredEndDate.grid(column=1, row=2)
 
 
 #start date combobox
-startDateCombo = ttk.Combobox(machTab, values = Gm.days[1:-2], state = 'readonly')
-startDateCombo.grid(column=0, row=2)
-startDateCombo.current(0)
-
-#end date combobox
-endDateCombo = ttk.Combobox(machTab, values = Gm.days[1:-2], state = 'readonly')
-endDateCombo.grid(column=1, row=2)
-endDateCombo.current(0)
+# startDateCombo = ttk.Combobox(machTab, values = Gm.days[1:-2], state = 'readonly')
+# startDateCombo.grid(column=0, row=2)
+# startDateCombo.current(0)
+#
+# #end date combobox
+# endDateCombo = ttk.Combobox(machTab, values = Gm.days[1:-2], state = 'readonly')
+# endDateCombo.grid(column=1, row=2)
+# endDateCombo.current(0)
 # Start date
 # endDateLabel = tk.Label(machTab, text="Enter End Date (YYYY/MM/DD)")
 # endDateLabel.grid(column=0, row=2)
@@ -308,7 +319,7 @@ extrationBtn.grid(column=10, row=2)
 
 def testing():
     #print(os.path.isdir("gem"))
-    print(sDate())
+    print(1)
 
 
 extrationBtn = tk.Button(machTab, text="Check if file exist", command=testing, width=15, height=1)
