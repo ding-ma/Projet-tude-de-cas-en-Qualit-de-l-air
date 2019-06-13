@@ -21,6 +21,8 @@ for i in range(delta.days + 1):
     monthlst.append(month)
     daylst.append(date)
 
-print(daylst)
+a = set(monthlst)
+for b in a:
+    print(b)
 for y,m,d in zip(yearlst,monthlst,daylst):
     print(y+m+d)

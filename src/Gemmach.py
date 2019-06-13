@@ -348,11 +348,13 @@ def datecounter(Type,modelh):
             daylst.append(day)
             unformattedDay +=day
             month = count.strftime("%m")
-            unformattedMonth += month
             montlst.append(month)
         if Type is 1:
             return unformattedDay
         if Type is 2:
+            monthSet = sorted(set(montlst))
+            for m in monthSet:
+                unformattedMonth += m
             return unformattedMonth
     if modelh is 12:
         for ww in range(datedelta.days + 3):
@@ -384,6 +386,7 @@ def listofMonth():
     eIndex = listMonth.index(eMonth)
     unformattedMonthList = datecounter(2,00)
     formattedMonthlist = ' '.join(unformattedMonthList[i:i + 2] for i in range(0, len(unformattedMonthList), 2))
+    print(formattedMonthlist)
 
 
 def particuleCheckBox(O3, NO2, others, PM25):
@@ -437,7 +440,6 @@ def rarcFile():
     bashFile()
     print("Gem-Mach File Saved")
 
-#generates bash script
 def bashFile():
     modelHourList = re.split(",", modelHour)
     for modelHourSeparated in modelHourList:
@@ -446,15 +448,16 @@ def bashFile():
             "#!/bin/bash\n"
             "PathOut="+filelocation+"/bash"
             "\nPathIn="+filelocation+"/rarc"
-            "\nDateDebut=" + sYear + sMonth+ sDay+
+            "\nDateDebut=" + sYear + sMonth+sDay+
             "\nDateFin=" + eYear + eMonth + eDay+
+            "\nDateDebutMois="+sMonth+
             "\nListeMois=\"" + formattedMonthlist + "\""
             "\nAnnee=" + sYear +  # not used
             "\nTag1=BashOut"+modelHourSeparated+
             "\neditfst=/fs/ssm/eccc/mrd/rpn/utils/16.2/ubuntu-14.04-amd64-64/bin/editfst"
             "\nType=species"
             "\nGrille=regeta"
-            "\nFichierTICTAC="+filelocation+"/rarc/operation.forecasts.mach/${DateDebut}" + sDay + modelHourBash + "_" + sTimeBash +
+            "\nFichierTICTAC="+filelocation+"/rarc/operation.forecasts.mach/${Annee}${DateDebutMois}" + sDay + modelHourBash + "_" + sTimeBash +
             "\nListeVersionsGEM=\"operation.forecasts.mach\""
             "\nListeEspeces=\"" + formattedParticuleString + "\""
             "\nListeNiveaux=\"" + lev + "\""  # TODO confirm levels
@@ -484,7 +487,7 @@ def bashFile():
             "\nfor heure in ${ListeHeures}"
             "\ndo"
             "\necho ${heure}"
-            "\nFileIn1=${PathIn}/${VersionGEM}/${DateDebut}${jour}${passe}_${heure}"
+            "\nFileIn1=${PathIn}/${VersionGEM}/${Annee}${mois}${jour}${passe}_${heure}"
             "\nif [ ! ${FileIn1}  ]; then"
             "\ncontinue"
             "\nelse"
@@ -512,7 +515,7 @@ def bashFile():
             "\ndone"
             "\ndone"
             "\ndone\n"
-        )
+            )
         print("Bash File Saved!")
 
 

@@ -18,7 +18,7 @@ window = tk.Tk()
 #w, h = window.winfo_screenwidth(), window.winfo_screenheight()
 w,h = 1225,890
 window.geometry("%dx%d+0+0" % (w, h))
-window.title("NAME")
+window.title("tk")
 # window.geometry("1500x1200")
 # Defines and places the notebook widget
 nb = ttk.Notebook(window)
