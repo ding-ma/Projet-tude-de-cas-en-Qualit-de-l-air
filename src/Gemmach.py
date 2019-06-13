@@ -44,6 +44,7 @@ EticketFW = "RAQDPS019FW"
 #Do not touch the rest!
 ##################################################
 
+#this will be removed
 years = ("2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012",
          "2013", "2014", "2015", "2016",
          "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029",
@@ -55,7 +56,9 @@ days = (
     "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18"
     , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "01", "02")
 
-
+oddMonths = ("01", "03", "05", "07", "08", "10", "12")
+evenMonths = ("04", "06", "09", "11")
+##
 #code to create repos and make sure everything is executable
 filelocation = os.getcwd()
 directories = ["bash", "config", "rarc", "output", "extracted", "UMOSTreating", "configMIST", "extractedMist", "configFw", "extractedFw"]
@@ -227,8 +230,8 @@ provinceDic = {
 provlist = []
 
 
-def gettingprovlist(prov):
-    for y in provinceDic[prov]:
+def gettingprovlist(P):
+    for y in provinceDic[P]:
         indexofitem = lstID.index(y)
         display = lstDisplay[indexofitem]
         provlist.append(display)
@@ -236,9 +239,6 @@ def gettingprovlist(prov):
 
 ########
 
-
-oddMonths = ("01", "03", "05", "07", "08", "10", "12")
-evenMonths = ("04", "06", "09", "11")
 
 #this is IMPORTANT, otherwise the hashtable will not give this in order
 monthDict = collections.OrderedDict()
@@ -357,6 +357,7 @@ def datecounter(Type,modelh):
                 unformattedMonth += m
             return unformattedMonth
     if modelh is 12:
+        #this accounts for the extra days the model 12 uses
         for ww in range(datedelta.days + 3):
             count = sDate + timedelta(days=ww)
             day = count.strftime("%d")
@@ -366,15 +367,7 @@ def datecounter(Type,modelh):
 # used for bashfile
 def listOfDays():
     global formattedDay
-    # global startDateIndex
-    # global endDateIndex
     unformattedDay = datecounter(1,00)
-    # startDateIndex = days.index(sDay)
-    # endDateIndex = days.index(eDay)
-    # unformattedDay = ""
-    # for cc in range(len(daylst)):
-    #     unformattedDay += days[startDateIndex + dayList]
-    #for every 2 character, adds space
     formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
 
 
@@ -382,8 +375,6 @@ listMonth = ("00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "
 #for bash
 def listofMonth():
     global formattedMonthlist
-    sIndex = listMonth.index(sMonth)
-    eIndex = listMonth.index(eMonth)
     unformattedMonthList = datecounter(2,00)
     formattedMonthlist = ' '.join(unformattedMonthList[i:i + 2] for i in range(0, len(unformattedMonthList), 2))
 
@@ -544,7 +535,6 @@ def locationExtraction(iditem):
                     dayList = datecounter(0,12)
                 else:
                     dayList = daylst
-
                 for d in dayList:
                     for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
                         config = open("config/" +m+p+ d + hToName + modelH +".tcl", "w")
