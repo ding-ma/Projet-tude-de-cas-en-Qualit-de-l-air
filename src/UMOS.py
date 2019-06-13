@@ -239,3 +239,5 @@ def getDataAtLocation(locationID):
     print("Job done, see folder-->" + filelocation+"/output")
     removeAllfile(r''+filelocation + "/UMOSTreating")
     shutil.rmtree("prevision.csv")
+
+

@@ -1,72 +1,41 @@
 import os
 import re
 import shutil
+from datetime import date, timedelta
 
 import Gemmach as Gm
 
 Eticket = Gm.EticketFW
 filelocation = Gm.filelocation
 
-def inputStartDate(sDate):
+def inputStartDate(sD):
     global sYear
     global sMonth
     global sDay
+    global sDate
     #splits the entry into a tuple
-    print(sDate)
-    unformatattedDate = re.split("/", sDate)
+    unformatattedDate = re.split("/", sD)
     sYear = unformatattedDate[0]
     sMonth = unformatattedDate[1]
     sDay = unformatattedDate[2]
-    # checks for leap year
-    if int(sYear) % 4 == 0 and int(sYear) % 100 != 0 or int(sYear) % 400 == 0:
-        leap = True
-    else:
-        leap = False
-    #checks if the user input is correct
-    if len(sYear) != 4 or len(sMonth) != 2 or sMonth > "12" or len(sDay) != 2:
-        dateErrors()
-    elif leap is True and int(sDay) > 29 and sMonth == "02":
-        dateErrors()
-    elif leap is False and sMonth == "02" and int(sDay) > 28:
-        dateErrors()
-    elif sMonth in Gm.oddMonths and int(sDay) > 31:
-        dateErrors()
-    elif sMonth in Gm.evenMonths and int(sDay) > 30:
-        dateErrors()
+    sDate = date(int(sYear),int(sMonth),int(sDay))
+    print("Start Date: " + sDate.strftime("%Y %m %d"))
 
 
 # end date
-def inputEndDate(eDate):
+def inputEndDate(eD):
     global eYear
     global eMonth
     global eDay
-    unformatattedDate = eDate.split("/")
+    global eDate
+    unformatattedDate = eD.split("/")
     eYear = unformatattedDate[0]
     eMonth = unformatattedDate[1]
     eDay = unformatattedDate[2]
-    # checks for leap year
-    if int(eYear) % 4 == 0 and int(eYear) % 100 != 0 or int(eYear) % 400 == 0:
-        leap = True
-    else:
-        leap = False
-
-    if len(eYear) != 4 or len(eMonth) != 2 or eMonth > "12" or len(eDay) != 2:
-        dateErrors()
-    elif leap is True and eMonth == "02" and int(eDay) > 29:
-        dateErrors()
-    elif leap is False and eMonth == "02" and int(eDay) > 28:
-        dateErrors()
-    elif eMonth in Gm.oddMonths and int(eDay) > 31:
-        dateErrors()
-    elif eMonth in Gm.evenMonths and int(eDay) > 30:
-        dateErrors()
-    elif sMonth > eMonth:
-        dateErrors()
-    elif sMonth == eMonth and sDay > eDay:
-        dateErrors()
-    else:
-        listOfDays()
-        listofMonth()
+    eDate = date(int(eYear), int(eMonth), int(eDay))
+    print("End Date: " + eDate.strftime("%Y %m %d"))
+    listOfDays()
+    listofMonth()
 
 
 bothCheked = 0
@@ -94,30 +63,52 @@ def modelCheckbox(h_00, h_12):
 
 # used for bashfile
 
+def datecounter(Type,modelh):
+    global daylst
+    global daylst12
+    global montlst
+    daylst = []
+    daylst12 =[]
+    montlst = []
+    unformattedDay = ""
+    unformattedMonth = ""
+    datedelta = eDate - sDate
+    if modelh is 00:
+        for ww in range(datedelta.days+1):
+            count = sDate + timedelta(days=ww)
+            day = count.strftime("%d")
+            daylst.append(day)
+            unformattedDay +=day
+            month = count.strftime("%m")
+            montlst.append(month)
+        if Type is 1:
+            return unformattedDay
+        if Type is 2:
+            monthSet = sorted(set(montlst))
+            for m in monthSet:
+                unformattedMonth += m
+            return unformattedMonth
+    if modelh is 12:
+        #this accounts for the extra days the model 12 uses
+        for ww in range(datedelta.days + 3):
+            count = sDate + timedelta(days=ww)
+            day = count.strftime("%d")
+            daylst12.append(day)
+        return daylst12
+
+
+# used for bashfile
 def listOfDays():
     global formattedDay
-    global startDateIndex
-    global endDateIndex
-    startDateIndex = Gm.days.index(sDay)
-    endDateIndex = Gm.days.index(eDay)
-    unformattedDay = ""
-    for dayList in range(endDateIndex - startDateIndex + 1):
-        unformattedDay += Gm.days[startDateIndex + dayList]
-    #for every 2 character, adds space
+    unformattedDay = datecounter(1,00)
     formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
 
+
+#for bash
 def listofMonth():
     global formattedMonthlist
-
-    sIndex = Gm.listMonth.index(sMonth)
-    eIndex = Gm.listMonth.index(eMonth)
-    unformattedMonthList = ""
-    for monthList in range(eIndex - sIndex + 1):
-        unformattedMonthList += Gm.listMonth[sIndex + monthList]
-        formattedMonthlist = ' '.join(unformattedMonthList[i:i + 2] for i in range(0, len(unformattedMonthList), 2))
-
-def dateErrors():
-    raise Exception("Date format error, please check what you have entered")
+    unformattedMonthList = datecounter(2,00)
+    formattedMonthlist = ' '.join(unformattedMonthList[i:i + 2] for i in range(0, len(unformattedMonthList), 2))
 
 
 def rarcFile():
@@ -157,13 +148,14 @@ def bashFile(formattedParticuleString, loc):
             "\nPathIn="+filelocation+"/rarc"
             "\nDateDebut=" + sYear + sMonth+sDay+
             "\nDateFin=" + eYear + eMonth + eDay+
+            "\nDateDebutMois="+sMonth+
             "\nListeMois=\"" + formattedMonthlist + "\""
             "\nAnnee=" + sYear +  # not used
-            "\nTag1=FW"+modelHourSeparated+
+            "\nTag1=BashOut"+modelHourSeparated+
             "\neditfst=/fs/ssm/eccc/mrd/rpn/utils/16.2/ubuntu-14.04-amd64-64/bin/editfst"
             "\nType=species"
             "\nGrille=regeta"
-            "\nFichierTICTAC="+filelocation+"/rarc/operation.forecasts.firework.mach/${DateDebut}"+modelHourSeparated+ "_" + sTimeBash +
+            "\nFichierTICTAC="+filelocation+"/rarc/operation.forecasts.firework.mach/${DateDebut}"+ sDay + modelHourBash + "_" + sTimeBash +
             "\nListeVersionsGEM=\"operation.forecasts.firework.mach\""
             "\nListeEspeces=\"" + formattedParticuleString + "\""
             "\nListeNiveaux=\"" + lev + "\""  # TODO confirm levels
@@ -193,7 +185,7 @@ def bashFile(formattedParticuleString, loc):
             "\nfor heure in ${ListeHeures}"
             "\ndo"
             "\necho ${heure}"
-            "\nFileIn1=${PathIn}/${VersionGEM}/${DateDebut}${passe}_${heure}"
+            "\nFileIn1=${PathIn}/${VersionGEM}/${Annee}${mois}${jour}${passe}_${heure}"
             "\nif [ ! ${FileIn1}  ]; then"
             "\ncontinue"
             "\nelse"
@@ -260,34 +252,35 @@ def TCLConfig(formattedParticuleString, loc):
     s = Gm.hours.index(executehour[0])
     e = Gm.hours.index(executehour[-1])
     for p in particulelist:
-        for modelH in modelHourList:
-            if modelH == "12":
-                dayList = Gm.days[startDateIndex: endDateIndex + 2]
-            else:
-                dayList = Gm.days[startDateIndex: endDateIndex + 1]
-            for d in dayList:
-                for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
-                    config = open("configFw/Fw_" + p + d + hToName + modelH + ".tcl", "w")
-                    config.write(
-                        "set Data(SpLst)  \"" + p + "\" \n"
-                        "set Data(TAG1)   \"FW" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                        "set Data(TAG3)   \"" + d + "" + hToName + "\"\n"
-                        "set Data(outTXT)       \"SITE\" \n"
-                        "set Data(PASSE) \"" + modelH + "\"\n"
-                        "set Data(levels) \" -1\"\n"  # todo confirm levels
-                        "set Data(MandatoryLevels) \" 1\"\n"
-                        "set Data(Path)    " + filelocation + "/bash\n"
-                        "set Data(PathOut) " + filelocation + "/extractedFw\n"
-                        "set Data(Start)      \"" + sYear + sMonth + "\"\n"
-                        "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                        "set Data(Eticket)     \""+Eticket+"\"\n"
-                        "set Data(point) \"" + name + "\"\n"
-                        "set Data(coord) \"" + lat + " " + long + "\"\n"
-                        "#set Data(ID) \"ID" +loc+"\"\n"        
-                        "set Data(PASSE) \""+modelH+"\"\n"
-                        "set Data(days) \"" + str(d) + "\"\n"  # todo confirm start day
-                        "set Data(hours) \"" + str(hToFile) + "\"\n"
-                    )
+        for m in formattedMonthlist.split(" "):
+            for modelH in modelHourList:
+                if modelH == "12":
+                    dayList = datecounter(0, 12)
+                else:
+                    dayList = daylst
+                for d in dayList:
+                    for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
+                        config = open("configFw/Fw_" +m+ p + d + hToName + modelH + ".tcl", "w")
+                        config.write(
+                            "set Data(SpLst)  \"" + p + "\" \n"
+                            "set Data(TAG1)   \"FW" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                            "set Data(TAG3)   \""+m + d + "" + hToName + "\"\n"
+                            "set Data(outTXT)       \"SITE\" \n"
+                            "set Data(PASSE) \"" + modelH + "\"\n"
+                            "set Data(levels) \" -1\"\n"  # todo confirm levels
+                            "set Data(MandatoryLevels) \" 1\"\n"
+                            "set Data(Path)    " + filelocation + "/bash\n"
+                            "set Data(PathOut) " + filelocation + "/extractedFw\n"
+                            "set Data(Start)      \"" + sYear + m + "\"\n"
+                            "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                            "set Data(Eticket)     \""+Eticket+"\"\n"
+                            "set Data(point) \"" + name + "\"\n"
+                            "set Data(coord) \"" + lat + " " + long + "\"\n"
+                            "#set Data(ID) \"ID" +loc+"\"\n"        
+                            "set Data(PASSE) \""+modelH+"\"\n"
+                            "set Data(days) \"" + str(d) + "\"\n"  # todo confirm start day
+                            "set Data(hours) \"" + str(hToFile) + "\"\n"
+                        )
     print("Done")
 
 

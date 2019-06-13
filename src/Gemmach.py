@@ -56,6 +56,8 @@ days = (
     "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18"
     , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "01", "02")
 
+listMonth = ("00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")
+
 oddMonths = ("01", "03", "05", "07", "08", "10", "12")
 evenMonths = ("04", "06", "09", "11")
 ##
@@ -286,10 +288,6 @@ def inputEndDate(eD):
     listofMonth()
 
 
-def dateErrors():
-    raise Exception("Date format error, please check what you have entered")
-
-
 def time(sTime, eTime):
     global formattedSelectedTimeWithComma
     global formattedSelectedTimeWithSpace
@@ -364,6 +362,7 @@ def datecounter(Type,modelh):
             daylst12.append(day)
         return daylst12
 
+
 # used for bashfile
 def listOfDays():
     global formattedDay
@@ -371,7 +370,6 @@ def listOfDays():
     formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
 
 
-listMonth = ("00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")
 #for bash
 def listofMonth():
     global formattedMonthlist
