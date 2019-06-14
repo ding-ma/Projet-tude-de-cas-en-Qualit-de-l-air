@@ -1,3 +1,4 @@
+import calendar
 import collections
 import csv
 import difflib
@@ -329,51 +330,62 @@ def modelCheckbox(h_00, h_12):
         modelHour = " "
 
 
-def datecounter(Type,modelh):
-    global daylst
-    global daylst12
-    global montlst
-    daylst = []
-    daylst12 =[]
-    montlst = []
-    unformattedDay = ""
-    unformattedMonth = ""
-    datedelta = eDate - sDate
-    if modelh is 00:
-        for ww in range(datedelta.days+1):
-            count = sDate + timedelta(days=ww)
-            day = count.strftime("%d")
-            daylst.append(day)
-            unformattedDay +=day
-            month = count.strftime("%m")
-            montlst.append(month)
-        if Type is 1:
-            return unformattedDay
-        if Type is 2:
-            monthSet = sorted(set(montlst))
-            for m in monthSet:
-                unformattedMonth += m
-            return unformattedMonth
-    if modelh is 12:
-        #this accounts for the extra days the model 12 uses
-        for ww in range(datedelta.days + 3):
-            count = sDate + timedelta(days=ww)
-            day = count.strftime("%d")
-            daylst12.append(day)
-        return daylst12
+def datecounter(addDays):
+    # global daylst12
+    # global montlst
+
+    lstsMonth = []
+    lsteMonth = []
+    lstDays = []
+    startDate = date(int(sYear), int(sMonth), int(sDay))
+    endDate = date(int(eYear), int(eMonth), int(eDay))
+    if startDate.month is not endDate.month:
+        a = calendar.monthrange(int(sYear), int(sMonth))[1]
+        endMonth = date(int(sYear), int(sMonth), a)
+        delta1 = endMonth - startDate
+        for f in range(delta1.days + addDays):
+            a = startDate + timedelta(days=f)
+            t = a.strftime("%d")
+            lstsMonth.append(t)
+        startMonth = date(int(sYear), int(eMonth), 1)
+        delta2 = endDate - startMonth
+        for q in range(delta2.days + addDays):
+            c = startMonth + timedelta(days=q)
+            w = c.strftime("%d")
+            lsteMonth.append(w)
+        return lstsMonth,lsteMonth
+    else:
+        delta = endDate - startDate
+        for a in range(delta.days + addDays):
+            e = startDate + timedelta(days=a)
+            v = e.strftime("%d")
+            lstDays.append(v)
+        return lstDays
 
 
 # used for bashfile
 def listOfDays():
     global formattedDay
-    unformattedDay = datecounter(1,00)
+    global genday
+    unformattedDay = ""
+    genday = datecounter(1)
+    if len(genday) is 2 and isinstance(genday,tuple):
+        for l in genday[0]:
+            unformattedDay +=l
+        for z in genday[1]:
+            unformattedDay +=z
+    else:
+        for l in genday:
+            unformattedDay+=l
     formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
-
 
 #for bash
 def listofMonth():
     global formattedMonthlist
-    unformattedMonthList = datecounter(2,00)
+    unformattedMonthList = ""
+    lst = [sMonth, eMonth]
+    for form in set(lst):
+        unformattedMonthList+=form
     formattedMonthlist = ' '.join(unformattedMonthList[i:i + 2] for i in range(0, len(unformattedMonthList), 2))
 
 
@@ -526,34 +538,186 @@ def locationExtraction(iditem):
     s = hours.index(executehour[0])
     e = hours.index(executehour[-1])
     particulelist = re.split(" ", formattedParticuleString)
-    for p in particulelist:
-        for m in formattedMonthlist.split(" "):
-            for modelH in modelHourList:
-                if modelH == "12":
-                    dayList = datecounter(0,12)
-                else:
-                    dayList = daylst
-                for d in dayList:
-                    for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
-                        config = open("config/" +m+p+ d + hToName + modelH +".tcl", "w")
-                        config.write(
-                            "set Data(SpLst)  \"" + p + "\" \n"
-                            "set Data(TAG1)   \"BashOut" + modelH + "."+sYear+sMonth+sDay+"_"+eYear+eMonth+eDay+"_regeta\"\n"
-                            "set Data(TAG3)   \"" +m+ d + "" + hToName + "\"\n"
-                            "set Data(outTXT)       \"SITE\" \n"
-                            "set Data(PASSE) \""+modelH+"\"\n"
-                            "set Data(levels) \" -1""\"\n"  # todo confirm levels
-                            "set Data(MandatoryLevels) \" 1""\"\n"
-                            "set Data(Path)    "+filelocation+"/bash\n"
-                            "set Data(PathOut) "+filelocation+"/extracted\n"
-                            "set Data(Start)      \"" + sYear + m + "\"\n"
-                            "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                            "set Data(Eticket)     \""+EticketGEM+"\"\n"
-                            "set Data(point) \"" + name + "\"\n"
-                            "set Data(coord) \"" + lat + " " + long + "\"\n"
-                            "set Data(days) \"" + str(d) + "\"\n"  # todo confirm start day
-                            "set Data(hours) \"" + str(hToFile) + "\"\n"
-                        )
+    for modelH in modelHourList:
+        if modelH == "00":
+            if int(sMonth) is not int(eMonth):
+                firstmonth = genday[0]
+                for p in particulelist:
+                    for d in firstmonth:
+                        for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
+                            config = open("config/" + sMonth + p + d + hToName + modelH + ".tcl", "w")
+                            config.write(
+                                "set Data(SpLst)  \"" + p + "\" \n"
+                                "set Data(TAG1)   \"BashOut" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                                "set Data(TAG3)   \"" + sMonth + d + "" + hToName + "\"\n"
+                                "set Data(outTXT)       \"SITE\" \n"
+                                "set Data(PASSE) \"" + modelH + "\"\n"
+                                "set Data(levels) \" -1""\"\n"  # todo confirm levels
+                                "set Data(MandatoryLevels) \" 1""\"\n"
+                                "set Data(Path)    " + filelocation + "/bash\n"
+                                "set Data(PathOut) " + filelocation + "/extracted\n"
+                                "set Data(Start)      \"" + sYear + sMonth + "\"\n"
+                                "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                                "set Data(Eticket)     \"" + EticketGEM + "\"\n"
+                                "set Data(point) \"" + name + "\"\n"
+                                "set Data(coord) \"" + lat + " " + long + "\"\n"
+                                "set Data(days) \"" + str(
+                                d) + "\"\n"  # todo confirm start day
+                                "set Data(hours) \"" + str(hToFile) + "\"\n")
+                secondmonth = genday[1]
+                for p in particulelist:
+                    for d in secondmonth:
+                        for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
+                            config = open("config/" + eMonth + p + d + hToName + modelH + ".tcl", "w")
+                            config.write(
+                                "set Data(SpLst)  \"" + p + "\" \n"
+                                "set Data(TAG1)   \"BashOut" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                                "set Data(TAG3)   \"" + eMonth + d + "" + hToName + "\"\n"
+                                "set Data(outTXT)       \"SITE\" \n"
+                                "set Data(PASSE) \"" + modelH + "\"\n"
+                                "set Data(levels) \" -1""\"\n"  # todo confirm levels
+                                "set Data(MandatoryLevels) \" 1""\"\n"
+                                "set Data(Path)    " + filelocation + "/bash\n"
+                                "set Data(PathOut) " + filelocation + "/extracted\n"
+                                "set Data(Start)      \"" + sYear + eMonth + "\"\n"
+                                "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                                "set Data(Eticket)     \"" + EticketGEM + "\"\n"
+                                "set Data(point) \"" + name + "\"\n"
+                                "set Data(coord) \"" + lat + " " + long + "\"\n"
+                                "set Data(days) \"" + str(d) + "\"\n"  # todo confirm start day
+                                "set Data(hours) \"" + str(hToFile) + "\"\n"
+                            )
+            else:
+                dayList = list(genday)
+                for p in particulelist:
+                    for m in formattedMonthlist.split(" "):
+                        for d in dayList:
+                            for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
+                                config = open("config/" + m + p + d + hToName + modelH + ".tcl", "w")
+                                config.write(
+                                    "set Data(SpLst)  \"" + p + "\" \n"
+                                    "set Data(TAG1)   \"BashOut" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                                    "set Data(TAG3)   \"" + m + d + "" + hToName + "\"\n"
+                                    "set Data(outTXT)       \"SITE\" \n"
+                                    "set Data(PASSE) \"" + modelH + "\"\n"
+                                    "set Data(levels) \" -1""\"\n"  # todo confirm levels
+                                    "set Data(MandatoryLevels) \" 1""\"\n"
+                                    "set Data(Path)    " + filelocation + "/bash\n"
+                                    "set Data(PathOut) " + filelocation + "/extracted\n"
+                                    "set Data(Start)      \"" + sYear + m + "\"\n"
+                                    "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                                    "set Data(Eticket)     \"" + EticketGEM + "\"\n"
+                                    "set Data(point) \"" + name + "\"\n"
+                                    "set Data(coord) \"" + lat + " " + long + "\"\n"
+                                    "set Data(days) \"" + str(d) + "\"\n"  # todo confirm start day
+                                    "set Data(hours) \"" + str(hToFile) + "\"\n"
+                                )
+        if modelH == "12":
+            g = datecounter(3)
+            if int(sMonth) is not int(eMonth):
+                firstmonth = g[0]
+                for k in particulelist:
+                    for o in firstmonth:
+                        for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
+                            config = open("config/" + sMonth + k + o + hToName + modelH + ".tcl", "w")
+                            config.write(
+                                "set Data(SpLst)  \"" + k + "\" \n"
+                                "set Data(TAG1)   \"BashOut" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                                "set Data(TAG3)   \"" + sMonth + o + "" + hToName + "\"\n"
+                                "set Data(outTXT)       \"SITE\" \n"
+                                "set Data(PASSE) \"" + modelH + "\"\n"
+                                "set Data(levels) \" -1""\"\n"  # todo confirm levels
+                                "set Data(MandatoryLevels) \" 1""\"\n"
+                                "set Data(Path)    " + filelocation + "/bash\n"
+                                "set Data(PathOut) " + filelocation + "/extracted\n"
+                                "set Data(Start)      \"" + sYear + sMonth + "\"\n"
+                                "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                                "set Data(Eticket)     \"" + EticketGEM + "\"\n"
+                                "set Data(point) \"" + name + "\"\n"
+                                "set Data(coord) \"" + lat + " " + long + "\"\n"
+                                "set Data(days) \"" + str(o) + "\"\n"  # todo confirm start day
+                                "set Data(hours) \"" + str(hToFile) + "\"\n"
+                            )
+                secondmonth = g[1]
+                for k in particulelist:
+                    for o in secondmonth:
+                        for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
+                            config = open("config/" + eMonth + k + o + hToName + modelH + ".tcl", "w")
+                            config.write(
+                                "set Data(SpLst)  \"" + k + "\" \n"
+                                "set Data(TAG1)   \"BashOut" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                                "set Data(TAG3)   \"" + eMonth + o + "" + hToName + "\"\n"
+                                "set Data(outTXT)       \"SITE\" \n"
+                                "set Data(PASSE) \"" + modelH + "\"\n"
+                                "set Data(levels) \" -1""\"\n"  # todo confirm levels
+                                "set Data(MandatoryLevels) \" 1""\"\n"
+                                "set Data(Path)    " + filelocation + "/bash\n"
+                                "set Data(PathOut) " + filelocation + "/extracted\n"
+                                "set Data(Start)      \"" + sYear + eMonth + "\"\n"
+                                "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                                "set Data(Eticket)     \"" + EticketGEM + "\"\n"
+                                "set Data(point) \"" + name + "\"\n"
+                                "set Data(coord) \"" + lat + " " + long + "\"\n"
+                                "set Data(days) \"" + str(o) + "\"\n"  # todo confirm start day
+                                "set Data(hours) \"" + str(hToFile) + "\"\n"
+                            )
+            else:
+                dayList = list(genday)
+                for k in particulelist:
+                    for m in formattedMonthlist.split(" "):
+                        for o in dayList:
+                            for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
+                                config = open("config/" + m + k + o + hToName + modelH + ".tcl", "w")
+                                config.write(
+                                    "set Data(SpLst)  \"" + k + "\" \n"
+                                    "set Data(TAG1)   \"BashOut" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                                    "set Data(TAG3)   \"" + m + k + "" + hToName + "\"\n"
+                                    "set Data(outTXT)       \"SITE\" \n"
+                                    "set Data(PASSE) \"" + modelH + "\"\n"
+                                    "set Data(levels) \" -1""\"\n"  # todo confirm levels
+                                    "set Data(MandatoryLevels) \" 1""\"\n"
+                                    "set Data(Path)    " + filelocation + "/bash\n"
+                                    "set Data(PathOut) " + filelocation + "/extracted\n"
+                                    "set Data(Start)      \"" + sYear + m + "\"\n"
+                                    "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                                    "set Data(Eticket)     \"" + EticketGEM + "\"\n"
+                                    "set Data(point) \"" + name + "\"\n"
+                                    "set Data(coord) \"" + lat + " " + long + "\"\n"
+                                    "set Data(days) \"" + str(o) + "\"\n"  # todo confirm start day
+                                    "set Data(hours) \"" + str(hToFile) + "\"\n"
+                                )
+    #
+    #
+    #
+    #
+    # for p in particulelist:
+    #     for m in formattedMonthlist.split(" "):
+    #         for modelH in modelHourList:
+    #             if modelH == "12":
+    #                 dayList = datecounter(3)
+    #             else:
+    #                 dayList = daylst
+    #             for d in dayList:
+    #                 for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
+    #                     config = open("config/" +m+p+ d + hToName + modelH +".tcl", "w")
+    #                     config.write(
+    #                         "set Data(SpLst)  \"" + p + "\" \n"
+    #                         "set Data(TAG1)   \"BashOut" + modelH + "."+sYear+sMonth+sDay+"_"+eYear+eMonth+eDay+"_regeta\"\n"
+    #                         "set Data(TAG3)   \"" +m+ d + "" + hToName + "\"\n"
+    #                         "set Data(outTXT)       \"SITE\" \n"
+    #                         "set Data(PASSE) \""+modelH+"\"\n"
+    #                         "set Data(levels) \" -1""\"\n"  # todo confirm levels
+    #                         "set Data(MandatoryLevels) \" 1""\"\n"
+    #                         "set Data(Path)    "+filelocation+"/bash\n"
+    #                         "set Data(PathOut) "+filelocation+"/extracted\n"
+    #                         "set Data(Start)      \"" + sYear + m + "\"\n"
+    #                         "set Data(End)      \"" + eYear + eMonth + "\"\n"
+    #                         "set Data(Eticket)     \""+EticketGEM+"\"\n"
+    #                         "set Data(point) \"" + name + "\"\n"
+    #                         "set Data(coord) \"" + lat + " " + long + "\"\n"
+    #                         "set Data(days) \"" + str(d) + "\"\n"  # todo confirm start day
+    #                         "set Data(hours) \"" + str(hToFile) + "\"\n"
+    #                     )
     print("Done")
 
 
