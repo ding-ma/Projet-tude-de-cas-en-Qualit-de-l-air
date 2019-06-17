@@ -1,72 +1,42 @@
+import calendar
 import os
 import re
 import shutil
+from datetime import date, timedelta
 
 import Gemmach as Gm
 
 Eticket = Gm.EticketUMOS
 filelocation = Gm.filelocation
 
-def inputStartDate(sDate):
+def inputStartDate(sD):
     global sYear
     global sMonth
     global sDay
+    global sDate
     #splits the entry into a tuple
-    print(sDate)
-    unformatattedDate = re.split("/", sDate)
+    unformatattedDate = re.split("/", sD)
     sYear = unformatattedDate[0]
     sMonth = unformatattedDate[1]
     sDay = unformatattedDate[2]
-    # checks for leap year
-    if int(sYear) % 4 == 0 and int(sYear) % 100 != 0 or int(sYear) % 400 == 0:
-        leap = True
-    else:
-        leap = False
-    #checks if the user input is correct
-    if len(sYear) != 4 or len(sMonth) != 2 or sMonth > "12" or len(sDay) != 2:
-        dateErrors()
-    elif leap is True and int(sDay) > 29 and sMonth == "02":
-        dateErrors()
-    elif leap is False and sMonth == "02" and int(sDay) > 28:
-        dateErrors()
-    elif sMonth in Gm.oddMonths and int(sDay) > 31:
-        dateErrors()
-    elif sMonth in Gm.evenMonths and int(sDay) > 30:
-        dateErrors()
+    sDate = date(int(sYear),int(sMonth),int(sDay))
+    print("Start Date: " + sDate.strftime("%Y %m %d"))
 
 
 # end date
-def inputEndDate(eDate):
+def inputEndDate(eD):
     global eYear
     global eMonth
     global eDay
-    unformatattedDate = eDate.split("/")
+    global eDate
+    unformatattedDate = eD.split("/")
     eYear = unformatattedDate[0]
     eMonth = unformatattedDate[1]
     eDay = unformatattedDate[2]
-    # checks for leap year
-    if int(eYear) % 4 == 0 and int(eYear) % 100 != 0 or int(eYear) % 400 == 0:
-        leap = True
-    else:
-        leap = False
-
-    if len(eYear) != 4 or len(eMonth) != 2 or eMonth > "12" or len(eDay) != 2:
-        dateErrors()
-    elif leap is True and eMonth == "02" and int(eDay) > 29:
-        dateErrors()
-    elif leap is False and eMonth == "02" and int(eDay) > 28:
-        dateErrors()
-    elif eMonth in Gm.oddMonths and int(eDay) > 31:
-        dateErrors()
-    elif eMonth in Gm.evenMonths and int(eDay) > 30:
-        dateErrors()
-    elif sMonth > eMonth:
-        dateErrors()
-    elif sMonth == eMonth and sDay > eDay:
-        dateErrors()
-    else:
-        listOfDays()
-        listofMonth()
+    eDate = date(int(eYear), int(eMonth), int(eDay))
+    print("End Date: " + eDate.strftime("%Y %m %d"))
+    listOfDays()
+    listofMonth()
 
 
 bothCheked = 0
@@ -92,32 +62,64 @@ def modelCheckbox(h_00, h_12):
         modelHour = " "
 
 
-# used for bashfile
+def datecounter(addDays):
+    # global daylst12
+    # global montlst
 
+    lstsMonth = []
+    lsteMonth = []
+    lstDays = []
+    startDate = date(int(sYear), int(sMonth), int(sDay))
+    endDate = date(int(eYear), int(eMonth), int(eDay))
+    if startDate.month is not endDate.month:
+        a = calendar.monthrange(int(sYear), int(sMonth))[1]
+        endMonth = date(int(sYear), int(sMonth), a)
+        delta1 = endMonth - startDate
+        for f in range(delta1.days + addDays):
+            a = startDate + timedelta(days=f)
+            t = a.strftime("%d")
+            lstsMonth.append(t)
+        startMonth = date(int(sYear), int(eMonth), 1)
+        delta2 = endDate - startMonth
+        for q in range(delta2.days + addDays):
+            c = startMonth + timedelta(days=q)
+            w = c.strftime("%d")
+            lsteMonth.append(w)
+        return lstsMonth,lsteMonth
+    else:
+        delta = endDate - startDate
+        for a in range(delta.days + addDays):
+            e = startDate + timedelta(days=a)
+            v = e.strftime("%d")
+            lstDays.append(v)
+        return lstDays
+
+
+# used for bashfile
 def listOfDays():
     global formattedDay
-    global startDateIndex
-    global endDateIndex
-    startDateIndex = Gm.days.index(sDay)
-    endDateIndex = Gm.days.index(eDay)
+    global genday
     unformattedDay = ""
-    for dayList in range(endDateIndex - startDateIndex + 1):
-        unformattedDay += Gm.days[startDateIndex + dayList]
-    #for every 2 character, adds space
+    genday = datecounter(1)
+    if len(genday) is 2 and isinstance(genday,tuple):
+        for l in genday[0]:
+            unformattedDay +=l
+        for z in genday[1]:
+            unformattedDay +=z
+    else:
+        for l in genday:
+            unformattedDay+=l
     formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
 
+#for bash
 def listofMonth():
     global formattedMonthlist
-
-    sIndex = Gm.listMonth.index(sMonth)
-    eIndex = Gm.listMonth.index(eMonth)
     unformattedMonthList = ""
-    for monthList in range(eIndex - sIndex + 1):
-        unformattedMonthList += Gm.listMonth[sIndex + monthList]
-        formattedMonthlist = ' '.join(unformattedMonthList[i:i + 2] for i in range(0, len(unformattedMonthList), 2))
+    lst = [sMonth, eMonth]
+    for form in set(lst):
+        unformattedMonthList+=form
+    formattedMonthlist = ' '.join(unformattedMonthList[i:i + 2] for i in range(0, len(unformattedMonthList), 2))
 
-def dateErrors():
-    raise Exception("Date format error, please check what you have entered")
 
 
 def rarcFile():
@@ -237,17 +239,23 @@ def time(sTime, eTime):
         unformattedSelectedTime[i:i + 3] for i in range(0, len(unformattedSelectedTime), 3))
 
 
-
-
-
 def TCLConfig(formattedParticuleString, loc):
     global fpp
     global locationId
+    modelHourList = re.split(",", modelHour)
     locationId = loc
     fpp = formattedParticuleString
     removeAllfile(r'' + Gm.filelocation + "/config")
-    particulelist = re.split(" ", formattedParticuleString)
-    modelHourList = re.split(",", modelHour)
+    for modelH in modelHourList:
+        if modelH == "12":
+            g = datecounter(3)
+            generateTCL(g,modelH,locationId,fpp)
+        if modelH == "00":
+            generateTCL(genday,modelH,locationId,fpp)
+
+
+def generateTCL(g,modelH,loc,fpp):
+    particulelist = re.split(" ", fpp)
     listIndex = Gm.lstID.index(loc)
     name = Gm.lstName[listIndex]
     long = Gm.lstLongitude[listIndex]
@@ -255,37 +263,64 @@ def TCLConfig(formattedParticuleString, loc):
     executehour = re.split(",", formattedSelectedTimeWithComma)
     s = Gm.hours.index(executehour[0])
     e = Gm.hours.index(executehour[-1])
-    for p in particulelist:
-        for modelH in modelHourList:
-            if modelH == "12":
-                dayList = Gm.days[startDateIndex: endDateIndex + 2]
-            else:
-                dayList = Gm.days[startDateIndex: endDateIndex + 1]
-            for d in dayList:
-                for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
-                    config = open("configMIST/MIST_" + p + d + hToName + modelH + ".tcl", "w")
-                    config.write(
-                        "set Data(SpLst)  \"" + p + "\" \n"
-                        "set Data(TAG1)   \"UMOSmist" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                        "set Data(TAG3)   \"" + d + "" + hToName + "\"\n"
-                        "set Data(outTXT)       \"SITE\" \n"
-                        "set Data(PASSE) \"" + modelH + "\"\n"
-                        "set Data(levels) \" -1\"\n"  # todo confirm levels
-                        "set Data(MandatoryLevels) \" 1\"\n"
-                        "set Data(Path)    " + filelocation + "/bash\n"
-                        "set Data(PathOut) " + filelocation + "/extractedMist\n"
-                        "set Data(Start)      \"" + sYear + sMonth + "\"\n"
-                        "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                        "set Data(Eticket)     \""+Eticket+"\"\n"
-                        "set Data(point) \"" + name + "\"\n"
-                        "set Data(coord) \"" + lat + " " + long + "\"\n"
-                        "#set Data(ID) \"ID" +loc+"\"\n"        
-                        "set Data(PASSE) \""+modelH+"\"\n"
-                        "set Data(days) \"" + str(d) + "\"\n"  # todo confirm start day
-                        "set Data(hours) \"" + str(hToFile) + "\"\n"
-                    )
+    if int(sMonth) is not int(eMonth):
+        for p in particulelist:
+            for mm in [sMonth, eMonth]:
+                for dd in list(g):
+                    for d in dd:
+                        for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
+                            config = open("configMIST/MIST_"+mm + p + d + hToName + modelH + ".tcl", "w")
+                            config.write(
+                                "set Data(SpLst)  \"" + p + "\" \n"
+                                "set Data(TAG1)   \"UMOSmist" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                                "set Data(TAG3)   \"" +mm+ d + "" + hToName + "\"\n"
+                                "set Data(outTXT)       \"SITE\" \n"
+                                "set Data(PASSE) \"" + modelH + "\"\n"
+                                "set Data(levels) \" -1\"\n"  # todo confirm levels
+                                "set Data(MandatoryLevels) \" 1\"\n"
+                                "set Data(Path)    " + filelocation + "/bash\n"
+                                "set Data(PathOut) " + filelocation + "/extractedMist\n"
+                                "set Data(Start)      \"" + sYear + sMonth + "\"\n"
+                                "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                                "set Data(Eticket)     \"" + Eticket + "\"\n"
+                                "set Data(point) \"" + name + "\"\n"
+                                "set Data(coord) \"" + lat + " " + long + "\"\n"
+                                "#set Data(ID) \"ID" + loc + "\"\n"
+                                "set Data(PASSE) \"" + modelH + "\"\n"
+                                "set Data(days) \"" + str(
+                                d) + "\"\n"  # todo confirm start day
+                                "set Data(hours) \"" + str(hToFile) + "\"\n"
+                            )
+    else:
+        dayList = list(genday)
+        for p in particulelist:
+            #fo
+            for m in formattedMonthlist.split(" "):
+                for d in dayList:
+                    for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
+                        config = open("configMIST/MIST_" + m + p + d + hToName + modelH + ".tcl", "w")
+                        config.write(
+                            "set Data(SpLst)  \"" + p + "\" \n"
+                            "set Data(TAG1)   \"UMOSmist" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                            "set Data(TAG3)   \"" + m + d + "" + hToName + "\"\n"
+                            "set Data(outTXT)       \"SITE\" \n"
+                            "set Data(PASSE) \"" + modelH + "\"\n"
+                            "set Data(levels) \" -1\"\n"  # todo confirm levels
+                            "set Data(MandatoryLevels) \" 1\"\n"
+                            "set Data(Path)    " + filelocation + "/bash\n"
+                            "set Data(PathOut) " + filelocation + "/extractedMist\n"
+                            "set Data(Start)      \"" + sYear + sMonth + "\"\n"
+                            "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                            "set Data(Eticket)     \"" + Eticket + "\"\n"
+                            "set Data(point) \"" + name + "\"\n"
+                            "set Data(coord) \"" + lat + " " + long + "\"\n"
+                            "#set Data(ID) \"ID" + loc + "\"\n"
+                            "set Data(PASSE) \"" + modelH + "\"\n"
+                            "set Data(days) \"" + str(
+                            d) + "\"\n"  # todo confirm start day
+                            "set Data(hours) \"" + str(hToFile) + "\"\n"
+                        )
     print("Done")
-
 
 def launchTCL():
     os.system(" ls "+filelocation+"/config | sort -st '/' -k1,1")

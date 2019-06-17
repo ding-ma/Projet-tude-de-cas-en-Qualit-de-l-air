@@ -535,41 +535,8 @@ def locationExtraction(iditem):
         if modelH == "00":
             generateTCL(genday,modelH,iditem)
 
-    #
-    #
-    #
-    #
-    # for p in particulelist:
-    #     for m in formattedMonthlist.split(" "):
-    #         for modelH in modelHourList:
-    #             if modelH == "12":
-    #                 dayList = datecounter(3)
-    #             else:
-    #                 dayList = daylst
-    #             for d in dayList:
-    #                 for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
-    #                     config = open("config/" +m+p+ d + hToName + modelH +".tcl", "w")
-    #                     config.write(
-    #                         "set Data(SpLst)  \"" + p + "\" \n"
-    #                         "set Data(TAG1)   \"BashOut" + modelH + "."+sYear+sMonth+sDay+"_"+eYear+eMonth+eDay+"_regeta\"\n"
-    #                         "set Data(TAG3)   \"" +m+ d + "" + hToName + "\"\n"
-    #                         "set Data(outTXT)       \"SITE\" \n"
-    #                         "set Data(PASSE) \""+modelH+"\"\n"
-    #                         "set Data(levels) \" -1""\"\n"  # todo confirm levels
-    #                         "set Data(MandatoryLevels) \" 1""\"\n"
-    #                         "set Data(Path)    "+filelocation+"/bash\n"
-    #                         "set Data(PathOut) "+filelocation+"/extracted\n"
-    #                         "set Data(Start)      \"" + sYear + m + "\"\n"
-    #                         "set Data(End)      \"" + eYear + eMonth + "\"\n"
-    #                         "set Data(Eticket)     \""+EticketGEM+"\"\n"
-    #                         "set Data(point) \"" + name + "\"\n"
-    #                         "set Data(coord) \"" + lat + " " + long + "\"\n"
-    #                         "set Data(days) \"" + str(d) + "\"\n"  # todo confirm start day
-    #                         "set Data(hours) \"" + str(hToFile) + "\"\n"
-    #                     )
 
 def generateTCL(g, modelH,iditem):
-    print(g)
     global locationID
     listIndex = lstID.index(iditem)
     name = lstName[listIndex]
@@ -584,9 +551,7 @@ def generateTCL(g, modelH,iditem):
         for mm in [sMonth,eMonth]:
             for p in particulelist:
                 for dd in list(g):
-                    print(g)
                     for d in dd:
-                        print(dd)
                         for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
                             config = open("config/" + mm + p + d + hToName + modelH + ".tcl", "w")
                             config.write(
@@ -610,6 +575,7 @@ def generateTCL(g, modelH,iditem):
     else:
         dayList = list(genday)
         for p in particulelist:
+            #forloop not really necessary here because there is only 1 month in the list
             for m in formattedMonthlist.split(" "):
                 for d in dayList:
                     for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):

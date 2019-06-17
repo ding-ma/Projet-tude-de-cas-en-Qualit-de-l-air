@@ -3,6 +3,7 @@ import glob
 import os
 import re
 import shutil
+from datetime import date
 
 import Gemmach as Gm
 
@@ -24,70 +25,35 @@ for x in range(len(UMOSRefList)):
 referenceDict = dict(zip(lstStationID,lstUMOSID))
 
 #formats the start date
-def inputStartDate(sDate):
+def inputStartDate(sD):
     global sYear
     global sMonth
     global sDay
+    global sDate
     #splits the entry into a tuple
-    unformatattedDate = re.split("/",sDate)
+    unformatattedDate = re.split("/", sD)
     sYear = unformatattedDate[0]
     sMonth = unformatattedDate[1]
     sDay = unformatattedDate[2]
-    # checks for leap year
-    if int(sYear) % 4 == 0 and int(sYear) % 100 != 0 or int(sYear) % 400 == 0:
-        leap = True
-    else:
-        leap = False
-
-    #checks if the user input is correct
-    if len(sYear) != 4 or len(sMonth) != 2 or sMonth > "12" or len(sDay) != 2:
-        dateErrors()
-    elif leap is True and int(sDay) > 29 and sMonth == "02":
-        dateErrors()
-    elif leap is False and sMonth == "02" and int(sDay) > 28:
-        dateErrors()
-    elif sMonth in Gm.oddMonths and int(sDay) > 31:
-        dateErrors()
-    elif sMonth in Gm.evenMonths and int(sDay) > 30:
-        dateErrors()
+    sDate = date(int(sYear),int(sMonth),int(sDay))
+    print("Start Date: " + sDate.strftime("%Y %m %d"))
 
 
 # end date
-def inputEndDate(eDate):
+def inputEndDate(eD):
     global eYear
     global eMonth
     global eDay
-    unformatattedDate = re.split("/", eDate)
+    global eDate
+    unformatattedDate = eD.split("/")
     eYear = unformatattedDate[0]
     eMonth = unformatattedDate[1]
     eDay = unformatattedDate[2]
-    # checks for leap year
-    if int(eYear) % 4 == 0 and int(eYear) % 100 != 0 or int(eYear) % 400 == 0:
-        leap = True
-    else:
-        leap = False
-
-    if len(eYear) != 4 or len(eMonth) != 2 or eMonth > "12" or len(eDay) != 2:
-        dateErrors()
-    elif leap is True and eMonth == "02" and int(eDay) > 29:
-        dateErrors()
-    elif leap is False and eMonth == "02" and int(eDay) > 28:
-        dateErrors()
-    elif eMonth in Gm.oddMonths and int(eDay) > 31:
-        dateErrors()
-    elif eMonth in Gm.evenMonths and int(eDay) > 30:
-        dateErrors()
-    elif sMonth > eMonth:
-        dateErrors()
-    elif sMonth == eMonth and sDay > eDay:
-        dateErrors()
-    #used to distinguish which archive to go see
-    if int(eYear+eMonth+eDay)<20170105:
+    eDate = date(int(eYear), int(eMonth), int(eDay))
+    print("End Date: " + eDate.strftime("%Y %m %d"))
+    if eDate<date(2017,1,5):
         return False
 
-
-def dateErrors():
-    raise Exception("Date format error, please check what you have entered")
 
 def modelCheckbox(h_00, h_12):
     global modelHour

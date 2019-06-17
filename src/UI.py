@@ -16,7 +16,7 @@ import forecast as Fc
 window = tk.Tk()
 # window.attributes('-zoomed', True)
 #w, h = window.winfo_screenwidth(), window.winfo_screenheight()
-w,h = 1225,890
+w,h = 1500,890
 window.geometry("%dx%d+0+0" % (w, h))
 window.title("tk")
 # window.geometry("1500x1200")
@@ -361,7 +361,7 @@ def UMOSGetLocation():
     O3 = var_O3.get()
     NO2 = var_NO2.get()
     PM25 = var_PM25.get()
-    b = eDate()
+    b = enteredEndDate.get()
     Gm.inputEndDate(b)
     datesplit = Um.inputEndDate(b)
     active = True
