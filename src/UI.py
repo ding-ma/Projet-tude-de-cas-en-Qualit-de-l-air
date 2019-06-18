@@ -10,7 +10,9 @@ import Gemmach as Gm
 import Images as Im
 import UMOS as Um
 import UMOSMist as Umist
-import forecast as Fc
+import observations as Ob
+
+#import forecast as Fc
 
 # initial setting
 window = tk.Tk()
@@ -105,11 +107,14 @@ def GemClicked():
     Im.RarcFile()
     Im.UMOSRarcFile()
 
-    Fc.inputStartDate(a)
-    Fc.inputEndDate(b)
-    Fc.time(sTime,eTime)
-    Fc.particuleCheckBox(O3, NO2, others, PM25)
-    Fc.rarcFile()
+    Ob.inputStartDate(a)
+    Ob.inputEndDate(b)
+    Ob.particuleCheckBox(O3, NO2, others, PM25)
+    # Fc.inputStartDate(a)
+    # Fc.inputEndDate(b)
+    # Fc.time(sTime,eTime)
+    # Fc.particuleCheckBox(O3, NO2, others, PM25)
+    # Fc.rarcFile()
 
 
 rarcLabel = tk.Label(machTab, text="Rarc Settings", font="20")
@@ -510,17 +515,16 @@ def animate():
 animateBtn = tk.Button(fireWorkTab, text = "Animate GIF", command = animate,width=17, height=1)
 animateBtn.grid(column=0, row=5)
 
-def RarcForecast():
-    os.system("rarc -i " + Gm.filelocation + "/forecast &")
-
-
-forecastRarcBtn = tk.Button(fireWorkTab,text = "Rarc, FC", command=RarcForecast, width=17, height=1)
-forecastRarcBtn.grid(column=0, row=6)
-
-def forecastGetLocation():
-    locID = getComboboxLocation()
-    Fc.generateFromDB(locID)
-
+# def RarcForecast():
+#     os.system("rarc -i " + Gm.filelocation + "/forecast &")
+#
+#
+# forecastRarcBtn = tk.Button(fireWorkTab,text = "Rarc, FC", command=RarcForecast, width=17, height=1)
+# forecastRarcBtn.grid(column=0, row=6)
+#
+# def forecastGetLocation():
+#     locID = getComboboxLocation()
+#     # Fc.generateFromDB(locID)
 
 def getComboboxLocation():
     location = int(combostations.current())
@@ -530,10 +534,23 @@ def getComboboxLocation():
     return locID
 
 
-forecastLocationBtn = tk.Button(fireWorkTab, text = "Get at location", command=forecastGetLocation, width=17, height=1)
-forecastLocationBtn.grid(column=1, row=6)
+# forecastLocationBtn = tk.Button(fireWorkTab, text = "Get at location, fc", command=forecastGetLocation, width=17, height=1)
+# forecastLocationBtn.grid(column=1, row=6)
+
+def RarcObservation():
+    os.system("rarc -i " + Gm.filelocation + "/observations &")
 
 
+def ObservationGetLocation():
+    locID = getComboboxLocation()
+    Ob.generateFromDB(locID)
+
+
+observationRarcBtn = tk.Button(fireWorkTab,text = "Rarc, OBS", command=RarcObservation, width=17, height=1)
+observationRarcBtn.grid(column=0, row=7)
+
+observationLocationBtn = tk.Button(fireWorkTab, text = "Get at location, OBS", command=ObservationGetLocation, width=17, height=1)
+observationLocationBtn.grid(column=1, row=7)
 # tab for help
 helptab = ttk.Frame(nb)
 nb.add(helptab, text="Help/Info", )
