@@ -54,6 +54,8 @@ fstdDict = {
 }
 
 def listadys():
+    lstdays.clear()
+    lstfile.clear()
     delta1 = eDate - sDate
     for i in range(delta1.days + 2):
         e = sDate + timedelta(days=i)
@@ -114,7 +116,7 @@ def generateFromDB(stationID):
             for l in lstfile:
                 connection = sql.connect(path+l)
                 c = connection.cursor()
-                c.execute("SELECT COUNT(*) FROM (SELECT _rowid_,* FROM main.header)")
+                c.execute("SELECT COUNT(*) FROM (SELECT _rowid_,* FROM main.header);")
                 c.execute("SELECT _rowid_,* FROM main.header WHERE id_stn LIKE '%0"+stationID+"%'")
                 for i in c.fetchall():
                     if i[6] == int(d.strftime("%Y%m%d")):  # range of dates
@@ -122,9 +124,18 @@ def generateFromDB(stationID):
                         c.execute("SELECT COUNT(*) FROM (SELECT _rowid_,* FROM main.data)")
                         c.execute("SELECT _rowid_,* FROM main.data WHERE id_obs =" + str(i[1]) + " AND species =" + s)
                         for p in c.fetchall():
-                            print("Value: "+str((p[8]))+","+sp +", H"+str(i[7]/10000))
-                            templst.append(d.strftime("%Y%m%d") + "," + str(i[7]/10000)+","+str((p[8]))+"\n")
-        for t in templst:
+                            #str(int(i[7]/10000))
+                            if int(i[7]/10000) <10:
+                                pre10 = d.strftime("%Y%m%d") + ",0" + str(int(i[7]/10000))+","+str((p[8]))+"\n"
+                                templst.append(pre10)
+                                print(pre10)
+                            else:
+                                post10 = d.strftime("%Y%m%d") + "," + str(int(i[7] / 10000)) + "," + str((p[8])) + "\n"
+                                templst.append(post10)
+                                print(post10)
+        bb = sorted(templst)
+        print(bb)
+        for t in bb:
             file.write(t)
         templst.clear()
     print("Job done, see folder-->" + filelocation + "/output\n")
