@@ -15,28 +15,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="2">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/forecast.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="175">
-                    <caret line="140" selection-start-line="140" selection-end-line="148" selection-end-column="1" />
-                    <folding>
-                      <element signature="e#0#15#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
@@ -54,20 +32,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="45" column="28" lean-forward="true" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+            <state relative-caret-position="458">
+              <caret line="79" column="16" lean-forward="true" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
               <folding>
-                <element signature="e#0#21#0" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/a.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="30" lean-forward="true" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -83,7 +52,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>eti</find>
       <find>etic</find>
       <find>data</find>
       <find>print</find>
@@ -113,11 +81,13 @@
       <find>gm.</find>
       <find>.sf</find>
       <find>.strftime</find>
+      <find>20190613</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="Ding Ma &lt;43629633+ding-ma@users.noreply.github.com&gt;" />
         <option value="Ding Ma &lt;ding.ma@mail.mcgill.ca&gt;" />
         <option value="DM" />
         <option value="ding.ma@mail.mcgill.ca" />
@@ -371,20 +341,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557412480438</updated>
-    </task>
-    <task id="LOCAL-00019" summary="end of day commit">
-      <created>1558123036716</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1558123036716</updated>
-    </task>
-    <task id="LOCAL-00020" summary="updated UI">
-      <created>1558446826586</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1558446826586</updated>
     </task>
     <task id="LOCAL-00021" summary="end of day commit:&#10;-working on last step of gem-mach, extracting data from a specific point with tcl script.&#10;-did some work on date verification, left it aside for later">
       <created>1558468784589</created>
@@ -715,7 +671,21 @@
       <option name="project" value="LOCAL" />
       <updated>1560795340120</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="can get observation for 1 day at the time">
+      <created>1560868445640</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1560868445640</updated>
+    </task>
+    <task id="LOCAL-00069" summary="works with multiple day and multiple species">
+      <created>1560871589035</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1560871589035</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TodoView">
@@ -739,14 +709,14 @@
       <window_info id="Job Explorer" order="5" weight="0.2971549" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32879582" />
-      <window_info active="true" anchor="bottom" x="11" y="323" width="1898" height="404" id="Run" maximized="true" order="2" sideWeight="0.48998946" visible="true" weight="0.36335078" />
+      <window_info active="true" anchor="bottom" x="11" y="323" width="1898" height="404" id="Run" maximized="true" order="2" sideWeight="0.49010417" visible="true" weight="0.36335078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.33507854" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.20364416" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49578503" weight="0.23151125" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49947312" weight="0.22186495" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.51001054" side_tool="true" weight="0.1693462" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50989586" side_tool="true" weight="0.36335078" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.24008575" />
       <window_info anchor="bottom" id="GitHub Pull Requests" order="11" sideWeight="0.49947312" weight="0.3290461" />
       <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49947312" weight="0.3290461" />
@@ -757,33 +727,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49930266" visible="true" weight="0.19968387" />
-      <window_info id="Structure" order="1" sideWeight="0.5006974" side_tool="true" weight="0.19968387" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info id="Project Explorer" order="3" weight="0.32982087" />
-      <window_info id="DB Browser" order="4" weight="0.32982087" />
-      <window_info id="Job Explorer" order="5" weight="0.2971549" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32879582" />
-      <window_info anchor="bottom" x="11" y="323" width="1898" height="404" id="Run" maximized="true" order="2" sideWeight="0.49051633" weight="0.1693462" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.33547696" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.20364416" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49578503" weight="0.23151125" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49947312" weight="0.22186495" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5094837" side_tool="true" weight="0.16613077" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.24008575" />
-      <window_info anchor="bottom" id="GitHub Pull Requests" order="11" sideWeight="0.49947312" weight="0.3290461" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49947312" weight="0.3290461" />
-      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.3290461" />
-      <window_info anchor="bottom" id="Console" order="14" />
-      <window_info anchor="bottom" id="DB Execution Console" order="15" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -840,8 +783,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="backup, playing with search algorithm" />
-    <MESSAGE value="searching by station name now works." />
     <MESSAGE value="improved searching algorithm with difflib" />
     <MESSAGE value="working on displaying gif on tkinter. found &quot;convert&quot; command on linux to change format from png to gif" />
     <MESSAGE value="working on getting images" />
@@ -865,7 +806,9 @@
     <MESSAGE value="updated the way how dates are counted. 30% more efficient now" />
     <MESSAGE value="cleanned up code A LOT" />
     <MESSAGE value="all work for month change except images and umos" />
-    <option name="LAST_COMMIT_MESSAGE" value="all work for month change except images and umos" />
+    <MESSAGE value="can get observation for 1 day at the time" />
+    <MESSAGE value="works with multiple day and multiple species" />
+    <option name="LAST_COMMIT_MESSAGE" value="works with multiple day and multiple species" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
@@ -1071,13 +1014,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="30" lean-forward="true" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/UI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1108,10 +1044,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/forecast.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="140" selection-start-line="140" selection-end-line="148" selection-end-column="1" />
+        <state relative-caret-position="384">
+          <caret line="172" column="12" lean-forward="true" selection-start-line="172" selection-start-column="12" selection-end-line="172" selection-end-column="12" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -1120,10 +1063,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="45" column="28" lean-forward="true" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+        <state relative-caret-position="458">
+          <caret line="79" column="16" lean-forward="true" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>

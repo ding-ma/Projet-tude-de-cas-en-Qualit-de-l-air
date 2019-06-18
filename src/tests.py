@@ -44,28 +44,36 @@ windowspath = "sql\\"
 for i in range(delta1.days+2):
     e=sDate+timedelta(days=i)
     lstdays.append(e)
-    for a in os.listdir(linuxpath):
+    for a in os.listdir(windowspath):
         if a.startswith(e.strftime("%Y%m%d")):
             lstfile.append(a)
 
 
 species = ["1","2", "3"]
 stationID = "50128"
-for l in lstfile:
+templst = []
+for s in species:
+    file = open("output/OBS_" + s + ".csv", "w+")
+    file.write("Date,Time,Value\n")
     for d in lstdays[:-1]:  # skips last date, but lstfile contains it so it reads it. we just need the last 3h of the eDate in the last file
-        for s in species:
-            connection = sql.connect(linuxpath+l)
+        for l in lstfile:
+            connection = sql.connect(windowspath+l)
             c = connection.cursor()
             c.execute("SELECT COUNT(*) FROM (SELECT _rowid_,* FROM main.header)")
             c.execute("SELECT _rowid_,* FROM main.header WHERE id_stn LIKE '%50128%'")
             idObslst = []
             for i in c.fetchall():
                 if i[6] == int(d.strftime("%Y%m%d")):  # range of dates
-                    print("TIME: " + str(i[7])+" DATE: "+d.strftime("%Y%m%d"))
+                    #print("TIME: " + str(i[7])+" DATE: "+d.strftime("%Y%m%d"))
                     c.execute("SELECT COUNT(*) FROM (SELECT _rowid_,* FROM main.data)")
                     c.execute("SELECT _rowid_,* FROM main.data WHERE id_obs =" + str(i[1]) + " AND species =" + s)
                     for p in c.fetchall():
-                        print(str((p[8]))+" species: "+s)
+                        #print(d.strftime("%Y%m%d") + "," + str(i[7])+","+str((p[8]))+","+s)
+                        templst.append(d.strftime("%Y%m%d") + "," + str(i[7])+","+str((p[8]))+","+s+"\n")
+
+    for t in templst:
+        file.write(t)
+    templst.clear()
 
 end = time.clock()
 print(end-start)
