@@ -595,7 +595,7 @@ def generateTCL(g, modelH,iditem):
                             "set Data(PathOut) " + filelocation + "/extracted\n"
                             "set Data(Start)      \"" + sYear + m + "\"\n"
                             "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                            "set Data(Eticket)     \"" + EticketGEM + "\"\n"
+                            "set Data(Eticket)     \"-1\"\n"
                             "set Data(point) \"" + name + "\"\n"
                             "set Data(coord) \"" + lat + " " + long + "\"\n"
                             "set Data(days) \"" + str(
