@@ -441,6 +441,24 @@ def rarcFile():
         "inc = 1\n"
         "#\n")
     bashFile()
+    modelHourList = re.split(",", modelHour)
+    fileEticket = open("gemmachEticket.tcl", "w")
+    fileEticket.write(
+        "#!/bin/bash\n"
+        "# : - \\ "
+        "\n\t exec /fs/ssm/eccc/cmo/cmoe/apps/SPI_7.12.0_all/tclsh \"$0\" \"$@\" "
+        "\npackage require TclData\n"
+        "set Path "+filelocation+"/bash/"
+        "\nset bashFST BashOut"+modelHourList[0]+"."+ sYear + sMonth+sDay+"_"+ eYear + eMonth + eDay+"_regeta.fst"+
+        "\nset FileOut [open gemEticket.txt w+]"
+        "\nset FileIn [ lsort -dictionary [ glob $Path$bashFST ] ]"
+        "\nfstdfile open 1 read  $FileIn"
+        "\nset eticket [fstdfile info 1 ETIKET]"
+        "\nputs $eticket"
+        "\nputs $FileOut \"$eticket\""
+        "\nfstdfile close 1"
+        "\nclose $FileOut"
+    )
     print("Gem-Mach File Saved")
 
 def bashFile():
@@ -521,6 +539,12 @@ def bashFile():
             )
         print("Bash File Saved!")
 
+
+def getEticket():
+    os.system("./gemmachEticket.tcl")
+    gemFileEticket = open("gemEticket.txt", "r")
+    EticketGM = gemFileEticket.read()
+    print(EticketGM)
 
 #generates script at the chosen location
 # What this does is it generates a TCL config file for EVERY hour, EVERY molecule, and every day, this is why there is a lot of file
@@ -671,3 +695,5 @@ def sortAndGenerate(destination):
                 b = open(destination + m + p + "/" + i).read()
                 file.write(b)
     print("\nJob done, see folder-->" + filelocation+"/output")
+
+

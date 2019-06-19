@@ -334,11 +334,12 @@ extrationBtn.grid(column=10, row=3)
 def getLocation():
     # Bk.removeAllfile(r''+Bk.filelocation+"/bash")
     Gm.removeAllfile(r'' + Gm.filelocation + "/config")
+    Gm.getEticket()
     locID = getComboboxLocation()
     Gm.locationExtraction(locID)
-    Gm.launchTCL()
-    Gm.removeEmptyFile(r'' + Gm.filelocation + "/extracted")
-    Gm.sortAndGenerate(Gm.filelocation + "/extracted/")
+    # Gm.launchTCL()
+    # Gm.removeEmptyFile(r'' + Gm.filelocation + "/extracted")
+    # Gm.sortAndGenerate(Gm.filelocation + "/extracted/")
 
 
 locationBtn = tk.Button(machTab, text="Get data at location (4)", command=getLocation, width=17, height=1)
