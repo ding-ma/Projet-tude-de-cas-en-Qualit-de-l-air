@@ -74,7 +74,7 @@ def rarcFile():
         "postprocess = nopost\n"
         "date = "+lstdays[0].strftime("%Y,%m,%d")+","+
         # end
-        lstdays[-1].strftime("%Y,%m,%d")+
+        sYear+","+sMonth+","+sDay+
         "\nbranche = operation.observations.dbase.surface.airnow\n"
         "ext = ***"
         "\nheure = 00,06,12,18"
