@@ -69,6 +69,9 @@ def datecounter(addDays):
     lstsMonth = []
     lsteMonth = []
     lstDays = []
+    lstsMonth.clear()
+    lsteMonth.clear()
+    lstDays.clear()
     startDate = date(int(sYear), int(sMonth), int(sDay))
     endDate = date(int(eYear), int(eMonth), int(eDay))
     if startDate.month is not endDate.month:

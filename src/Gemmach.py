@@ -36,7 +36,7 @@ hour24 = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11"
 # Change etiquette here - Gemmach
 EticketGEM = "RAQDPS020"
 
-# For UMOS
+# For UMOS-mist
 EticketUMOS = "CAPAMIST"
 
 # For Firework
@@ -337,6 +337,9 @@ def datecounter(addDays):
     lstsMonth = []
     lsteMonth = []
     lstDays = []
+    lstsMonth.clear()
+    lsteMonth.clear()
+    lstDays.clear()
     startDate = date(int(sYear), int(sMonth), int(sDay))
     endDate = date(int(eYear), int(eMonth), int(eDay))
     if startDate.month is not endDate.month:

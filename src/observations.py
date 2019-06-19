@@ -128,13 +128,10 @@ def generateFromDB(stationID):
                             if int(i[7]/10000) <10:
                                 pre10 = d.strftime("%Y%m%d") + ",0" + str(int(i[7]/10000))+","+str((p[8]))+"\n"
                                 templst.append(pre10)
-                                print(pre10)
                             else:
                                 post10 = d.strftime("%Y%m%d") + "," + str(int(i[7] / 10000)) + "," + str((p[8])) + "\n"
                                 templst.append(post10)
-                                print(post10)
         bb = sorted(templst)
-        print(bb)
         for t in bb:
             file.write(t)
         templst.clear()
