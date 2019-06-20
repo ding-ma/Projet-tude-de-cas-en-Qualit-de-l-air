@@ -6,7 +6,6 @@ from datetime import date, timedelta
 
 import Gemmach as Gm
 
-Eticket = Gm.EticketFW
 filelocation = Gm.filelocation
 
 def inputStartDate(sD):
@@ -144,6 +143,24 @@ def rarcFile():
         "\npriority = online\n"
         "inc = 1\n"
         "#\n")
+    modelHourList = re.split(",", modelHour)
+    fileEticket = open("FireEticket.tcl", "w")
+    fileEticket.write(
+        "#!/bin/bash\n"
+        "# : - \\"
+        "\nexec /fs/ssm/eccc/cmo/cmoe/apps/SPI_7.12.0_all/tclsh \"$0\" \"$@\""
+        "\npackage require TclData\n"
+        "set Path "+filelocation+"/bash/"
+        "\nset bashFST FW"+modelHourList[0]+"."+ sYear + sMonth+sDay+"_"+ eYear + eMonth + eDay+"_regeta.fst"+
+        "\nset FileOut [open FwEticket.txt w+]"
+        "\nset FileIn [ lsort -dictionary [ glob $Path$bashFST ] ]"
+        "\nfstdfile open 1 read  $FileIn"
+        "\nset eticket [fstdfile info 1 ETIKET]"
+        "\nputs $eticket"
+        "\nputs $FileOut \"$eticket\""
+        "\nfstdfile close 1"
+        "\nclose $FileOut"
+    )
     print("Fire-Work RARC File Saved")
 
 def level(lv):
@@ -231,6 +248,7 @@ def bashFile(formattedParticuleString, loc):
             "\ndone\n"
         )
     print("Fire-Work Bash File Saved!")
+    getEticket()
     TCLConfig(formattedParticuleString, loc)
 
 
@@ -266,8 +284,13 @@ def TCLConfig(formattedParticuleString, loc):
         if modelH == "00":
             generateTCL(genday,modelH,formattedParticuleString, loc)
 
+def getEticket():
+    os.system("./FireEticket.tcl")
+
 
 def generateTCL(g,modelH,formattedParticuleString, loc):
+    FireWorkEticket = open("FwEticket.txt", "r")
+    Eticket = FireWorkEticket.read().strip()
     particulelist = re.split(" ", formattedParticuleString)
     listIndex = Gm.lstID.index(loc)
     name = Gm.lstName[listIndex]
@@ -277,58 +300,77 @@ def generateTCL(g,modelH,formattedParticuleString, loc):
     s = Gm.hours.index(executehour[0])
     e = Gm.hours.index(executehour[-1])
     if int(sMonth) is not int(eMonth):
-        for m in formattedMonthlist.split(" "):
-            for p in particulelist:
-                for dd in list(g):
-                    for d in dd:
-                        for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
-                            config = open("configFw/Fw_" + m + p + d + hToName + modelH + ".tcl", "w")
-                            config.write(
-                                "set Data(SpLst)  \"" + p + "\" \n"
-                                "set Data(TAG1)   \"FW" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                                "set Data(TAG3)   \"" + m + d + "" + hToName + "\"\n"
-                                "set Data(outTXT)       \"SITE\" \n"
-                                "set Data(PASSE) \"" + modelH + "\"\n"
-                                "set Data(levels) \" -1\"\n"  # todo confirm levels
-                                "set Data(MandatoryLevels) \" 1\"\n"
-                                "set Data(Path)    " + filelocation + "/bash\n"
-                                "set Data(PathOut) " + filelocation + "/extractedFw\n"
-                                "set Data(Start)      \"" + sYear + m + "\"\n"
-                                "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                                "set Data(Eticket)     \"" + Eticket + "\"\n"
-                                "set Data(point) \"" + name + "\"\n"
-                                "set Data(coord) \"" + lat + " " + long + "\"\n"
-                                "set Data(days) \"" + str(
-                                d) + "\"\n"  # todo confirm start day
-                                "set Data(hours) \"" + str(hToFile) + "\"\n"
-                            )
+        for p in particulelist:
+            for d in g[0]:
+                for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
+                    config = open("configFw/Fw_" + sMonth + p + d + hToName + modelH + ".tcl", "w")
+                    config.write(
+                        "set Data(SpLst)  \"" + p + "\" \n"
+                        "set Data(TAG1)   \"FW" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                        "set Data(TAG3)   \"" + sMonth + d + "" + hToName + "\"\n"
+                        "set Data(outTXT)       \"SITE\" \n"
+                        "set Data(PASSE) \"" + modelH + "\"\n"
+                        "set Data(levels) \" -1\"\n"  # todo confirm levels
+                        "set Data(MandatoryLevels) \" 1\"\n"
+                        "set Data(Path)    " + filelocation + "/bash\n"
+                        "set Data(PathOut) " + filelocation + "/extractedFw\n"
+                        "set Data(Start)      \"" + sYear + sMonth + "\"\n"
+                        "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                        "set Data(Eticket)     \"" + Eticket + "\"\n"
+                        "set Data(point) \"" + name + "\"\n"
+                        "set Data(coord) \"" + lat + " " + long + "\"\n"
+                        "set Data(days) \"" + str(
+                        d) + "\"\n"  # todo confirm start day
+                        "set Data(hours) \"" + str(hToFile) + "\"\n"
+                    )
+        for p in particulelist:
+            for d in g[1]:
+                for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
+                    config = open("configFw/Fw_" + eMonth + p + d + hToName + modelH + ".tcl", "w")
+                    config.write(
+                        "set Data(SpLst)  \"" + p + "\" \n"
+                        "set Data(TAG1)   \"FW" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                        "set Data(TAG3)   \"" + eMonth + d + "" + hToName + "\"\n"
+                        "set Data(outTXT)       \"SITE\" \n"
+                        "set Data(PASSE) \"" + modelH + "\"\n"
+                        "set Data(levels) \" -1\"\n"  # todo confirm levels
+                        "set Data(MandatoryLevels) \" 1\"\n"
+                        "set Data(Path)    " + filelocation + "/bash\n"
+                        "set Data(PathOut) " + filelocation + "/extractedFw\n"
+                        "set Data(Start)      \"" + sYear + eMonth + "\"\n"
+                        "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                        "set Data(Eticket)     \"" + Eticket + "\"\n"
+                        "set Data(point) \"" + name + "\"\n"
+                        "set Data(coord) \"" + lat + " " + long + "\"\n"
+                        "set Data(days) \"" + str(
+                        d) + "\"\n"  # todo confirm start day
+                        "set Data(hours) \"" + str(hToFile) + "\"\n"
+                    )
     else:
         dayList = list(genday)
         for p in particulelist:
-            # forloop not really necessary here because there is only 1 month in the list
-            for m in formattedMonthlist.split(" "):
-                for d in dayList:
-                    for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
-                        config = open("configFw/Fw_" + m + p + d + hToName + modelH + ".tcl", "w")
-                        config.write(
-                            "set Data(SpLst)  \"" + p + "\" \n"
-                            "set Data(TAG1)   \"FW" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                            "set Data(TAG3)   \"" + m + d + "" + hToName + "\"\n"
-                            "set Data(outTXT)       \"SITE\" \n"
-                            "set Data(PASSE) \"" + modelH + "\"\n"
-                            "set Data(levels) \" -1\"\n"  # todo confirm levels
-                            "set Data(MandatoryLevels) \" 1\"\n"
-                            "set Data(Path)    " + filelocation + "/bash\n"
-                            "set Data(PathOut) " + filelocation + "/extractedFw\n"
-                            "set Data(Start)      \"" + sYear + m + "\"\n"
-                            "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                            "set Data(Eticket)     \"" + Eticket + "\"\n"
-                            "set Data(point) \"" + name + "\"\n"
-                            "set Data(coord) \"" + lat + " " + long + "\"\n"
-                            "set Data(days) \"" + str(
-                            d) + "\"\n"  # todo confirm start day
-                            "set Data(hours) \"" + str(hToFile) + "\"\n"
-                        )
+            for d in dayList:
+                for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
+                    config = open("configFw/Fw_" + sMonth + p + d + hToName + modelH + ".tcl", "w")
+                    config.write(
+                        "set Data(SpLst)  \"" + p + "\" \n"
+                        "set Data(TAG1)   \"FW" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                        "set Data(TAG3)   \"" + sMonth + d + "" + hToName + "\"\n"
+                        "set Data(outTXT)       \"SITE\" \n"
+                        "set Data(PASSE) \"" + modelH + "\"\n"
+                        "set Data(levels) \" -1\"\n"  # todo confirm levels
+                        "set Data(MandatoryLevels) \" 1\"\n"
+                        "set Data(Path)    " + filelocation + "/bash\n"
+                        "set Data(PathOut) " + filelocation + "/extractedFw\n"
+                        "set Data(Start)      \"" + sYear + sMonth + "\"\n"
+                        "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                        "set Data(Eticket)     \"" + Eticket + "\"\n"
+                        "set Data(point) \"" + name + "\"\n"
+                        "set Data(coord) \"" + lat + " " + long + "\"\n"
+                        "set Data(days) \"" + str(
+                        d) + "\"\n"  # todo confirm start day
+                        "set Data(hours) \"" + str(hToFile) + "\"\n"
+                    )
 
 def launchTCL():
     os.system(" ls "+filelocation+"/configFw | sort -st '/' -k1,1")

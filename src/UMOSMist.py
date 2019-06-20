@@ -6,7 +6,6 @@ from datetime import date, timedelta
 
 import Gemmach as Gm
 
-Eticket = Gm.EticketUMOS
 filelocation = Gm.filelocation
 
 def inputStartDate(sD):
@@ -126,6 +125,7 @@ def listofMonth():
 
 
 def rarcFile():
+    modelHourList = re.split(",", modelHour)
     file = open("UMist", "w")
     file.write(
         "target = "+filelocation+"/rarc\n"
@@ -142,6 +142,23 @@ def rarcFile():
         "\npriority = online\n"
         "inc = 1\n"
         "#\n")
+    fileEticket = open("UmosMistEticket.tcl", "w")
+    fileEticket.write(
+        "#!/bin/bash\n"
+        "# : - \\"
+        "\nexec /fs/ssm/eccc/cmo/cmoe/apps/SPI_7.12.0_all/tclsh \"$0\" \"$@\""
+        "\npackage require TclData\n"
+        "set Path " + filelocation + "/bash/"
+        "\nset bashFST UMOSmist" + modelHourList[0] + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta.fst" +
+        "\nset FileOut [open UmosMistEticket.txt w+]"
+        "\nset FileIn [ lsort -dictionary [ glob $Path$bashFST ] ]"
+        "\nfstdfile open 1 read  $FileIn"
+        "\nset eticket [fstdfile info 1 ETIKET]"
+        "\nputs $eticket"
+        "\nputs $FileOut \"$eticket\""
+        "\nfstdfile close 1"
+        "\nclose $FileOut"
+    )
     print("Umos -Mist RARC File Saved")
 
 
@@ -221,6 +238,7 @@ def bashFile(formattedParticuleString, loc):
             "\ndone\n"
         )
     print("UMOS-Mist Bash File Saved!")
+    getEticket()
     TCLConfig(formattedParticuleString, loc)
 
 
@@ -241,6 +259,9 @@ def time(sTime, eTime):
     formattedSelectedTimeWithSpace = ' '.join(
         unformattedSelectedTime[i:i + 3] for i in range(0, len(unformattedSelectedTime), 3))
 
+def getEticket():
+    os.system("./UmosMistEticket.tcl")
+
 
 def TCLConfig(formattedParticuleString, loc):
     global fpp
@@ -258,6 +279,8 @@ def TCLConfig(formattedParticuleString, loc):
 
 
 def generateTCL(g,modelH,loc,fpp):
+    umistEticket = open("UmosMistEticket.txt", "r")
+    Eticket = umistEticket.read().strip()
     particulelist = re.split(" ", fpp)
     listIndex = Gm.lstID.index(loc)
     name = Gm.lstName[listIndex]
@@ -268,61 +291,82 @@ def generateTCL(g,modelH,loc,fpp):
     e = Gm.hours.index(executehour[-1])
     if int(sMonth) is not int(eMonth):
         for p in particulelist:
-            for mm in [sMonth, eMonth]:
-                for dd in list(g):
-                    for d in dd:
-                        for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
-                            config = open("configMIST/MIST_"+mm + p + d + hToName + modelH + ".tcl", "w")
-                            config.write(
-                                "set Data(SpLst)  \"" + p + "\" \n"
-                                "set Data(TAG1)   \"UMOSmist" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                                "set Data(TAG3)   \"" +mm+ d + "" + hToName + "\"\n"
-                                "set Data(outTXT)       \"SITE\" \n"
-                                "set Data(PASSE) \"" + modelH + "\"\n"
-                                "set Data(levels) \" -1\"\n"  # todo confirm levels
-                                "set Data(MandatoryLevels) \" 1\"\n"
-                                "set Data(Path)    " + filelocation + "/bash\n"
-                                "set Data(PathOut) " + filelocation + "/extractedMist\n"
-                                "set Data(Start)      \"" + sYear + sMonth + "\"\n"
-                                "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                                "set Data(Eticket)     \"" + Eticket + "\"\n"
-                                "set Data(point) \"" + name + "\"\n"
-                                "set Data(coord) \"" + lat + " " + long + "\"\n"
-                                "#set Data(ID) \"ID" + loc + "\"\n"
-                                "set Data(PASSE) \"" + modelH + "\"\n"
-                                "set Data(days) \"" + str(
-                                d) + "\"\n"  # todo confirm start day
-                                "set Data(hours) \"" + str(hToFile) + "\"\n"
-                            )
+            for d in g[0]:
+                for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
+                    config = open("configMIST/MIST_"+sMonth + p + d + hToName + modelH + ".tcl", "w")
+                    config.write(
+                        "set Data(SpLst)  \"" + p + "\" \n"
+                        "set Data(TAG1)   \"UMOSmist" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                        "set Data(TAG3)   \"" +sMonth+ d + "" + hToName + "\"\n"
+                        "set Data(outTXT)       \"SITE\" \n"
+                        "set Data(PASSE) \"" + modelH + "\"\n"
+                        "set Data(levels) \" -1\"\n"  # todo confirm levels
+                        "set Data(MandatoryLevels) \" 1\"\n"
+                        "set Data(Path)    " + filelocation + "/bash\n"
+                        "set Data(PathOut) " + filelocation + "/extractedMist\n"
+                        "set Data(Start)      \"" + sYear + sMonth + "\"\n"
+                        "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                        "set Data(Eticket)     \"" + Eticket + "\"\n"
+                        "set Data(point) \"" + name + "\"\n"
+                        "set Data(coord) \"" + lat + " " + long + "\"\n"
+                        "#set Data(ID) \"ID" + loc + "\"\n"
+                        "set Data(PASSE) \"" + modelH + "\"\n"
+                        "set Data(days) \"" + str(
+                        d) + "\"\n"  # todo confirm start day
+                        "set Data(hours) \"" + str(hToFile) + "\"\n"
+                    )
+        for p in particulelist:
+            for d in g[1]:
+                for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
+                    config = open("configMIST/MIST_" + eMonth + p + d + hToName + modelH + ".tcl", "w")
+                    config.write(
+                        "set Data(SpLst)  \"" + p + "\" \n"
+                        "set Data(TAG1)   \"UMOSmist" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                        "set Data(TAG3)   \"" + eMonth + d + "" + hToName + "\"\n"
+                        "set Data(outTXT)       \"SITE\" \n"
+                        "set Data(PASSE) \"" + modelH + "\"\n"
+                        "set Data(levels) \" -1\"\n"  # todo confirm levels
+                        "set Data(MandatoryLevels) \" 1\"\n"
+                        "set Data(Path)    " + filelocation + "/bash\n"
+                        "set Data(PathOut) " + filelocation + "/extractedMist\n"
+                        "set Data(Start)      \"" + sYear + eMonth + "\"\n"
+                        "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                        "set Data(Eticket)     \"" + Eticket + "\"\n"
+                        "set Data(point) \"" + name + "\"\n"
+                        "set Data(coord) \"" + lat + " " + long + "\"\n"
+                        "#set Data(ID) \"ID" + loc + "\"\n"
+                        "set Data(PASSE) \"" + modelH + "\"\n"
+                        "set Data(days) \"" + str(
+                        d) + "\"\n"  # todo confirm start day
+                        "set Data(hours) \"" + str(hToFile) + "\"\n"
+                    )
     else:
         dayList = list(genday)
         for p in particulelist:
-            #fo
-            for m in formattedMonthlist.split(" "):
-                for d in dayList:
-                    for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
-                        config = open("configMIST/MIST_" + m + p + d + hToName + modelH + ".tcl", "w")
-                        config.write(
-                            "set Data(SpLst)  \"" + p + "\" \n"
-                            "set Data(TAG1)   \"UMOSmist" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                            "set Data(TAG3)   \"" + m + d + "" + hToName + "\"\n"
-                            "set Data(outTXT)       \"SITE\" \n"
-                            "set Data(PASSE) \"" + modelH + "\"\n"
-                            "set Data(levels) \" -1\"\n"  # todo confirm levels
-                            "set Data(MandatoryLevels) \" 1\"\n"
-                            "set Data(Path)    " + filelocation + "/bash\n"
-                            "set Data(PathOut) " + filelocation + "/extractedMist\n"
-                            "set Data(Start)      \"" + sYear + sMonth + "\"\n"
-                            "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                            "set Data(Eticket)     \"" + Eticket + "\"\n"
-                            "set Data(point) \"" + name + "\"\n"
-                            "set Data(coord) \"" + lat + " " + long + "\"\n"
-                            "#set Data(ID) \"ID" + loc + "\"\n"
-                            "set Data(PASSE) \"" + modelH + "\"\n"
-                            "set Data(days) \"" + str(
-                            d) + "\"\n"  # todo confirm start day
-                            "set Data(hours) \"" + str(hToFile) + "\"\n"
-                        )
+            for d in dayList:
+                for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
+                    config = open("configMIST/MIST_" + sMonth + p + d + hToName + modelH + ".tcl", "w")
+                    config.write(
+                        "set Data(SpLst)  \"" + p + "\" \n"
+                        "set Data(TAG1)   \"UMOSmist" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                        "set Data(TAG3)   \"" + sMonth + d + "" + hToName + "\"\n"
+                        "set Data(outTXT)       \"SITE\" \n"
+                        "set Data(PASSE) \"" + modelH + "\"\n"
+                        "set Data(levels) \" -1\"\n"  # todo confirm levels
+                        "set Data(MandatoryLevels) \" 1\"\n"
+                        "set Data(Path)    " + filelocation + "/bash\n"
+                        "set Data(PathOut) " + filelocation + "/extractedMist\n"
+                        "set Data(Start)      \"" + sYear + sMonth + "\"\n"
+                        "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                        "set Data(Eticket)     \"" + Eticket + "\"\n"
+                        "set Data(point) \"" + name + "\"\n"
+                        "set Data(coord) \"" + lat + " " + long + "\"\n"
+                        "#set Data(ID) \"ID" + loc + "\"\n"
+                        "set Data(PASSE) \"" + modelH + "\"\n"
+                        "set Data(days) \"" + str(
+                        d) + "\"\n"  # todo confirm start day
+                        "set Data(hours) \"" + str(hToFile) + "\"\n"
+                    )
     print("Done")
 
 def launchTCL():

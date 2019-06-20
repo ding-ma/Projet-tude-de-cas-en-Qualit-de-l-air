@@ -337,9 +337,9 @@ def getLocation():
     Gm.getEticket()
     locID = getComboboxLocation()
     Gm.locationExtraction(locID)
-    # Gm.launchTCL()
-    # Gm.removeEmptyFile(r'' + Gm.filelocation + "/extracted")
-    # Gm.sortAndGenerate(Gm.filelocation + "/extracted/")
+    Gm.launchTCL()
+    Gm.removeEmptyFile(r'' + Gm.filelocation + "/extracted")
+    Gm.sortAndGenerate(Gm.filelocation + "/extracted/")
 
 
 locationBtn = tk.Button(machTab, text="Get data at location (4)", command=getLocation, width=17, height=1)

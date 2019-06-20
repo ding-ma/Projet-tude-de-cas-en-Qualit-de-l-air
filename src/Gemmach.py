@@ -445,8 +445,8 @@ def rarcFile():
     fileEticket = open("gemmachEticket.tcl", "w")
     fileEticket.write(
         "#!/bin/bash\n"
-        "# : - \\ "
-        "\n\t exec /fs/ssm/eccc/cmo/cmoe/apps/SPI_7.12.0_all/tclsh \"$0\" \"$@\" "
+        "# : - \\"
+        "\nexec /fs/ssm/eccc/cmo/cmoe/apps/SPI_7.12.0_all/tclsh \"$0\" \"$@\""
         "\npackage require TclData\n"
         "set Path "+filelocation+"/bash/"
         "\nset bashFST BashOut"+modelHourList[0]+"."+ sYear + sMonth+sDay+"_"+ eYear + eMonth + eDay+"_regeta.fst"+
@@ -542,9 +542,7 @@ def bashFile():
 
 def getEticket():
     os.system("./gemmachEticket.tcl")
-    gemFileEticket = open("gemEticket.txt", "r")
-    EticketGM = gemFileEticket.read()
-    print(EticketGM)
+
 
 #generates script at the chosen location
 # What this does is it generates a TCL config file for EVERY hour, EVERY molecule, and every day, this is why there is a lot of file
@@ -565,6 +563,8 @@ def locationExtraction(iditem):
 
 def generateTCL(g, modelH,iditem):
     global locationID
+    gemFileEticket = open("gemEticket.txt", "r")
+    EticketGM = gemFileEticket.read().strip()
     listIndex = lstID.index(iditem)
     name = lstName[listIndex]
     long = lstLongitude[listIndex]
@@ -591,7 +591,7 @@ def generateTCL(g, modelH,iditem):
                         "set Data(PathOut) " + filelocation + "/extracted\n"
                         "set Data(Start)      \"" + sYear + sMonth + "\"\n"
                         "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                        "set Data(Eticket)     \"" + EticketGEM + "\"\n"
+                        "set Data(Eticket)     \"" + EticketGM + "\"\n"
                         "set Data(point) \"" + name + "\"\n"
                         "set Data(coord) \"" + lat + " " + long + "\"\n"
                         "set Data(days) \"" + str(
@@ -613,7 +613,7 @@ def generateTCL(g, modelH,iditem):
                         "set Data(PathOut) " + filelocation + "/extracted\n"
                         "set Data(Start)      \"" + sYear + eMonth + "\"\n"
                         "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                        "set Data(Eticket)     \"" + EticketGEM + "\"\n"
+                        "set Data(Eticket)     \"" + EticketGM + "\"\n"
                         "set Data(point) \"" + name + "\"\n"
                         "set Data(coord) \"" + lat + " " + long + "\"\n"
                         "set Data(days) \"" + str(
@@ -622,7 +622,6 @@ def generateTCL(g, modelH,iditem):
     else:
         dayList = list(genday)
         for p in particulelist:
-            #forloop not really necessary here because there is only 1 month in the list
             for d in dayList:
                 for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
                     config = open("config/" + sMonth + p + d + hToName + modelH + ".tcl", "w")
@@ -638,7 +637,7 @@ def generateTCL(g, modelH,iditem):
                         "set Data(PathOut) " + filelocation + "/extracted\n"
                         "set Data(Start)      \"" + sYear + sMonth + "\"\n"
                         "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                        "set Data(Eticket)     \""+EticketGEM+"\"\n"
+                        "set Data(Eticket)     \""+EticketGM+"\"\n"
                         "set Data(point) \"" + name + "\"\n"
                         "set Data(coord) \"" + lat + " " + long + "\"\n"
                         "set Data(days) \"" + str(d) + "\"\n"  # todo confirm start day
