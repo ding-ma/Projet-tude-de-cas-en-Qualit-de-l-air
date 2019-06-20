@@ -19,7 +19,6 @@ def inputStartDate(sD):
     sMonth = unformatattedDate[1]
     sDay = unformatattedDate[2]
     sDate = date(int(sYear),int(sMonth),int(sDay))
-    print("Start Date: " + sDate.strftime("%Y %m %d"))
 
 
 # end date
@@ -33,7 +32,6 @@ def inputEndDate(eD):
     eMonth = unformatattedDate[1]
     eDay = unformatattedDate[2]
     eDate = date(int(eYear), int(eMonth), int(eDay))
-    print("End Date: " + eDate.strftime("%Y %m %d"))
     listOfDays()
     listofMonth()
 
@@ -159,7 +157,6 @@ def rarcFile():
         "\nfstdfile close 1"
         "\nclose $FileOut"
     )
-    print("Umos -Mist RARC File Saved")
 
 
 def bashFile(formattedParticuleString, loc):
@@ -168,11 +165,11 @@ def bashFile(formattedParticuleString, loc):
         fileBash = open("UmosMist" + modelHourSeparated + ".bash", 'w')
         fileBash.write(
             "#!/bin/bash\n"
-            "PathOut="+filelocation+"/bash"
+             "PathOut="+filelocation+"/bash"
             "\nPathIn="+filelocation+"/rarc"
             "\nDateDebut=" + sYear + sMonth+sDay+
             "\nDateFin=" + eYear + eMonth + eDay+
-            "\nListeMois=\"" + formattedMonthlist + "\""
+            "\nListeMois=\"" + sMonth + "\""
             "\nAnnee=" + sYear +  # not used
             "\nTag1=UMOSmist"+modelHourSeparated+
             "\neditfst=/fs/ssm/eccc/mrd/rpn/utils/16.2/ubuntu-14.04-amd64-64/bin/editfst"
@@ -197,6 +194,7 @@ def bashFile(formattedParticuleString, loc):
             "\nFileIn=${FichierTICTAC}"
             "\n${editfst} -s ${FileIn} -d ${FileOut1} <<EOF"
             "\nDESIRE(-1,['>>','^^'],-1,-1,-1,-1,-1)"
+            "\nZAP(-1,-1,'CAPAMIST',-1,-1,-1,-1)"
             "\nEOF"
             "\nfor mois in ${ListeMois}"
             "\ndo"
@@ -226,7 +224,7 @@ def bashFile(formattedParticuleString, loc):
             "\nfor niveau in  ${ListeNiveaux}"
             "\ndo"
             "\n${editfst} -s ${FileIn1} -d ${FileOut1} <<EOF"
-            "\nDESIRE (-1,\"$Espece\",-1, -1, $niveau, -1, -1) "
+            "\nDESIRE (-1,\"$Espece\",-1, -1, $niveau, [0"+formattedSelectedTimeWithSpace.split(" ")[0]+",@,0"+formattedSelectedTimeWithSpace.split(" ")[-1]+",DELTA,1], -1) "
             "\nEOF"
             "\ndone"
             "\nfi"
@@ -237,9 +235,7 @@ def bashFile(formattedParticuleString, loc):
             "\ndone"
             "\ndone\n"
         )
-    print("UMOS-Mist Bash File Saved!")
-    getEticket()
-    TCLConfig(formattedParticuleString, loc)
+    print("UMOS-Mist Config Files Saved!")
 
 
 def time(sTime, eTime):
@@ -264,6 +260,7 @@ def getEticket():
 
 
 def TCLConfig(formattedParticuleString, loc):
+    getEticket()
     global fpp
     global locationId
     modelHourList = re.split(",", modelHour)

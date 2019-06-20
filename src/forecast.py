@@ -116,7 +116,7 @@ def rarcFile():
         "\npriority = online\n"
         "inc = 1\n"
         "#\n")
-    print("Forecast File Saved")
+    print("Forecast Config Files Saved")
 
 def particuleCheckBox(O3, NO2, others, PM25):
     global formattedParticuleString

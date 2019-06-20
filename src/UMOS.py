@@ -37,7 +37,6 @@ def inputStartDate(sD):
     sMonth = unformatattedDate[1]
     sDay = unformatattedDate[2]
     sDate = date(int(sYear),int(sMonth),int(sDay))
-    print("Start Date: " + sDate.strftime("%Y %m %d"))
 
 
 # end date
@@ -51,7 +50,6 @@ def inputEndDate(eD):
     eMonth = unformatattedDate[1]
     eDay = unformatattedDate[2]
     eDate = date(int(eYear), int(eMonth), int(eDay))
-    print("End Date: " + eDate.strftime("%Y %m %d"))
     listOfDays()
     if eDate.timetuple()<date(2017,1,5).timetuple():
         return False
@@ -287,7 +285,7 @@ def rarcFile(datesplit):
                                          "priority = online\n"
                                          "inc = 1\n"
                                          "#\n")
-        print("UMOS File Saved")
+        print("UMOS Config sFiles Saved")
 
 
 Name = []

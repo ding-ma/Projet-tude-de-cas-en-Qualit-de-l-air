@@ -5,8 +5,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FireWork.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FireWork.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gemmach.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gemmach.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Images.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Images.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UMOS.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UMOS.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UMOSMist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UMOSMist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/forecast.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forecast.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/observations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/observations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests.py" afterDir="false" />
     </list>
     <list id="907627cc-b390-404d-92ca-b82bb5948891" name="changed ui for date entry, dropbox" comment="changed ui for date entry, dropbox&#10;&#10;(cherry picked from commit 2f4aa07e39a3bdfdaad2fabc35416c24e44b5482)">
       <changelist_data name="Ding Ma" email="ding.ma@mail.mcgill.ca" date="1559324784000" />
@@ -18,53 +23,49 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="462">
-                    <caret line="622" column="30" lean-forward="true" selection-start-line="622" selection-start-column="30" selection-end-line="622" selection-end-column="30" />
-                    <folding>
-                      <element signature="e#0#15#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tests.py">
+        <entry file="file://$PROJECT_DIR$/src/UI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="245">
+              <caret line="56" column="11" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="11" />
+              <folding>
+                <element signature="e#23#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UMOS.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="287" column="28" selection-start-line="287" selection-start-column="28" selection-end-line="287" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UMOSMist.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="354">
+              <caret line="239" lean-forward="true" selection-start-line="239" selection-end-line="239" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/FireWork.py">
+        <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="338" column="78" lean-forward="true" selection-start-line="338" selection-start-column="78" selection-end-line="338" selection-end-column="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/UI.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="489">
-              <caret line="398" column="29" selection-start-line="398" selection-start-column="29" selection-end-line="398" selection-end-column="29" />
+            <state relative-caret-position="646">
+              <caret line="317" column="20" lean-forward="true" selection-start-line="317" selection-start-column="20" selection-end-line="317" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,10 +81,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>padx</find>
-      <find>readon</find>
-      <find>cmcarc</find>
-      <find>sort</find>
       <find>cmcar</find>
       <find>parti</find>
       <find>.split</find>
@@ -110,6 +107,10 @@
       <find>FORECAST</find>
       <find>print</find>
       <find>bash</find>
+      <find>et</find>
+      <find>getE</find>
+      <find>umos rarc</find>
+      <find>rar</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -146,16 +147,16 @@
         <option value="$PROJECT_DIR$/src/UMOS-Mist.py" />
         <option value="$PROJECT_DIR$/src/mistbash.bash" />
         <option value="$PROJECT_DIR$/src/forecast" />
-        <option value="$PROJECT_DIR$/src/forecast.py" />
         <option value="$PROJECT_DIR$/src/a.py" />
-        <option value="$PROJECT_DIR$/src/UMOS.py" />
-        <option value="$PROJECT_DIR$/src/Images.py" />
-        <option value="$PROJECT_DIR$/src/observations.py" />
         <option value="$PROJECT_DIR$/src/tests.py" />
         <option value="$PROJECT_DIR$/src/UI.py" />
+        <option value="$PROJECT_DIR$/src/Images.py" />
+        <option value="$PROJECT_DIR$/src/FireWork.py" />
+        <option value="$PROJECT_DIR$/src/forecast.py" />
+        <option value="$PROJECT_DIR$/src/observations.py" />
+        <option value="$PROJECT_DIR$/src/UMOS.py" />
         <option value="$PROJECT_DIR$/src/UMOSMist.py" />
         <option value="$PROJECT_DIR$/src/Gemmach.py" />
-        <option value="$PROJECT_DIR$/src/FireWork.py" />
       </list>
     </option>
   </component>
@@ -215,7 +216,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tests">
+  <component name="RunManager" selected="Python.UI">
     <configuration name="Gemmach" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Projet-tude-de-cas-en-Qualit-de-l-air" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -343,12 +344,12 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.tests" />
       <item itemvalue="Python.Gemmach" />
       <item itemvalue="Python.Images" />
       <item itemvalue="Python.UI" />
       <item itemvalue="Python.a" />
       <item itemvalue="Python.observations" />
-      <item itemvalue="Python.tests" />
     </list>
     <recent_temporary>
       <list>
@@ -370,13 +371,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557412480438</updated>
-    </task>
-    <task id="LOCAL-00028" summary="trying out repo seperation">
-      <created>1559052258725</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1559052258725</updated>
     </task>
     <task id="LOCAL-00029" summary="gemmach done, backup before repo changes">
       <created>1559066981897</created>
@@ -714,7 +708,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560975405143</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="added automatic eticket reading">
+      <created>1561037628646</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1561037628646</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TodoView">
@@ -738,14 +739,14 @@
       <window_info id="Job Explorer" order="5" weight="0.2971549" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32879582" />
-      <window_info anchor="bottom" x="11" y="323" width="1898" height="404" id="Run" maximized="true" order="2" sideWeight="0.4890625" weight="0.20104712" />
+      <window_info anchor="bottom" x="11" y="323" width="1898" height="404" id="Run" maximized="true" order="2" sideWeight="0.48854166" visible="true" weight="0.17801048" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.33507854" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.20364416" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49578503" weight="0.23151125" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49947312" weight="0.22186495" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5109375" side_tool="true" weight="0.20104712" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.51145834" side_tool="true" weight="0.17801048" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.24008575" />
       <window_info anchor="bottom" id="GitHub Pull Requests" order="11" sideWeight="0.49947312" weight="0.3290461" />
       <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49947312" weight="0.3290461" />
@@ -812,7 +813,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="added animate function in the program" />
     <MESSAGE value="backup before location checkbox automation" />
     <MESSAGE value="playing with futions, getting the data form checkbox works" />
     <MESSAGE value="all gui works included extraction from servers" />
@@ -837,7 +837,8 @@
     <MESSAGE value="playing with eticket, backup" />
     <MESSAGE value="gemmach had a bug, seems to be fixed" />
     <MESSAGE value="trying to automatically get eticket" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to automatically get eticket" />
+    <MESSAGE value="added automatic eticket reading" />
+    <option name="LAST_COMMIT_MESSAGE" value="added automatic eticket reading" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
@@ -982,13 +983,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-1442825926/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="266" column="4" selection-start-line="266" selection-start-column="4" selection-end-line="266" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gemmachBashTest00.bash">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1023,10 +1017,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-1442825926/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="246" column="4" selection-start-line="246" selection-start-column="4" selection-end-line="246" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="22" lean-forward="true" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FireWork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="247" column="33" selection-start-line="247" selection-start-column="33" selection-end-line="247" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/forecast.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="198" column="64" selection-start-line="198" selection-start-column="10" selection-end-line="198" selection-end-column="64" />
+        <state relative-caret-position="2006">
+          <caret line="118" selection-start-line="118" selection-end-line="118" selection-end-column="40" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -1035,70 +1050,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Images.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="724">
-          <caret line="378" column="33" lean-forward="true" selection-start-line="378" selection-start-column="33" selection-end-line="378" selection-end-column="33" />
+        <state relative-caret-position="-1224">
+          <caret line="222" column="34" selection-start-line="222" selection-start-column="34" selection-end-line="222" selection-end-column="34" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UMOS.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="168" column="29" lean-forward="true" selection-start-line="168" selection-start-column="29" selection-end-line="168" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <element signature="e#1483#2602#0" />
-            <element signature="e#1373#2021#0" />
-            <element signature="e#4667#6220#0" />
-            <element signature="e#6262#6464#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/observations.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="794">
-          <caret line="72" column="25" lean-forward="true" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
+        <state relative-caret-position="544">
+          <caret line="83" column="41" selection-start-line="83" selection-start-column="41" selection-end-line="83" selection-end-column="41" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests.py">
+    <entry file="file://$PROJECT_DIR$/src/UI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="245">
+          <caret line="56" column="11" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="11" />
+          <folding>
+            <element signature="e#23#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI.py">
+    <entry file="file://$PROJECT_DIR$/src/UMOS.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="398" column="29" selection-start-line="398" selection-start-column="29" selection-end-line="398" selection-end-column="29" />
+        <state relative-caret-position="266">
+          <caret line="287" column="28" selection-start-line="287" selection-start-column="28" selection-end-line="287" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UMOSMist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1856">
-          <caret line="240" column="16" lean-forward="true" selection-start-line="240" selection-start-column="16" selection-end-line="240" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FireWork.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="338" column="78" lean-forward="true" selection-start-line="338" selection-start-column="78" selection-end-line="338" selection-end-column="78" />
+        <state relative-caret-position="354">
+          <caret line="239" lean-forward="true" selection-start-line="239" selection-end-line="239" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="622" column="30" lean-forward="true" selection-start-line="622" selection-start-column="30" selection-end-line="622" selection-end-column="30" />
+        <state relative-caret-position="646">
+          <caret line="317" column="20" lean-forward="true" selection-start-line="317" selection-start-column="20" selection-end-line="317" selection-end-column="20" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>

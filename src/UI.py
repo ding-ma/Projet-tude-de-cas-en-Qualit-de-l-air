@@ -45,6 +45,7 @@ nb.add(machTab, text="Gem-Mach")
 
 #this function just writes all the user input into all files
 def GemClicked():
+    global particules
     a = enteredDate.get()
     Gm.inputStartDate(a)
 
@@ -397,6 +398,7 @@ def MISTRARC():
 def MistGetLocation():
     shutil.rmtree("extractedMist")
     os.mkdir("extractedMist")
+    Umist.TCLConfig(particules,getComboboxLocation())
     Umist.launchTCL()
     Umist.removeEmptyFile(r'' + Umist.filelocation + "/extractedMist")
     Umist.sortAndGenerate(Umist.filelocation + "/extractedMist/")
@@ -431,6 +433,7 @@ def FwClicked():
 def FwGetLocation():
     shutil.rmtree("extractedFw")
     os.mkdir("extractedFw")
+    Fw.TCLConfig(particules,getComboboxLocation())
     Fw.launchTCL()
     Fw.removeEmptyFile(r'' + Fw.filelocation + "/extractedFw")
     Fw.sortAndGenerate(Fw.filelocation + "/extractedFw/")

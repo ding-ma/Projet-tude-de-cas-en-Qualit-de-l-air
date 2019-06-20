@@ -1,11 +1,3 @@
-import sys
-file = open("Eticket.txt", "r")
-eticket = file.read()
-array = eticket.split(" ")
-if len(array) is 2:
-    for l in array:
-        if l.startswith("CAPAMIST"):
-            print("good")
-        else:
-            sys.exit(-9)
-
+lst = ['0','1']
+if id(lst[-1]) == id(lst[0]):
+    print(id(lst[-1]))

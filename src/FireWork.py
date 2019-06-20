@@ -19,7 +19,6 @@ def inputStartDate(sD):
     sMonth = unformatattedDate[1]
     sDay = unformatattedDate[2]
     sDate = date(int(sYear),int(sMonth),int(sDay))
-    print("Start Date: " + sDate.strftime("%Y %m %d"))
 
 
 # end date
@@ -33,7 +32,6 @@ def inputEndDate(eD):
     eMonth = unformatattedDate[1]
     eDay = unformatattedDate[2]
     eDate = date(int(eYear), int(eMonth), int(eDay))
-    print("End Date: " + eDate.strftime("%Y %m %d"))
     listOfDays()
     listofMonth()
 
@@ -161,7 +159,7 @@ def rarcFile():
         "\nfstdfile close 1"
         "\nclose $FileOut"
     )
-    print("Fire-Work RARC File Saved")
+
 
 def level(lv):
     global lev
@@ -247,9 +245,7 @@ def bashFile(formattedParticuleString, loc):
             "\ndone"
             "\ndone\n"
         )
-    print("Fire-Work Bash File Saved!")
-    getEticket()
-    TCLConfig(formattedParticuleString, loc)
+    print("Fire-Work Config Files Saved!")
 
 
 def time(sTime, eTime):
@@ -271,6 +267,7 @@ def time(sTime, eTime):
 
 
 def TCLConfig(formattedParticuleString, loc):
+    getEticket()
     global fpp
     global locationId
     locationId = loc

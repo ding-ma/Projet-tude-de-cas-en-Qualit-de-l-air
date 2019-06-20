@@ -305,6 +305,8 @@ def time(sTime, eTime):
         unformattedSelectedTime[i:i + 3] for i in range(0, len(unformattedSelectedTime), 3))
     formattedSelectedTimeWithSpace = ' '.join(
         unformattedSelectedTime[i:i + 3] for i in range(0, len(unformattedSelectedTime), 3))
+    print("Start Time: "+hour24[sIndex])
+    print("End Time: "+hour24[eIndex])
 
 
 bothCheked = 0
@@ -459,7 +461,7 @@ def rarcFile():
         "\nfstdfile close 1"
         "\nclose $FileOut"
     )
-    print("Gem-Mach File Saved")
+
 
 def bashFile():
     modelHourList = re.split(",", modelHour)
@@ -537,7 +539,7 @@ def bashFile():
             "\ndone"
             "\ndone\n"
             )
-        print("Bash File Saved!")
+        print("Gemmach Config Files Saved!")
 
 
 def getEticket():
