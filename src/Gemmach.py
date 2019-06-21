@@ -211,10 +211,11 @@ for i in lstProvince:
         lstNVT.append(p)
     j = j + 1
 
-prov = ["AB", "BC", "MB", "NB", 'NL', "NS", "ON", "PE", "QC", "SK", "NT", "NU", "YT"]
+prov = ["Province","AB", "BC", "MB", "NB", 'NL', "NS", "ON", "PE", "QC", "SK", "NT", "NU", "YT"]
 
 #returns list of all the stations based on the selected province
 provinceDic = {
+    "Province":"--",
     "AB": lstALB,
     "BC": lstBC,
     "MB": lstMAN,
@@ -234,6 +235,8 @@ provlist = []
 
 
 def gettingprovlist(P):
+    if P == "Province":
+        return "Station"
     for y in provinceDic[P]:
         indexofitem = lstID.index(y)
         display = lstDisplay[indexofitem]
