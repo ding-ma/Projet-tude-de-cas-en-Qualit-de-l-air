@@ -287,6 +287,8 @@ def inputEndDate(eD):
     print("End Date: " + eDate.strftime("%Y %m %d"))
     listOfDays()
     listofMonth()
+    if eDate.month - sDate.month > 2 or eDate.year - sDate.year > 1:
+        raise Exception("Entered date range is too big, the dates have to be within 2 months")
 
 
 def time(sTime, eTime):

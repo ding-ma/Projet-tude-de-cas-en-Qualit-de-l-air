@@ -111,11 +111,6 @@ def GemClicked():
     Ob.inputStartDate(a)
     Ob.inputEndDate(b)
     Ob.particuleCheckBox(O3, NO2, others, PM25)
-    # Fc.inputStartDate(a)
-    # Fc.inputEndDate(b)
-    # Fc.time(sTime,eTime)
-    # Fc.particuleCheckBox(O3, NO2, others, PM25)
-    # Fc.rarcFile()
 
 
 rarcLabel = tk.Label(machTab, text="Rarc Settings", font="20")
