@@ -494,6 +494,64 @@ observationRarcBtn.place(x=838,y=190)
 
 observationLocationBtn = tk.Button(machTab, text = "Get at location, OBS", command=ObservationGetLocation, width=17, height=1)
 observationLocationBtn.place(x=838,y=220)
+
+folderdict = {
+    "operation.forecasts.firework.mach": "Firework",
+    "operation.images.umoscr": "Umos Images",
+    "operation.umos.aq.prevision.csv.n2sp3": "Umos NO2, Pre 2017",
+    "operation.images.chronos": "Images Gemmach",
+    "operation.umos.aq.prevision.csv.o3sp3": "Umos O3, Pre 2017",
+    "operation.scribeMat.mist.aq": "Umos-Mist",
+    "operation.forecasts.mach": "Gemmach",
+    "operation.observations.dbase.surface.airnow": "Observations",
+    "operation.umos.aq.prevision.csv.p2sp3": "Umos PM 2.5, Pre 2017",
+    "operation.umos.aq.prevision": "Umos, Post 2017"
+
+}
+
+folder_names = []
+convertedFolderName = []
+def rarcFolderDeletion():
+    folder_names.clear()
+    convertedFolderName.clear()
+    for filename in os.listdir("rarc"):
+        if os.path.isdir("rarc/"+filename):
+            folder_names.append(filename)
+    for folder in folder_names:
+        if folder in folderdict:
+            f = folderdict[folder]
+            convertedFolderName.append(f)
+        else:
+            folderdict[folder] = folder
+            convertedFolderName.append(folder)
+
+
+def deleteRarcFile():
+    rarcFolderDeletion()
+    popup = tk.Tk()
+    popup.geometry("%dx%d+0+0" % (375, 200))
+    popup.wm_title("BE CAREFUL")
+    archnames = tk.Label(popup,text = "Select file directory to delete")
+    archnames.place(x=85,y=10)
+    filelst = ttk.Combobox(popup, values =sorted(convertedFolderName), width = 40, state='readonly')
+    filelst.place(x=15,y=50)
+    B1 = ttk.Button(popup, text="Cancel", command=popup.destroy, width=17)
+    B1.place(x=60,y=160)
+
+    def confirmDelete():
+        a = int(filelst.current())
+        todel = sorted(convertedFolderName)[a]
+        shutil.rmtree("rarc/"+todel)
+        rarcFolderDeletion()
+        popup.destroy()
+
+    b2 = tk.Button(popup, text = "Confirm delete", command = confirmDelete, width=17)
+    b2.place(x=175,y=160)
+    popup.mainloop()
+
+
+deletebtn = tk.Button(machTab, text="Delete Extracted Files", bg = "red", command = deleteRarcFile, width=17, height=2)
+deletebtn.place(x=850,y=450)
 # tab for help
 helptab = ttk.Frame(nb)
 nb.add(helptab, text="Help/Info", )
