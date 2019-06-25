@@ -18,7 +18,7 @@ import observations as Ob
 window = tk.Tk()
 # window.attributes('-zoomed', True)
 #w, h = window.winfo_screenwidth(), window.winfo_screenheight()
-w,h = 1250,550
+w,h = 1025,550
 window.geometry("%dx%d+0+0" % (w, h))
 window.title("tk")
 # window.geometry("1500x1200")
@@ -31,18 +31,6 @@ nb.place(x=0,y=0,width=w, height=h)
 # Adds tab for Gem-Mach
 machTab = ttk.Frame(nb)
 nb.add(machTab, text="Tool")
-
-# def sDate():
-#     year = yearCombo.get()
-#     month = Gm.monthDict[monthCombo.get()]
-#     startDate = startDateCombo.get()
-#     return year+"/"+month+"/"+startDate
-#
-# def eDate():
-#     month = Gm.monthDict[monthCombo.get()]
-#     year = yearCombo.get()
-#     endDate = endDateCombo.get()
-#     return year + "/" + month + "/" + endDate
 
 #this function just writes all the user input into all files
 def GemClicked():
@@ -117,29 +105,29 @@ def GemClicked():
 startDateLabel = tk.Label(machTab, text="Enter Start Date (YYYY/MM/DD)")
 enteredDate = tk.Entry(machTab, width=13)
 startDateLabel.place(x=10,y=10)
-enteredDate.place(x=200,y=13)
+enteredDate.place(x=210,y=12)
 
 # End date
 endDateLabel = tk.Label(machTab, text="Enter End Date (YYYY/MM/DD)")
 enteredEndDate = tk.Entry(machTab, width=13)
 endDateLabel.place(x=10,y=35)
-enteredEndDate.place(x=200,y=38)
+enteredEndDate.place(x=210,y=38)
 
 
 # Start Hours
 sHourLabel = tk.Label(machTab, text="Choose the start time")
 sHourcombo = ttk.Combobox(machTab, values=Gm.hours, state='readonly')
 sHourcombo.current(0)
-sHourLabel.place(x=300,y=10)
-sHourcombo.place(x=300,y=35)
+sHourLabel.place(x=340,y=10)
+sHourcombo.place(x=340,y=35)
 
 
 # End Hours
 eHourLabel = tk.Label(machTab, text="Choose the end time")
 eHourCombo = ttk.Combobox(machTab, values=Gm.hours, state='readonly')
 eHourCombo.current(0)
-eHourLabel.place(x=450,y=10)
-eHourCombo.place(x=450,y=35)
+eHourLabel.place(x=535,y=10)
+eHourCombo.place(x=535,y=35)
 
 
 # Hour Selection
@@ -172,8 +160,8 @@ PM25_Checkbutton.place(x=265,y=95)
 levelLabel = tk.Label(machTab, text="Enter Level (optional)")
 levelEntry = tk.Entry(machTab, width=15)
 
-levelLabel.place(x=625,y=10)
-levelEntry.place(x=750,y=10)
+levelLabel.place(x=705,y=10)
+levelEntry.place(x=850,y=10)
 otherLabel.place(x=10,y=120)
 otherVariable.place(x=200,y=120)
 
@@ -197,9 +185,9 @@ comboprov.current(0)
 combostations = ttk.Combobox(machTab, values=Gm.gettingprovlist("Province"), width=30, state='readonly')
 
 combostations.current(0)
-locationLabel.place(x=350,y=70)
+locationLabel.place(x=340,y=70)
 comboprov.place(x=450,y=70)
-combostations.place(x=550,y=70)
+combostations.place(x=565,y=70)
 
 #suff for the search
 displayString = ""
@@ -214,8 +202,8 @@ stationSearchLabel = tk.Label(machTab, text=displayString)
 searchBtn = tk.Button(machTab, text="Search Name or ID", command=SearchNameID)
 
 
-stationSearchLabel.place(x=580,y=102)
-stationSearchField.place(x=475,y=102)
+stationSearchLabel.place(x=630,y=102)
+stationSearchField.place(x=500,y=102)
 searchBtn.place(x=350,y=100)
 
 #chronos, gem
@@ -273,7 +261,7 @@ def StartBash():
 
 
 btn = tk.Button(machTab, text="Write to file", command=GemClicked, width=15, height=2, bg = "#4ce30f")
-btn.place(x=850,y=85)
+btn.place(x=850,y=50)
 
 GemmachLabel = tk.Label(machTab,text = "Gemmach", font = "13")
 GemmachLabel.place(x=50,y=160)
@@ -456,17 +444,17 @@ imgUmos = tk.Label(machTab,text = "UMOS", font = "13")
 imgUmos.place(x=255,y=335)
 
 ImgUmosRarcBtn = tk.Button(machTab, text = "Rarc, Im-Um", command =UmosImgRarc,width=17, height=1)
-ImgUmosRarcBtn.place(x=225,y=365)
+ImgUmosRarcBtn.place(x=225,y=360)
 
 UmosImgBtn = tk.Button(machTab, text ="Get img, UM", command = getUMOSimg,width=17, height=1)
-UmosImgBtn.place(x=380,y=395)
+UmosImgBtn.place(x=438,y=390)
 
 UmosImgLocation = ttk.Combobox(machTab, values = ["@sfc_", "@sfc@diff_"], state='readonly')
-UmosImgLocation.place(x=225,y=398)
+UmosImgLocation.place(x=225,y=393)
 UmosImgLocation.current(0)
 
 animateCombo = ttk.Combobox(machTab, values =sorted(giflst),width=55, height=10, state='readonly')
-animateCombo.place(x=155,y=453)
+animateCombo.place(x=180,y=453)
 #animateCombo.current(0)
 
 
@@ -562,8 +550,7 @@ notesInfo = tk.Label(helptab, text = "Notes:\n"
                                      "- If RARC gives you a grand total of 0, it means that the file already exists in the folder OR the file does not exis in the archives\n"
                                      "- If there are hours that needs to be added, consult Gemmach.py file, make sure to add the time to 3 lists\n"
                                      "- if there are stations that needs to be added, add them to the \"station_DB.csv\", add them to the END and fill the entire ROW with the corresponding data\n"
-                                     "- If the eticket needs to be changed, see Gemmach.py to change them\n"
-                                     "- This program will automatically generate the working directories and make sure to include the 2 csv files!\n",
+                                     "- This program will automatically generate the working directories and make sure to include the 2 csv files and all .py files!\n",
                      justify = "left")
 notesInfo.grid(column=0, row=0)
 #https://www.python-course.eu/tkinter_text_widget.php
@@ -572,6 +559,8 @@ notesInfo.grid(column=0, row=0)
 # imglabal = tk.Label(window,image = img)
 # imglabal.grid(column=0, row=50, pady = (325,0), sticky='w')
 #imglabal.grid(column=0, row=50, pady = (325,0), sticky='w')
+s = ttk.Style()
+s.theme_use('classic')
 window.mainloop()
 
 # notes: active var for particuleCheckBoxAndTime allowed me to use the same code for different purposes, when you write

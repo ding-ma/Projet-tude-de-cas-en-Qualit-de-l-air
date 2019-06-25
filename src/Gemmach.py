@@ -114,7 +114,7 @@ def findWithStation(station):
 #returns the index of the item if it exist else, it returns false, gets around the item out of bound problem
 def isStationFound(StationInput):
     a = difflib.get_close_matches(StationInput, lstName, n=1, cutoff=.4)
-    if a is []:
+    if len(a) is 0:
         return False
     else:
         return lstName.index(a[0])
