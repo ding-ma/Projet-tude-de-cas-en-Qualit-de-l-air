@@ -159,6 +159,24 @@ def rarcFile():
     )
 
 
+def time(sTime, eTime):
+    global formattedSelectedTimeWithComma
+    global formattedSelectedTimeWithSpace
+    global sTimeBash
+    sTimeBash = sTime
+    #gets index then generates a list within the index
+    sIndex = Gm.hours.index(sTime)
+    eIndex = Gm.hours.index(eTime)
+    unformattedSelectedTime = ""
+    for timeList in range(eIndex - sIndex + 1):
+        unformattedSelectedTime += Gm.hour24[sIndex + timeList]
+    # for every 2 character
+    formattedSelectedTimeWithComma = ','.join(
+        unformattedSelectedTime[i:i + 2] for i in range(0, len(unformattedSelectedTime), 2))
+    formattedSelectedTimeWithSpace = ' '.join(
+        unformattedSelectedTime[i:i + 2] for i in range(0, len(unformattedSelectedTime), 2))
+
+
 def bashFile(formattedParticuleString, loc):
     modelHourList = re.split(",", modelHour)
     for modelHourSeparated in modelHourList:
@@ -179,10 +197,11 @@ def bashFile(formattedParticuleString, loc):
             "\nListeVersionsGEM=\"operation.scribeMat.mist.aq\""
             "\nListeEspeces=\"" + formattedParticuleString + "\""
             "\nListeNiveaux=\"-1\""  # TODO confirm levels
-            "\nListeJours=\"-1\""
+            "\nListeJours=\""+formattedDay+"\""
             "\nListePasse=\"-1\""
-            "\nListeHeures=\"-1\""
+            "\nListeHeures=\""+formattedSelectedTimeWithSpace+"\""
             "\n################# Extraction#############"
+            "\ndeclare -a arr=()"                                                  
             "\nfor VersionGEM in  ${ListeVersionsGEM}"
             "\ndo"
             "\nFileOut1=${PathOut}/${Tag1}.${DateDebut}_${DateFin}_${Grille}.fst"
@@ -194,7 +213,7 @@ def bashFile(formattedParticuleString, loc):
             "\nFileIn=${FichierTICTAC}"
             "\n${editfst} -s ${FileIn} -d ${FileOut1} <<EOF"
             "\nDESIRE(-1,['>>','^^'],-1,-1,-1,-1,-1)"
-            
+            "\nZAP(-1,-1,'CAPAMIST',-1,-1,-1,-1)"
             "\nEOF"
             "\nfor mois in ${ListeMois}"
             "\ndo"
@@ -219,14 +238,13 @@ def bashFile(formattedParticuleString, loc):
             "\nif [ \"$Espece\" = \"P0\" ] || [ \"$Espece\" = \"TCC\" ] ; then"
             "\n${editfst} -s ${FileIn1} -d ${FileOut1} <<EOF"
             "\nDESIRE (-1,\"$Espece\",-1, -1, 0, -1, -1)"
+            "\nZAP(-1,-1,'CAPAMIST',-1,-1,-1,-1)"                                                                    
             "\nEOF"
             "\nelse"
             "\nfor niveau in  ${ListeNiveaux}"
             "\ndo"
-            "\n${editfst} -s ${FileIn1} -d ${FileOut1} <<EOF"
-            "\nDESIRE (-1,\"$Espece\",-1, -1, $niveau, [0"+formattedSelectedTimeWithSpace.split(" ")[0]+",@,0"+formattedSelectedTimeWithSpace.split(" ")[-1]+",DELTA,1], -1)"
-            "\nZAP(-1,-1,'GM10150N',-1,-1,-1,-1)"
-            "\nEOF"
+            "\nVAR=$(r.date -n -S $Annee$mois$jour$heure)"
+            "\narr+=(\"${VAR}\")"
             "\ndone"
             "\nfi"
             "\ndone"
@@ -234,27 +252,17 @@ def bashFile(formattedParticuleString, loc):
             "\ndone"
             "\ndone"
             "\ndone"
+            "\ndone"
+            "\nfor i in \"${arr[@]}\";"
+            "\ndo"                                                                    
+            "\n${editfst} -s ${FileIn1} -d ${FileOut1} <<EOF"
+            "\nDESIRE (-1,\"$Espece\",-1, ${arr[0]}, $niveau, -1, -1)"
+            "\nZAP(-1,-1,'CAPAMIST',$i,-1,-1,-1)"
+            "\nEOF"
             "\ndone\n"
         )
     print("UMOS-Mist Config Files Saved!")
 
-
-def time(sTime, eTime):
-    global formattedSelectedTimeWithComma
-    global formattedSelectedTimeWithSpace
-    global sTimeBash
-    sTimeBash = sTime
-    #gets index then generates a list within the index
-    sIndex = Gm.hours.index(sTime)
-    eIndex = Gm.hours.index(eTime)
-    unformattedSelectedTime = ""
-    for timeList in range(eIndex - sIndex + 1):
-        unformattedSelectedTime += Gm.hours[sIndex + timeList]
-    # for every 3 character
-    formattedSelectedTimeWithComma = ','.join(
-        unformattedSelectedTime[i:i + 3] for i in range(0, len(unformattedSelectedTime), 3))
-    formattedSelectedTimeWithSpace = ' '.join(
-        unformattedSelectedTime[i:i + 3] for i in range(0, len(unformattedSelectedTime), 3))
 
 def getEticket():
     os.system("./UmosMistEticket.tcl")

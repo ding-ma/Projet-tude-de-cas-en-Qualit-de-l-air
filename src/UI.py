@@ -163,7 +163,7 @@ levelEntry = tk.Entry(machTab, width=15)
 levelLabel.place(x=705,y=10)
 levelEntry.place(x=850,y=10)
 otherLabel.place(x=10,y=120)
-otherVariable.place(x=200,y=120)
+otherVariable.place(x=210,y=120)
 
 # stations
 def combined(event):
@@ -535,8 +535,8 @@ def deleteRarcFile():
     archnames.place(x=85,y=10)
     filelst = ttk.Combobox(popup, values =sorted(convertedFolderName), width = 40, state='readonly')
     filelst.place(x=15,y=50)
-    B1 = ttk.Button(popup, text="Cancel", command=popup.destroy, width=17)
-    B1.place(x=60,y=160)
+    B1 = ttk.Button(popup, text="Cancel", command=popup.destroy, width=10)
+    B1.place(x=55,y=160)
 
     def confirmDelete():
         a = int(filelst.current())
@@ -545,8 +545,8 @@ def deleteRarcFile():
         rarcFolderDeletion()
         popup.destroy()
 
-    b2 = tk.Button(popup, text = "Confirm delete", command = confirmDelete, width=17)
-    b2.place(x=175,y=160)
+    b2 = tk.Button(popup, text = "Confirm delete", command = confirmDelete, width=10, bg = 'red')
+    b2.place(x=195,y=160)
     popup.mainloop()
 
 
