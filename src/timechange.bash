@@ -18,7 +18,6 @@ ListePasse="-1"
 ListeHeures="-1"
 ################# Extraction#############
 ./time.tcl
-declare -a my_array=()
 
 for VersionGEM in  ${ListeVersionsGEM}
 do

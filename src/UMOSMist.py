@@ -176,11 +176,55 @@ def time(sTime, eTime):
     formattedSelectedTimeWithSpace = ' '.join(
         unformattedSelectedTime[i:i + 2] for i in range(0, len(unformattedSelectedTime), 2))
 
+def correcttime(number):
+    if number is 1:
+        os.system("./time00.tcl ")
+    if number is 2:
+        os.system("./time12.tcl ")
+    if number is 3:
+        os.system("./time00.tcl &")
+        os.system("./time12.tcl ")
 
 def bashFile(formattedParticuleString, loc):
     modelHourList = re.split(",", modelHour)
     for modelHourSeparated in modelHourList:
-        fileBash = open("UmosMist" + modelHourSeparated + ".bash", 'w')
+        if eDate < date(2016, 4, 7):
+            timescript = open("time"+modelHourSeparated+".tcl", "w")
+            timescript.write(
+                "#!/bin/bash"
+                "\n# : - \\"
+                "\nexec /fs/ssm/eccc/cmo/cmoe/apps/SPI_7.12.0_all/tclsh \"$0\" \"$@\""
+                "\npackage require TclData"
+                "\nset Path "+filelocation+"/rarc/operation.scribeMat.mist.aq/"
+                "\nset FST "+sYear+sMonth+sDay+modelHourSeparated+"_mist_anal"
+                "\nset FileOut [open times"+modelHourSeparated+".csv w+]"
+                "\nset FileIn [ lsort -dictionary [ glob $Path$FST ] ]"
+                "\nfstdfile open 1 read  $FileIn"
+                "\nset eticket [fstdfile info 1 DATEV]"
+                "\nset output [split $eticket " "]"
+                "\nset output_list [lsort $output]"
+                "\nset i 0"
+                "\nforeach line $output_list {"
+                "\nset arr($i) $line"
+                "\nincr i"
+                "\n}"
+                "\nset listOfNames [lsort [array names arr]]"
+                "\nforeach element $listOfNames {"
+                "\nset convTime [exec date -d @$arr($element) +%Y%m%d%H]"
+                "\nset cmctime [exec r.date -n -S $convTime]"
+                "\nset hour [string rang $convTime 8 end]"
+                "\nif { $hour < 10} {"
+                "\nset timePre10 [ string rang $hour 1 end]"
+                "\nputs $FileOut \"$cmctime,$convTime,$timePre10 \""
+                "\n} else {"
+                "\nputs $FileOut \"$cmctime,$convTime,$hour\""
+                "\n}"
+                "\n}"
+                "\nfstdfile close 1"
+                "\nclose $FileOut"
+            )
+        os.system("rm UmosMist"+modelHourSeparated+".bash")
+        fileBash = open("UmosMist" + modelHourSeparated + ".bash", 'a')
         fileBash.write(
             "#!/bin/bash\n"
              "PathOut="+filelocation+"/bash"
@@ -197,11 +241,15 @@ def bashFile(formattedParticuleString, loc):
             "\nListeVersionsGEM=\"operation.scribeMat.mist.aq\""
             "\nListeEspeces=\"" + formattedParticuleString + "\""
             "\nListeNiveaux=\"-1\""  # TODO confirm levels
-            "\nListeJours=\""+formattedDay+"\""
+            "\nListeJours=\"-1\""
             "\nListePasse=\"-1\""
-            "\nListeHeures=\""+formattedSelectedTimeWithSpace+"\""
+            "\nListeHeures=\"-1\""
             "\n################# Extraction#############"
-            "\ndeclare -a arr=()"                                                  
+        )
+        if eDate < date(2016, 4, 7):
+            fileBash.write("\n./time"+modelHourSeparated+".tcl")
+
+        fileBash.write(
             "\nfor VersionGEM in  ${ListeVersionsGEM}"
             "\ndo"
             "\nFileOut1=${PathOut}/${Tag1}.${DateDebut}_${DateFin}_${Grille}.fst"
@@ -238,13 +286,31 @@ def bashFile(formattedParticuleString, loc):
             "\nif [ \"$Espece\" = \"P0\" ] || [ \"$Espece\" = \"TCC\" ] ; then"
             "\n${editfst} -s ${FileIn1} -d ${FileOut1} <<EOF"
             "\nDESIRE (-1,\"$Espece\",-1, -1, 0, -1, -1)"
-            "\nZAP(-1,-1,'CAPAMIST',-1,-1,-1,-1)"                                                                    
+            "\nZAP(-1,-1,'CAPAMIST',-1,-1,-1,-1)"
             "\nEOF"
             "\nelse"
             "\nfor niveau in  ${ListeNiveaux}"
             "\ndo"
-            "\nVAR=$(r.date -n -S $Annee$mois$jour$heure)"
-            "\narr+=(\"${VAR}\")"
+        )
+        if eDate < date(2016, 4, 7):
+            fileBash.write(
+            "\nreadarray -t eCollection0 < <(cut -d, -f1 times"+modelHourSeparated+".csv)"
+            "\nreadarray -t eCollection2 < <(cut -d, -f3 times"+modelHourSeparated+".csv)"
+            "\nlen=${#eCollection0[@]}"
+            "\nfor (( i=0; i<$len; i++ ))"
+            "\ndo"
+            "\n${editfst} -s ${FileIn1} -d ${FileOut1} <<EOF"
+            "\nDESIRE(-1,\"$Espece\",-1,-1,-1,${eCollection2[$i]},-1)"
+            "\nZAP(-1,\"$Espece\",'CAPAMIST',${eCollection0[$i]}, -1,${eCollection2[$i]},-1)"
+            "\nEOF" 
+            "\ndone"
+            )
+        else:
+            fileBash.write(
+            "\nDESIRE (-1,\"$Espece\",-1, -1, 0, -1, -1)"
+            "\nZAP(-1,-1,'CAPAMIST',-1,-1,-1,-1)"
+            )
+        fileBash.write(
             "\ndone"
             "\nfi"
             "\ndone"
@@ -253,13 +319,6 @@ def bashFile(formattedParticuleString, loc):
             "\ndone"
             "\ndone"
             "\ndone"
-            "\nfor i in \"${arr[@]}\";"
-            "\ndo"                                                                    
-            "\n${editfst} -s ${FileIn1} -d ${FileOut1} <<EOF"
-            "\nDESIRE (-1,\"$Espece\",-1, ${arr[0]}, $niveau, -1, -1)"
-            "\nZAP(-1,-1,'CAPAMIST',$i,-1,-1,-1)"
-            "\nEOF"
-            "\ndone\n"
         )
     print("UMOS-Mist Config Files Saved!")
 
@@ -293,8 +352,11 @@ def generateTCL(g,modelH,loc,fpp):
     long = Gm.lstLongitude[listIndex]
     lat = Gm.lstLatitude[listIndex]
     executehour = re.split(",", formattedSelectedTimeWithComma)
-    s = Gm.hours.index(executehour[0])
-    e = Gm.hours.index(executehour[-1])
+    print(executehour)
+    print(executehour.index(executehour[0]))
+    print(executehour.index(executehour[-1]))
+    s = executehour.index(executehour[0])
+    e = executehour.index(executehour[-1])
     if int(sMonth) is not int(eMonth):
         for p in particulelist:
             for d in g[0]:

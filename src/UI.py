@@ -316,6 +316,7 @@ UMOSBtnGetFile.place(x=225,y=220)
 
 def MISTClicked():
     os.system("chmod -R 777 " + Fw.filelocation)
+    Umist.correcttime(Umist.bothCheked)
     if Umist.bothCheked is 1:
         os.system("./UmosMist00.bash &")
         print("Done, file located at -->" + Umist.filelocation + "/bash")
