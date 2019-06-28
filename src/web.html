@@ -1,0 +1,37 @@
+<h2>Context</h2>
+<p>Outil créé dans le but de faciliter l'extraction des modèles ainsi que des observations. Ce programme est écrit en Python 3.4 avec des script pour le system UNIX en TCL/tk et BASH</p>
+<h2>Procédure à suivre pour installer l'outil</h2>
+<p>1.1 Allez dans le répertoire ------------------ pour télécharger l'outil</p>
+<p>1.2 Copiez le ficher <strong><em>setup.bash</em></strong> et <strong><em>extracteur.zip---------</em></strong> dans votre répertoire de travail</p>
+<p>1.3 Exécutez le script de bash. Si le scipt de functionne pas, il n'est pas en exécutable. Faite la command "<strong><em>chmod 744 setup.bash</em></strong>" dans votre terminal</p>
+<p>1.4 Redémarez votre terminal pour utilisez l'outil</p>
+<p>1.5 Utiliser la commande <strong><em>-------</em></strong> pour démarer</p>
+
+<h2>Partie de l'outil</h2>
+<h3>Premiere section -- Rentré des données</h3>
+<p>Il faut rentrer les informations dans tous les boîtes.  Si vous faites un changement, il faut repeser sur le boutton vert "write to file" pour faire un mise à
+jour sur les fichers</p>
+[[Image:Firstpart.png|thumb|alt=XRARC|Première Partie|right|600px]]
+<h3>Deuxième section -- Selection des modèles</h3>
+<p>Choisiez les modèles dont vous voulez les informations</p>
+<ul>
+  <li>Le premier boutton extrait les donnes des archines en utilisant la command <strong><em>rarc</em></strong></li>
+  <li>Le deuxième réécrit le fichier standard avec un script bash pour isoler les heures et polluants selectionés</li>
+  <li>Le troisième effectue les calculs avec SPI pour interpoller les resultats à la station choisi</li>
+</ul>
+<p>Si les fichiers ont déjà été traités par le script bash, il suffit de faire un mise à jour des fichiers avec la nouvelle station pour obtenir des résultats ailleur</p>
+<p>Pour les UMOS et Observation, il suffit simplement d'extraire les donnes des archives et de selectionés la station intéressée</p>
+<h3>Troisième section -- Images</h3>
+<p>Pour extraire les images des archines, il faut toujours Utiliser les données entré dans la section 1. Deplus, il faut aussi selectionés les partie de la carte à la droite</p>
+<h4>Modèles Gem-Mach</h4>
+<ul>
+  <li>Le premier boutton extrait les donnes des archines en utilisant la command <strong><em>rarc</em></strong></li>
+  <li>Le deuxième génère l'animation gif dans le répertoire de sortie</li>
+</ul>
+<h4>Modèles UMOS</h4>
+<ul>
+  <li>Le premier boutton extrait les donnes des archines en utilisant la command <strong><em>rarc</em></strong></li>
+  <li>Le deuxième génère l'animation gif dans le répertoire de sortie. Par contre, les images UMOS contiennet deux types (surface ou différence de surface), il faut aussi choisir ceci
+  avant de générer l'image</li>
+</ul>
+<p>En bas au complet, le boutton 'Animate GIF' est utilisé pour jouer le ficher choisi. Ce boutton utlise la fonction <strong><em>animate</em></strong> du système linux</p>

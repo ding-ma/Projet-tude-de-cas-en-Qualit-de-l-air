@@ -507,8 +507,9 @@ folderdict = {
     "operation.observations.dbase.surface.airnow": "Observations",
     "operation.umos.aq.prevision.csv.p2sp3": "Umos PM 2.5, Pre 2017",
     "operation.umos.aq.prevision": "Umos, Post 2017"
-
 }
+
+inv_folderDict = {v: k for k, v in folderdict.items()}
 
 folder_names = []
 convertedFolderName = []
@@ -542,7 +543,7 @@ def deleteRarcFile():
     def confirmDelete():
         a = int(filelst.current())
         todel = sorted(convertedFolderName)[a]
-        shutil.rmtree("rarc/"+todel)
+        shutil.rmtree("rarc/"+inv_folderDict[todel])
         rarcFolderDeletion()
         popup.destroy()
 
