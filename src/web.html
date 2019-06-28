@@ -7,7 +7,8 @@
 <p>1.4 Redémarez votre terminal pour utilisez l'outil</p>
 <p>1.5 Utiliser la commande <strong><em>-------</em></strong> pour démarer</p>
 
-<h2>Partie de l'outil</h2>
+
+<h2>Comment Utiliser l'Outil?</h2>
 <h3>Premiere section -- Rentré des données</h3>
 <p>Il faut rentrer les informations dans tous les boîtes.  Si vous faites un changement, il faut repeser sur le boutton vert "write to file" pour faire un mise à
 jour sur les fichers</p>
@@ -35,3 +36,137 @@ jour sur les fichers</p>
   avant de générer l'image</li>
 </ul>
 <p>En bas au complet, le boutton 'Animate GIF' est utilisé pour jouer le ficher choisi. Ce boutton utlise la fonction <strong><em>animate</em></strong> du système linux</p>
+
+<h3>Suprimer les Fichiers Brutte</h3>
+<p>Le boutton "Delete Extracted Files", va suprimer les répertoires des archives dans <i>~/rarc/</i>. Ces fichiers sont extrêmement grand, environ 1GBé/h pour les Gemmach et Firework. C'est
+important de les suprimer quand on a finit avec. C'est normal que le programme lance l'errur "Exception in Tkinter callback", c'est un bug avec Python.</p>
+
+<h3>Liste des Fichiers Modifiables par l'Utilisateur en cas de Besoin</h3>
+<p>Dans le fichier <i>Gemmach.py</i>, nous pouvons ajouter des heures suplémentaire. Si une station n'existe pas, simplement l'ajouter dans le fichier <i>stations.csv</i>, remplisez tous les colonnes!
+Pour retrouver votre station plus facilement, ajouter le au Yukon (code 11). Le fichier <i>stations.csv</i> est configuré de cette façons: numéro de station,nom englais,nom français,
+lat,lon,province (en numéro, consultez le fichier <i>info.csv</i> pour la conversion),ville,address.</p>
+
+<h3>Liste des Fichiers Nécessaires au Fonctionnement de l'Outil</h3>
+<p>Deux fichiers sont inclut lorsque vous télécharger l'outil. Dans extracteur.zip, il y a dix fichiers qui sont nécessaires au fonctionnement du programme.</p>
+<ul>
+  <li>setup.bash</li>
+  <li>Extracteur.zip, contient:------------------
+    <ol>
+  <li>UI.py</li>
+  <li>Images.py</li>
+  <li>UMOSMist.py</li>
+  <li>Gemmach.py</li>
+  <li>UMOS.py</li>
+  <li>Observations.py</li>
+  <li>Firework.py</li>
+  <li>UMOS_Ref.csv</li>
+  <li>station.csv</li>
+  <li>extract1.tcl</li>
+    </ol>
+  </li>
+</ul>
+<p>Le restant des fichiers que vous allez voir sont automatiquement générés par le programme.</p>
+
+<h4>Layout des fichiers Python----------</h4>
+<p>Le fichier <i>UI.py</i> est le Top-Level Entity---- pour le programme. Il import tout les autre fichiers Python. Chaque fichier est independant des autres, elles sont tous des modules séparés.
+C'est pour cela que becaucoup de code se resemble. Pour ajourter des modules dans le future, il faut simplement l'importer dans <i>UI.py</i> et adapter le code.</p>
+
+<h2>Erreur ou Bug Possible</h2>
+<ul>
+  <li>Le programme peut seulement prendre 2 mois au maximum</li>
+  <li>Une boite doit être choché au minimum pour les modèle, les particules, et les location </li>
+  <li>Dans la case de "search", il faut <u>seulement</u> entrer des charactères(nom de station) ou des nombres(code de station).</li>
+  <li>Si rarc retourne "Grand Total of 0", ceci veut dire que les fichiers d'archives n'existent pas ou elles sont déjà présentes.</li>
+</ul>
+
+<h2>Description Détailler du Fonctionnement de l'outil</h2>
+<p>Lorsque le programmes est lancer, il modifie automatiquement les fichier en éxécutable et il crée les repertoire de travail. C'est très important de ne pas les suprimer!</p>
+<h3>Extraction des Archives</h3>
+<p>Le programme écrit automatiquement les fichier de configuration avec les informations entrées. Par la suite, le boutton "Extraction" lance la commande <strong><em>rarc -i Gemmach</em></strong>
+pour lancer le programme RARC dans le terminal. La sortie de ces fichiers vont se retrouver à <em>~/rarc/</em>, et dépendament des modèles choisis, le programme va générer
+les répertoire de fichers d'archives.</p>
+<p>ADD IMG-----------------------</p>
+<table>
+  <tr>
+    <th>Nom du répertoire</th>
+    <th>Nom de sortie??????</th>
+  </tr>
+  <tr>
+    <td>operation.forecasts.firework.mach</td>
+    <td>Firework</td>
+  </tr>
+  <tr>
+    <td>operation.images.umoscr</td>
+    <td>Umos Images</td>
+  </tr>
+  <tr>
+    <td>operation.scribeMat.mist.aq</td>
+    <td>Umos-Mist</td>
+  </tr>
+  <tr>
+    <td>operation.forecasts.mach</td>
+    <td>Gemmach</td>
+  </tr>
+  <tr>
+    <td>operation.observations.dbase.surface.airnow  </td>
+    <td>Observations</td>
+  </tr>
+  <tr>
+    <td>operation.umos.aq.prevision.csv.n2sp3</td>
+    <td>Umos NO2, Pre 2017</td>
+  </tr>
+  <tr>
+    <td>operation.umos.aq.prevision.csv.o3sp3</td>
+    <td>Umos O3, Pre 2017</td>
+  </tr>
+  <tr>
+    <td>operation.umos.aq.prevision.csv.p2sp3</td>
+    <td>Umos PM 2.5, Pre 2017</td>
+  </tr>
+  <tr>
+    <td>operation.umos.aq.prevision</td>
+    <td>Umos, Post 2017</td>
+  </tr>
+</table>
+<p>Notes: Le programme peut <u>seulement</u> traiter les fichiers dans ces répertoires!</p>
+
+<h3>Bash Script</h3>
+<p>Pour le script de bash, le pgramme va isoler les heures et polluants. Ceci génère un script bash comme <i>FireWork00.bash</i>, il y a deux fichiers par modèles pour les deux passes.
+  Le debut du script est la configuration pour le script. Ceci inclut l'heure, les polluants, les niveaux, et la passe. Le script prend le ficher brute des archives et il va le combiner
+en 1 seul ficher de sortie .fst. Le fichier de sortie est situer à <em>~/bash/</em>. Dépendant du type de modèle, le ficher de sortie aurait cette forme <i>MODEL-MODÈLE_DATE-DÉBUT_DATE-FIN.fst</i>.
+Dans ce script, la commande <i>DESIRE</i> est utilisé. Ceci va chercher les tic-tacs ainsi que les polluants au niveaux désirer.</p>
+<p>Note: Le script pour les Umos-Mist contiennent aussi la commande <i>ZAP</i>, ceci permet de changer l'<i>ETICKET</i> à <i>CAPAMIST</i> car les tic-tacs ne le sont pas avant une certaine date.
+De plus, les fichiers Umos-Mist <b>ne sont pas</b> accessible avant le <u>7 avril 2016</u> car le timestamp a des erreurs.</p>
+<p>ADD IMG-----------------------</p>
+
+<h3>Extraire aux stations</h3>
+<p>Pour l'extration des données à une station, le script <b>extract1.tcl</b> et le fichier de configuration sont nécessaires. Le programme Python génère un fichier config par heure, par date, par passe, par
+polluants et par station. Ceci fait becoup de fichier! Ceci évite des problèmes que le script TCL peut avoir. Si le temps spécifié n'est pas dans le fichier de sortie du script bash, le script TCL ne va pas
+fonctionner. C'est pour ça qu'il a des erreur dans le script tcl roule (error 8), c'est normal! À la fin, le script va générer becaucoup de ficher csv avec une entré. Ceux qui sont vide sont
+suprimer par le programme et ceux qui contiennent de l'information sont combiner ensemble. Le répertoire de sortie se situe à <i>/output/</i>. Les fichiers de configuration se situent à <i>/config/</i> et les fichier
+de traitement se situent à <i>/extracted/</i>. Bien évidament, il y a une répertoire par modèle.</p>
+<p>Les scripts sont lancés avec la commande <b><i>./extract1.tcl répertoire/CONFIG.tcl</i></b>, les fichiers config sont nommés dans cette convention: <i>MOIS-PARTICULE-JOUR-HEUR-PASSE.tcl</i>.
+Elles sont suprimées au début de la prochaine utilisation.</p>
+<p>Note, quand la passe "12" est choisie, le programme génère 2 jours de fichier config suplémentaire automatiquement pour compter les 48h du modèle. C'est la raison pourquoi il y a becaucoup
+de error 8 quand la passe "12" est éxécutée. Le fichier sortie de bash ne contient pas nécéssairement tout les données</p>
+
+<h3>Observations</h3>
+<p>Pour les observations, l'extraction des archives est la même que tous les autres, mais pour obtenir les résultats des stations, il faut utiliser des commande SQL. Les fichiers sont archivés
+en bloc de 3h. Les données des stations sont placées dans un style de key:value dans le fichier database. L'outil va premièrement chercher les heures intéressée, trouve la "clé". Avec la clé,
+on peut ciblé les valeurs (dans ce cas la measure des polluants).</p>
+
+<h3>Umos</h3>
+<p>Il y a deux façons de extraire les umos. Avant 2017, les umos sont archivés par polluant. Donc, il suffit de les déarchiver et d'utiliser la commadne <i>cat</i> et <i>grep</i> avec la station et les polluants
+pour obtenir les résultats. Après cette date, il faut d'abord utiliser la commande <i>cmcarc</i>, pour déarchiver les polluant intéressée et par la suite c'est avec la commande <i>cat</i> et <i>grep</i>
+pour obtenir les résultats.</p>
+
+<h3>ETICKET</h3>
+<p>Le programme génère des petits scripts <i>MODÈLE-Eticket.tcl</i>, pour obtenir les eticket des fichier standard, ceci évite l'utilisateur de les rentrées manuellement.</p>
+
+<h3>Images, GIF</h3>
+<p>Les images sont déarchiver avec la commande <i>cmcarc</i>. Ceci va sortir les 48 fichiers de la passe du modèle. Par la suite, la commande <i>convert -delay 35 -loop ~/imgTemp/</i> combine tout les images pour former
+une animation. Le Gem-Mach et Umos fonctionne de la même manière. Le fichier de sortie se situe a <i>~/output/</i> avec le nom <i>MODELE_AN-MOIS-DATE-HEURE_POLLUANT_ENDROIT.gif</i>. Les Umos contiennent
+@sfc (surface) ou @sfc@diff(différence de surface) après l'endroit. Pour les jouer, la commande unix de <i>animate</i> est utilisée</p>
+
+<h2>Code du Projet</h2>
+<p>Le code du projet se situe à https://github.com/ding-ma/Projet-tude-de-cas-en-Qualit-de-l-air. Pour des questions, veuillez m'écrire à ding.ma@mail.mcgill.ca.</p>
