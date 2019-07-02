@@ -34,6 +34,7 @@ nb.add(machTab, text="Tool")
 
 #this function just writes all the user input into all files
 def GemClicked():
+    btn.config(text="Update")
     global particules
     a = enteredDate.get()
     Gm.inputStartDate(a)
@@ -260,7 +261,7 @@ def StartBash():
         print("Done, file located at -->" + Gm.filelocation + "/bash")
 
 
-btn = tk.Button(machTab, text="Write to file", command=GemClicked, width=15, height=2, bg = "#4ce30f")
+btn = tk.Button(machTab, text="Enter Parameters", command=GemClicked, width=15, height=2, bg = "#4ce30f")
 btn.place(x=850,y=50)
 
 GemmachLabel = tk.Label(machTab,text = "Gemmach", font = "13")

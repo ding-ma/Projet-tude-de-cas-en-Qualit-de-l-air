@@ -38,7 +38,7 @@ def inputEndDate(eD):
 if platform =="win32":
     path = "M:\Projet-tude-de-cas-en-Qualit-de-l-air\src\sql"
 else:
-    path = "/fs/site1/dev/eccc/oth/airq_central/sair001/Ding_Ma/ProjetQA/rarc/operation.observations.dbase.surface.airnow/"
+    path = filelocation+"/rarc/operation.observations.dbase.surface.airnow/"
 
 lstfile = []
 lstdays = []
@@ -67,14 +67,15 @@ def listadys():
 
 
 def rarcFile():
+    days = timedelta(days=1)
     file = open("observations", "w")
     file.write(
         "target = "+filelocation+"/rarc\n"
         "filter = copy\n"
         "postprocess = nopost\n"
-        "date = "+lstdays[0].strftime("%Y,%m,%d")+","+
+        "date = "+sDate.strftime("%Y,%m,%d")+","+
         # end
-        sYear+","+sMonth+","+sDay+
+        (eDate + days).strftime("%Y,%m,%d")+
         "\nbranche = operation.observations.dbase.surface.airnow\n"
         "ext = ***"
         "\nheure = 00,06,12,18"
@@ -115,13 +116,14 @@ def generateFromDB(stationID):
         file.write("Date,Time,Value\n")
         for d in lstdays[:-1]:  # skips last date, but lstfile contains it so it reads it. we just need the last 3h of the eDate in the last file
             for l in lstfile:
+                print("opening db: "+ l)
                 connection = sql.connect(path+l)
                 c = connection.cursor()
                 c.execute("SELECT COUNT(*) FROM (SELECT _rowid_,* FROM main.header);")
                 c.execute("SELECT _rowid_,* FROM main.header WHERE id_stn LIKE '%0"+stationID+"%'")
                 for i in c.fetchall():
                     if i[6] == int(d.strftime("%Y%m%d")):  # range of dates
-                        #print("TIME: " + str(i[7])+" DATE: "+d.strftime("%Y%m%d"))
+                        print("TIME: " + str(i[7])+" DATE: "+d.strftime("%Y%m%d"))
                         c.execute("SELECT COUNT(*) FROM (SELECT _rowid_,* FROM main.data)")
                         c.execute("SELECT _rowid_,* FROM main.data WHERE id_obs =" + str(i[1]) + " AND species =" + s)
                         for p in c.fetchall():
@@ -133,6 +135,7 @@ def generateFromDB(stationID):
                                 post10 = d.strftime("%Y%m%d") + "," + str(int(i[7] / 10000)) + "," + str((p[8])) + "\n"
                                 templst.append(post10)
         bb = sorted(templst)
+        print("Writing to file")
         for t in bb:
             file.write(t)
         templst.clear()
