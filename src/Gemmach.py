@@ -68,7 +68,7 @@ directories = ["bash", "config", "rarc", "output", "extracted", "UMOSTreating", 
 for i in directories:
     if not os.path.exists(filelocation+"/"+i):
         os.mkdir(filelocation+"/"+i)
-os.system("chmod -R 777 "+ filelocation)
+os.system("chmod -R 744 "+ filelocation)
 filedirectory = next(os.walk('.'))[1]
 
 # search for StationID or StationName

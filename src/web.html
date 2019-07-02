@@ -10,13 +10,13 @@
 
 <h2>Comment Utiliser l'Outil?</h2>
 <h3>Premiere section -- Rentré des données</h3>
-<p>Il faut rentrer les informations dans tous les boîtes.  Si vous faites un changement, il faut repeser sur le boutton vert "write to file" pour faire un mise à
+<p>Il faut rentrer les informations dans tous les boîtes.  Si vous faites un changement, il faut repeser sur le bouton vert "write to file" pour faire un mise à
 jour sur les fichers</p>
 [[Image:Firstpart.png|thumb|alt=XRARC|Première Partie|right|600px]]
 <h3>Deuxième section -- Selection des modèles</h3>
 <p>Choisiez les modèles dont vous voulez les informations</p>
 <ul>
-  <li>Le premier boutton extrait les donnes des archines en utilisant la command <strong><em>rarc</em></strong></li>
+  <li>Le premier bouton extrait les donnes des archines en utilisant la command <strong><em>rarc</em></strong></li>
   <li>Le deuxième réécrit le fichier standard avec un script bash pour isoler les heures et polluants selectionés</li>
   <li>Le troisième effectue les calculs avec SPI pour interpoller les resultats à la station choisi</li>
 </ul>
@@ -26,19 +26,19 @@ jour sur les fichers</p>
 <p>Pour extraire les images des archines, il faut toujours Utiliser les données entré dans la section 1. Deplus, il faut aussi selectionés les partie de la carte à la droite</p>
 <h4>Modèles Gem-Mach</h4>
 <ul>
-  <li>Le premier boutton extrait les donnes des archines en utilisant la command <strong><em>rarc</em></strong></li>
+  <li>Le premier bouton extrait les donnes des archines en utilisant la command <i>rarc</i>
   <li>Le deuxième génère l'animation gif dans le répertoire de sortie</li>
 </ul>
 <h4>Modèles UMOS</h4>
 <ul>
-  <li>Le premier boutton extrait les donnes des archines en utilisant la command <strong><em>rarc</em></strong></li>
+  <li>Le premier bouton extrait les donnes des archines en utilisant la command <i>rarc</i>
   <li>Le deuxième génère l'animation gif dans le répertoire de sortie. Par contre, les images UMOS contiennet deux types (surface ou différence de surface), il faut aussi choisir ceci
   avant de générer l'image</li>
 </ul>
-<p>En bas au complet, le boutton 'Animate GIF' est utilisé pour jouer le ficher choisi. Ce boutton utlise la fonction <strong><em>animate</em></strong> du système linux</p>
+<p>En bas au complet, le bouton 'Animate GIF' est utilisé pour jouer le ficher choisi. Ce bouton utlise la fonction <i>animate</i> du système linux</p>
 
 <h3>Suprimer les Fichiers Brutte</h3>
-<p>Le boutton "Delete Extracted Files", va suprimer les répertoires des archives dans <i>~/rarc/</i>. Ces fichiers sont extrêmement grand, environ 1GBé/h pour les Gemmach et Firework. C'est
+<p>Le bouton "Delete Extracted Files", va suprimer les répertoires des archives dans <i>~/rarc/</i>. Ces fichiers sont extrêmement grand, environ 1GBé/h pour les Gemmach et Firework. C'est
 important de les suprimer quand on a finit avec. C'est normal que le programme lance l'errur "Exception in Tkinter callback", c'est un bug avec Python.</p>
 
 <h3>Liste des Fichiers Modifiables par l'Utilisateur en cas de Besoin</h3>
@@ -57,10 +57,10 @@ lat,lon,province (en numéro, consultez le fichier <i>info.csv</i> pour la conve
   <li>UMOSMist.py</li>
   <li>Gemmach.py</li>
   <li>UMOS.py</li>
-  <li>Observations.py</li>
-  <li>Firework.py</li>
+  <li>observations.py</li>
+  <li>FireWork.py</li>
   <li>UMOS_Ref.csv</li>
-  <li>station.csv</li>
+  <li>stations.csv</li>
   <li>extract1.tcl</li>
     </ol>
   </li>
@@ -77,12 +77,19 @@ C'est pour cela que becaucoup de code se resemble. Pour ajourter des modules dan
   <li>Une boite doit être choché au minimum pour les modèle, les particules, et les location </li>
   <li>Dans la case de "search", il faut <u>seulement</u> entrer des charactères(nom de station) ou des nombres(code de station).</li>
   <li>Si rarc retourne "Grand Total of 0", ceci veut dire que les fichiers d'archives n'existent pas ou elles sont déjà présentes.</li>
+  <li>Les dates avant le 7 avirl 2016 pour les UMOS ne vont pas marché du à des erreurs dans les fichiers standard</li>
 </ul>
+<h3>Réparation des fichiers UMOS</h3>
+<p>Problèmes: les heures dans les fstd sont tous "0", et cause des problèmes dans le script tcl.</p>
+<p>Ce que j'ai tenté de faire: Réécrire les fichers avec la fonction zap et "fstdfile info DATEV". Le premier script (time.tcl), transforme le temps epoch du fichiers en temps CMC, et le script
+l'écrit dans un fichier. Par la suite, le deuxième script (timechange.bash), lit le fichier généré et utilise la fonction "ZAP", pour réécire la bonne date sur le fichier. Cependant, les IP2 dans
+les fichiers ne sont plus de 0 à 48, mais de 0 à 23. Ceci cause aussi des problèmes avec le script tcl, mais le temps de la date est réparé.</p>
+<p>Ce qui faut faire: Dans le scipt time.tcl, il faut extraire les IP2 de 0 à 48h et les associées avec le bon temps. En ce momment, j'ai seulement deux fois 0 à 23. </p>
 
 <h2>Description Détailler du Fonctionnement de l'outil</h2>
 <p>Lorsque le programmes est lancer, il modifie automatiquement les fichier en éxécutable et il crée les repertoire de travail. C'est très important de ne pas les suprimer!</p>
 <h3>Extraction des Archives</h3>
-<p>Le programme écrit automatiquement les fichier de configuration avec les informations entrées. Par la suite, le boutton "Extraction" lance la commande <strong><em>rarc -i Gemmach</em></strong>
+<p>Le programme écrit automatiquement les fichier de configuration avec les informations entrées. Par la suite, le bouton "Extraction" lance la commande <i>rarc -i Gemmach</i>
 pour lancer le programme RARC dans le terminal. La sortie de ces fichiers vont se retrouver à <em>~/rarc/</em>, et dépendament des modèles choisis, le programme va générer
 les répertoire de fichers d'archives.</p>
 <p>ADD IMG-----------------------</p>
@@ -143,9 +150,9 @@ De plus, les fichiers Umos-Mist <b>ne sont pas</b> accessible avant le <u>7 avri
 <p>Pour l'extration des données à une station, le script <b>extract1.tcl</b> et le fichier de configuration sont nécessaires. Le programme Python génère un fichier config par heure, par date, par passe, par
 polluants et par station. Ceci fait becoup de fichier! Ceci évite des problèmes que le script TCL peut avoir. Si le temps spécifié n'est pas dans le fichier de sortie du script bash, le script TCL ne va pas
 fonctionner. C'est pour ça qu'il a des erreur dans le script tcl roule (error 8), c'est normal! À la fin, le script va générer becaucoup de ficher csv avec une entré. Ceux qui sont vide sont
-suprimer par le programme et ceux qui contiennent de l'information sont combiner ensemble. Le répertoire de sortie se situe à <i>/output/</i>. Les fichiers de configuration se situent à <i>/config/</i> et les fichier
+suprimer par le programme et ceux qui contiennent de l'information sont combiner ensemble. Le répertoire de sortie se situe à <i>~/output/</i>. Les fichiers de configuration se situent à <i>/config/</i> et les fichier
 de traitement se situent à <i>/extracted/</i>. Bien évidament, il y a une répertoire par modèle.</p>
-<p>Les scripts sont lancés avec la commande <b><i>./extract1.tcl répertoire/CONFIG.tcl</i></b>, les fichiers config sont nommés dans cette convention: <i>MOIS-PARTICULE-JOUR-HEUR-PASSE.tcl</i>.
+<p>Les scripts sont lancés avec la commande <i>./extract1.tcl ~/CONFIG.tcl</i>, les fichiers config sont nommés dans cette convention: <i>MOIS-PARTICULE-JOUR-HEUR-PASSE.tcl</i>.
 Elles sont suprimées au début de la prochaine utilisation.</p>
 <p>Note, quand la passe "12" est choisie, le programme génère 2 jours de fichier config suplémentaire automatiquement pour compter les 48h du modèle. C'est la raison pourquoi il y a becaucoup
 de error 8 quand la passe "12" est éxécutée. Le fichier sortie de bash ne contient pas nécéssairement tout les données</p>
@@ -161,7 +168,8 @@ pour obtenir les résultats. Après cette date, il faut d'abord utiliser la comm
 pour obtenir les résultats.</p>
 
 <h3>ETICKET</h3>
-<p>Le programme génère des petits scripts <i>MODÈLE-Eticket.tcl</i>, pour obtenir les eticket des fichier standard, ceci évite l'utilisateur de les rentrées manuellement.</p>
+<p>Le programme génère des petits scripts <i>MODÈLE-Eticket.tcl</i>, pour obtenir les eticket des fichier standard, ceci évite l'utilisateur de les rentrées manuellement. Les scripts sont automatiquement adaptés
+pour les dates.</p>
 
 <h3>Images, GIF</h3>
 <p>Les images sont déarchiver avec la commande <i>cmcarc</i>. Ceci va sortir les 48 fichiers de la passe du modèle. Par la suite, la commande <i>convert -delay 35 -loop ~/imgTemp/</i> combine tout les images pour former

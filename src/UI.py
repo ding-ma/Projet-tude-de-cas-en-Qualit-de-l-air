@@ -509,7 +509,7 @@ folderdict = {
     "operation.umos.aq.prevision": "Umos, Post 2017"
 }
 
-inv_folderDict = {v: k for k, v in folderdict.items()}
+
 
 folder_names = []
 convertedFolderName = []
@@ -541,6 +541,7 @@ def deleteRarcFile():
     B1.place(x=55,y=160)
 
     def confirmDelete():
+        inv_folderDict = {v: k for k, v in folderdict.items()}
         a = int(filelst.current())
         todel = sorted(convertedFolderName)[a]
         shutil.rmtree("rarc/"+inv_folderDict[todel])
