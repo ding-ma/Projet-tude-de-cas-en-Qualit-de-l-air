@@ -5,7 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gemmach.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gemmach.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/web.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/web.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UMOSMist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UMOSMist.py" afterDir="false" />
     </list>
     <list id="907627cc-b390-404d-92ca-b82bb5948891" name="changed ui for date entry, dropbox" comment="changed ui for date entry, dropbox&#10;&#10;(cherry picked from commit 2f4aa07e39a3bdfdaad2fabc35416c24e44b5482)">
       <changelist_data name="Ding Ma" email="ding.ma@mail.mcgill.ca" date="1559324784000" />
@@ -22,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="485" column="29" lean-forward="true" selection-start-line="485" selection-start-column="29" selection-end-line="485" selection-end-column="29" />
+            <state relative-caret-position="63">
+              <caret line="300" lean-forward="true" selection-start-line="300" selection-end-line="300" />
               <folding>
                 <element signature="e#23#34#0" expanded="true" />
               </folding>
@@ -46,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UMOSMist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4403">
-              <caret line="265" column="40" selection-start-line="265" selection-start-column="40" selection-end-line="265" selection-end-column="40" />
+            <state relative-caret-position="225">
+              <caret line="173" column="62" selection-start-line="173" selection-start-column="62" selection-end-line="173" selection-end-column="62" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -58,8 +58,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="63" column="2" lean-forward="true" selection-start-line="63" selection-start-column="2" selection-end-line="63" selection-end-column="2" />
+            <state relative-caret-position="612">
+              <caret line="87" column="17" lean-forward="true" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -70,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UMOS.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4879">
-              <caret line="295" column="35" selection-start-line="295" selection-start-column="35" selection-end-line="295" selection-end-column="35" />
+            <state relative-caret-position="527">
+              <caret line="165" column="76" lean-forward="true" selection-start-line="165" selection-start-column="76" selection-end-line="165" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -87,7 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>locID</find>
       <find>locID`</find>
       <find>.bash</find>
       <find>cat</find>
@@ -117,6 +116,7 @@
       <find>uvtt</find>
       <find>todo</find>
       <find>animate</find>
+      <find>umist.bot</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -161,10 +161,10 @@
         <option value="$PROJECT_DIR$/src/a.py" />
         <option value="$PROJECT_DIR$/src/observations.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
-        <option value="$PROJECT_DIR$/src/UMOSMist.py" />
         <option value="$PROJECT_DIR$/src/web.html" />
-        <option value="$PROJECT_DIR$/src/UI.py" />
         <option value="$PROJECT_DIR$/src/Gemmach.py" />
+        <option value="$PROJECT_DIR$/src/UI.py" />
+        <option value="$PROJECT_DIR$/src/UMOSMist.py" />
       </list>
     </option>
   </component>
@@ -388,13 +388,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557412480438</updated>
-    </task>
-    <task id="LOCAL-00037" summary="umos mist date/hour seperation is bugging with tcl">
-      <created>1559662366002</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1559662366002</updated>
     </task>
     <task id="LOCAL-00038" summary="fixed bug, was a tag error X.X">
       <created>1559672532603</created>
@@ -732,7 +725,14 @@
       <option name="project" value="LOCAL" />
       <updated>1561736899492</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="updated inverse key problem">
+      <created>1562078683079</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1562078683081</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TodoView">
@@ -756,7 +756,7 @@
       <window_info id="Job Explorer" order="5" weight="0.2971549" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3279743" />
-      <window_info active="true" anchor="bottom" x="11" y="323" width="1898" height="404" id="Run" maximized="true" order="2" sideWeight="0.4873551" visible="true" weight="0.18327974" />
+      <window_info active="true" anchor="bottom" x="11" y="323" width="1898" height="404" id="Run" maximized="true" order="2" sideWeight="0.4873551" visible="true" weight="0.10932476" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.33440515" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -857,7 +857,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="gemmach tcl works for modehl h00" />
     <MESSAGE value="gemmach works with month changes, trying out getters and setters" />
     <MESSAGE value="firework done, testing it out" />
     <MESSAGE value="firework works for h00 and h12" />
@@ -882,7 +881,8 @@
     <MESSAGE value="working on tcl script to correct the umos mist files" />
     <MESSAGE value="backup before working on time change script" />
     <MESSAGE value="working on simple internal webpage for the tool" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on simple internal webpage for the tool" />
+    <MESSAGE value="updated inverse key problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated inverse key problem" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
@@ -1117,16 +1117,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UMOSMist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4403">
-          <caret line="265" column="40" selection-start-line="265" selection-start-column="40" selection-end-line="265" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/web.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -1134,27 +1124,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UMOS.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4879">
-          <caret line="295" column="35" selection-start-line="295" selection-start-column="35" selection-end-line="295" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/UI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="485" column="29" lean-forward="true" selection-start-line="485" selection-start-column="29" selection-end-line="485" selection-end-column="29" />
+        <state relative-caret-position="63">
+          <caret line="300" lean-forward="true" selection-start-line="300" selection-end-line="300" />
           <folding>
             <element signature="e#23#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/UMOS.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="165" column="76" lean-forward="true" selection-start-line="165" selection-start-column="76" selection-end-line="165" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UMOSMist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="173" column="62" selection-start-line="173" selection-start-column="62" selection-end-line="173" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Gemmach.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="63" column="2" lean-forward="true" selection-start-line="63" selection-start-column="2" selection-end-line="63" selection-end-column="2" />
+        <state relative-caret-position="612">
+          <caret line="87" column="17" lean-forward="true" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>

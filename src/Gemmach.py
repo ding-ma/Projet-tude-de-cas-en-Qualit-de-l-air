@@ -64,7 +64,7 @@ evenMonths = ("04", "06", "09", "11")
 ##
 #code to create repos and make sure everything is executable
 filelocation = os.getcwd()
-directories = ["bash", "config", "rarc", "output", "extracted", "UMOSTreating", "configMIST", "extractedMist", "configFw", "extractedFw"]
+directories = ["bash", "config", "rarc", "output", "extracted", "UMOSTreating", "configMIST", "extractedMist", "configFw", "extractedFw","imgTemp"]
 for i in directories:
     if not os.path.exists(filelocation+"/"+i):
         os.mkdir(filelocation+"/"+i)
