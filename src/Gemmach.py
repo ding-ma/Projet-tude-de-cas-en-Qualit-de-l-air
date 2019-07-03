@@ -353,7 +353,7 @@ def datecounter(addDays):
         a = calendar.monthrange(int(sYear), int(sMonth))[1]
         endMonth = date(int(sYear), int(sMonth), a)
         delta1 = endMonth - startDate
-        for f in range(delta1.days + addDays):
+        for f in range(delta1.days + addDays-1):
             a = startDate + timedelta(days=f)
             t = a.strftime("%d")
             lstsMonth.append(t)
@@ -377,17 +377,18 @@ def datecounter(addDays):
 def listOfDays():
     global formattedDay
     global genday
-    unformattedDay = ""
+    unformattedDay = []
     genday = datecounter(2)
     if len(genday) is 2 and isinstance(genday,tuple):
         for l in genday[0]:
-            unformattedDay +=l
+            unformattedDay.append(l)
         for z in genday[1]:
-            unformattedDay +=z
+            unformattedDay.append(z)
     else:
         for l in genday:
-            unformattedDay+=l
-    formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
+            unformattedDay.append(l)
+    formattedDay = (' '.join(set(unformattedDay)))
+    #formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
 
 #for bash
 def listofMonth():
@@ -569,6 +570,7 @@ def locationExtraction(iditem):
 
 
 def generateTCL(g, modelH,iditem):
+    print(g)
     global locationID
     gemFileEticket = open("gemEticket.txt", "r")
     EticketGM = gemFileEticket.read().strip()
@@ -589,7 +591,7 @@ def generateTCL(g, modelH,iditem):
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
                         "set Data(TAG1)   \"BashOut" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                        "set Data(TAG3)   \""+ hToName + sMonth + d+ "\"\n"
+                        "set Data(TAG3)   \""+d+ sMonth + hToName+ "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \"" + modelH + "\"\n"
                         "set Data(levels) \"-1""\"\n"  # todo confirm levels
@@ -611,7 +613,7 @@ def generateTCL(g, modelH,iditem):
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
                         "set Data(TAG1)   \"BashOut" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                        "set Data(TAG3)   \""+ hToName + sMonth + d+ "\"\n"
+                        "set Data(TAG3)   \""+d+ eMonth + hToName+ "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \"" + modelH + "\"\n"
                         "set Data(levels) \"-1""\"\n"  # todo confirm levels
@@ -672,8 +674,6 @@ def removeEmptyFile(path):
             removeEmptyFile(docPath)
 
 
-
-removeEmptyFile(r'' + filelocation + "/extracted")
 #deletes all file after the script is done running
 Name = []
 def removeAllfile(path):
@@ -697,6 +697,7 @@ def sortAndGenerate(destination):
                 os.makedirs(destination + m + p)
             for f in os.listdir(destination):
                 for delete in HtoDelete:
+                    #takes the 4th character to sort
                     if f.startswith(delete,4):
                         os.remove(destination + f)
             for f in os.listdir(destination):
