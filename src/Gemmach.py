@@ -635,7 +635,7 @@ def generateTCL(g, modelH,iditem):
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
                         "set Data(TAG1)   \"BashOut" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                        "set Data(TAG3)   \""+ hToName + sMonth + d+ "\"\n"
+                        "set Data(TAG3)   \""+d+ sMonth + hToName+ "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \"" + modelH + "\"\n"
                         "set Data(levels) \"-1""\"\n"  # todo confirm levels
@@ -672,6 +672,7 @@ def removeEmptyFile(path):
             removeEmptyFile(docPath)
 
 
+
 removeEmptyFile(r'' + filelocation + "/extracted")
 #deletes all file after the script is done running
 Name = []
@@ -696,7 +697,7 @@ def sortAndGenerate(destination):
                 os.makedirs(destination + m + p)
             for f in os.listdir(destination):
                 for delete in HtoDelete:
-                    if f.startswith(delete):
+                    if f.startswith(delete,4):
                         os.remove(destination + f)
             for f in os.listdir(destination):
                 if f.endswith("_" + m + p + ".csv"):
@@ -704,8 +705,7 @@ def sortAndGenerate(destination):
                 file = open("output/GEM__"+"ID"+locationID +"___"+m + p+"___Start"+sYear+sMonth+sDay +"___End"+eYear+eMonth+eDay+ ".csv", "w+")
                 file.write("Date,Time,Height,Value\n")
                 for i in sorted(os.listdir(destination + m + p)):
-                    b = open(destination + m + p + "/" + i).read()
-                    file.write(b)
+                    file.write(open(destination + m + p + "/" + i).read())
         print("\nJob done, see folder-->" + filelocation+"/output")
 
 
