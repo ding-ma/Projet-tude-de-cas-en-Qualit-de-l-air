@@ -77,7 +77,7 @@ def datecounter(addDays):
         a = calendar.monthrange(int(sYear), int(sMonth))[1]
         endMonth = date(int(sYear), int(sMonth), a)
         delta1 = endMonth - startDate
-        for f in range(delta1.days + addDays):
+        for f in range(delta1.days + addDays-1):
             a = startDate + timedelta(days=f)
             t = a.strftime("%d")
             lstsMonth.append(t)
@@ -97,13 +97,12 @@ def datecounter(addDays):
         return lstDays
 
 
-
 # used for bashfile
 def listOfDays():
     global formattedDay
     global genday
-    unformattedDay = ""
-    genday = datecounter(1)
+    unformattedDay = []
+    genday = datecounter(2)
     if len(genday) is 2 and isinstance(genday,tuple):
         for l in genday[0]:
             unformattedDay +=l
@@ -112,7 +111,7 @@ def listOfDays():
     else:
         for l in genday:
             unformattedDay+=l
-    formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
+    formattedDay = (' '.join(set(unformattedDay)))
 
 #for bash
 def listofMonth():
@@ -304,7 +303,7 @@ def generateTCL(g,modelH,formattedParticuleString, loc):
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
                         "set Data(TAG1)   \"FW" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                        "set Data(TAG3)   \"" + sMonth + d + "" + hToName + "\"\n"
+                        "set Data(TAG3)   \""+d+ sMonth + hToName+ "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \"" + modelH + "\"\n"
                         "set Data(levels) \" -1\"\n"  # todo confirm levels
@@ -327,7 +326,7 @@ def generateTCL(g,modelH,formattedParticuleString, loc):
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
                         "set Data(TAG1)   \"FW" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                        "set Data(TAG3)   \"" + eMonth + d + "" + hToName + "\"\n"
+                         "set Data(TAG3)   \""+d+ eMonth + hToName+ "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \"" + modelH + "\"\n"
                         "set Data(levels) \" -1\"\n"  # todo confirm levels
@@ -352,7 +351,7 @@ def generateTCL(g,modelH,formattedParticuleString, loc):
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
                         "set Data(TAG1)   \"FW" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                        "set Data(TAG3)   \"" + sMonth + d + "" + hToName + "\"\n"
+                          "set Data(TAG3)   \""+d+ sMonth + hToName+ "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \"" + modelH + "\"\n"
                         "set Data(levels) \" -1\"\n"  # todo confirm levels
@@ -404,6 +403,11 @@ def sortAndGenerate(destination):
         for p in particulelist:
             if not os.path.exists(destination + m + p):
                 os.makedirs(destination + m + p)
+            for f in os.listdir(destination):
+                for delete in Gm.HtoDelete:
+                    # takes the 4th character to sort
+                    if f.startswith(delete, 4):
+                        os.remove(destination + f)
             for f in os.listdir(destination):
                 if f.endswith("_" + m + p + ".csv"):
                     shutil.move(destination + f, destination + m + p)

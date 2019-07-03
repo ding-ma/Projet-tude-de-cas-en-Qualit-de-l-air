@@ -388,7 +388,7 @@ def listOfDays():
         for l in genday:
             unformattedDay.append(l)
     formattedDay = (' '.join(set(unformattedDay)))
-    #formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
+
 
 #for bash
 def listofMonth():

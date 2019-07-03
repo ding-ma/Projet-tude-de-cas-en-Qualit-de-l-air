@@ -266,7 +266,7 @@ btn.place(x=850,y=50)
 
 GemmachLabel = tk.Label(machTab,text = "Gemmach", font = "13")
 GemmachLabel.place(x=50,y=160)
-scriptBtn = tk.Button(machTab, text="Start Script", command=StartBash, width=17, height=1)
+scriptBtn = tk.Button(machTab, text="Treatment", command=StartBash, width=17, height=1)
 scriptBtn.place(x=40,y=220)
 
 extrationBtn = tk.Button(machTab, text="Start Extraction", command=StartXRACR, width=17, height=1)
@@ -344,7 +344,7 @@ def MistGetLocation():
 UmosMist = tk.Label(machTab,text = "UMOS-MIST", font = "13")
 UmosMist.place(x=455,y=160)
 
-mistBashBtn = tk.Button(machTab, text = "Bash", command = MISTClicked, width=17, height=1)
+mistBashBtn = tk.Button(machTab, text = "Treatment", command = MISTClicked, width=17, height=1)
 mistBashBtn.place(x=438,y=220)
 
 mistExtraction = tk.Button(machTab, text = "Start Extraction", command =MISTRARC, width=17, height=1)
@@ -382,10 +382,10 @@ def FwGetLocation():
 FireWork = tk.Label(machTab,text = "FireWork", font = "13")
 FireWork.place(x=655,y=160)
 
-fwBashBtn = tk.Button(machTab, text = "Bash", command = FwClicked,width=17, height=1)
+fwBashBtn = tk.Button(machTab, text = "Treatment", command = FwClicked,width=17, height=1)
 fwBashBtn.place(x=638,y=220)
 
-fwRarcBtn = tk.Button(machTab, text = "Rarc", command = FwRarc, width=17, height=1)
+fwRarcBtn = tk.Button(machTab, text="Start Extraction", command = FwRarc, width=17, height=1)
 fwRarcBtn.place(x=638,y=190)
 
 fwTCLbtn = tk.Button(machTab, text = "Get Data Location", command = FwGetLocation, width=17, height=1)
@@ -408,7 +408,7 @@ imagesct.place(x=10,y=300)
 
 imgextraction = tk.Label(machTab, text ="Gemmach", font = "13")
 imgextraction.place(x=50, y=335)
-ImgBtn = tk.Button(machTab, text = "Get Images, GM", command = getImg, width=17, height=1)
+ImgBtn = tk.Button(machTab, text = "Get Images", command = getImg, width=17, height=1)
 ImgBtn.place(x=40,y=390)
 
 
@@ -434,7 +434,7 @@ def IMRARC():
     os.system("rarc -i " + Gm.filelocation + "/image &")
 
 
-ImgRarcBtn = tk.Button(machTab, text = "Rarc, Im-Gm", command = IMRARC,width=17, height=1)
+ImgRarcBtn = tk.Button(machTab, text = "Start Extraction", command = IMRARC,width=17, height=1)
 ImgRarcBtn.place(x=40,y=360)
 
 def UmosImgRarc():
@@ -444,10 +444,10 @@ def UmosImgRarc():
 imgUmos = tk.Label(machTab,text = "UMOS", font = "13")
 imgUmos.place(x=255,y=335)
 
-ImgUmosRarcBtn = tk.Button(machTab, text = "Rarc, Im-Um", command =UmosImgRarc,width=17, height=1)
+ImgUmosRarcBtn = tk.Button(machTab, text = "Start Extraction", command =UmosImgRarc,width=17, height=1)
 ImgUmosRarcBtn.place(x=225,y=360)
 
-UmosImgBtn = tk.Button(machTab, text ="Get img, UM", command = getUMOSimg,width=17, height=1)
+UmosImgBtn = tk.Button(machTab, text ="Get images", command = getUMOSimg,width=17, height=1)
 UmosImgBtn.place(x=438,y=390)
 
 UmosImgLocation = ttk.Combobox(machTab, values = ["@sfc_", "@sfc@diff_"], state='readonly')
@@ -490,10 +490,10 @@ def ObservationGetLocation():
 
 obs = tk.Label(machTab,text = "Observations", font = "13")
 obs.place(x=855,y=160)
-observationRarcBtn = tk.Button(machTab,text = "Rarc, OBS", command=RarcObservation, width=17, height=1)
+observationRarcBtn = tk.Button(machTab,text = "Start Extraction", command=RarcObservation, width=17, height=1)
 observationRarcBtn.place(x=838,y=190)
 
-observationLocationBtn = tk.Button(machTab, text = "Get at location, OBS", command=ObservationGetLocation, width=17, height=1)
+observationLocationBtn = tk.Button(machTab, text = "Get at location", command=ObservationGetLocation, width=17, height=1)
 observationLocationBtn.place(x=838,y=220)
 
 folderdict = {

@@ -102,8 +102,8 @@ def datecounter(addDays):
 def listOfDays():
     global formattedDay
     global genday
-    unformattedDay = ""
-    genday = datecounter(1)
+    unformattedDay = []
+    genday = datecounter(2)
     if len(genday) is 2 and isinstance(genday, tuple):
         for l in genday[0]:
             unformattedDay += l
@@ -112,7 +112,7 @@ def listOfDays():
     else:
         for l in genday:
             unformattedDay += l
-    formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
+    formattedDay = (' '.join(set(unformattedDay)))
 
 
 # for bash
@@ -301,24 +301,24 @@ def generateTCL(g, modelH, loc, fpp):
                     config = open("configMIST/MIST_" + sMonth + p + d + hToName + modelH + ".tcl", "w")
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
-                                                    "set Data(TAG1)   \"UMOSmist" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                                                                                                                                                         "set Data(TAG3)   \"" + sMonth + d + "" + hToName + "\"\n"
-                                                                                                                                                                                                             "set Data(outTXT)       \"SITE\" \n"
-                                                                                                                                                                                                             "set Data(PASSE) \"" + modelH + "\"\n"
-                                                                                                                                                                                                                                             "set Data(levels) \" -1\"\n"  # todo confirm levels
-                                                                                                                                                                                                                                             "set Data(MandatoryLevels) \" 1\"\n"
-                                                                                                                                                                                                                                             "set Data(Path)    " + filelocation + "/bash\n"
-                                                                                                                                                                                                                                                                                   "set Data(PathOut) " + filelocation + "/extractedMist\n"
-                                                                                                                                                                                                                                                                                                                         "set Data(Start)      \"" + sYear + sMonth + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                      "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                 "set Data(Eticket)     \"" + Eticket + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        "set Data(point) \"" + name + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      "set Data(coord) \"" + lat + " " + long + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "#set Data(ID) \"ID" + loc + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             "set Data(PASSE) \"" + modelH + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             "set Data(days) \"" + str(
-                            d) + "\"\n"  # todo confirm start day
-                                 "set Data(hours) \"" + str(hToFile) + "\"\n"
+                        "set Data(TAG1)   \"UMOSmist" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                        "set Data(TAG3)   \""+d+ sMonth + hToName+ "\"\n"
+                        "set Data(outTXT)       \"SITE\" \n"
+                        "set Data(PASSE) \"" + modelH + "\"\n"
+                        "set Data(levels) \" -1\"\n"  # todo confirm levels
+                        "set Data(MandatoryLevels) \" 1\"\n"
+                        "set Data(Path)    " + filelocation + "/bash\n"
+                        "set Data(PathOut) " + filelocation + "/extractedMist\n"
+                        "set Data(Start)      \"" + sYear + sMonth + "\"\n"
+                        "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                        "set Data(Eticket)     \"" + Eticket + "\"\n"
+                        "set Data(point) \"" + name + "\"\n"
+                        "set Data(coord) \"" + lat + " " + long + "\"\n"
+                        "#set Data(ID) \"ID" + loc + "\"\n"
+                        "set Data(PASSE) \"" + modelH + "\"\n"
+                        "set Data(days) \"" + str(
+                        d) + "\"\n"  # todo confirm start day
+                        "set Data(hours) \"" + str(hToFile) + "\"\n"
                     )
         for p in particulelist:
             for d in g[1]:
@@ -326,24 +326,24 @@ def generateTCL(g, modelH, loc, fpp):
                     config = open("configMIST/MIST_" + eMonth + p + d + hToName + modelH + ".tcl", "w")
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
-                                                    "set Data(TAG1)   \"UMOSmist" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                                                                                                                                                         "set Data(TAG3)   \"" + eMonth + d + "" + hToName + "\"\n"
-                                                                                                                                                                                                             "set Data(outTXT)       \"SITE\" \n"
-                                                                                                                                                                                                             "set Data(PASSE) \"" + modelH + "\"\n"
-                                                                                                                                                                                                                                             "set Data(levels) \" -1\"\n"  # todo confirm levels
-                                                                                                                                                                                                                                             "set Data(MandatoryLevels) \" 1\"\n"
-                                                                                                                                                                                                                                             "set Data(Path)    " + filelocation + "/bash\n"
-                                                                                                                                                                                                                                                                                   "set Data(PathOut) " + filelocation + "/extractedMist\n"
-                                                                                                                                                                                                                                                                                                                         "set Data(Start)      \"" + sYear + eMonth + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                      "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                 "set Data(Eticket)     \"" + Eticket + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        "set Data(point) \"" + name + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      "set Data(coord) \"" + lat + " " + long + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "#set Data(ID) \"ID" + loc + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             "set Data(PASSE) \"" + modelH + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             "set Data(days) \"" + str(
-                            d) + "\"\n"  # todo confirm start day
-                                 "set Data(hours) \"" + str(hToFile) + "\"\n"
+                        "set Data(TAG1)   \"UMOSmist" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                       "set Data(TAG3)   \""+d+ sMonth + hToName+ "\"\n"
+                        "set Data(outTXT)       \"SITE\" \n"
+                        "set Data(PASSE) \"" + modelH + "\"\n"
+                        "set Data(levels) \" -1\"\n"  # todo confirm levels
+                        "set Data(MandatoryLevels) \" 1\"\n"
+                        "set Data(Path)    " + filelocation + "/bash\n"
+                        "set Data(PathOut) " + filelocation + "/extractedMist\n"
+                        "set Data(Start)      \"" + sYear + eMonth + "\"\n"
+                        "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                        "set Data(Eticket)     \"" + Eticket + "\"\n"
+                        "set Data(point) \"" + name + "\"\n"
+                        "set Data(coord) \"" + lat + " " + long + "\"\n"
+                        "#set Data(ID) \"ID" + loc + "\"\n"
+                        "set Data(PASSE) \"" + modelH + "\"\n"
+                        "set Data(days) \"" + str(
+                        d) + "\"\n"  # todo confirm start day
+                        "set Data(hours) \"" + str(hToFile) + "\"\n"
                     )
     else:
         dayList = list(genday)
@@ -353,24 +353,24 @@ def generateTCL(g, modelH, loc, fpp):
                     config = open("configMIST/MIST_" + sMonth + p + d + hToName + modelH + ".tcl", "w")
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
-                                                    "set Data(TAG1)   \"UMOSmist" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                                                                                                                                                         "set Data(TAG3)   \"" + sMonth + d + "" + hToName + "\"\n"
-                                                                                                                                                                                                             "set Data(outTXT)       \"SITE\" \n"
-                                                                                                                                                                                                             "set Data(PASSE) \"" + modelH + "\"\n"
-                                                                                                                                                                                                                                             "set Data(levels) \" -1\"\n"  # todo confirm levels
-                                                                                                                                                                                                                                             "set Data(MandatoryLevels) \" 1\"\n"
-                                                                                                                                                                                                                                             "set Data(Path)    " + filelocation + "/bash\n"
-                                                                                                                                                                                                                                                                                   "set Data(PathOut) " + filelocation + "/extractedMist\n"
-                                                                                                                                                                                                                                                                                                                         "set Data(Start)      \"" + sYear + sMonth + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                      "set Data(End)      \"" + eYear + eMonth + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                 "set Data(Eticket)     \"" + Eticket + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        "set Data(point) \"" + name + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      "set Data(coord) \"" + lat + " " + long + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "#set Data(ID) \"ID" + loc + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             "set Data(PASSE) \"" + modelH + "\"\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             "set Data(days) \"" + str(
-                            d) + "\"\n"  # todo confirm start day
-                                 "set Data(hours) \"" + str(hToFile) + "\"\n"
+                        "set Data(TAG1)   \"UMOSmist" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
+                       "set Data(TAG3)   \""+d+ sMonth + hToName+ "\"\n"
+                        "set Data(outTXT)       \"SITE\" \n"
+                        "set Data(PASSE) \"" + modelH + "\"\n"
+                        "set Data(levels) \" -1\"\n"  # todo confirm levels
+                        "set Data(MandatoryLevels) \" 1\"\n"
+                        "set Data(Path)    " + filelocation + "/bash\n"
+                        "set Data(PathOut) " + filelocation + "/extractedMist\n"
+                        "set Data(Start)      \"" + sYear + sMonth + "\"\n"
+                        "set Data(End)      \"" + eYear + eMonth + "\"\n"
+                        "set Data(Eticket)     \"" + Eticket + "\"\n"
+                        "set Data(point) \"" + name + "\"\n"
+                        "set Data(coord) \"" + lat + " " + long + "\"\n"
+                        "#set Data(ID) \"ID" + loc + "\"\n"
+                        "set Data(PASSE) \"" + modelH + "\"\n"
+                        "set Data(days) \"" + str(
+                        d) + "\"\n"  # todo confirm start day
+                        "set Data(hours) \"" + str(hToFile) + "\"\n"
                     )
     print("Done")
 
@@ -413,6 +413,11 @@ def sortAndGenerate(destination):
         for p in particulelist:
             if not os.path.exists(destination + m + p):
                 os.makedirs(destination + m + p)
+            for f in os.listdir(destination):
+                for delete in Gm.HtoDelete:
+                    #takes the 4th character to sort
+                    if f.startswith(delete,4):
+                        os.remove(destination + f)
             for f in os.listdir(destination):
                 if f.endswith("_" + m + p + ".csv"):
                     shutil.move(destination + f, destination + m + p)
