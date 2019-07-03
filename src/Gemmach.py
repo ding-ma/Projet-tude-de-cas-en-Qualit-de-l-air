@@ -20,8 +20,8 @@ hours = (
 # This format is used for the tcl script
 tcl = [
     "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
-    "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39",
-    "40", "41", "42", "43", "44", "45", "46", "47", "48"]
+    "21", "22", "23", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+    "21", "22", "23", "0"]
 
 # This format is used to sort the files
 hour24 = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17",
@@ -378,7 +378,7 @@ def listOfDays():
     global formattedDay
     global genday
     unformattedDay = ""
-    genday = datecounter(1)
+    genday = datecounter(2)
     if len(genday) is 2 and isinstance(genday,tuple):
         for l in genday[0]:
             unformattedDay +=l
@@ -557,9 +557,9 @@ def getEticket():
 # a lot of 0kb file will be generated from running this script but they are deleted after
 def locationExtraction(iditem):
     modelHourList = re.split(",", modelHour)
-    deletelist = os.listdir(filelocation+"/extracted")
-    for d in deletelist:
-        shutil.rmtree(filelocation+"/extracted/" + d)
+    #deletelist = os.listdir(filelocation+"/extracted")
+    shutil.rmtree(filelocation+"/extracted")
+    os.mkdir(filelocation+"/extracted")
     for modelH in modelHourList:
         if modelH == "12":
             g = datecounter(3)
@@ -589,7 +589,7 @@ def generateTCL(g, modelH,iditem):
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
                         "set Data(TAG1)   \"BashOut" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                        "set Data(TAG3)   \"" + sMonth + d + "" + hToName + "\"\n"
+                        "set Data(TAG3)   \""+ hToName + sMonth + d+ "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \"" + modelH + "\"\n"
                         "set Data(levels) \"-1""\"\n"  # todo confirm levels
@@ -611,7 +611,7 @@ def generateTCL(g, modelH,iditem):
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
                         "set Data(TAG1)   \"BashOut" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                        "set Data(TAG3)   \"" + eMonth + d + "" + hToName + "\"\n"
+                        "set Data(TAG3)   \""+ hToName + sMonth + d+ "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \"" + modelH + "\"\n"
                         "set Data(levels) \"-1""\"\n"  # todo confirm levels
@@ -627,7 +627,7 @@ def generateTCL(g, modelH,iditem):
                         d) + "\"\n"  # todo confirm start day
                         "set Data(hours) \"" + str(hToFile) + "\"\n")
     else:
-        dayList = list(genday)
+        dayList = list(g)
         for p in particulelist:
             for d in dayList:
                 for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
@@ -635,7 +635,7 @@ def generateTCL(g, modelH,iditem):
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
                         "set Data(TAG1)   \"BashOut" + modelH + "." + sYear + sMonth + sDay + "_" + eYear + eMonth + eDay + "_regeta\"\n"
-                        "set Data(TAG3)   \"" + sMonth + d + "" + hToName + "\"\n"
+                        "set Data(TAG3)   \""+ hToName + sMonth + d+ "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \"" + modelH + "\"\n"
                         "set Data(levels) \"-1""\"\n"  # todo confirm levels
@@ -672,6 +672,7 @@ def removeEmptyFile(path):
             removeEmptyFile(docPath)
 
 
+removeEmptyFile(r'' + filelocation + "/extracted")
 #deletes all file after the script is done running
 Name = []
 def removeAllfile(path):
@@ -683,6 +684,7 @@ def removeAllfile(path):
                 os.remove(docPath)
 
 
+HtoDelete = ["24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35","36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
 #sorts and generates a CSV file in the output folder
 def sortAndGenerate(destination):
     particulelist = re.split(" ", formattedParticuleString)
@@ -693,13 +695,17 @@ def sortAndGenerate(destination):
             if not os.path.exists(destination + m + p):
                 os.makedirs(destination + m + p)
             for f in os.listdir(destination):
+                for delete in HtoDelete:
+                    if f.startswith(delete):
+                        os.remove(destination + f)
+            for f in os.listdir(destination):
                 if f.endswith("_" + m + p + ".csv"):
                     shutil.move(destination + f, destination + m + p)
-            file = open("output/GEM__"+"ID"+locationID +"___"+m + p+"___Start"+sYear+sMonth+sDay +"___End"+eYear+eMonth+eDay+ ".csv", "w+")
-            file.write("Date,Time,Height,Value\n")
-            for i in sorted(os.listdir(destination + m + p)):
-                b = open(destination + m + p + "/" + i).read()
-                file.write(b)
-    print("\nJob done, see folder-->" + filelocation+"/output")
+                file = open("output/GEM__"+"ID"+locationID +"___"+m + p+"___Start"+sYear+sMonth+sDay +"___End"+eYear+eMonth+eDay+ ".csv", "w+")
+                file.write("Date,Time,Height,Value\n")
+                for i in sorted(os.listdir(destination + m + p)):
+                    b = open(destination + m + p + "/" + i).read()
+                    file.write(b)
+        print("\nJob done, see folder-->" + filelocation+"/output")
 
 
