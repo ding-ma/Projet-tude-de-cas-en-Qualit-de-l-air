@@ -2,10 +2,12 @@ import calendar
 import collections
 import csv
 import difflib
+import itertools as IT
 import os
 import re
 import shutil
 import string
+import tempfile
 from datetime import date, timedelta
 
 # Setings used for the entire program, change/ add as needed
@@ -14,19 +16,18 @@ from datetime import date, timedelta
 hours = (
     "000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015",
     "016", "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029", "030", "031",
-    "032", "033", "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047",
-    "048")
+    "032", "033", "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047")
 
 # This format is used for the tcl script
 tcl = [
     "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
     "21", "22", "23", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
-    "21", "22", "23", "0"]
+    "21", "22", "23"]
 
 # This format is used to sort the files
 hour24 = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17",
           "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
-          "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
+          "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47"]
 
 # extra hours if needed to be added
 # ,"49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72"
@@ -341,7 +342,7 @@ monthset = set()
 def datecounter(addDays):
     # global daylst12
     # global montlst
-
+    global newEmonth
     lstsMonth = []
     lsteMonth = []
     lstDays = []
@@ -364,6 +365,7 @@ def datecounter(addDays):
             c = startMonth + timedelta(days=q)
             w = c.strftime("%d")
             lsteMonth.append(w)
+            newEmonth = eMonth
         return lstsMonth,lsteMonth
     else:
         delta = endDate - startDate
@@ -379,7 +381,6 @@ def datecounter(addDays):
                 Month = lstmontset[0]
             else:
                 Month = lstmontset[1]
-            global newEmonth
             newEmonth = Month
         else:
             newEmonth = eMonth
@@ -595,8 +596,6 @@ def generateTCL(g, modelH,iditem):
     s = hours.index(executehour[0])
     e = hours.index(executehour[-1])
     particulelist = re.split(" ", formattedParticuleString)
-    print(sMonth,eMonth,newEmonth)
-    print(g)
     if int(sMonth) is not (int(newEmonth)):
         for p in particulelist:
             if isinstance(g,tuple) is True:
@@ -745,14 +744,34 @@ def removeAllfile(path):
                 os.remove(docPath)
 
 
+def uniquify(path, sep = ''):
+    def name_sequence():
+        count = IT.count()
+        yield ''
+        while True:
+            yield '{s}{n:d}'.format(s = sep, n = next(count))
+    orig = tempfile._name_sequence
+    with tempfile._once_lock:
+        tempfile._name_sequence = name_sequence()
+        path = os.path.normpath(path)
+        dirname, basename = os.path.split(path)
+        filename, ext = os.path.splitext(basename)
+        fd, filename = tempfile.mkstemp(dir = dirname, prefix = filename, suffix = ext)
+        tempfile._name_sequence = orig
+    return filename
+
+
 HtoDelete = ["24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35","36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
 #sorts and generates a CSV file in the output folder
 def sortAndGenerate(destination):
+
     particulelist = re.split(" ", formattedParticuleString)
     modelHourList = re.split(",", modelHour)
     os.system(" ls " + filelocation + "/extracted | sort -st '/' -k1,1")
     for m in modelHourList:
         for p in particulelist:
+            fileName = "output/GEM__" + "ID" + locationID + "___" + m + p + "___Start" + sYear + sMonth + sDay + "___End" + eYear + eMonth + eDay + "_.csv"
+            uniqueFileName = uniquify(fileName)
             if not os.path.exists(destination + m + p):
                 os.makedirs(destination + m + p)
             for f in os.listdir(destination):
@@ -763,8 +782,10 @@ def sortAndGenerate(destination):
             for f in os.listdir(destination):
                 if f.endswith("_" + m + p + ".csv"):
                     shutil.move(destination + f, destination + m + p)
-                file = open("output/GEM__"+"ID"+locationID +"___"+m + p+"___Start"+sYear+sMonth+sDay +"___End"+eYear+eMonth+eDay+ ".csv", "w+")
+                file = open(uniqueFileName, "w+")
                 file.write("Date,Time,Height,Value\n")
                 for i in sorted(os.listdir(destination + m + p)):
                     file.write(open(destination + m + p + "/" + i).read())
         print("\nJob done, see folder-->" + filelocation+"/output")
+
+
