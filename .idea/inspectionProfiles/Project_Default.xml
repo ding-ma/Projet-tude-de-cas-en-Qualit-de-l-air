@@ -38,6 +38,7 @@
           <option value="tests.self" />
           <option value="Images.time.sleep" />
           <option value="a.ttk" />
+          <option value="dict.add" />
         </list>
       </option>
     </inspection_tool>
