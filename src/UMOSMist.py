@@ -78,7 +78,10 @@ def datecounter(selectedDate,addDays):
     return lstDays
 
 
-def rarcFile():
+def rarcFile(dateSelected):
+    year = dateSelected.split("/")[0]
+    month = dateSelected.split("/")[1]
+    day = dateSelected.split("/")[2]
     modelHourList = re.split(",", modelHour)
     file = open("UMist", "w")
     file.write(
@@ -103,8 +106,8 @@ def rarcFile():
         "# : - \\"
         "\nexec /fs/ssm/eccc/cmo/cmoe/apps/SPI_7.12.0_all/tclsh \"$0\" \"$@\""
         "\npackage require TclData\n"
-        "set Path " + filelocation + "/rarc/operation.scribeMat.mist.aq"
-        "\nset bashFST "+ sYear + sMonth + sDay +modelHourList[0]+ "_mist_anal" +
+        "set Path " + filelocation + "/bash/"
+        "\nset bashFST UMOSmist"+modelHourList[0]+"." + year + month+day+"_regeta.fst"+
         "\nset FileOut [open UmosMistEticket.txt w+]"
         "\nset FileIn [ lsort -dictionary [ glob $Path$bashFST ] ]"
         "\nfstdfile open 1 read  $FileIn"

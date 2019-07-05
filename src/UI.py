@@ -74,7 +74,7 @@ def GemClicked():
     Umist.inputStartDate(a)
     Umist.inputEndDate(b)
     Umist.modelCheckbox(h_00, h_12)
-    Umist.rarcFile()
+
 
 
     Fw.level(levelEntry.get())
@@ -84,7 +84,6 @@ def GemClicked():
     Fw.inputEndDate(b)
     Fw.modelCheckbox(h_00, h_12)
     Fw.rarcFile()
-    Fw.bashFile(particules, locID)
 
     Im.inputStartDate(a)
     Im.inputEndDate(b)
@@ -305,6 +304,7 @@ locationBtn.place(x=40,y=250)
 
 
 def UMOSClicked():
+    Umist.rarcFile(getdate())
     for filename in glob.glob("rarc/umos*"):
         os.system("rarc -i " + Gm.filelocation + "/" + filename + " &")
 
@@ -375,6 +375,7 @@ def FwRarc():
     os.system("rarc -i " + Umist.filelocation + "/FireWork &")
 
 def FwClicked():
+    Fw.bashFile(particules, getdate())
     os.system("chmod -R 777 " + Fw.filelocation)
     if Fw.bothCheked is 1:
         os.system("./FireWork00.bash &")
@@ -390,7 +391,7 @@ def FwClicked():
 def FwGetLocation():
     shutil.rmtree("extractedFw")
     os.mkdir("extractedFw")
-    Fw.TCLConfig(particules,getComboboxLocation())
+    Fw.TCLConfig(particules,getComboboxLocation(),getdate())
     Fw.launchTCL()
     Fw.removeEmptyFile(r'' + Fw.filelocation + "/extractedFw")
     Fw.sortAndGenerate(Fw.filelocation + "/extractedFw/")

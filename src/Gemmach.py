@@ -396,6 +396,7 @@ def level(lv):
 
 #generating rarc script
 def rarcFile():
+    modelHourList = re.split(",", modelHour)
     file = open("gemmach", "w")
     file.write(
         "target = "+filelocation+"/rarc\n"
@@ -418,8 +419,8 @@ def rarcFile():
         "# : - \\"
         "\nexec /fs/ssm/eccc/cmo/cmoe/apps/SPI_7.12.0_all/tclsh \"$0\" \"$@\""
         "\npackage require TclData\n"
-        "set Path "+filelocation+"/rarc/operation.forecasts.mach"
-        "\nset bashFST "+ sYear + sMonth+sDay+"_"+formattedSelectedTimeWithComma.split(",")[0]+
+        "set Path "+filelocation+"/rarc/operation.forecasts.mach/"
+        "\nset bashFST "+ sYear + sMonth+sDay+modelHourList[0]+"_"+formattedSelectedTimeWithComma.split(",")[0]+
         "\nset FileOut [open gemEticket.txt w+]"
         "\nset FileIn [ lsort -dictionary [ glob $Path$bashFST ] ]"
         "\nfstdfile open 1 read  $FileIn"
@@ -581,7 +582,7 @@ def generateTCL(g, modelH,iditem,selectedDate):
                 config.write(
                     "set Data(SpLst)  \"" + p + "\" \n"
                     "set Data(TAG1)   \"BashOut" + modelH + "." + year + month + day + "_regeta\"\n"
-                    "set Data(TAG3)   \"" + sMonth + lastday + hToName + "\"\n"
+                    "set Data(TAG3)   \"" + month + lastday + hToName + "\"\n"
                     "set Data(outTXT)       \"SITE\" \n"
                     "set Data(PASSE) \"" + modelH + "\"\n"
                     "set Data(levels) \"-1""\"\n"  # todo confirm levels
@@ -622,7 +623,7 @@ def generateTCL(g, modelH,iditem,selectedDate):
 #runs all the file generated,  it is normal to see Error #8 while running
 def launchTCL():
     os.system(" ls "+filelocation+"/config | sort -st '/' -k1,1")
-    os.system("chmod -R 777 "+ filelocation+"/config")
+    os.system("chmod -R 744 "+ filelocation+"/config")
     for a in os.listdir('config'):
         os.system("./extract1.tcl " + "config/" + a)
 
@@ -679,8 +680,7 @@ def sortAndGenerate(destination, selectedDate):
     os.system(" ls " + filelocation + "/extracted | sort -st '/' -k1,1")
     for m in modelHourList:
         for p in particulelist:
-            fileName = "output/GEM__" + "ID" + locationID + "___" + m + p + "___" + year + month + day +"_.csv"
-            uniqueFileName = uniquify(fileName)
+            uniqueFileName = uniquify("output/GEM__" + "ID" + locationID + "___" + m + p + "___" + year + month + day +"_.csv")
             if not os.path.exists(destination + m + p):
                 os.makedirs(destination + m + p)
             for f in os.listdir(destination):
