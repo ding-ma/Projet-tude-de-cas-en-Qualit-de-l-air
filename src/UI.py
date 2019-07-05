@@ -59,6 +59,8 @@ def GemClicked():
     Gm.level(levelEntry.get())
     Gm.rarcFile()
 
+    selectDate.config(values = Gm.returnDateList())
+
     Um.inputStartDate(a)
     datesplit = Um.inputEndDate(b)
     Um.modelCheckbox(h_00, h_12)
@@ -102,6 +104,15 @@ def GemClicked():
     Ob.inputEndDate(b)
     Ob.particuleCheckBox(O3, NO2, others, PM25)
 
+
+def getdate():
+    ind = int(selectDate.current())
+    return Gm.returnDateList()[ind]
+
+
+selectDate = ttk.Combobox(machTab, values = ["Enter Start/End Date"],state='readonly', width=25)
+selectDate.place(x=800,y=300)
+selectDate.current(0)
 
 startDateLabel = tk.Label(machTab, text="Enter Start Date (YYYY/MM/DD)")
 enteredDate = tk.Entry(machTab, width=13)
@@ -248,6 +259,7 @@ def StartXRACR():
 
 
 def StartBash():
+    Gm.bashFile(getdate())
     os.system("chmod -R 777 " + Fw.filelocation)
     if Gm.bothCheked is 1:
         os.system("./gemmachBashTest00.bash &")
@@ -278,10 +290,10 @@ def getLocation():
     Gm.removeAllfile(r'' + Gm.filelocation + "/config")
     Gm.getEticket()
     locID = getComboboxLocation()
-    Gm.locationExtraction(locID)
+    Gm.locationExtraction(locID,getdate())
     Gm.launchTCL()
     Gm.removeEmptyFile(r'' + Gm.filelocation + "/extracted")
-    Gm.sortAndGenerate(Gm.filelocation + "/extracted/")
+    Gm.sortAndGenerate(Gm.filelocation + "/extracted/", getdate())
 
 
 locationBtn = tk.Button(machTab, text="Get data at location", command=getLocation, width=17, height=1)
