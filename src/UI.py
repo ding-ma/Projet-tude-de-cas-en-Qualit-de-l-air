@@ -75,7 +75,7 @@ def GemClicked():
     Umist.inputEndDate(b)
     Umist.modelCheckbox(h_00, h_12)
     Umist.rarcFile()
-    Umist.bashFile(particules,locID)
+
 
     Fw.level(levelEntry.get())
     Fw.removeAllfile(r'' + Fw.filelocation + "/configFw")
@@ -96,7 +96,8 @@ def GemClicked():
     NA = var_NA.get()
     NAGem = var_NAGem.get()
     West = var_west.get()
-    Im.locationCheckBox(East,EastZoom,NA,NAGem,West)
+    QcOnt = var_QCOnt.get()
+    Im.locationCheckBox(East,EastZoom,NA,NAGem,West,QcOnt)
     Im.RarcFile()
     Im.UMOSRarcFile()
 
@@ -232,6 +233,9 @@ var_NAGem = tk.BooleanVar()
 NAGem_Checkbtn = tk.Checkbutton(machTab, text = "NA - GEM", variable = var_NAGem)
 var_west = tk.BooleanVar()
 West_Checkbtn = tk.Checkbutton(machTab, text = "West", variable = var_west)
+var_QCOnt = tk.BooleanVar()
+QCOnt_CheckBtn = tk.Checkbutton(machTab, text = "QC-Ont, Umos only", variable = var_QCOnt)
+
 
 ImagesLabel.place(x=550,y=365)
 NAGem_Checkbtn.place(x=675,y=365)
@@ -239,7 +243,7 @@ NorthAmerica_Checkbtn.place(x=775,y=365)
 West_Checkbtn.place(x=675,y=385)
 East_Checkbtn.place(x=775,y=385)
 EastZoom_Checkbtn.place(x=675,y=405)
-
+QCOnt_CheckBtn.place(x=775,y=405)
 #umos
 
 imageExtCombo = ttk.Combobox(machTab, values = ["east", ""])
@@ -328,7 +332,8 @@ UMOSBtnGetFile = tk.Button(machTab, text="Get Data at location", command = UMOSG
 UMOSBtnGetFile.place(x=225,y=220)
 
 def MISTClicked():
-    os.system("chmod -R 777 " + Fw.filelocation)
+    Umist.bashFile(particules, getdate())
+    os.system("chmod -R 744 " + Umist.filelocation)
     if Umist.bothCheked is 1:
         os.system("./UmosMist00.bash &")
         print("Done, file located at -->" + Umist.filelocation + "/bash")
@@ -347,10 +352,10 @@ def MISTRARC():
 def MistGetLocation():
     shutil.rmtree("extractedMist")
     os.mkdir("extractedMist")
-    Umist.TCLConfig(particules,getComboboxLocation())
+    Umist.TCLConfig(particules,getComboboxLocation(),getdate())
     Umist.launchTCL()
     Umist.removeEmptyFile(r'' + Umist.filelocation + "/extractedMist")
-    Umist.sortAndGenerate(Umist.filelocation + "/extractedMist/")
+    Umist.sortAndGenerate(Umist.filelocation + "/extractedMist/",getdate())
 
 
 UmosMist = tk.Label(machTab,text = "UMOS-MIST", font = "13")

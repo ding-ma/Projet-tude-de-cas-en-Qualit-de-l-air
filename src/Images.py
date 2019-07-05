@@ -155,7 +155,7 @@ def particuleCheckBox(O3, NO2, others, PM25):
 
 
 #east,east@coast@zoom,north@america,north@america@gemmach,west
-def locationCheckBox(East, EastZoom,NA,NAGem,West):
+def locationCheckBox(East, EastZoom,NA,NAGem,West,QcOnt):
     global locationlst
     global rarcString
     East = int(East)
@@ -163,11 +163,13 @@ def locationCheckBox(East, EastZoom,NA,NAGem,West):
     NA = int(NA)
     NAGem = int(NAGem)
     West = int(West)
+    QcOnt = int(QcOnt)
     strEast = ""
     strEastZoom = ""
     strNA = ""
     strNAGem = ""
     strWest = ""
+    strQCOnt = ""
     if East is 1:
         strEast = "east,"
     if EastZoom is 1:
@@ -178,7 +180,9 @@ def locationCheckBox(East, EastZoom,NA,NAGem,West):
         strNAGem = "north@america@gemmach,"
     if West is 1:
         strWest = "west,"
-    rarcString = strEast + strEastZoom+strNA+strNAGem+strWest
+    if QcOnt is 1:
+        strQCOnt = "quebec@ontario"
+    rarcString = strEast + strEastZoom+strNA+strNAGem+strWest+strQCOnt
     tempList = re.split(",", rarcString)
     locationlst = tempList[:-1]
 

@@ -346,7 +346,6 @@ def modelCheckbox(h_00, h_12):
         modelHour = " "
 
 
-monthset = set()
 def datecounter(selectedDate,addDays):
     templist = selectedDate.split("/")
     lstsMonth = []
@@ -413,15 +412,14 @@ def rarcFile():
         "\npriority = online\n"
         "inc = 1\n"
         "#\n")
-    modelHourList = re.split(",", modelHour)
     fileEticket = open("gemmachEticket.tcl", "w")
     fileEticket.write(
         "#!/bin/bash\n"
         "# : - \\"
         "\nexec /fs/ssm/eccc/cmo/cmoe/apps/SPI_7.12.0_all/tclsh \"$0\" \"$@\""
         "\npackage require TclData\n"
-        "set Path "+filelocation+"/bash/"
-        "\nset bashFST BashOut"+modelHourList[0]+"."+ sYear + sMonth+sDay+"_"+ eYear + eMonth + eDay+"_regeta.fst"+
+        "set Path "+filelocation+"/rarc/operation.forecasts.mach"
+        "\nset bashFST "+ sYear + sMonth+sDay+"_"+formattedSelectedTimeWithComma.split(",")[0]+
         "\nset FileOut [open gemEticket.txt w+]"
         "\nset FileIn [ lsort -dictionary [ glob $Path$bashFST ] ]"
         "\nfstdfile open 1 read  $FileIn"
@@ -537,7 +535,6 @@ def locationExtraction(iditem, selectedDate):
 
 
 def generateTCL(g, modelH,iditem,selectedDate):
-    print(g)
     global locationID
     year = selectedDate[0]
     month = selectedDate[1]
@@ -548,18 +545,14 @@ def generateTCL(g, modelH,iditem,selectedDate):
     name = lstName[listIndex]
     long = lstLongitude[listIndex]
     lat = lstLatitude[listIndex]
-    locationID = lstID[listIndex]
     executehour = re.split(",", formattedSelectedTimeWithComma)
     s = hours.index(executehour[0])
     e = hours.index(executehour[-1])
     particulelist = re.split(" ", formattedParticuleString)
-    print(day)
+    locationID = lstID[listIndex]
     if int(day) == calendar.monthrange(int(year),1)[1]:
-        print("----------------------")
         lastday = g[0]
         firstdays = g[1:]
-        print(lastday)
-        print(firstdays)
         nextmonth = date(int(year),int(month)+1, int(month)).strftime("%m")
         for p in particulelist:
             for d in firstdays:
@@ -606,11 +599,11 @@ def generateTCL(g, modelH,iditem,selectedDate):
         for p in particulelist:
             for d in list(g):
                 for hToFile, hToName in zip(tcl[s:e + 1], hour24[s:e + 1]):
-                    config = open("config/" + sMonth + p + d + hToName + modelH + ".tcl", "w")
+                    config = open("config/" + month + p + d + hToName + modelH + ".tcl", "w")
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
                         "set Data(TAG1)   \"BashOut" + modelH + "." + year + month + day + "_regeta\"\n"
-                        "set Data(TAG3)   \"" + sMonth + d + hToName + "\"\n"
+                        "set Data(TAG3)   \"" + month + d + hToName + "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \"" + modelH + "\"\n"
                         "set Data(levels) \"-1""\"\n"  # todo confirm levels
@@ -686,7 +679,7 @@ def sortAndGenerate(destination, selectedDate):
     os.system(" ls " + filelocation + "/extracted | sort -st '/' -k1,1")
     for m in modelHourList:
         for p in particulelist:
-            fileName = "output/GEM__" + "ID" + locationID + "___" + m + p + "___" + year + month + day +  "_.csv"
+            fileName = "output/GEM__" + "ID" + locationID + "___" + m + p + "___" + year + month + day +"_.csv"
             uniqueFileName = uniquify(fileName)
             if not os.path.exists(destination + m + p):
                 os.makedirs(destination + m + p)
