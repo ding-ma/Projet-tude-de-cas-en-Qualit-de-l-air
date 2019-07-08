@@ -18,7 +18,7 @@ import observations as Ob
 window = tk.Tk()
 # window.attributes('-zoomed', True)
 #w, h = window.winfo_screenwidth(), window.winfo_screenheight()
-w,h = 1025,550
+w,h = 1025,600
 window.geometry("%dx%d+0+0" % (w, h))
 window.title("tk")
 # window.geometry("1500x1200")
@@ -75,8 +75,6 @@ def GemClicked():
     Umist.inputEndDate(b)
     Umist.modelCheckbox(h_00, h_12)
 
-
-
     Fw.level(levelEntry.get())
     Fw.removeAllfile(r'' + Fw.filelocation + "/configFw")
     Fw.time(sTime, eTime)
@@ -104,10 +102,9 @@ def GemClicked():
     Ob.inputEndDate(b)
     Ob.particuleCheckBox(O3, NO2, others, PM25)
 
-
 def getdate():
     ind = int(selectDate.current())
-    return Gm.returnDateList()[ind]
+    return Gm.returnDateList()[int(selectDate.current())]
 
 
 selectDate = ttk.Combobox(machTab, values = ["Enter Start/End Date"],state='readonly', width=25)
@@ -218,6 +215,9 @@ stationSearchLabel.place(x=630,y=102)
 stationSearchField.place(x=500,y=102)
 searchBtn.place(x=350,y=100)
 
+separetorline = ttk.Label(machTab,text="________________________________________________________________________________________________________________________________________________________________________________________________________________")
+separetorline.place(x=0,y=140)
+
 #chronos, gem
 #east,east@coast@zoom,north@america,north@america@gemmach,west
 
@@ -247,7 +247,6 @@ QCOnt_CheckBtn.place(x=775,y=405)
 
 imageExtCombo = ttk.Combobox(machTab, values = ["east", ""])
 ####
-
 
 # in order for the command to run on CMC server, it has to be ISOLATED and no passed through functions
 # other way works on windows
@@ -304,7 +303,6 @@ locationBtn.place(x=40,y=250)
 
 
 def UMOSClicked():
-    Umist.rarcFile(getdate())
     for filename in glob.glob("rarc/umos*"):
         os.system("rarc -i " + Gm.filelocation + "/" + filename + " &")
 
@@ -347,11 +345,14 @@ def MISTClicked():
 
 
 def MISTRARC():
+    Umist.rarcFile()
     os.system("rarc -i " + Umist.filelocation + "/UMist &")
 
 def MistGetLocation():
+    Umist.writeEticket(getdate())
     shutil.rmtree("extractedMist")
     os.mkdir("extractedMist")
+    os.system("./UmosMistEticket.tcl")
     Umist.TCLConfig(particules,getComboboxLocation(),getdate())
     Umist.launchTCL()
     Umist.removeEmptyFile(r'' + Umist.filelocation + "/extractedMist")
@@ -394,7 +395,7 @@ def FwGetLocation():
     Fw.TCLConfig(particules,getComboboxLocation(),getdate())
     Fw.launchTCL()
     Fw.removeEmptyFile(r'' + Fw.filelocation + "/extractedFw")
-    Fw.sortAndGenerate(Fw.filelocation + "/extractedFw/")
+    Fw.sortAndGenerate(Fw.filelocation + "/extractedFw/",getdate())
 
 
 FireWork = tk.Label(machTab,text = "FireWork", font = "13")

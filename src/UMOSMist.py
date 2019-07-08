@@ -78,12 +78,8 @@ def datecounter(selectedDate,addDays):
     return lstDays
 
 
-def rarcFile(dateSelected):
-    year = dateSelected.split("/")[0]
-    month = dateSelected.split("/")[1]
-    day = dateSelected.split("/")[2]
-    modelHourList = re.split(",", modelHour)
-    file = open("UMist", "w")
+def rarcFile():
+    file = open("UMist", "w+")
     file.write(
         "target = " + filelocation + "/rarc\n"
                                      "filter = copy\n"
@@ -100,7 +96,12 @@ def rarcFile(dateSelected):
         "inc = 1\n"
         "#\n")
 
-    fileEticket = open("UmosMistEticket.tcl", "w")
+def writeEticket(dateSelected):
+    year = dateSelected.split("/")[0]
+    month = dateSelected.split("/")[1]
+    day = dateSelected.split("/")[2]
+    modelHourList = re.split(",", modelHour)
+    fileEticket = open("UmosMistEticket.tcl", "w+")
     fileEticket.write(
         "#!/bin/bash\n"
         "# : - \\"
@@ -125,7 +126,7 @@ def bashFile(formattedParticuleString, selectedDate):
     day = selectedDate.split("/")[2]
     modelHourList = re.split(",", modelHour)
     for modelHourSeparated in modelHourList:
-        fileBash = open("UmosMist" + modelHourSeparated + ".bash", 'w')
+        fileBash = open("UmosMist" + modelHourSeparated + ".bash", 'w+')
         fileBash.write(
             "#!/bin/bash\n"
             "PathOut=" + filelocation + "/bash"
@@ -257,9 +258,11 @@ def generateTCL(g, modelH, loc, fpp,selectedDate):
     if int(day) == calendar.monthrange(int(year), 1)[1]:
         lastday = g[0]
         firstdays = g[1:]
+        print(g)
         nextmonth = date(int(year),int(month)+1, int(month)).strftime("%m")
         for p in particulelist:
             for d in firstdays:
+                print(d,month,nextmonth)
                 for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
                     config = open("configMIST/MIST_" + nextmonth + p + d + hToName + modelH + ".tcl", "w")
                     config.write(
@@ -283,19 +286,19 @@ def generateTCL(g, modelH, loc, fpp,selectedDate):
                         "set Data(hours) \"" + str(hToFile) + "\"\n")
         for p in particulelist:
             for hToFile, hToName in zip(Gm.tcl[s:e + 1], Gm.hour24[s:e + 1]):
-                config = open("configMIST/MIST_" + nextmonth + p + lastday + hToName + modelH + ".tcl", "w")
+                config = open("configMIST/MIST_" + month + p + lastday + hToName + modelH + ".tcl", "w")
                 config.write(
                     "set Data(SpLst)  \"" + p + "\" \n"
                     "set Data(TAG1)   \"UMOSmist" + modelH + "." + year + month + day + "_regeta\"\n"
-                   "set Data(TAG3)   \""+ nextmonth + lastday + hToName + "\"\n"
+                   "set Data(TAG3)   \""+ month + lastday + hToName + "\"\n"
                     "set Data(outTXT)       \"SITE\" \n"
                     "set Data(PASSE) \"" + modelH + "\"\n"
                     "set Data(levels) \" -1\"\n"  # todo confirm levels
                     "set Data(MandatoryLevels) \" 1\"\n"
                     "set Data(Path)    " + filelocation + "/bash\n"
                     "set Data(PathOut) " + filelocation + "/extractedMist\n"
-                    "set Data(Start)      \"" + year + nextmonth + "\"\n"
-                    "set Data(End)      \"" + year + nextmonth + "\"\n"
+                    "set Data(Start)      \"" + year + month + "\"\n"
+                    "set Data(End)      \"" + year + month + "\"\n"
                     "set Data(Eticket)     \"" + Eticket + "\"\n"
                     "set Data(point) \"" + name + "\"\n"
                     "set Data(coord) \"" + lat + " " + long + "\"\n"
@@ -331,7 +334,7 @@ def generateTCL(g, modelH, loc, fpp,selectedDate):
 
 def launchTCL():
     os.system(" ls " + filelocation + "/config | sort -st '/' -k1,1")
-    os.system("chmod -R 777 " + filelocation + "/configMIST")
+    os.system("chmod -R 744 " + filelocation + "/configMIST")
     for a in os.listdir('configMIST'):
         os.system("./extract1.tcl " + "configMIST/" + a)
 
@@ -386,7 +389,7 @@ def sortAndGenerate(destination,selectedDate):
     os.system(" ls " + filelocation + "/extractedMist | sort -st '/' -k1,1")
     for m in modelHourList:
         for p in particulelist:
-            uniqueFileName = uniquify("output/UMOS-Mist__" + "ID" + locationId + "___" + m + p + "___" + year + month + day +".csv")
+            uniqueFileName = uniquify("output/UMOS-Mist__" + "ID" + locationId + "___" + m + p + "___" + year + month + day +"_.csv")
             if not os.path.exists(destination + m + p):
                 os.makedirs(destination + m + p)
             for f in os.listdir(destination):

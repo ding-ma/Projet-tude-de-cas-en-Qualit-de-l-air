@@ -110,8 +110,7 @@ def rarcFile():
         "\nputs $eticket"
         "\nputs $FileOut \"$eticket\""
         "\nfstdfile close 1"
-        "\nclose $FileOut"
-    )
+        "\nclose $FileOut" )
 
 
 def level(lv):
@@ -135,7 +134,7 @@ def bashFile(formattedParticuleString, selectedDate):
             "\nPathIn="+filelocation+"/rarc"
             "\nDateDebut=" + year + month+day+
             "\nDateFin=" + year + month+day+
-            "\nDateDebutMois="+month+
+            "\nDateDebutMois="+sMonth+
             "\nListeMois=\"" + month + "\""
             "\nAnnee=" + year +  # not used
             "\nTag1=FW"+modelHourSeparated+
@@ -236,11 +235,13 @@ def TCLConfig(formattedParticuleString, loc,selectedDate):
         if modelH == "00":
             generateTCL(datecounter(selectedDate,2),modelH,formattedParticuleString, loc,selectedDate.split("/"))
 
+
 def getEticket():
     os.system("./FireEticket.tcl")
 
 
 def generateTCL(g,modelH,formattedParticuleString, loc,selectedDate):
+    global locationID
     FireWorkEticket = open("FwEticket.txt", "r")
     year = selectedDate[0]
     month = selectedDate[1]
@@ -252,6 +253,7 @@ def generateTCL(g,modelH,formattedParticuleString, loc,selectedDate):
     long = Gm.lstLongitude[listIndex]
     lat = Gm.lstLatitude[listIndex]
     executehour = re.split(",", formattedSelectedTimeWithComma)
+    locationID = Gm.lstID[listIndex]
     s = Gm.hours.index(executehour[0])
     e = Gm.hours.index(executehour[-1])
     if int(day) == calendar.monthrange(int(year), 1)[1]:
@@ -264,7 +266,7 @@ def generateTCL(g,modelH,formattedParticuleString, loc,selectedDate):
                     config = open("configFw/Fw_" + nextmonth + p + d + hToName + modelH + ".tcl", "w")
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
-                        "set Data(TAG1)   \"FW" + modelH + "." + year + month + day +  "_regeta\"\n"
+                        "set Data(TAG1)   \"FW" + modelH + "." + year + month + day + "_regeta\"\n"
                         "set Data(TAG3)   \""+ nextmonth + d + hToName + "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \"" + modelH + "\"\n"
@@ -272,8 +274,8 @@ def generateTCL(g,modelH,formattedParticuleString, loc,selectedDate):
                         "set Data(MandatoryLevels) \" 1\"\n"
                         "set Data(Path)    " + filelocation + "/bash\n"
                         "set Data(PathOut) " + filelocation + "/extractedFw\n"
-                        "set Data(Start)      \"" + sYear + nextmonth + "\"\n"
-                        "set Data(End)      \"" + eYear + nextmonth + "\"\n"
+                        "set Data(Start)      \"" + year + nextmonth + "\"\n"
+                        "set Data(End)      \"" + year + nextmonth + "\"\n"
                         "set Data(Eticket)     \"" + Eticket + "\"\n"
                         "set Data(point) \"" + name + "\"\n"
                         "set Data(coord) \"" + lat + " " + long + "\"\n"
@@ -293,8 +295,8 @@ def generateTCL(g,modelH,formattedParticuleString, loc,selectedDate):
                     "set Data(MandatoryLevels) \" 1\"\n"
                     "set Data(Path)    " + filelocation + "/bash\n"
                     "set Data(PathOut) " + filelocation + "/extractedFw\n"
-                    "set Data(Start)      \"" + sYear + month + "\"\n"
-                    "set Data(End)      \"" + eYear + month + "\"\n"
+                    "set Data(Start)      \"" + year + month + "\"\n"
+                    "set Data(End)      \"" + year + month + "\"\n"
                     "set Data(Eticket)     \"" + Eticket + "\"\n"
                     "set Data(point) \"" + name + "\"\n"
                     "set Data(coord) \"" + lat + " " + long + "\"\n"
@@ -307,7 +309,7 @@ def generateTCL(g,modelH,formattedParticuleString, loc,selectedDate):
                     config = open("configFw/Fw_" + month + p + d + hToName + modelH + ".tcl", "w")
                     config.write(
                         "set Data(SpLst)  \"" + p + "\" \n"
-                        "set Data(TAG1)   \"FW" + modelH + "." + year + month + day +  "_regeta\"\n"
+                        "set Data(TAG1)   \"FW" + modelH + "." + year + month + day + "_regeta\"\n"
                           "set Data(TAG3)   \""+ month + d + hToName + "\"\n"
                         "set Data(outTXT)       \"SITE\" \n"
                         "set Data(PASSE) \"" + modelH + "\"\n"
@@ -315,14 +317,13 @@ def generateTCL(g,modelH,formattedParticuleString, loc,selectedDate):
                         "set Data(MandatoryLevels) \" 1\"\n"
                         "set Data(Path)    " + filelocation + "/bash\n"
                         "set Data(PathOut) " + filelocation + "/extractedFw\n"
-                        "set Data(Start)      \"" + sYear + month + "\"\n"
-                        "set Data(End)      \"" + eYear + month + "\"\n"
+                        "set Data(Start)      \"" + year + month + "\"\n"
+                        "set Data(End)      \"" + year + month + "\"\n"
                         "set Data(Eticket)     \"" + Eticket + "\"\n"
                         "set Data(point) \"" + name + "\"\n"
                         "set Data(coord) \"" + lat + " " + long + "\"\n"
                         "set Data(days) \"" + str(d) + "\"\n"  # todo confirm start day
-                        "set Data(hours) \"" + str(hToFile) + "\"\n"
-                    )
+                        "set Data(hours) \"" + str(hToFile) + "\"\n")
 
 def launchTCL():
     os.system(" ls "+filelocation+"/configFw | sort -st '/' -k1,1")
@@ -369,13 +370,16 @@ def uniquify(path, sep = ''):
     return filename
 
 
-def sortAndGenerate(destination):
+def sortAndGenerate(destination, selectedDate):
+    year = selectedDate.split("/")[0]
+    month = selectedDate.split("/")[1]
+    day = selectedDate.split("/")[2]
     particulelist = re.split(" ", fpp)
     modelHourList = re.split(",", modelHour)
     os.system(" ls " + filelocation + "/extractedFw | sort -st '/' -k1,1")
     for m in modelHourList:
         for p in particulelist:
-            uniqueName = uniquify("output/FW__"+"ID"+locationId +"___"+m + p+"___Start"+sYear+sMonth+sDay +"___End"+eYear+eMonth+eDay+ ".csv")
+            uniqueName = uniquify("output/FW__"+"ID"+ locationID + "___" + m + p + "___" + year + month + day + "_.csv")
             if not os.path.exists(destination + m + p):
                 os.makedirs(destination + m + p)
             for f in os.listdir(destination):
