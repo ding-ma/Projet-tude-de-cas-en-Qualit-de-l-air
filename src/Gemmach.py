@@ -17,12 +17,6 @@ hours = (
     "016", "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029", "030", "031",
     "032", "033", "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047")
 
-# This format is used for the tcl script
-tcl = [
-    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
-    "21", "22", "23", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
-    "21", "22", "23"]
-
 # This format is used to sort the files
 hour24 = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17",
           "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
@@ -44,14 +38,6 @@ EticketFW = "RAQDPS020FW"
 
 #Do not touch the rest!
 ##################################################
-
-#this will be removed
-years = ("2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012",
-         "2013", "2014", "2015", "2016",
-         "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029",
-         "2030", "2031", "2032", "2033",
-         "2034", "2035", "2036", "2037", "2038", "2039", "2040", "2041", "2042", "2043", "2044", "2045", "2046",
-         "2047", "2048", "2049", "2050")
 
 days = (
     "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18"
@@ -345,24 +331,6 @@ def modelCheckbox(h_00, h_12):
         modelHour = " "
 
 
-def datecounter(selectedDate,addDays):
-    templist = selectedDate.split("/")
-    lstsMonth = []
-    lsteMonth = []
-    lstDays = []
-    lstsMonth.clear()
-    lsteMonth.clear()
-    lstDays.clear()
-    startDate = date(int(templist[0]), int(templist[1]), int(templist[2]))
-    endDate = date(int(templist[0]), int(templist[1]), int(templist[2]))
-    delta = endDate - startDate
-    for a in range(delta.days + addDays):
-        e = startDate + timedelta(days=a)
-        v = e.strftime("%d")
-        lstDays.append(v)
-    return lstDays
-
-
 def particuleCheckBox(O3, NO2, others, PM25):
     global formattedParticuleString
     O3 = int(O3)
@@ -529,13 +497,12 @@ def locationExtraction(iditem, selectedDate):
     os.mkdir(filelocation+"/extracted")
     for modelH in modelHourList:
         if modelH == "12":
-            #todo, add 12h for 0-12 time
-            generateTCL(datecounter(selectedDate,3),modelH,iditem,selectedDate.split("/"))
+            generateTCL(modelH,iditem,selectedDate.split("/"))
         if modelH == "00":
-            generateTCL(datecounter(selectedDate,2),modelH,iditem,selectedDate.split("/"))
+            generateTCL(modelH,iditem,selectedDate.split("/"))
 
 
-def generateTCL(g, modelH,iditem,selectedDate):
+def generateTCL(modelH,iditem,selectedDate):
     global locationID
     year = selectedDate[0]
     month = selectedDate[1]
@@ -629,7 +596,6 @@ def uniquify(path, sep = ''):
     return filename
 
 
-HtoDelete = ["24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35","36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
 #sorts and generates a CSV file in the output folder
 def sortAndGenerate(destination, selectedDate):
     year = selectedDate.split("/")[0]
@@ -644,17 +610,12 @@ def sortAndGenerate(destination, selectedDate):
             if not os.path.exists(destination + m + p):
                 os.makedirs(destination + m + p)
             for f in os.listdir(destination):
-                for delete in HtoDelete:
-                    #takes the 4th character to sort, here for preventive measures
-                    if f.startswith(delete,4):
-                        os.remove(destination + f)
-            for f in os.listdir(destination):
                 if f.endswith("_" + m + p + ".csv"):
                     shutil.move(destination + f, destination + m + p)
                 file = open(uniqueFileName, "w+")
                 file.write("Date,Time,Height,Value\n")
                 for i in sorted(os.listdir(destination + m + p)):
                     file.write(open(destination + m + p + "/" + i).read())
-        print("\nJob done, see folder-->" + filelocation+"/output")
+    print("\nJob done, see folder-->" + filelocation+"/output")
 
 
