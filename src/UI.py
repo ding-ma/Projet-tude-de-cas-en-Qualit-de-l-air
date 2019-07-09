@@ -107,9 +107,12 @@ def getdate():
     return Gm.returnDateList()[int(selectDate.current())]
 
 
-selectDate = ttk.Combobox(machTab, values = ["Enter Start/End Date"],state='readonly', width=25)
-selectDate.place(x=800,y=300)
+selectDate = ttk.Combobox(machTab, values = ["No Date Entered"],state='readonly', width=25)
+selectDate.place(x=10,y=185)
 selectDate.current(0)
+
+selectDateLabel = tk.Label(machTab, text = "Select a date to treat (UMOS-MIST, Gemmach, FireWork)")
+selectDateLabel.place(x=10,y=160)
 
 startDateLabel = tk.Label(machTab, text="Enter Start Date (YYYY/MM/DD)")
 enteredDate = tk.Entry(machTab, width=13)
@@ -150,7 +153,7 @@ hours00_Checkbutton.place(x=165,y=70)
 hours12_Checkbutton.place(x=215,y=70)
 
 
-moleculeLabel = tk.Label(machTab, text="Select desired particules")
+moleculeLabel = tk.Label(machTab, text="Select desired pollutants")
 otherLabel = tk.Label(machTab, text="Others, add no space e.g. UVTT")
 var_O3 = tk.BooleanVar(value=True)
 O3_Checkbutton = tk.Checkbutton(machTab, text="O3", variable=var_O3)
@@ -208,7 +211,7 @@ def SearchNameID():
 
 
 stationSearchLabel = tk.Label(machTab, text=displayString)
-searchBtn = tk.Button(machTab, text="Search Name or ID", command=SearchNameID)
+searchBtn = tk.Button(machTab, text="Search Station Name or ID", command=SearchNameID)
 
 
 stationSearchLabel.place(x=630,y=102)
@@ -218,10 +221,12 @@ searchBtn.place(x=350,y=100)
 separetorline = ttk.Label(machTab,text="________________________________________________________________________________________________________________________________________________________________________________________________________________")
 separetorline.place(x=0,y=140)
 
+separetorline1 = ttk.Label(machTab,text="________________________________________________________________________________________________________________________________________________________________________________________________________________")
+separetorline1.place(x=0,y=325)
 #chronos, gem
 #east,east@coast@zoom,north@america,north@america@gemmach,west
 
-ImagesLabel = tk.Label(machTab,text = "Select Locations")
+ImagesLabel = tk.Label(machTab,text = "Select Locations:")
 var_east = tk.BooleanVar(value=True)
 East_Checkbtn = tk.Checkbutton(machTab, text = "East", variable = var_east)
 var_eastZoom = tk.BooleanVar()
@@ -236,14 +241,13 @@ var_QCOnt = tk.BooleanVar()
 QCOnt_CheckBtn = tk.Checkbutton(machTab, text = "QC-Ont, Umos only", variable = var_QCOnt)
 
 
-ImagesLabel.place(x=550,y=365)
-NAGem_Checkbtn.place(x=675,y=365)
-NorthAmerica_Checkbtn.place(x=775,y=365)
-West_Checkbtn.place(x=675,y=385)
-East_Checkbtn.place(x=775,y=385)
-EastZoom_Checkbtn.place(x=675,y=405)
-QCOnt_CheckBtn.place(x=775,y=405)
-#umos
+ImagesLabel.place(x=675,y=390)
+NAGem_Checkbtn.place(x=675,y=415)
+NorthAmerica_Checkbtn.place(x=775,y=415)
+West_Checkbtn.place(x=675,y=435)
+East_Checkbtn.place(x=775,y=435)
+EastZoom_Checkbtn.place(x=675,y=455)
+QCOnt_CheckBtn.place(x=775,y=455)
 
 imageExtCombo = ttk.Combobox(machTab, values = ["east", ""])
 ####
@@ -279,12 +283,12 @@ btn = tk.Button(machTab, text="Enter Parameters", command=GemClicked, width=15, 
 btn.place(x=850,y=50)
 
 GemmachLabel = tk.Label(machTab,text = "Gemmach", font = "13")
-GemmachLabel.place(x=50,y=160)
-scriptBtn = tk.Button(machTab, text="Treatment", command=StartBash, width=17, height=1)
-scriptBtn.place(x=40,y=220)
+GemmachLabel.place(x=50,y=210)
+scriptBtn = tk.Button(machTab, text="Get Chosen Pollutants", command=StartBash, width=17, height=1)
+scriptBtn.place(x=40,y=270)
 
 extrationBtn = tk.Button(machTab, text="Start Extraction", command=StartXRACR, width=17, height=1)
-extrationBtn.place(x=40,y=190)
+extrationBtn.place(x=40,y=240)
 
 
 def getLocation():
@@ -298,8 +302,8 @@ def getLocation():
     Gm.sortAndGenerate(Gm.filelocation + "/extracted/", getdate())
 
 
-locationBtn = tk.Button(machTab, text="Get data at location", command=getLocation, width=17, height=1)
-locationBtn.place(x=40,y=250)
+locationBtn = tk.Button(machTab, text="Get data at Station", command=getLocation, width=17, height=1)
+locationBtn.place(x=40,y=300)
 
 
 def UMOSClicked():
@@ -308,10 +312,10 @@ def UMOSClicked():
 
 
 UmosLabel = tk.Label(machTab,text = "UMOS", font = "13")
-UmosLabel.place(x=255,y=160)
+UmosLabel.place(x=638,y=210)
 
 UMOSBtnExt = tk.Button(machTab, text="Start Extraction", command = UMOSClicked, width=17, height=1)
-UMOSBtnExt.place(x=225,y=190)
+UMOSBtnExt.place(x=638,y=240)
 
 
 def UMOSGetLocation():
@@ -326,8 +330,8 @@ def UMOSGetLocation():
     Um.particuleCheckBoxAndTime(O3, NO2, PM25, locID, datesplit, active)
 
 
-UMOSBtnGetFile = tk.Button(machTab, text="Get Data at location", command = UMOSGetLocation, width=17, height=1)
-UMOSBtnGetFile.place(x=225,y=220)
+UMOSBtnGetFile = tk.Button(machTab, text="Get data at Station", command = UMOSGetLocation, width=17, height=1)
+UMOSBtnGetFile.place(x=638,y=270)
 
 def MISTClicked():
     Umist.bashFile(particules, getdate())
@@ -360,16 +364,16 @@ def MistGetLocation():
 
 
 UmosMist = tk.Label(machTab,text = "UMOS-MIST", font = "13")
-UmosMist.place(x=455,y=160)
+UmosMist.place(x=455,y=210)
 
-mistBashBtn = tk.Button(machTab, text = "Treatment", command = MISTClicked, width=17, height=1)
-mistBashBtn.place(x=438,y=220)
+mistBashBtn = tk.Button(machTab, text = "Get Chosen Pollutants", command = MISTClicked, width=17, height=1)
+mistBashBtn.place(x=438,y=270)
 
 mistExtraction = tk.Button(machTab, text = "Start Extraction", command =MISTRARC, width=17, height=1)
-mistExtraction.place(x=438,y=190)
+mistExtraction.place(x=438,y=240)
 
-mistTCLBtn = tk.Button(machTab, text = "Get Data Location", command = MistGetLocation,width=17, height=1)
-mistTCLBtn.place(x=438,y=250)
+mistTCLBtn = tk.Button(machTab, text = "Get data at Station", command = MistGetLocation,width=17, height=1)
+mistTCLBtn.place(x=438,y=300)
 
 # tab for FireWork
 def FwRarc():
@@ -399,16 +403,16 @@ def FwGetLocation():
 
 
 FireWork = tk.Label(machTab,text = "FireWork", font = "13")
-FireWork.place(x=655,y=160)
+FireWork.place(x=255,y=210)
 
-fwBashBtn = tk.Button(machTab, text = "Treatment", command = FwClicked,width=17, height=1)
-fwBashBtn.place(x=638,y=220)
+fwBashBtn = tk.Button(machTab, text = "Get Chosen Pollutants", command = FwClicked,width=17, height=1)
+fwBashBtn.place(x=255,y=270)
 
 fwRarcBtn = tk.Button(machTab, text="Start Extraction", command = FwRarc, width=17, height=1)
-fwRarcBtn.place(x=638,y=190)
+fwRarcBtn.place(x=255,y=240)
 
-fwTCLbtn = tk.Button(machTab, text = "Get Data Location", command = FwGetLocation, width=17, height=1)
-fwTCLbtn.place(x=638,y=250)
+fwTCLbtn = tk.Button(machTab, text = "Get data at Station", command = FwGetLocation, width=17, height=1)
+fwTCLbtn.place(x=255,y=300)
 
 giflst =[]
 def getImg():
@@ -423,12 +427,12 @@ def getImg():
 
 
 imagesct = tk.Label(machTab,text = "Image Section", font = "17")
-imagesct.place(x=10,y=300)
+imagesct.place(x=10,y=350)
 
 imgextraction = tk.Label(machTab, text ="Gemmach", font = "13")
-imgextraction.place(x=50, y=335)
+imgextraction.place(x=50, y=385)
 ImgBtn = tk.Button(machTab, text = "Get Images", command = getImg, width=17, height=1)
-ImgBtn.place(x=40,y=390)
+ImgBtn.place(x=40,y=440)
 
 
 gifs = os.listdir("output")
@@ -454,27 +458,27 @@ def IMRARC():
 
 
 ImgRarcBtn = tk.Button(machTab, text = "Start Extraction", command = IMRARC,width=17, height=1)
-ImgRarcBtn.place(x=40,y=360)
+ImgRarcBtn.place(x=40,y=410)
 
 def UmosImgRarc():
     os.system("rarc -i " + Gm.filelocation + "/imageUMOS &")
 
 
 imgUmos = tk.Label(machTab,text = "UMOS", font = "13")
-imgUmos.place(x=255,y=335)
+imgUmos.place(x=255,y=385)
 
 ImgUmosRarcBtn = tk.Button(machTab, text = "Start Extraction", command =UmosImgRarc,width=17, height=1)
-ImgUmosRarcBtn.place(x=225,y=360)
+ImgUmosRarcBtn.place(x=225,y=410)
 
 UmosImgBtn = tk.Button(machTab, text ="Get images", command = getUMOSimg,width=17, height=1)
-UmosImgBtn.place(x=438,y=390)
+UmosImgBtn.place(x=438,y=440)
 
 UmosImgLocation = ttk.Combobox(machTab, values = ["@sfc_", "@sfc@diff_"], state='readonly')
-UmosImgLocation.place(x=225,y=393)
+UmosImgLocation.place(x=225,y=443)
 UmosImgLocation.current(0)
 
 animateCombo = ttk.Combobox(machTab, values =sorted(giflst),width=55, height=10, state='readonly')
-animateCombo.place(x=180,y=453)
+animateCombo.place(x=180,y=503)
 #animateCombo.current(0)
 
 
@@ -484,7 +488,7 @@ def animate():
 
 
 animateBtn = tk.Button(machTab, text = "Animate GIF", command = animate,width=17, height=1)
-animateBtn.place(x=10,y=450)
+animateBtn.place(x=10,y=500)
 
 
 def getComboboxLocation():
@@ -508,12 +512,12 @@ def ObservationGetLocation():
 
 
 obs = tk.Label(machTab,text = "Observations", font = "13")
-obs.place(x=855,y=160)
+obs.place(x=855,y=210)
 observationRarcBtn = tk.Button(machTab,text = "Start Extraction", command=RarcObservation, width=17, height=1)
-observationRarcBtn.place(x=838,y=190)
+observationRarcBtn.place(x=838,y=240)
 
-observationLocationBtn = tk.Button(machTab, text = "Get at location", command=ObservationGetLocation, width=17, height=1)
-observationLocationBtn.place(x=838,y=220)
+observationLocationBtn = tk.Button(machTab, text = "Get Data at Station", command=ObservationGetLocation, width=17, height=1)
+observationLocationBtn.place(x=838,y=270)
 
 folderdict = {
     "operation.forecasts.firework.mach": "Firework",
@@ -529,7 +533,7 @@ folderdict = {
 }
 
 
-
+#delete folder UI
 folder_names = []
 convertedFolderName = []
 def rarcFolderDeletion():
@@ -571,9 +575,12 @@ def deleteRarcFile():
     b2.place(x=195,y=160)
     popup.mainloop()
 
+#######################################
+#end
+
 
 deletebtn = tk.Button(machTab, text="Delete Extracted Files", bg = "red", command = deleteRarcFile, width=17, height=2)
-deletebtn.place(x=850,y=450)
+deletebtn.place(x=850,y=500)
 # tab for help
 helptab = ttk.Frame(nb)
 nb.add(helptab, text="Help/Info", )
