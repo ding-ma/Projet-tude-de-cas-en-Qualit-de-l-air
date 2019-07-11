@@ -8,7 +8,8 @@ from datetime import date, timedelta, datetime
 import Gemmach as Gm
 
 filelocation = Gm.filelocation
-
+WARNING = '\033[93m'
+ENDC = '\033[0m'
 
 def inputStartDate(sD):
     global sYear
@@ -34,6 +35,8 @@ def inputEndDate(eD):
     eMonth = unformatattedDate[1]
     eDay = unformatattedDate[2]
     eDate = date(int(eYear), int(eMonth), int(eDay))
+    if eDate < date(2016,4,7):
+        raise Exception(WARNING+"UMOS-Mist files doesn't exist"+ENDC)
 
 
 bothCheked = 0

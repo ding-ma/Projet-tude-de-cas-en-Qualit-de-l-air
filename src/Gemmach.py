@@ -15,12 +15,12 @@ from datetime import date, timedelta,datetime
 hours = (
     "000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015",
     "016", "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029", "030", "031",
-    "032", "033", "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047")
+    "032", "033", "034", "035", "036", "037", "038", "039", "040", "041", "042", "043", "044", "045", "046", "047", "048")
 
 # This format is used to sort the files
 hour24 = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17",
           "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
-          "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47"]
+          "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
 
 # extra hours if needed to be added
 # ,"49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72"
@@ -197,7 +197,7 @@ for i in lstProvince:
         lstNVT.append(p)
     j = j + 1
 
-prov = ["Province","AB", "BC", "MB", "NB", 'NL', "NS", "ON", "PE", "QC", "SK", "NT", "NU", "YT"]
+prov = ["Province","AB", "BC", "MB", "NB", 'NL', "NS", "ON", "PE", "QC", "SK", "NT", "NU", "YT", "ALL"]
 
 #returns list of all the stations based on the selected province
 provinceDic = {
@@ -214,7 +214,8 @@ provinceDic = {
     "SK": lstSASK,
     "NT": lstNWT,
     "NU": lstNVT,
-    "YT": lstYK
+    "YT": lstYK,
+    "ALL":lstNL+lstPEI+lstNS+lstNB+lstQC+lstONT+lstMAN+lstSASK+lstALB+lstBC+lstYK+lstNWT+lstNVT
 }
 
 provlist = []
@@ -261,6 +262,9 @@ def inputStartDate(sD):
     sDate = date(int(sYear),int(sMonth),int(sDay))
     print("Start Date: " + sDate.strftime("%Y %m %d"))
 
+WARNING = '\033[93m'
+FAIL = '\033[91m'
+ENDC = '\033[0m'
 
 # end date
 def inputEndDate(eD):
@@ -275,7 +279,7 @@ def inputEndDate(eD):
     eDate = date(int(eYear), int(eMonth), int(eDay))
     print("End Date: " + eDate.strftime("%Y %m %d"))
     if eDate.month - sDate.month > 2 or eDate.year - sDate.year > 1:
-        raise Exception("Entered date range is too big, the dates have to be within 2 months")
+        raise Exception(WARNING+"Entered date range is too big, the dates have to be within 2 months"+ENDC)
 
 
 lstYMD=[]
@@ -527,7 +531,7 @@ def generateTCL(modelH,iditem,selectedDate):
             time0Format = generatedTime.strftime("%-H")
             dateToFile = generatedTime.strftime("%d")
             monthToFile = generatedTime.strftime("%m")
-            config = open("config/" + monthToFile + p + dateToFile + time00Format + modelH + ".tcl", "w")
+            config = open("config/" + p+"_"+monthToFile + dateToFile + time00Format + modelH + ".tcl", "w")
             config.write(
                 "set Data(SpLst)  \"" + p + "\" \n"
                 "set Data(TAG1)   \"BashOut" + modelH + "." + year + month + day + "_regeta\"\n"

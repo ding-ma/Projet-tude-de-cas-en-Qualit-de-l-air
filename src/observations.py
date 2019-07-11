@@ -1,6 +1,7 @@
 import os
 import re
 import sqlite3 as sql
+import time
 from datetime import date, timedelta
 from sys import platform
 
@@ -102,6 +103,7 @@ def particuleCheckBox(O3, NO2, others, PM25):
     # for every 2 character, add space
     formattedParticuleString = ' '.join(
         unformattedParticuleString[i:i + 2] for i in range(0, len(unformattedParticuleString), 2))
+    print(formattedParticuleString)
 
 
 lstofSpecies = []
@@ -112,11 +114,9 @@ def generateFromDB(stationID):
         lstofSpecies.append(fstdDict[et])
     templst = []
     for s,sp in zip(lstofSpecies,lstofSpeciesFST):
-        file = open("output/OBS__ID"+stationID+"__" + sp +"__START"+sDate.strftime("%Y%m%d")+"__END"+eDate.strftime("%Y%m%d")+ ".csv", "w+")
-        file.write("Date,Time,Value\n")
         for d in lstdays[:-1]:  # skips last date, but lstfile contains it so it reads it. we just need the last 3h of the eDate in the last file
             for l in lstfile:
-                print("opening db: "+ l)
+                print("searching db: "+ l)
                 connection = sql.connect(path+l)
                 c = connection.cursor()
                 c.execute("SELECT COUNT(*) FROM (SELECT _rowid_,* FROM main.header);")
@@ -135,8 +135,21 @@ def generateFromDB(stationID):
                                 post10 = d.strftime("%Y%m%d") + "," + str(int(i[7] / 10000)) + "," + str((p[8])) + "\n"
                                 templst.append(post10)
         bb = sorted(templst)
-        print("Writing to file")
-        for t in bb:
-            file.write(t)
-        templst.clear()
+        if len(bb) <1:
+            print(Gm.FAIL+sp+" NOT found at station " + stationID+ Gm.ENDC)
+            if len(sp)>1:
+                print("Trying other selected pollutants...")
+            time.sleep(2)
+
+        if len(bb) >2:
+            print("Writing to file")
+            file = open(
+                "output/OBS__ID" + stationID + "__" + sp + "__START" + sDate.strftime(
+                    "%Y%m%d") + "__END" + eDate.strftime(
+                    "%Y%m%d") + ".csv", "w+")
+            file.write("Date,Time,Value\n")
+            for t in bb:
+                file.write(t)
+            templst.clear()
+            #raise Exception(Gm.FAIL+sp+" NOT found at station " + stationID+ Gm.ENDC)
     print("Job done, see folder-->" + filelocation + "/output\n")

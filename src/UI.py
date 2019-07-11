@@ -69,12 +69,6 @@ def GemClicked():
     Um.particuleCheckBoxAndTime(O3, NO2, PM25, locID,datesplit, active)
     Um.rarcFile(datesplit)
 
-    Umist.removeAllfile(r'' + Umist.filelocation + "/configMIST")
-    Umist.time(sTime, eTime)
-    Umist.inputStartDate(a)
-    Umist.inputEndDate(b)
-    Umist.modelCheckbox(h_00, h_12)
-
     Fw.level(levelEntry.get())
     Fw.removeAllfile(r'' + Fw.filelocation + "/configFw")
     Fw.time(sTime, eTime)
@@ -86,7 +80,7 @@ def GemClicked():
     Im.inputStartDate(a)
     Im.inputEndDate(b)
     Im.time(sTime, eTime)
-    Im.modelCheckbox(h_00,h_12)
+    Im.modelCheckbox(h_00, h_12)
     Im.particuleCheckBox(O3, NO2, others, PM25)
     East = var_east.get()
     EastZoom = var_eastZoom.get()
@@ -94,7 +88,7 @@ def GemClicked():
     NAGem = var_NAGem.get()
     West = var_west.get()
     QcOnt = var_QCOnt.get()
-    Im.locationCheckBox(East,EastZoom,NA,NAGem,West,QcOnt)
+    Im.locationCheckBox(East, EastZoom, NA, NAGem, West, QcOnt)
     Im.RarcFile()
     Im.UMOSRarcFile()
 
@@ -102,17 +96,26 @@ def GemClicked():
     Ob.inputEndDate(b)
     Ob.particuleCheckBox(O3, NO2, others, PM25)
 
+    Umist.removeAllfile(r'' + Umist.filelocation + "/configMIST")
+    Umist.time(sTime, eTime)
+
+    Umist.modelCheckbox(h_00, h_12)
+    Umist.inputStartDate(a)
+    Umist.inputEndDate(b)
+
+
+
 def getdate():
     ind = int(selectDate.current())
     return Gm.returnDateList()[int(selectDate.current())]
 
 
 selectDate = ttk.Combobox(machTab, values = ["No Date Entered"],state='readonly', width=25)
-selectDate.place(x=10,y=185)
+selectDate.place(x=370,y=195)
 selectDate.current(0)
 
 selectDateLabel = tk.Label(machTab, text = "Select a date to treat (UMOS-MIST, Gemmach, FireWork)")
-selectDateLabel.place(x=10,y=160)
+selectDateLabel.place(x=10,y=195)
 
 startDateLabel = tk.Label(machTab, text="Enter Start Date (YYYY/MM/DD)")
 enteredDate = tk.Entry(machTab, width=13)
@@ -214,12 +217,12 @@ stationSearchLabel = tk.Label(machTab, text=displayString)
 searchBtn = tk.Button(machTab, text="Search Station Name or ID", command=SearchNameID)
 
 
-stationSearchLabel.place(x=630,y=102)
-stationSearchField.place(x=500,y=102)
+stationSearchLabel.place(x=680,y=102)
+stationSearchField.place(x=550,y=102)
 searchBtn.place(x=350,y=100)
 
 separetorline = ttk.Label(machTab,text="________________________________________________________________________________________________________________________________________________________________________________________________________________")
-separetorline.place(x=0,y=140)
+separetorline.place(x=0,y=170)
 
 separetorline1 = ttk.Label(machTab,text="________________________________________________________________________________________________________________________________________________________________________________________________________________")
 separetorline1.place(x=0,y=325)
@@ -283,12 +286,12 @@ btn = tk.Button(machTab, text="Enter Parameters", command=GemClicked, width=15, 
 btn.place(x=850,y=50)
 
 GemmachLabel = tk.Label(machTab,text = "Gemmach", font = "13")
-GemmachLabel.place(x=50,y=210)
+GemmachLabel.place(x=40,y=235)
 scriptBtn = tk.Button(machTab, text="Get Chosen Pollutants", command=StartBash, width=17, height=1)
 scriptBtn.place(x=40,y=270)
 
-extrationBtn = tk.Button(machTab, text="Start Extraction", command=StartXRACR, width=17, height=1)
-extrationBtn.place(x=40,y=240)
+extrationBtn = tk.Button(machTab, text="Gemmach Extraction", command=StartXRACR, width=17, height=1)
+extrationBtn.place(x=40,y=150)
 
 
 def getLocation():
@@ -312,10 +315,10 @@ def UMOSClicked():
 
 
 UmosLabel = tk.Label(machTab,text = "UMOS", font = "13")
-UmosLabel.place(x=638,y=210)
+UmosLabel.place(x=638,y=235)
 
-UMOSBtnExt = tk.Button(machTab, text="Start Extraction", command = UMOSClicked, width=17, height=1)
-UMOSBtnExt.place(x=638,y=240)
+UMOSBtnExt = tk.Button(machTab, text="UMOS Extraction", command = UMOSClicked, width=17, height=1)
+UMOSBtnExt.place(x=638,y=150)
 
 
 def UMOSGetLocation():
@@ -364,13 +367,13 @@ def MistGetLocation():
 
 
 UmosMist = tk.Label(machTab,text = "UMOS-MIST", font = "13")
-UmosMist.place(x=455,y=210)
+UmosMist.place(x=438,y=235)
 
 mistBashBtn = tk.Button(machTab, text = "Get Chosen Pollutants", command = MISTClicked, width=17, height=1)
 mistBashBtn.place(x=438,y=270)
 
-mistExtraction = tk.Button(machTab, text = "Start Extraction", command =MISTRARC, width=17, height=1)
-mistExtraction.place(x=438,y=240)
+mistExtraction = tk.Button(machTab, text = "UMOS-Mist Extraction", command =MISTRARC, width=17, height=1)
+mistExtraction.place(x=438,y=150)
 
 mistTCLBtn = tk.Button(machTab, text = "Get data at Station", command = MistGetLocation,width=17, height=1)
 mistTCLBtn.place(x=438,y=300)
@@ -403,13 +406,13 @@ def FwGetLocation():
 
 
 FireWork = tk.Label(machTab,text = "FireWork", font = "13")
-FireWork.place(x=255,y=210)
+FireWork.place(x=255,y=235)
 
 fwBashBtn = tk.Button(machTab, text = "Get Chosen Pollutants", command = FwClicked,width=17, height=1)
 fwBashBtn.place(x=255,y=270)
 
-fwRarcBtn = tk.Button(machTab, text="Start Extraction", command = FwRarc, width=17, height=1)
-fwRarcBtn.place(x=255,y=240)
+fwRarcBtn = tk.Button(machTab, text="FireWork Extraction", command = FwRarc, width=17, height=1)
+fwRarcBtn.place(x=255,y=150)
 
 fwTCLbtn = tk.Button(machTab, text = "Get data at Station", command = FwGetLocation, width=17, height=1)
 fwTCLbtn.place(x=255,y=300)
@@ -426,11 +429,11 @@ def getImg():
     animateCombo.config(values=sorted(giflst))
 
 
-imagesct = tk.Label(machTab,text = "Image Section", font = "17")
+imagesct = tk.Label(machTab,text = "Image Section", font = "13")
 imagesct.place(x=10,y=350)
 
 imgextraction = tk.Label(machTab, text ="Gemmach", font = "13")
-imgextraction.place(x=50, y=385)
+imgextraction.place(x=40, y=375)
 ImgBtn = tk.Button(machTab, text = "Get Images", command = getImg, width=17, height=1)
 ImgBtn.place(x=40,y=440)
 
@@ -465,7 +468,7 @@ def UmosImgRarc():
 
 
 imgUmos = tk.Label(machTab,text = "UMOS", font = "13")
-imgUmos.place(x=255,y=385)
+imgUmos.place(x=225,y=375)
 
 ImgUmosRarcBtn = tk.Button(machTab, text = "Start Extraction", command =UmosImgRarc,width=17, height=1)
 ImgUmosRarcBtn.place(x=225,y=410)
@@ -512,9 +515,9 @@ def ObservationGetLocation():
 
 
 obs = tk.Label(machTab,text = "Observations", font = "13")
-obs.place(x=855,y=210)
-observationRarcBtn = tk.Button(machTab,text = "Start Extraction", command=RarcObservation, width=17, height=1)
-observationRarcBtn.place(x=838,y=240)
+obs.place(x=838,y=235)
+observationRarcBtn = tk.Button(machTab,text = "Observation Extraction", command=RarcObservation, width=17, height=1)
+observationRarcBtn.place(x=838,y=150)
 
 observationLocationBtn = tk.Button(machTab, text = "Get Data at Station", command=ObservationGetLocation, width=17, height=1)
 observationLocationBtn.place(x=838,y=270)
