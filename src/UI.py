@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import glob
 import os
+import pickle
 import shutil
 import tkinter as tk
 from tkinter import ttk
@@ -12,7 +13,11 @@ import UMOS as Um
 import UMOSMist as Umist
 import observations as Ob
 
-#import forecast as Fc
+##loading Pickle
+
+
+
+
 
 # initial setting
 window = tk.Tk()
@@ -20,7 +25,7 @@ window = tk.Tk()
 #w, h = window.winfo_screenwidth(), window.winfo_screenheight()
 w,h = 1025,600
 window.geometry("%dx%d+0+0" % (w, h))
-window.title("tk")
+window.title("Automatic Image and Data Extraction - AIDE")
 # window.geometry("1500x1200")
 # Defines and places the notebook widget
 nb = ttk.Notebook(window)
@@ -181,6 +186,7 @@ otherLabel.place(x=10,y=120)
 otherVariable.place(x=210,y=120)
 
 # stations
+
 def combined(event):
     Gm.provlist.clear()
     name = comboprov.get()
@@ -586,71 +592,97 @@ deletebtn = tk.Button(machTab, text="Delete Extracted Files", bg = "red", comman
 deletebtn.place(x=850,y=500)
 # tab for help
 helptab = ttk.Frame(nb)
-nb.add(helptab, text="Help/Info", )
+nb.add(helptab, text="Quick Start Guide", )
+firstpartLabel = tk.Label(helptab, text = "Enter all the necessary information in the first part of the program."
+                                          "\nPress \"Write to file\" to configure the program"
+                                          "\nUse \"Update\" button when there are some changes made in the configuration"
+                                          "\nThen select which models you want to extract. "
+                                          "\nNote: at leat ONE of every checkbox needs to be checked.")
+firstpartLabel.place(x=10,y=10)
 
-gemmachinfo = tk.Label(helptab, text="GEMMACH - How it works:\n"
-                                     "Step 1: user enters all necesary info\n"
-                                     "Step 2: uses RARC command line settings to extract data from CMC server\n"
-                                     "Step 3: the bash script will isolate the corresponding polluant into a .fst file \n"
-                                     "Step 4: the tcl script will get the polluant data at a specific point on the map \n"
-                                     "\nGEMMACH - INFO:\n"
-                                     "- ALWAYS write to file when you are changing some settings\n "
-                                     "- Sometimes 00 has bugs, make sure to unselect and reselect it\n"
-                                     "- If the .fst already exists, you may skip the according step\n"
-                                     ,justify = "left")
-gemmachinfo.grid(column=0, row=2,sticky='w')
+secondpartLabel = tk.Label(helptab, text="Gemmach,Firework, and UMOS-Mist only works with a single date. Select the date to start treating"
+                                         "\nThe button order goes from top to bottom. Wait until the process is done to start the next one"
+                                         "\nFor the same date and pollutant settings, if you would like at another station, select it and update the file. Then press \"Get data at station\"."
+                                         "\nYou do not have to go through the entire process again."
+                                         "\nFor UMOS and Observations, press \"Get data at station\" for the file to be generated. Update the station if another place is desired")
+secondpartLabel.place(x=10,y=100)
 
-umosinfo = tk.Label(helptab, text = "UMOS - How it works:\n"
-                                    "Step 1: Takes all the information entered with \"Write to file (1)\" in Gem tab\n"
-                                    "Step 2: Use Rarc if the files are not extracted already\n"
-                                    "Step 3: Get the data at the chosen station\n"
-                                    "\nUMOS Info\n"
-                                    "There is a separation of file directory in the archives at 2017 Jan 07\n"
-                                    "But the output and functionality of the application still remains the same\n"
-                                    "UMOSTreating Folder is a temporary folder, it is normal that there are no files in it because they are deleted after the app finish running\n"
-                    ,justify = "left")
-umosinfo.place(x=425,y=315)
+thirdpartLabel = tk.Label(helptab, text = "The images works with a series of date. It takes the same configuration settings from the first part."
+                                          "\nThen select which images you would like to generate. Press on \"Get Images\". This works with a series of date"
+                                          "\nFor the UMOS, there is @sfc_ (at surface) or @sfc_diff_ (surface difference between UMOS and Gemmach)."
+                                          "\n\tSelect one of them then get the images"
+                                          "\nThere is a function called \"Animate GIF\" to animate the selected GIF in the combobox.")
+thirdpartLabel.place(x=10,y=190)
 
-umosMistinfo = tk.Label(helptab, text = "UMOS-Mist - How it works:\n"
-                                        "Same concept as Gemmach\n"
-                                        "Step 1: Takes all the information entered with \"Write to file (1)\" in Gem tab\n"
-                                        "Step 2: Use Rarc if the files are not extracted already\n"
-                                        "Step 3: Use the Bash button to isolate the interested molecule and level \n"
-                                        "Step 4: Get the data at the chosen station\n"
-                        ,justify = "left")
-umosMistinfo.grid(column=0, row=1, sticky='w')
 
-fwInfo = tk.Label(helptab, text = "FireWork - How it works: \n"
-                                  "Same concept as Gemmach\n"
-                                  "The files are automatically generated from the gemmach tab\n"
-                                  "Step 1: use extract file if the files are not extracted\n"
-                                  "Step 2: Use the Bash button to isolate the interested molecule and level\n"
-                                  "Step 3: Get the data at the chosen station\n"
-                                  "! Warning! FireWork model does not run all year long, it might be normal if \nit gives you nothing if you try to run this in the middle of the winter :)"
-                  ,justify = "left")
-fwInfo.place(x=425,y=180)
-#fwInfo.grid(column=1, row=1)
-notesInfo = tk.Label(helptab, text = "Notes:\n"
-                                     "-If you want the data at another location, change it in the Gemmach Tab and press WRITE TO FILE so it updates everything, "
-                                     "you do not need to go through the entire process again. \nJust press \"get data at location\" it will generate a new csv file with the new station\n"
-                                     "- By default the level value are: 93423264(before Septemember 9 2016) 76696048 (After that date)\n"
-                                     "- Always consult the commandline text of the program to see what is going on\n"
-                                     "- It is normal that there is error #8 while running Gemmach,UmosMist, and FireWork script for getting data at location"
-                                     "since they rely on some empty fields\n"
-                                     "- If RARC gives you a grand total of 0, it means that the file already exists in the folder OR the file does not exis in the archives\n"
-                                     "- If there are hours that needs to be added, consult Gemmach.py file, make sure to add the time to 3 lists\n"
-                                     "- if there are stations that needs to be added, add them to the \"station_DB.csv\", add them to the END and fill the entire ROW with the corresponding data\n"
-                                     "- This program will automatically generate the working directories and make sure to include the 2 csv files and all .py files!\n",
-                     justify = "left")
-notesInfo.grid(column=0, row=0)
-#https://www.python-course.eu/tkinter_text_widget.php
-
-# img = tk.PhotoImage(file = "smog-montreal.gif")
-# imglabal = tk.Label(window,image = img)
-# imglabal.grid(column=0, row=50, pady = (325,0), sticky='w')
-#imglabal.grid(column=0, row=50, pady = (325,0), sticky='w')
+moreinfo = tk.Label(helptab,text="For more info on how the program works, visit this link:")
+moreinfo.place(x=10,y=280)
+websiteEntry = tk.Entry(helptab,state='readonly')
+websiteVar = tk.StringVar()
+websiteVar.set("http://ewiki.wul.qc.ec.gc.ca/wiki/index.php/Cr%C3%A9ation_d%27un_outil_informatique_pour_faciliter_les_%C3%A9tudes_de_cas_en_qualit%C3%A9_de_l%27air")
+websiteEntry.config(textvariable=websiteVar,relief='flat', width =145,highlightthickness=0)
+websiteEntry.place(x=10,y=300)
 s = ttk.Style()
 s.theme_use('classic')
+
+def loadDB():
+    dbFile = open("configuration", "rb")
+    db = pickle.load(dbFile)
+
+    enteredstartDateVar = tk.StringVar()
+    enteredstartDateVar.set(db[0])
+    enteredDate.config(textvariable=enteredstartDateVar)
+
+    enteredEndDateVar = tk.StringVar()
+    enteredEndDateVar.set(db[1])
+    enteredEndDate.config(textvariable=enteredEndDateVar)
+
+    sHourcombo.current(db[2])
+    eHourCombo.current(db[3])
+
+    comboprov.current(db[4])
+
+    print(db[5])
+    combostations.current(db[5])
+
+    selectDate.config(values=db[6])
+    selectDate.current(db[7])
+    dbFile.close()
+
+
+try:
+    loadDB()
+except:
+    pass
+
+def storeDB():
+    try:
+        os.remove("configuration")
+    except:
+        pass
+    dbFile = open("configuration", "ab")
+    GemClicked()
+    pickle.dump([
+        enteredDate.get(),
+        enteredEndDate.get(),
+        sHourcombo.current(),
+        eHourCombo.current(),
+        comboprov.current(),
+        combostations.current(),
+        Gm.returnDateList(),
+        selectDate.current()
+                 ], dbFile)
+    print(combostations.current())
+    dbFile.close()
+
+
+def _delete_window():
+    storeDB()
+    print("Configuration Saved!")
+    window.destroy()
+
+
+window.protocol("WM_DELETE_WINDOW", _delete_window)
 window.mainloop()
 
 # notes: active var for particuleCheckBoxAndTime allowed me to use the same code for different purposes, when you write

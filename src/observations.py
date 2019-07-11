@@ -103,7 +103,6 @@ def particuleCheckBox(O3, NO2, others, PM25):
     # for every 2 character, add space
     formattedParticuleString = ' '.join(
         unformattedParticuleString[i:i + 2] for i in range(0, len(unformattedParticuleString), 2))
-    print(formattedParticuleString)
 
 
 lstofSpecies = []
