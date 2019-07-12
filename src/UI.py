@@ -640,13 +640,8 @@ def loadDB():
     sHourcombo.current(db[2])
     eHourCombo.current(db[3])
 
-    comboprov.current(db[4])
-
-    print(db[5])
-    combostations.current(db[5])
-
-    selectDate.config(values=db[6])
-    selectDate.current(db[7])
+    selectDate.config(values=db[4])
+    selectDate.current(db[5])
     dbFile.close()
 
 
@@ -667,8 +662,6 @@ def storeDB():
         enteredEndDate.get(),
         sHourcombo.current(),
         eHourCombo.current(),
-        comboprov.current(),
-        combostations.current(),
         Gm.returnDateList(),
         selectDate.current()
                  ], dbFile)
