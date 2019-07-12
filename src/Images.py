@@ -181,7 +181,7 @@ def locationCheckBox(East, EastZoom,NA,NAGem,West,QcOnt):
     if West is 1:
         strWest = "west,"
     if QcOnt is 1:
-        strQCOnt = "quebec@ontario"
+        strQCOnt = "quebec@ontario,"
     rarcString = strEast + strEastZoom+strNA+strNAGem+strWest+strQCOnt
     tempList = re.split(",", rarcString)
     locationlst = tempList[:-1]
@@ -237,7 +237,7 @@ def generateImage():
                 for m in molecules:
                     for h in modelhourlist:
                         if m == "quebec@ontario":
-                            pass
+                            continue
                         os.system("cmcarc -x "+sYear+firstmonth+day+h+"_054_GM_"+location+"_I_GEMMACH_"+m+"@sfc@001.* -f "+os.getcwd()+ "/rarc/operation.images.chronos/"+sYear+firstmonth+day+h+"_"+location)
 
                         def purge(dir, pattern):
@@ -263,7 +263,7 @@ def generateImage():
                 for m in molecules:
                     for h in modelhourlist:
                         if m == "quebec@ontario":
-                            pass
+                            continue
                         os.system(
                             "cmcarc -x " + sYear + month + day + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001.* -f " + os.getcwd() + "/rarc/operation.images.chronos/" + sYear + month + day + h + "_" + location)
 
@@ -291,7 +291,7 @@ def generateImage():
                 for m in molecules:
                     for h in modelhourlist:
                         if m == "quebec@ontario":
-                            pass
+                            continue
                         os.system(
                             "cmcarc -x " + sYear + Month + day + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001.* -f " + os.getcwd() + "/rarc/operation.images.chronos/" + sYear + Month + day + h + "_" + location)
 
@@ -321,6 +321,7 @@ def generateUMOSImage(t):
         firstmonth = genday[0][0]
         firstmonthdays = genday[0][1:]
         for location in locationlst:
+            print(location)
             for day in firstmonthdays:
                 for m in molecules:
                     for h in modelhourlist:
@@ -366,6 +367,7 @@ def generateUMOSImage(t):
         Month = genday[0]
         Day = genday[1:]
         for location in locationlst:
+            print(location)
             for day in Day:
                 for m in molecules:
                     for h in modelhourlist:
