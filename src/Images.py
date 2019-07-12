@@ -236,6 +236,8 @@ def generateImage():
             for location in locationlst:
                 for m in molecules:
                     for h in modelhourlist:
+                        if m == "quebec@ontario":
+                            pass
                         os.system("cmcarc -x "+sYear+firstmonth+day+h+"_054_GM_"+location+"_I_GEMMACH_"+m+"@sfc@001.* -f "+os.getcwd()+ "/rarc/operation.images.chronos/"+sYear+firstmonth+day+h+"_"+location)
 
                         def purge(dir, pattern):
@@ -260,6 +262,8 @@ def generateImage():
             for location in locationlst:
                 for m in molecules:
                     for h in modelhourlist:
+                        if m == "quebec@ontario":
+                            pass
                         os.system(
                             "cmcarc -x " + sYear + month + day + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001.* -f " + os.getcwd() + "/rarc/operation.images.chronos/" + sYear + month + day + h + "_" + location)
 
@@ -286,6 +290,8 @@ def generateImage():
             for location in locationlst:
                 for m in molecules:
                     for h in modelhourlist:
+                        if m == "quebec@ontario":
+                            pass
                         os.system(
                             "cmcarc -x " + sYear + Month + day + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001.* -f " + os.getcwd() + "/rarc/operation.images.chronos/" + sYear + Month + day + h + "_" + location)
 

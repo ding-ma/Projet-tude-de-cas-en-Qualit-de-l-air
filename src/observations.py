@@ -61,9 +61,10 @@ def listadys():
     for i in range(delta1.days + 2):
         e = sDate + timedelta(days=i)
         lstdays.append(e)
-        for a in os.listdir(path):
-            if a.startswith(e.strftime("%Y%m%d")):
-                lstfile.append(a)
+        if os.path.exists(path):
+            for a in os.listdir(path):
+                if a.startswith(e.strftime("%Y%m%d")):
+                    lstfile.append(a)
     rarcFile()
 
 

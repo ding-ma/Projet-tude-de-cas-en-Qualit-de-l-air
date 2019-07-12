@@ -36,7 +36,7 @@ def inputEndDate(eD):
     eDay = unformatattedDate[2]
     eDate = date(int(eYear), int(eMonth), int(eDay))
     if eDate < date(2016,4,7):
-        raise Exception(WARNING+"UMOS-Mist files doesn't exist"+ENDC)
+        print(WARNING+"UMOS-Mist files doesn't exist"+ENDC)
 
 
 bothCheked = 0

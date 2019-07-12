@@ -3,6 +3,7 @@ import glob
 import os
 import pickle
 import shutil
+import sys
 import tkinter as tk
 from tkinter import ttk
 
@@ -247,7 +248,7 @@ NAGem_Checkbtn = tk.Checkbutton(machTab, text = "NA - GEM", variable = var_NAGem
 var_west = tk.BooleanVar()
 West_Checkbtn = tk.Checkbutton(machTab, text = "West", variable = var_west)
 var_QCOnt = tk.BooleanVar()
-QCOnt_CheckBtn = tk.Checkbutton(machTab, text = "QC-Ont, Umos only", variable = var_QCOnt)
+QCOnt_CheckBtn = tk.Checkbutton(machTab, text = "QC-Ont, Umos-Mist only", variable = var_QCOnt)
 
 
 ImagesLabel.place(x=675,y=390)
@@ -473,7 +474,7 @@ def UmosImgRarc():
     os.system("rarc -i " + Gm.filelocation + "/imageUMOS &")
 
 
-imgUmos = tk.Label(machTab,text = "UMOS", font = "13")
+imgUmos = tk.Label(machTab,text = "UMOS-Mist", font = "13")
 imgUmos.place(x=225,y=375)
 
 ImgUmosRarcBtn = tk.Button(machTab, text = "Start Extraction", command =UmosImgRarc,width=17, height=1)
@@ -516,6 +517,7 @@ def RarcObservation():
 
 
 def ObservationGetLocation():
+    Ob.listadys()
     locID = getComboboxLocation()
     Ob.generateFromDB(locID)
 
@@ -665,13 +667,17 @@ def storeDB():
         Gm.returnDateList(),
         selectDate.current()
                  ], dbFile)
-    print(combostations.current())
     dbFile.close()
+
+# Disable print
+def blockPrint():
+    sys.stdout = open(os.devnull, 'w')
 
 
 def _delete_window():
-    storeDB()
     print("Configuration Saved!")
+    blockPrint()
+    storeDB()
     window.destroy()
 
 
