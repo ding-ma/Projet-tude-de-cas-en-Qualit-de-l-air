@@ -4,9 +4,18 @@ import re
 import sqlite3 as sql
 from datetime import timedelta
 
-import Gemmach as Gm
 
-filelocation = Gm.filelocation
+days = (
+    "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18"
+    , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "01", "02")
+
+
+
+oddMonths = ("01", "03", "05", "07", "08", "10", "12")
+evenMonths = ("04", "06", "09", "11")
+
+
+filelocation = os.getcwd()
 
 def inputStartDate(sDate):
     global sYear
@@ -24,14 +33,14 @@ def inputStartDate(sDate):
         leap = False
 
     #this is used for changing the combobox in the UI
-    if sMonth in Gm.oddMonths:
-        return Gm.days[1:-2]
-    if sMonth in Gm.evenMonths:
-        return Gm.days[1:-3]
+    if sMonth in oddMonths:
+        return days[1:-2]
+    if sMonth in evenMonths:
+        return days[1:-3]
     if leap is True and int(sMonth) is 2:
-        return Gm.days[1:-4]
+        return days[1:-4]
     if leap is False and int(sMonth) is 2:
-        return Gm.days[1:-5]
+        return days[1:-5]
     ###
 
     #checks if the user input is correct
@@ -41,9 +50,9 @@ def inputStartDate(sDate):
         dateErrors()
     elif leap is False and sMonth == "02" and int(sDay) > 28:
         dateErrors()
-    elif sMonth in Gm.oddMonths and int(sDay) > 31:
+    elif sMonth in oddMonths and int(sDay) > 31:
         dateErrors()
-    elif sMonth in Gm.evenMonths and int(sDay) > 30:
+    elif sMonth in evenMonths and int(sDay) > 30:
         dateErrors()
     else:
         print("Start Date: " + sYear, sMonth, sDay)
@@ -70,9 +79,9 @@ def inputEndDate(eDate):
         dateErrors()
     elif leap is False and eMonth == "02" and int(eDay) > 28:
         dateErrors()
-    elif eMonth in Gm.oddMonths and int(eDay) > 31:
+    elif eMonth in oddMonths and int(eDay) > 31:
         dateErrors()
-    elif eMonth in Gm.evenMonths and int(eDay) > 30:
+    elif eMonth in evenMonths and int(eDay) > 30:
         dateErrors()
     elif sMonth > eMonth:
         dateErrors()
@@ -89,11 +98,11 @@ def dateErrors():
 def time(sTime, eTime):
     global formattedSelectedTimeWithComma
     #gets index then generates a list within the index
-    sIndex = Gm.hours.index(sTime)
-    eIndex = Gm.hours.index(eTime)
+    sIndex = hours.index(sTime)
+    eIndex = hours.index(eTime)
     unformattedSelectedTime = ""
     for timeList in range(eIndex - sIndex + 1):
-        unformattedSelectedTime += Gm.hour24[sIndex + timeList]
+        unformattedSelectedTime += hour24[sIndex + timeList]
     # for every 3 character
     formattedSelectedTimeWithComma = ','.join(
         unformattedSelectedTime[i:i + 2] for i in range(0, len(unformattedSelectedTime), 2))
