@@ -657,17 +657,18 @@ def storeDB():
         os.remove("configuration")
     except:
         pass
-    dbFile = open("configuration", "ab")
-    GemClicked()
-    pickle.dump([
-        enteredDate.get(),
-        enteredEndDate.get(),
-        sHourcombo.current(),
-        eHourCombo.current(),
-        Gm.returnDateList(),
-        selectDate.current()
-                 ], dbFile)
-    dbFile.close()
+    if enteredDate.get() != "" and enteredEndDate !="":
+        dbFile = open("configuration", "ab")
+        GemClicked()
+        pickle.dump([
+            enteredDate.get(),
+            enteredEndDate.get(),
+            sHourcombo.current(),
+            eHourCombo.current(),
+            Gm.returnDateList(),
+            selectDate.current()
+                     ], dbFile)
+        dbFile.close()
 
 # Disable print
 def blockPrint():
