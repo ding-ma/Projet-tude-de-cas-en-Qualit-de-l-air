@@ -365,8 +365,7 @@ def MISTRARC():
     os.system("rarc -i " + Umist.filelocation + "/UMist &")
 
 def MistGetLocation():
-    if Umist.checkifBashFileExist(getdate(),Umist.bothCheked) is False:
-        MISTClicked()
+    MISTClicked()
     time.sleep(1)
     Umist.writeEticket(getdate())
     shutil.rmtree("extractedMist")
@@ -406,8 +405,7 @@ def FwClicked():
         print("Done, file located at -->" + Fw.filelocation + "/bash")
 
 def FwGetLocation():
-    if Fw.checkifBashFileExist(getdate(), Fw.bothCheked) is False:
-        FwClicked()
+    FwClicked()
     time.sleep(1)
     shutil.rmtree("extractedFw")
     os.mkdir("extractedFw")

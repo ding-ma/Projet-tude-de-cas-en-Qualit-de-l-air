@@ -409,7 +409,7 @@ def bashFile(selectedDate):
             "\nGrille=regeta"
             "\nFichierTICTAC="+filelocation+"/rarc/operation.forecasts.mach/${Annee}${DateDebutMois}" + day + modelHourBash + "_" + sTimeBash +
             "\nListeVersionsGEM=\"operation.forecasts.mach\""
-            "\nListeEspeces=\"O3 N2 AF\"" # formattedParticuleString, if other polluant are needed
+            "\nListeEspeces=\""+formattedParticuleString+"\"" # formattedParticuleString, if other polluant are needed
             "\nListeNiveaux=\"" + lev + "\""  # TODO confirm levels
             "\nListeJours=\"" + day + "\""
             "\nListePasse=\"" + modelHourSeparated + "\""
@@ -472,30 +472,7 @@ def bashFile(selectedDate):
 def getEticket():
     os.system("./gemmachEticket.tcl")
 
-def checkifBashFileExist(selectedDate,numberChecked):
-    templst = selectedDate.split("/")
-    year = templst[0]
-    month = templst[1]
-    day = templst[2]
-    if numberChecked is 1:
-        fileToMatch = "BashOut00."+year+month+day+"_regeta.fst"
-        if fileToMatch in os.listdir("bash/"):
-            return True
-        else:
-            return False
-    if numberChecked is 2:
-        fileToMatch = "BashOut12." + year + month + day + "_regeta.fst"
-        if fileToMatch in os.listdir("bash/"):
-            return True
-        else:
-            return False
-    if numberChecked is 3:
-        fileToMatch00 = "BashOut00." + year + month + day + "_regeta.fst"
-        fileToMatch12 = "BashOut12." + year + month + day + "_regeta.fst"
-        if (fileToMatch00 and fileToMatch12) in os.listdir("bash/"):
-            return True
-        else:
-            return False
+
 #generates script at the chosen location
 # What this does is it generates a TCL config file for EVERY hour, EVERY molecule, and every day, this is why there is a lot of file
 # This is to bypass the 12h empty date bug from the tcl script
