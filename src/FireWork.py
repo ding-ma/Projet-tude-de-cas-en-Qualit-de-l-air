@@ -124,7 +124,7 @@ def bashFile(formattedParticuleString, selectedDate):
             "\nGrille=regeta"
             "\nFichierTICTAC="+filelocation+"/rarc/operation.forecasts.firework.mach/${Annee}${DateDebutMois}" + sDay + modelHourBash + "_" + sTimeBash +
             "\nListeVersionsGEM=\"operation.forecasts.firework.mach\""
-            "\nListeEspeces=\"" + formattedParticuleString + "\""
+            "\nListeEspeces=\"O3 N2 AF\"" #f ormattedParticuleString
             "\nListeNiveaux=\"" + lev + "\""  # TODO confirm levels
             "\nListeJours=\"" + day + "\""
             "\nListePasse=\"" + modelHourSeparated + "\""
@@ -309,6 +309,31 @@ def uniquify(path, sep = ''):
         fd, filename = tempfile.mkstemp(dir = dirname, prefix = filename, suffix = ext)
         tempfile._name_sequence = orig
     return filename
+
+def checkifBashFileExist(selectedDate,numberChecked):
+    templst = selectedDate.split("/")
+    year = templst[0]
+    month = templst[1]
+    day = templst[2]
+    if numberChecked is 1:
+        fileToMatch = "FW00."+year+month+day+"_regeta.fst"
+        if fileToMatch in os.listdir("bash/"):
+            return True
+        else:
+            return False
+    if numberChecked is 2:
+        fileToMatch = "FW12." + year + month + day + "_regeta.fst"
+        if fileToMatch in os.listdir("bash/"):
+            return True
+        else:
+            return False
+    if numberChecked is 3:
+        fileToMatch00 = "FW00."+year+month+day+"_regeta.fst"
+        fileToMatch12 = "FW12." + year + month + day + "_regeta.fst"
+        if (fileToMatch00 and fileToMatch12) in os.listdir("bash/"):
+            return True
+        else:
+            return False
 
 
 def sortAndGenerate(destination, selectedDate):

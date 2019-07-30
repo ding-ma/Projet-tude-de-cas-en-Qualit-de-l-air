@@ -125,7 +125,7 @@ def bashFile(formattedParticuleString, selectedDate):
             "\nGrille=regeta"
             "\nFichierTICTAC=" + filelocation + "/rarc/operation.scribeMat.mist.aq/${DateDebut}" + modelHourSeparated + "_mist_anal"
             "\nListeVersionsGEM=\"operation.scribeMat.mist.aq\""
-            "\nListeEspeces=\"" + formattedParticuleString + "\""
+            "\nListeEspeces=\"O3 N2 AF\"" # formattedParticuleString
             "\nListeNiveaux=\"-1\""  # TODO confirm levels
             "\nListeJours=\"-1\""
             "\nListePasse=\"-1\""
@@ -269,6 +269,30 @@ def generateTCL(modelH, loc, fpp,selectedDate):
                 "set Data(days) \"" + str(dateToFile) + "\"\n"  # todo confirm start day
                 "set Data(hours) \"" + str(time0Format) + "\"\n")
 
+def checkifBashFileExist(selectedDate,numberChecked):
+    templst = selectedDate.split("/")
+    year = templst[0]
+    month = templst[1]
+    day = templst[2]
+    if numberChecked is 1:
+        fileToMatch = "UMOSmist00."+year+month+day+"_regeta.fst"
+        if fileToMatch in os.listdir("bash/"):
+            return True
+        else:
+            return False
+    if numberChecked is 2:
+        fileToMatch = "UMOSmist12." + year + month + day + "_regeta.fst"
+        if fileToMatch in os.listdir("bash/"):
+            return True
+        else:
+            return False
+    if numberChecked is 3:
+        fileToMatch00 = "UMOSmist00."+year+month+day+"_regeta.fst"
+        fileToMatch12 = "UMOSmist00."+year+month+day+"_regeta.fst"
+        if (fileToMatch00 and fileToMatch12) in os.listdir("bash/"):
+            return True
+        else:
+            return False
 
 def launchTCL():
     os.system(" ls " + filelocation + "/config | sort -st '/' -k1,1")

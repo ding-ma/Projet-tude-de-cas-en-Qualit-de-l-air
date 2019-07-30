@@ -4,6 +4,7 @@ import os
 import pickle
 import shutil
 import sys
+import time
 import tkinter as tk
 from tkinter import ttk
 
@@ -146,7 +147,7 @@ sHourcombo.place(x=340,y=35)
 # End Hours
 eHourLabel = tk.Label(machTab, text="Choose the end time")
 eHourCombo = ttk.Combobox(machTab, values=Gm.hours, state='readonly')
-eHourCombo.current(0)
+eHourCombo.current(48)
 eHourLabel.place(x=535,y=10)
 eHourCombo.place(x=535,y=35)
 
@@ -276,6 +277,7 @@ def StartXRACR():
 
 def StartBash():
     Gm.bashFile(getdate())
+    time.sleep(1)
     os.system("chmod -R 777 " + Gm.filelocation)
     if Gm.bothCheked is 1:
         os.system("./gemmachBashTest00.bash ")
@@ -300,9 +302,7 @@ extrationBtn.place(x=40,y=150)
 
 
 def getLocation():
-    print(Gm.checkifBashFileExist(getdate(),Gm.bothCheked))
-    if Gm.checkifBashFileExist(getdate(),Gm.bothCheked) is False:
-        StartBash()
+    StartBash()
     # Bk.removeAllfile(r''+Bk.filelocation+"/bash")
     Gm.removeAllfile(r'' + Gm.filelocation + "/config")
     Gm.getEticket()
@@ -311,6 +311,7 @@ def getLocation():
     Gm.launchTCL()
     Gm.removeEmptyFile(r'' + Gm.filelocation + "/extracted")
     Gm.sortAndGenerate(Gm.filelocation + "/extracted/", getdate())
+
 
 
 locationBtn = tk.Button(machTab, text="Get data at Station", command=getLocation, width=17, height=1)
@@ -348,14 +349,14 @@ def MISTClicked():
     Umist.bashFile(particules, getdate())
     os.system("chmod -R 744 " + Umist.filelocation)
     if Umist.bothCheked is 1:
-        os.system("./UmosMist00.bash &")
+        os.system("./UmosMist00.bash")
         print("Done, file located at -->" + Umist.filelocation + "/bash")
     if Umist.bothCheked is 2:
-        os.system("./UmosMist12.bash &")
+        os.system("./UmosMist12.bash")
         print("Done, file located at -->" + Umist.filelocation + "/bash")
     if Umist.bothCheked is 3:
-        os.system("./UmosMist00.bash &")
-        os.system("./UmosMist12.bash &")
+        os.system("./UmosMist00.bash")
+        os.system("./UmosMist12.bash")
         print("Done, file located at -->" + Umist.filelocation + "/bash")
 
 
@@ -364,6 +365,9 @@ def MISTRARC():
     os.system("rarc -i " + Umist.filelocation + "/UMist &")
 
 def MistGetLocation():
+    if Umist.checkifBashFileExist(getdate(),Umist.bothCheked) is False:
+        MISTClicked()
+    time.sleep(1)
     Umist.writeEticket(getdate())
     shutil.rmtree("extractedMist")
     os.mkdir("extractedMist")
@@ -376,9 +380,6 @@ def MistGetLocation():
 
 UmosMist = tk.Label(machTab,text = "UMOS-MIST", font = "13")
 UmosMist.place(x=438,y=235)
-
-mistBashBtn = tk.Button(machTab, text = "Get Chosen Pollutants", command = MISTClicked, width=17, height=1)
-mistBashBtn.place(x=438,y=270)
 
 mistExtraction = tk.Button(machTab, text = "UMOS-Mist Extraction", command =MISTRARC, width=17, height=1)
 mistExtraction.place(x=438,y=150)
@@ -394,17 +395,20 @@ def FwClicked():
     Fw.bashFile(particules, getdate())
     os.system("chmod -R 777 " + Fw.filelocation)
     if Fw.bothCheked is 1:
-        os.system("./FireWork00.bash &")
+        os.system("./FireWork00.bash")
         print("Done, file located at -->" + Fw.filelocation + "/bash")
     if Fw.bothCheked is 2:
-        os.system("./FireWork12.bash &")
+        os.system("./FireWork12.bash")
         print("Done, file located at -->" + Fw.filelocation + "/bash")
     if Fw.bothCheked is 3:
-        os.system("./FireWork00.bash &")
-        os.system("./FireWork12.bash &")
+        os.system("./FireWork00.bash")
+        os.system("./FireWork12.bash")
         print("Done, file located at -->" + Fw.filelocation + "/bash")
 
 def FwGetLocation():
+    if Fw.checkifBashFileExist(getdate(), Fw.bothCheked) is False:
+        FwClicked()
+    time.sleep(1)
     shutil.rmtree("extractedFw")
     os.mkdir("extractedFw")
     Fw.TCLConfig(particules,getComboboxLocation(),getdate())
@@ -416,8 +420,6 @@ def FwGetLocation():
 FireWork = tk.Label(machTab,text = "FireWork", font = "13")
 FireWork.place(x=255,y=235)
 
-fwBashBtn = tk.Button(machTab, text = "Get Chosen Pollutants", command = FwClicked,width=17, height=1)
-fwBashBtn.place(x=255,y=270)
 
 fwRarcBtn = tk.Button(machTab, text="FireWork Extraction", command = FwRarc, width=17, height=1)
 fwRarcBtn.place(x=255,y=150)
@@ -670,6 +672,7 @@ def storeDB():
             selectDate.current()
                      ], dbFile)
         dbFile.close()
+        print("Configuration Saved!")
 
 # Disable print
 def blockPrint():
@@ -677,7 +680,6 @@ def blockPrint():
 
 
 def _delete_window():
-    print("Configuration Saved!")
     blockPrint()
     storeDB()
     window.destroy()

@@ -409,7 +409,7 @@ def bashFile(selectedDate):
             "\nGrille=regeta"
             "\nFichierTICTAC="+filelocation+"/rarc/operation.forecasts.mach/${Annee}${DateDebutMois}" + day + modelHourBash + "_" + sTimeBash +
             "\nListeVersionsGEM=\"operation.forecasts.mach\""
-            "\nListeEspeces=\"" + formattedParticuleString + "\""
+            "\nListeEspeces=\"O3 N2 AF\"" # formattedParticuleString, if other polluant are needed
             "\nListeNiveaux=\"" + lev + "\""  # TODO confirm levels
             "\nListeJours=\"" + day + "\""
             "\nListePasse=\"" + modelHourSeparated + "\""
