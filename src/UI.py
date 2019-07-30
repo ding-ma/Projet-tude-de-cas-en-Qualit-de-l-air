@@ -276,16 +276,16 @@ def StartXRACR():
 
 def StartBash():
     Gm.bashFile(getdate())
-    os.system("chmod -R 777 " + Fw.filelocation)
+    os.system("chmod -R 777 " + Gm.filelocation)
     if Gm.bothCheked is 1:
-        os.system("./gemmachBashTest00.bash &")
+        os.system("./gemmachBashTest00.bash ")
         print("Done, file located at -->" + Gm.filelocation + "/bash")
     if Gm.bothCheked is 2:
-        os.system("./gemmachBashTest12.bash &")
+        os.system("./gemmachBashTest12.bash ")
         print("Done, file located at -->" + Gm.filelocation + "/bash")
     if Gm.bothCheked is 3:
-        os.system("./gemmachBashTest00.bash &")
-        os.system("./gemmachBashTest12.bash &")
+        os.system("./gemmachBashTest00.bash ")
+        os.system("./gemmachBashTest12.bash ")
         print("Done, file located at -->" + Gm.filelocation + "/bash")
 
 
@@ -294,14 +294,15 @@ btn.place(x=850,y=50)
 
 GemmachLabel = tk.Label(machTab,text = "Gemmach", font = "13")
 GemmachLabel.place(x=40,y=235)
-scriptBtn = tk.Button(machTab, text="Get Chosen Pollutants", command=StartBash, width=17, height=1)
-scriptBtn.place(x=40,y=270)
 
 extrationBtn = tk.Button(machTab, text="Gemmach Extraction", command=StartXRACR, width=17, height=1)
 extrationBtn.place(x=40,y=150)
 
 
 def getLocation():
+    print(Gm.checkifBashFileExist(getdate(),Gm.bothCheked))
+    if Gm.checkifBashFileExist(getdate(),Gm.bothCheked) is False:
+        StartBash()
     # Bk.removeAllfile(r''+Bk.filelocation+"/bash")
     Gm.removeAllfile(r'' + Gm.filelocation + "/config")
     Gm.getEticket()

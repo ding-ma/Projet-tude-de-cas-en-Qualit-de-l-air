@@ -183,6 +183,7 @@ def locationCheckBox(East, EastZoom,NA,NAGem,West,QcOnt):
     if QcOnt is 1:
         strQCOnt = "quebec@ontario,"
     rarcString = strEast + strEastZoom+strNA+strNAGem+strWest+strQCOnt
+    #east,east@coast@zoom,north@america,north@america@gemmach,west,quebec@ontario,
     tempList = re.split(",", rarcString)
     locationlst = tempList[:-1]
 
@@ -199,7 +200,7 @@ def RarcFile():
         # end
         + eYear + "," + eMonth + "," + eDay +
         "\nbranche = operation.images.chronos\n"
-        "ext = " + rarcString +
+        "ext = east,east@coast@zoom,north@america,north@america@gemmach,west,quebec@ontario," +
         "\nheure = " + modelHour +
         "\npriority = online\n"
         "inc = 1\n"
@@ -219,7 +220,7 @@ def UMOSRarcFile():
         # end
         + eYear + "," + eMonth + "," + eDay +
         "\nbranche = operation.images.umoscr\n"
-        "ext = " + rarcString +
+        "ext = east,east@coast@zoom,north@america,north@america@gemmach,west,quebec@ontario," +
         "\nheure = " + modelHour +
         "\npriority = online\n"
         "inc = 1\n"
