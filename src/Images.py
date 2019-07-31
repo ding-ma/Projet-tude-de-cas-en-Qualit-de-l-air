@@ -333,9 +333,9 @@ def generateUMOSImage(t):
                                 if re.search(pattern, f):
                                     shutil.move(f, os.getcwd()+"/imgTemp")
 
-                        print("extracted: "+m+location+h)
+                        print("extracted: "+m+"-"+location+h+" day:"+day)
                         purge(os.getcwd(),sYear+firstmonth+day+h+"_054_UA_"+location+"_I_UMOS@GEMMACH_"+m+t+".*")
-                        print("generating gif: "+m+location+h)
+                        print("generating gif: "+m+"-"+location+h+" day:"+day)
                         os.system(
                             "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" +sYear+firstmonth+day+h+"_054_UA_"+location+"_I_UMOS@GEMMACH_"+m+t+"* "
                             + filelocation + "/output/UMOS__" + sYear + firstmonth + day + h + "_"+m+"_" + location +t+ ".gif")
@@ -355,9 +355,9 @@ def generateUMOSImage(t):
                                 if re.search(pattern, f):
                                     shutil.move(f, os.getcwd()+"/imgTemp")
 
-                        print("extracted: "+m+location+h)
+                        print("extracted: "+m+"-"+location+h+" day:"+day)
                         purge(os.getcwd(),sYear+secondmonth+day+h+"_054_UA_"+location+"_I_UMOS@GEMMACH_"+m+t+".*")
-                        print("generating gif: "+m+location+h)
+                        print("generating gif: "+m+"-"+location+h+" day:"+day)
                         os.system(
                             "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" +sYear+secondmonth+day+h+"_054_UA_"+location+"_I_UMOS@GEMMACH_"+m+t+"* "
                             + filelocation + "/output/UMOS__" + sYear + secondmonth + day + h + "_"+m+"_" + location +t+ ".gif")
@@ -380,10 +380,10 @@ def generateUMOSImage(t):
                                 if re.search(pattern, f):
                                     shutil.move(f, os.getcwd() + "/imgTemp")
 
-                        print("extracted: " + m + location + h)
+                        print("extracted: " +m+"-"+location+h+" day:"+day)
                         purge(os.getcwd(),
                               sYear + Month + day + h + "_054_UA_" + location + "_I_UMOS@GEMMACH_" + m + t + ".*")
-                        print("generating gif: " + m + location + h)
+                        print("generating gif: " +m+"-"+location+h+" day:"+day)
                         os.system(
                             "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" + sYear + Month + day + h + "_054_UA_" + location + "_I_UMOS@GEMMACH_" + m + t + "* "
                             + filelocation + "/output/UMOS__" + sYear + Month + day + h + "_" + m + "_" + location + t + ".gif")
