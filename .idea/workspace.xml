@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="993a9838-9207-46e0-aaef-0972cce94224" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Images.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Images.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UMOS.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UMOS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UMOS_Ref.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/smog-montreal.gif" beforeDir="false" />
     </list>
     <list id="907627cc-b390-404d-92ca-b82bb5948891" name="changed ui for date entry, dropbox" comment="changed ui for date entry, dropbox&#10;&#10;(cherry picked from commit 2f4aa07e39a3bdfdaad2fabc35416c24e44b5482)">
       <changelist_data name="Ding Ma" email="ding.ma@mail.mcgill.ca" date="1559324784000" />
@@ -75,27 +77,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.UI">
-    <configuration name="Gemmach" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Projet-tude-de-cas-en-Qualit-de-l-air" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/Gemmach.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="UI" type="PythonConfigurationType" factoryName="Python">
       <module name="Projet-tude-de-cas-en-Qualit-de-l-air" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -180,6 +161,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="s" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Projet-tude-de-cas-en-Qualit-de-l-air" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/s.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="scratch (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Projet-tude-de-cas-en-Qualit-de-l-air" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -225,19 +227,19 @@
     <list>
       <item itemvalue="Python.UI" />
       <item itemvalue="Python.tests" />
-      <item itemvalue="Python.Gemmach" />
       <item itemvalue="Python.UMOSMist" />
       <item itemvalue="Python.forecast" />
       <item itemvalue="Python.observations" />
       <item itemvalue="Python.scratch (1)" />
+      <item itemvalue="Python.s" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.s" />
         <item itemvalue="Python.scratch (1)" />
         <item itemvalue="Python.forecast" />
         <item itemvalue="Python.UMOSMist" />
         <item itemvalue="Python.observations" />
-        <item itemvalue="Python.Gemmach" />
       </list>
     </recent_temporary>
   </component>
@@ -251,13 +253,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557412480438</updated>
-    </task>
-    <task id="LOCAL-00064" summary="firework works for h00 and h12">
-      <created>1560449725472</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1560449725472</updated>
     </task>
     <task id="LOCAL-00065" summary="updated the way how dates are counted. 30% more efficient now">
       <created>1560541074242</created>
@@ -595,7 +590,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564515620442</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="updated UI, there is a bug with umos (generating too many)">
+      <created>1564600089322</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1564600089322</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -650,7 +652,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="fixed the observation path" />
     <MESSAGE value="fixed file not going over 23h bug" />
     <MESSAGE value="files are now sorted" />
     <MESSAGE value="works for change of month" />
@@ -675,7 +676,8 @@
     <MESSAGE value="reduced get chosen pollutant button into get data at station with a function" />
     <MESSAGE value="increasing runtime for a cleaner user interface" />
     <MESSAGE value="changed for other modules. runtime increased by ~10s but simplified the user interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed for other modules. runtime increased by ~10s but simplified the user interface" />
+    <MESSAGE value="updated UI, there is a bug with umos (generating too many)" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated UI, there is a bug with umos (generating too many)" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>

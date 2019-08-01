@@ -1,4 +1,3 @@
-import calendar
 import csv
 import glob
 import os
@@ -39,6 +38,7 @@ def inputStartDate(sD):
     sDate = date(int(sYear),int(sMonth),int(sDay))
 
 
+
 # end date
 def inputEndDate(eD):
     global eYear
@@ -50,63 +50,16 @@ def inputEndDate(eD):
     eMonth = unformatattedDate[1]
     eDay = unformatattedDate[2]
     eDate = date(int(eYear), int(eMonth), int(eDay))
-    listOfDays()
     if eDate.timetuple()<date(2017,1,5).timetuple():
         return False
 
 
-lstsMonth = []
-lsteMonth = []
-lstDays = []
-def datecounter(addDays):
-    lstsMonth.clear()
-    lsteMonth.clear()
-    lstDays.clear()
-    startDate = date(int(sYear), int(sMonth), int(sDay))
-    endDate = date(int(eYear), int(eMonth), int(eDay))
-    if startDate.month is not endDate.month:
-        lstsMonth.append(startDate.strftime("%m"))
-        lsteMonth.append(endDate.strftime("%m"))
-        a = calendar.monthrange(int(sYear), int(sMonth))[1]
-        endMonth = date(int(sYear), int(sMonth), a)
-        delta1 = endMonth - startDate
-        for f in range(delta1.days + addDays):
-            a = startDate + timedelta(days=f)
-            t = a.strftime("%d")
-            lstsMonth.append(t)
-        startMonth = date(int(sYear), int(eMonth), 1)
-        delta2 = endDate - startMonth
-        for q in range(delta2.days + addDays):
-            c = startMonth + timedelta(days=q)
-            w = c.strftime("%d")
-            lsteMonth.append(w)
-        return lstsMonth,lsteMonth
-    else:
-        lstDays.append(startDate.strftime("%m"))
-        delta = endDate - startDate
-        for a in range(delta.days + addDays):
-            e = startDate + timedelta(days=a)
-            v = e.strftime("%d")
-            lstDays.append(v)
-        return lstDays
-
-
-# used for bashfile
-def listOfDays():
-    global formattedDay
-    global genday
-    unformattedDay = ""
-    genday = datecounter(1)
-    if len(genday) is 2 and isinstance(genday,tuple):
-        for l in genday[0]:
-            unformattedDay +=l
-        for z in genday[1]:
-            unformattedDay +=z
-    else:
-        for l in genday:
-            unformattedDay+=l
-    formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
-
+lstdates = []
+def countdates():
+    delta = eDate - sDate
+    for i in range(delta.days + 1):
+        d = sDate + timedelta(days=i)
+        lstdates.append(d)
 
 def modelCheckbox(h_00, h_12):
     global modelHour
@@ -132,70 +85,7 @@ def modelCheckbox(h_00, h_12):
     modelHourList = re.split(",", modelHour)
 
 
-def getDataAtLocationPre2017(locationID, molecule, modelHourList):
-    stationCode = referenceDict[locationID]
-    if isinstance(genday,tuple):
-        firstmonth = genday[0][0]
-        firstmonthdays = genday[0][1:]
-        secondmonth = genday[1][0]
-        secondmonthdays = genday[1][1:]
-        for m in molecule:
-            for sub in os.listdir("rarc/operation.umos.aq.prevision.csv."+m.lower()+"sp3"):
-                for d in firstmonthdays:
-                    for h in modelHourList:
-                        if sub == sYear+firstmonth+d+h+"_csv":
-                            os.system("cat " + filelocation + "/rarc/operation.umos.aq.prevision.csv." + m.lower() + "sp3/" + sYear+firstmonth+d+h + "_csv | grep "+ stationCode +" > " + filelocation + "/UMOSTreating/" + sYear+firstmonth+d+h + "_csv")
-            for untreated in os.listdir("UMOSTreating"):
-                with open("UMOSTreating/" + untreated, "r") as infile, open(
-                        "output/UMOS__ID" + locationID +"__"+ untreated +m.lower()+ ".csv",
-                        'w') as outfile:
-                    outfile.write("Date_Orig,Date_Valid,Code_Stn(ID),Lat,Lon,Vertical,Var,Value\n")
-                    for line in infile:
-                        withcomma = line.replace('|', ',')
-                        withoutspace = withcomma.replace(" ", "")
-                        changeName = withoutspace.replace(stationCode, locationID)
-                        outfile.write(changeName)
-
-        for m in molecule:
-            for sub in os.listdir("rarc/operation.umos.aq.prevision.csv."+m.lower()+"sp3"):
-                for d in secondmonthdays:
-                    for h in modelHourList:
-                        if sub == sYear+secondmonth+d+h+"_csv":
-                            os.system("cat " + filelocation + "/rarc/operation.umos.aq.prevision.csv." + m.lower() + "sp3/" + sYear+secondmonth+d+h + "_csv | grep "+ stationCode +" > " + filelocation + "/UMOSTreating/" + sYear+secondmonth+d+h + "_csv")
-            for untreated in os.listdir("UMOSTreating"):
-                with open("UMOSTreating/" + untreated, "r") as infile, open(
-                        "output/UMOS__ID" + locationID +"__"+ untreated +m.lower()+ ".csv",
-                        'w') as outfile:
-                    outfile.write("Date_Orig,Date_Valid,Code_Stn(ID),Lat,Lon,Vertical,Var,Value\n")
-                    for line in infile:
-                        withcomma = line.replace('|', ',')
-                        withoutspace = withcomma.replace(" ", "")
-                        changeName = withoutspace.replace(stationCode, locationID)
-                        outfile.write(changeName)
-    else:
-        month = genday[0]
-        Day = genday[1:]
-        for m in molecule:
-            for sub in os.listdir("rarc/operation.umos.aq.prevision.csv."+m.lower()+"sp3"):
-                for d in Day:
-                    for h in modelHourList:
-                        if sub == sYear+month+d+h+"_csv":
-                            os.system("cat " + filelocation + "/rarc/operation.umos.aq.prevision.csv." + m.lower() + "sp3/" + sYear+month+d+h + "_csv | grep "+ stationCode +" > " + filelocation + "/UMOSTreating/" + sYear+month+d+h + "_csv")
-            for untreated in os.listdir("UMOSTreating"):
-                with open("UMOSTreating/" + untreated, "r") as infile, open(
-                        "output/UMOS__ID" + locationID +"__"+ untreated +m.lower()+ ".csv",
-                        'w') as outfile:
-                    outfile.write("Date_Orig,Date_Valid,Code_Stn(ID),Lat,Lon,Vertical,Var,Value\n")
-                    for line in infile:
-                        withcomma = line.replace('|', ',')
-                        withoutspace = withcomma.replace(" ", "")
-                        changeName = withoutspace.replace(stationCode, locationID)
-                        outfile.write(changeName)
-    print("Job done, see folder-->" + filelocation + "/output")
-    removeAllfile(r'' + filelocation + "/UMOSTreating")
-
-
-def particuleCheckBoxAndTime(O3, NO2, PM25, loc, datesplit, active):
+def particuleCheckBoxAndTime(O3, NO2, PM25):
     global moleculeList
     O3 = int(O3)
     NO2 = int(NO2)
@@ -214,36 +104,43 @@ def particuleCheckBoxAndTime(O3, NO2, PM25, loc, datesplit, active):
     formattedParticuleString = ' '.join(unformattedParticuleString[i:i + 2] for i in range(0, len(unformattedParticuleString), 2))
     moleculeList = re.split(" ", formattedParticuleString)
     # for post 2017
-    if datesplit is not False:
-        if isinstance(genday, tuple):
-            firstmonth = genday[0][0]
-            firstmonthdays = genday[0][1:]
-            for h in modelHourList:
-                for mol in moleculeList:
-                    for d in firstmonthdays:
-                        os.system(
-                            "cmcarc -x 'prevision.csv/" + mol.lower() + "sp3.*' -f " + filelocation + "/rarc/operation.umos.aq.prevision/" + sYear + firstmonth + d + h + "_")
-            secondmonth = genday[1][0]
-            secondmonthdays = genday[1][1:]
-            for h in modelHourList:
-                for mol in moleculeList:
-                    for d in secondmonthdays:
-                        os.system(
-                            "cmcarc -x 'prevision.csv/" + mol.lower() + "sp3.*' -f " + filelocation + "/rarc/operation.umos.aq.prevision/" + sYear + secondmonth + d + h + "_")
-        else:
-            month = genday[0]
-            Day = genday[1:]
-            for h in modelHourList:
-                for mol in moleculeList:
-                    for d in Day:
-                        os.system(
-                            "cmcarc -x 'prevision.csv/" + mol.lower() + "sp3.*' -f " + filelocation + "/rarc/operation.umos.aq.prevision/" + sYear + month + d + h + "_")
-        if active is True:
-            getDataAtLocation(loc)
-            print("\nFile Extracted, Getting Location Data")
-    else:
-        if active is True:
-            getDataAtLocationPre2017(loc, moleculeList, modelHourList)
+    return re.split(" ", formattedParticuleString)
+
+
+def getDataAtLocationPre2017(locationID, molescules):
+    stationCode = referenceDict[locationID]
+    for m in molescules:
+        print("extracting: " + m.lower())
+        for sub in os.listdir("rarc/operation.umos.aq.prevision.csv."+m.lower()+"sp3"):
+            for date in lstdates:
+                for h in modelHourList:
+                    if sub == str(date.year) + str(date.strftime("%m")) + str(date.strftime("%d"))+h+"_csv":
+                        os.system("cat " + filelocation + "/rarc/operation.umos.aq.prevision.csv." + m.lower() + "sp3/"
+                                  + str(date.year) + str(date.strftime("%m")) + str(date.strftime("%d")) +h + "_csv | grep "+ stationCode +" > "
+                                  + filelocation + "/UMOSTreating/"  + str(date.year) + str(date.strftime("%m")) + str(date.strftime("%d")) +h + "_csv")
+        for untreated in os.listdir("UMOSTreating"):
+            if os.stat("UMOSTreating/" + untreated).st_size > 500:
+                with open("UMOSTreating/" + untreated, "r") as infile, open(
+                        "output/UMOS__ID" + locationID +"__"+ untreated +m.lower()+ ".csv",
+                        'w') as outfile:
+                    outfile.write("Date_Orig,Date_Valid,Code_Stn(ID),Lat,Lon,Vertical,Var,Value\n")
+                    for line in infile:
+                        withcomma = line.replace('|', ',')
+                        withoutspace = withcomma.replace(" ", "")
+                        changeName = withoutspace.replace(stationCode, locationID)
+                        outfile.write(changeName)
+    print("Job done, see folder-->" + filelocation + "/output")
+    removeAllfile(r'' + filelocation + "/UMOSTreating")
+
+
+def extractwithCMCARC(particules):
+    for mol in particules:
+        for h in modelHourList:
+            print("extracting: " + mol.lower())
+            for date in lstdates:
+                os.system(
+                    "cmcarc -x 'prevision.csv/" + mol.lower() + "sp3.*' -f " + filelocation + "/rarc/operation.umos.aq.prevision/" + str(
+                        date.year) + str(date.strftime("%m")) + str(date.strftime("%d")) + h + "_")
 
 
 def rarcFile(datesplit):
@@ -305,16 +202,16 @@ def getDataAtLocation(locationID):
             os.system(
                 "cat " + filelocation + "/prevision.csv/" + sub + "/" + file + "| grep " + stationCode + " > " + filelocation + "/UMOSTreating/" + file + sub)
         for untreated in os.listdir("UMOSTreating"):
-            with open("UMOSTreating/" + untreated, "r") as infile, open("output/UMOS__ID"+locationID +"__"+ untreated + ".csv",
-                                                                        'w') as outfile:
-                outfile.write("Date_Orig,Date_Valid,Code_Stn(ID),Lat,Lon,Vertical,Var,Value\n")
-                for line in infile:
-                    withcomma = line.replace('|', ',')
-                    withoutspace = withcomma.replace(" ", "")
-                    changeName = withoutspace.replace(stationCode, locationID)
-                    outfile.write(changeName)
+            #prevents having empty files
+            if os.stat("UMOSTreating/"+untreated).st_size > 500:
+                with open("UMOSTreating/" + untreated, "r") as infile, open("output/UMOS__ID"+locationID +"__"+ untreated + ".csv",
+                                                                            'w') as outfile:
+                    outfile.write("Date_Orig,Date_Valid,Code_Stn(ID),Lat,Lon,Vertical,Var,Value\n")
+                    for line in infile:
+                        withcomma = line.replace('|', ',')
+                        withoutspace = withcomma.replace(" ", "")
+                        changeName = withoutspace.replace(stationCode, locationID)
+                        outfile.write(changeName)
     print("Job done, see folder-->" + filelocation+"/output")
     removeAllfile(r''+filelocation + "/UMOSTreating")
     shutil.rmtree("prevision.csv")
-
-
