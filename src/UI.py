@@ -321,7 +321,8 @@ locationBtn.place(x=50, y=395)
 
 def MistGetLocation():
     UpdateEverything()
-    StartXRACR("UmosMist")
+    Umist.bashFile(particules,getdate())
+    StartBash("UmosMist")
     time.sleep(1)
     Umist.writeEticket(getdate())
     shutil.rmtree("extractedMist")
@@ -339,7 +340,8 @@ mistTCLBtn.place(x=550, y=395)
 
 def FwGetLocation():
     UpdateEverything()
-    StartXRACR("FireWork")
+    Fw.bashFile(particules, getdate())
+    StartBash("FireWork")
     time.sleep(1)
     shutil.rmtree("extractedFw")
     os.mkdir("extractedFw")
