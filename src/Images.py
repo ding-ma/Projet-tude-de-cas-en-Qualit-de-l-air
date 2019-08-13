@@ -252,7 +252,7 @@ def generateImage():
 
                         os.system(
                             "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" + sYear + firstmonth + day + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001* "
-                            + filelocation + "/output/GEM__" + sYear + firstmonth + day + h +"_"+ m+"_" + location + ".gif")
+                            + filelocation + "/output/" + sYear + firstmonth + day + h + "_IMG_Gemmach" + m + "_" + location + ".gif")
                         shutil.rmtree("imgTemp")
                         os.mkdir("imgTemp")
                         print("remaking dir end months")
@@ -280,7 +280,7 @@ def generateImage():
 
                         os.system(
                             "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" + sYear + month + day + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001* "
-                            + filelocation + "/output/GEM__" + sYear + month + day + h + "_" + m + "_" + location + ".gif")
+                            + filelocation + "/output/" + sYear + month + day + h + "_IMG_Gemmach" + m + "_" + location + ".gif")
                         shutil.rmtree("imgTemp")
                         os.mkdir("imgTemp")
                         print("remaking dir start month")
@@ -308,7 +308,7 @@ def generateImage():
 
                         os.system(
                             "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" + sYear + Month + day + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001* "
-                            + filelocation + "/output/GEM__" + sYear + Month + day + h + "_" + m + "_" + location + ".gif")
+                            + filelocation + "/output/" + sYear + Month + day + h + "_IMG_Gemmach" + m + "_" + location + ".gif")
                         shutil.rmtree("imgTemp")
                         os.mkdir("imgTemp")
                         print("remaking dir start month")
@@ -338,7 +338,7 @@ def generateUMOSImage(t):
                         print("generating gif: "+m+"-"+location+h+" day:"+day)
                         os.system(
                             "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" +sYear+firstmonth+day+h+"_054_UA_"+location+"_I_UMOS@GEMMACH_"+m+t+"* "
-                            + filelocation + "/output/UMOS__" + sYear + firstmonth + day + h + "_"+m+"_" + location +t+ ".gif")
+                            + filelocation + "/output/" + sYear + firstmonth + day + h + "_IMG_UMOS" + m + "_" + location + t + ".gif")
                         shutil.rmtree("imgTemp")
                         os.mkdir("imgTemp")
                         print("remaking dir end month")
@@ -360,11 +360,12 @@ def generateUMOSImage(t):
                         print("generating gif: "+m+"-"+location+h+" day:"+day)
                         os.system(
                             "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" +sYear+secondmonth+day+h+"_054_UA_"+location+"_I_UMOS@GEMMACH_"+m+t+"* "
-                            + filelocation + "/output/UMOS__" + sYear + secondmonth + day + h + "_"+m+"_" + location +t+ ".gif")
+                            + filelocation + "/output/" + sYear + secondmonth + day + h + "_IMG_UMOS" + m + "_" + location + t + ".gif")
                         shutil.rmtree("imgTemp")
                         os.mkdir("imgTemp")
                         print("remaking dir start month")
     else:
+        # output/UMOS__" + sYear + Month + day + h + "_" + m + "_" + location + t + ".gif"
         Month = genday[0]
         Day = genday[1:]
         for location in locationlst:
@@ -386,7 +387,7 @@ def generateUMOSImage(t):
                         print("generating gif: " +m+"-"+location+h+" day:"+day)
                         os.system(
                             "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" + sYear + Month + day + h + "_054_UA_" + location + "_I_UMOS@GEMMACH_" + m + t + "* "
-                            + filelocation + "/output/UMOS__" + sYear + Month + day + h + "_" + m + "_" + location + t + ".gif")
+                            + filelocation + "/output/" + sYear + Month + day + h + "_IMG_UMOS" + m + "_" + location + t + ".gif")
                         shutil.rmtree("imgTemp")
                         os.mkdir("imgTemp")
                         print("remaking dir start month")

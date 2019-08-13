@@ -194,24 +194,35 @@ def removeAllfile(path):
             if os.path.getsize(docPath) > 0:
                 os.remove(docPath)
 
+subconverterdict = {
+    "p2":"AF",
+    "o3":"O3",
+    "n2":"NO2"
+}
 
 def getDataAtLocation(locationID):
-    stationCode = referenceDict[locationID]
-    for sub in os.listdir("prevision.csv"):
-        for file in os.listdir("prevision.csv/" + sub):
-            os.system(
-                "cat " + filelocation + "/prevision.csv/" + sub + "/" + file + "| grep " + stationCode + " > " + filelocation + "/UMOSTreating/" + file + sub)
-        for untreated in os.listdir("UMOSTreating"):
-            #prevents having empty files
-            if os.stat("UMOSTreating/"+untreated).st_size > 500:
-                with open("UMOSTreating/" + untreated, "r") as infile, open("output/UMOS__ID"+locationID +"__"+ untreated + ".csv",
-                                                                            'w') as outfile:
-                    outfile.write("Date_Orig,Date_Valid,Code_Stn(ID),Lat,Lon,Vertical,Var,Value\n")
-                    for line in infile:
-                        withcomma = line.replace('|', ',')
-                        withoutspace = withcomma.replace(" ", "")
-                        changeName = withoutspace.replace(stationCode, locationID)
-                        outfile.write(changeName)
-    print("Job done, see folder-->" + filelocation+"/output")
-    removeAllfile(r''+filelocation + "/UMOSTreating")
-    shutil.rmtree("prevision.csv")
+    try:
+        stationCode = referenceDict[locationID]
+        for sub in os.listdir("prevision.csv"):
+            for file in os.listdir("prevision.csv/" + sub):
+                os.system(
+                    "cat " + filelocation + "/prevision.csv/" + sub + "/" + file + "| grep " + stationCode + " > " + filelocation + "/UMOSTreating/" + file + sub)
+            for untreated in os.listdir("UMOSTreating"):
+                # prevents having empty files
+                if os.stat("UMOSTreating/" + untreated).st_size > 500:
+                    date = untreated.split("_")[0]
+                    with open("UMOSTreating/" + untreated, "r") as infile, open(
+                            "output/" + date + "_UMOS_" + subconverterdict[sub[:2]] + "_" + (
+                            Gm.returnName(locationID)) + ".csv", "w") as outfile:
+                        # UMOS__ID"+locationID +"__"+ untreated + ".csv",'w'
+                        outfile.write("Date_Orig,Date_Valid,Code_Stn(ID),Lat,Lon,Vertical,Var,Value\n")
+                        for line in infile:
+                            withcomma = line.replace('|', ',')
+                            withoutspace = withcomma.replace(" ", "")
+                            changeName = withoutspace.replace(stationCode, locationID)
+                            outfile.write(changeName)
+        print("Job done, see folder-->" + filelocation + "/output")
+        removeAllfile(r'' + filelocation + "/UMOSTreating")
+        shutil.rmtree("prevision.csv")
+    except KeyError:
+        print("The station chosen does not have a UMOS code.")

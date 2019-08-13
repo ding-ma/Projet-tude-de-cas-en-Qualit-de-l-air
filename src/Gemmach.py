@@ -121,7 +121,7 @@ def returnName(ID):
     index = isIDFound(ID)
     if index is False:
         return "Station not in database"
-    return lstName[index]
+    return lstName[index].strip()
 
 
 lstNL = []
@@ -522,7 +522,7 @@ def generateTCL(modelH,iditem,selectedDate):
                 "set Data(outTXT)       \"SITE\" \n"
                 "set Data(PASSE) \"" + modelH + "\"\n"
                 "set Data(levels) \"-1""\"\n" 
-                "set Data(MandatoryLevels) \"1""\"\n"
+                "set Data(MandatoryLevels) \" "+year + month + day+modelH+"\"\n"
                 "set Data(Path)    " + filelocation + "/bash\n"
                 "set Data(PathOut) " + filelocation + "/extracted\n"
                 "set Data(Start)      \"" + year + monthToFile + "\"\n"
@@ -593,14 +593,15 @@ def sortAndGenerate(destination, selectedDate):
     os.system(" ls " + filelocation + "/extracted | sort -st '/' -k1,1")
     for m in modelHourList:
         for p in particulelist:
-            uniqueFileName = uniquify("output/GEM__" + "ID" + locationID + "___" + m + p + "___" + year + month + day +"_.csv")
+            #output/GEM__" + "ID" + locationID + "___" + m + p + "___" + year + month + day +"_.csv
+            uniqueFileName = uniquify("output/"+year + month + day +m+"_"+"Gemmach"+"_"+p+"_"+returnName(locationID)+".csv")
             if not os.path.exists(destination + m + p):
                 os.makedirs(destination + m + p)
             for f in os.listdir(destination):
                 if f.endswith("_" + m + p + ".csv"):
                     shutil.move(destination + f, destination + m + p)
                 file = open(uniqueFileName, "w+")
-                file.write("Date,Time,Height,Value\n")
+                file.write("Model Run,Date,Time,Value\n")
                 for i in sorted(os.listdir(destination + m + p)):
                     file.write(open(destination + m + p + "/" + i).read())
     print("\nJob done, see folder-->" + filelocation+"/output")

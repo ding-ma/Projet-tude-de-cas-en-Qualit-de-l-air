@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="993a9838-9207-46e0-aaef-0972cce94224" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FireWork.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FireWork.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gemmach.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gemmach.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Images.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Images.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UMOS.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UMOS.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UMOSMist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UMOSMist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/extract1.tcl" beforeDir="false" afterPath="$PROJECT_DIR$/src/extract1.tcl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/observations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/observations.py" afterDir="false" />
     </list>
     <list id="907627cc-b390-404d-92ca-b82bb5948891" name="changed ui for date entry, dropbox" comment="changed ui for date entry, dropbox&#10;&#10;(cherry picked from commit 2f4aa07e39a3bdfdaad2fabc35416c24e44b5482)">
       <changelist_data name="Ding Ma" email="ding.ma@mail.mcgill.ca" date="1559324784000" />
@@ -29,8 +33,8 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="Ding Ma &lt;ding.ma@mail.mcgill.ca&gt;" />
         <option value="ding.ma@mail.mcgill.ca" />
+        <option value="Ding Ma &lt;ding.ma@mail.mcgill.ca&gt;" />
         <option value="Ding Ma &lt;43629633+ding-ma@users.noreply.github.com&gt;" />
         <option value="DM" />
         <option value="d" />
@@ -252,13 +256,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557412480438</updated>
-    </task>
-    <task id="LOCAL-00067" summary="all work for month change except images and umos">
-      <created>1560795340120</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1560795340120</updated>
     </task>
     <task id="LOCAL-00068" summary="can get observation for 1 day at the time">
       <created>1560868445640</created>
@@ -596,7 +593,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565118630427</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="backup before name &amp; file changes convention">
+      <created>1565703271941</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1565703271941</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -651,7 +655,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="works for change of month" />
     <MESSAGE value="updated text , and other 3 modules" />
     <MESSAGE value="updated gemmach for end of month edge case" />
     <MESSAGE value="working on file combination, 0-23 and 24-47." />
@@ -676,7 +679,8 @@
     <MESSAGE value="updated UI, there is a bug with umos (generating too many)" />
     <MESSAGE value="bug with umos is now patched" />
     <MESSAGE value="updated 2 bugs, wrong line" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated 2 bugs, wrong line" />
+    <MESSAGE value="backup before name &amp; file changes convention" />
+    <option name="LAST_COMMIT_MESSAGE" value="backup before name &amp; file changes convention" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>

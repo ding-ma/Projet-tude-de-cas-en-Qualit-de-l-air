@@ -142,10 +142,8 @@ def generateFromDB(stationID):
             time.sleep(2)
             continue
         print("Writing to file")
-        file = open(
-            "output/OBS__ID" + stationID + "__" + sp + "__START" + sDate.strftime(
-                "%Y%m%d") + "__END" + eDate.strftime(
-                "%Y%m%d") + ".csv", "w+")
+        # open("output/OBS__ID" + stationID + "__" + sp + "__START" + sDate.strftime("%Y%m%d") + "__END" + eDate.strftime("%Y%m%d") + ".csv", "w+")
+        file = open("output/" +sDate.strftime("%Y%m%d") + "_" + eDate.strftime("%Y%m%d") +"_OBS_"+sp+"_"+Gm.returnName(stationID)+ ".csv", "w+")
         file.write("Date,Time,Value\n")
         for t in bb:
             file.write(t)

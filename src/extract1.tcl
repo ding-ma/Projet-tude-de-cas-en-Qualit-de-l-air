@@ -137,11 +137,11 @@ proc AvgAllDom::Do { sp outTXT start end} {
 				    set value2 [format "%.3f" $value2]
 				    set value3 [format "%.3f" $value3]
 
-				    puts $fileId "${anMois}${day},$hour,$levelML,${value2},${value3}"
+				    puts $fileId "$levelML,${anMois}${day},$hour,${value2},${value3}"
 				} else {
 
 				    set value2 [format "%.3f" $value1]
-				    puts $fileId "${anMois}${day},$hour,$levelML,${value2}"   
+				    puts $fileId "$levelML,${anMois}${day},$hour,${value2}"
 				}
 
 
