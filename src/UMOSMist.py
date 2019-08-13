@@ -300,7 +300,6 @@ def removeAllfile(path):
                 os.remove(docPath)
 
 
-
 def uniquify(path, sep = ''):
     def name_sequence():
         count = IT.count()
