@@ -42,7 +42,7 @@ def UpdateEverything():
     Gm.inputEndDate(b)
     sTime = sHourcombo.get()
     eTime = eHourCombo.get()
-    Gm.time(sTime, eTime)
+    Gm.usertime(sTime, eTime)
     h_00 = var_00.get()
     h_12 = var_12.get()
     Gm.modelCheckbox(h_00, h_12)

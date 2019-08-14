@@ -7,7 +7,9 @@ import re
 import shutil
 import string
 import tempfile
-from datetime import date, timedelta,datetime
+from datetime import date, timedelta, datetime
+
+import pandas as pd
 
 # Setings used for the entire program, change/ add as needed
 
@@ -33,7 +35,8 @@ hour24 = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11"
 ##
 #code to create repos and make sure everything is executable
 filelocation = os.getcwd()
-directories = ["bash", "config", "rarc", "output", "extracted", "UMOSTreating", "configMIST", "extractedMist", "configFw", "extractedFw","imgTemp"]
+directories = ["bash", "config", "rarc", "output", "extracted", "UMOSTreating", "configMIST", "extractedMist", "configFw",
+               "extractedFw","imgTemp","excel_output", "img_output"]
 for i in directories:
     if not os.path.exists(filelocation+"/"+i):
         os.mkdir(filelocation+"/"+i)
@@ -275,7 +278,7 @@ def returnDateList():
     return sorted(lstYMD)
 
 
-def time(sTime, eTime):
+def usertime(sTime, eTime):
     global formattedSelectedTimeWithComma
     global formattedSelectedTimeWithSpace
     global sTimeBash
@@ -583,6 +586,10 @@ def uniquify(path, sep = ''):
     return filename
 
 
+def generateExcel(fileName):
+    df = pd.read_csv("output/"+fileName)
+    df.to_excel(filelocation+"/excel_output/"+fileName[:-4]+".xlsx",engine="xlsxwriter",  index=False, index_label=False)
+
 #sorts and generates a CSV file in the output folder
 def sortAndGenerate(destination, selectedDate):
     year = selectedDate.split("/")[0]
@@ -604,6 +611,9 @@ def sortAndGenerate(destination, selectedDate):
                 file.write("Model Run,Date,Time,Value\n")
                 for i in sorted(os.listdir(destination + m + p)):
                     file.write(open(destination + m + p + "/" + i).read())
-    print("\nJob done, see folder-->" + filelocation+"/output")
-
+                file.close()
+            generateExcel(uniqueFileName.split("/")[-1])
+    # generateExcel(exceltreatinglst)
+    print("\nJob done, see folder for csv file-->" + filelocation + "/output")
+    print("\nJob done, see folder for excel file-->" + filelocation + "/excel_output")
 

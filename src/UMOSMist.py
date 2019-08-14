@@ -336,4 +336,7 @@ def sortAndGenerate(destination,selectedDate):
             file.write("Model Run,Date,Time,Value\n")
             for i in sorted(os.listdir(destination + m + p)):
                 file.write(open(destination + m + p + "/" + i).read())
-    print("\nJob done, see folder-->" + filelocation + "/output")
+            file.close()
+            Gm.generateExcel(uniqueFileName.split("/")[-1])
+    print("\nJob done, see folder for csv file-->" + filelocation + "/output")
+    print("\nJob done, see folder for excel file-->" + filelocation + "/excel_output")

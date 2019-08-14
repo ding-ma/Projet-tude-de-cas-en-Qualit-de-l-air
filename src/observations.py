@@ -142,11 +142,15 @@ def generateFromDB(stationID):
             time.sleep(2)
             continue
         print("Writing to file")
+        fileName = sDate.strftime("%Y%m%d") + "_" + eDate.strftime("%Y%m%d") +"_OBS_"+sp+"_"+Gm.returnName(stationID)+ ".csv"
         # open("output/OBS__ID" + stationID + "__" + sp + "__START" + sDate.strftime("%Y%m%d") + "__END" + eDate.strftime("%Y%m%d") + ".csv", "w+")
-        file = open("output/" +sDate.strftime("%Y%m%d") + "_" + eDate.strftime("%Y%m%d") +"_OBS_"+sp+"_"+Gm.returnName(stationID)+ ".csv", "w+")
+        file = open("output/" +fileName, "w+")
         file.write("Date,Time,Value\n")
         for t in bb:
             file.write(t)
         templst.clear()
+        file.close()
+        Gm.generateExcel(fileName)
         #raise Exception(Gm.FAIL+sp+" NOT found at station " + stationID+ Gm.ENDC)
-    print("Job done, see folder-->" + filelocation + "/output\n")
+    print("\nJob done, see folder for csv file-->" + filelocation + "/output")
+    print("\nJob done, see folder for excel file-->" + filelocation + "/excel_output")

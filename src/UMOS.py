@@ -3,7 +3,9 @@ import glob
 import os
 import re
 import shutil
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
+
+import pandas as pd
 
 import Gemmach as Gm
 
@@ -200,6 +202,28 @@ subconverterdict = {
     "n2":"NO2"
 }
 
+
+def toExcel(name):
+    df = pd.read_csv("output/"+name)
+    df.drop(['Lat', 'Lon', 'Vertical', 'Var'], axis=1, inplace=True)
+    dateorg_lst = df['Date_Orig'].tolist()
+    datevalid_list = df['Date_Valid'].tolist()
+    values_lst = df['Value'].tolist()
+    timelst = []
+    orglst = []
+    valst = []
+    for org, val in zip(dateorg_lst, datevalid_list):
+        orgchanged = datetime.strptime(org, "%Y-%m-%d%H:%M:%S").strftime("%Y%m%d%H")
+        valchanged = datetime.strptime(val, "%Y-%m-%d%H:%M:%S").strftime("%Y%m%d")
+        hchanged = datetime.strptime(val, "%Y-%m-%d%H:%M:%S").strftime("%H")
+        orglst.append(orgchanged)
+        valst.append(valchanged)
+        timelst.append(hchanged)
+    # ['Model Time', 'Date', 'Time', 'Value']
+    #{'Model Time': orglst, 'Date': valst, 'Time': timelst, 'Values': values_lst}
+    dfnew = pd.DataFrame()
+    dfnew.to_excel("excel_output/"+name[:-4]+".xlsx", engine="xlsxwriter", index=False, index_label=False)
+
 def getDataAtLocation(locationID):
     try:
         stationCode = referenceDict[locationID]
@@ -208,12 +232,12 @@ def getDataAtLocation(locationID):
                 os.system(
                     "cat " + filelocation + "/prevision.csv/" + sub + "/" + file + "| grep " + stationCode + " > " + filelocation + "/UMOSTreating/" + file + sub)
             for untreated in os.listdir("UMOSTreating"):
+                date = untreated.split("_")[0]
+                filename = date + "_UMOS_" + subconverterdict[sub[:2]] + "_" + Gm.returnName(locationID) + ".csv"
                 # prevents having empty files
                 if os.stat("UMOSTreating/" + untreated).st_size > 500:
-                    date = untreated.split("_")[0]
                     with open("UMOSTreating/" + untreated, "r") as infile, open(
-                            "output/" + date + "_UMOS_" + subconverterdict[sub[:2]] + "_" + (
-                            Gm.returnName(locationID)) + ".csv", "w") as outfile:
+                            "output/"+filename, "w") as outfile:
                         # UMOS__ID"+locationID +"__"+ untreated + ".csv",'w'
                         outfile.write("Date_Orig,Date_Valid,Code_Stn(ID),Lat,Lon,Vertical,Var,Value\n")
                         for line in infile:
@@ -221,7 +245,10 @@ def getDataAtLocation(locationID):
                             withoutspace = withcomma.replace(" ", "")
                             changeName = withoutspace.replace(stationCode, locationID)
                             outfile.write(changeName)
-        print("Job done, see folder-->" + filelocation + "/output")
+                toExcel(filename)
+
+        print("\nJob done, see folder for csv file-->" + filelocation + "/output")
+        print("\nJob done, see folder for excel file-->" + filelocation + "/excel_output")
         removeAllfile(r'' + filelocation + "/UMOSTreating")
         shutil.rmtree("prevision.csv")
     except KeyError:
