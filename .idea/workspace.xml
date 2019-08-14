@@ -251,13 +251,6 @@
       <option name="presentableId" value="Default" />
       <updated>1557412480438</updated>
     </task>
-    <task id="LOCAL-00070" summary="now writes to file">
-      <created>1560872734159</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1560872734159</updated>
-    </task>
     <task id="LOCAL-00071" summary="observation works on unix but not windows">
       <created>1560884648791</created>
       <option name="number" value="00071" />
@@ -594,7 +587,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565788109616</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="gemmach img works">
+      <created>1565790190787</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1565790190787</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -649,7 +649,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="working on file combination, 0-23 and 24-47." />
     <MESSAGE value="major redesign, now user can only select 1 day at the time for treatment. working on end of month edge case" />
     <MESSAGE value="gemmach works for singleday date design" />
     <MESSAGE value="updated umos-mist, not tested yet &amp; minor tweak to gemmach" />
@@ -674,7 +673,8 @@
     <MESSAGE value="backup before name &amp; file changes convention" />
     <MESSAGE value="all names convention are changed&#10;TODO: make excel output and change umos output" />
     <MESSAGE value="everything works, working on img code optimization" />
-    <option name="LAST_COMMIT_MESSAGE" value="everything works, working on img code optimization" />
+    <MESSAGE value="gemmach img works" />
+    <option name="LAST_COMMIT_MESSAGE" value="gemmach img works" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
