@@ -1,4 +1,3 @@
-import calendar
 import os
 import re
 import shutil
@@ -32,60 +31,16 @@ def inputEndDate(eD):
     eMonth = unformatattedDate[1]
     eDay = unformatattedDate[2]
     eDate = date(int(eYear), int(eMonth), int(eDay))
-    listOfDays()
+    generateDatelst()
 
 
-lstsMonth = []
-lsteMonth = []
-lstDays = []
-def datecounter(addDays):
-    lstsMonth.clear()
-    lsteMonth.clear()
-    lstDays.clear()
-    startDate = date(int(sYear), int(sMonth), int(sDay))
-    endDate = date(int(eYear), int(eMonth), int(eDay))
-    if startDate.month is not endDate.month:
-        lstsMonth.append(startDate.strftime("%m"))
-        lsteMonth.append(endDate.strftime("%m"))
-        a = calendar.monthrange(int(sYear), int(sMonth))[1]
-        endMonth = date(int(sYear), int(sMonth), a)
-        delta1 = endMonth - startDate
-        for f in range(delta1.days + addDays):
-            a = startDate + timedelta(days=f)
-            t = a.strftime("%d")
-            lstsMonth.append(t)
-        startMonth = date(int(sYear), int(eMonth), 1)
-        delta2 = endDate - startMonth
-        for q in range(delta2.days + addDays):
-            c = startMonth + timedelta(days=q)
-            w = c.strftime("%d")
-            lsteMonth.append(w)
-        return lstsMonth,lsteMonth
-    else:
-        lstDays.append(startDate.strftime("%m"))
-        delta = endDate - startDate
-        for a in range(delta.days + addDays):
-            e = startDate + timedelta(days=a)
-            v = e.strftime("%d")
-            lstDays.append(v)
-        return lstDays
-
-
-# used for bashfile
-def listOfDays():
-    global formattedDay
-    global genday
-    unformattedDay = ""
-    genday = datecounter(1)
-    if len(genday) is 2 and isinstance(genday,tuple):
-        for l in genday[0]:
-            unformattedDay +=l
-        for z in genday[1]:
-            unformattedDay +=z
-    else:
-        for l in genday:
-            unformattedDay+=l
-    formattedDay = ' '.join(unformattedDay[i:i + 2] for i in range(0, len(unformattedDay), 2))
+lstDate=[]
+def generateDatelst():
+    lstDate.clear()
+    delta = eDate-sDate
+    for i in range(delta.days +1):
+        date = sDate + timedelta(days=i)
+        lstDate.append(date)
 
 
 bothCheked = 0
@@ -230,88 +185,31 @@ def UMOSRarcFile():
 def generateImage():
     molecules = particulelst
     modelhourlist = re.split(",", modelHour)
-    if isinstance(genday,tuple):
-        firstmonth = genday[0][0]
-        firstmonthdays = genday[0][1:]
-        for day in firstmonthdays:
-            for location in locationlst:
-                for m in molecules:
-                    for h in modelhourlist:
-                        if m == "quebec@ontario":
-                            continue
-                        os.system("cmcarc -x "+sYear+firstmonth+day+h+"_054_GM_"+location+"_I_GEMMACH_"+m+"@sfc@001.* -f "+os.getcwd()+ "/rarc/operation.images.chronos/"+sYear+firstmonth+day+h+"_"+location)
+    for day_obj in lstDate:
+        for location in locationlst:
+            for m in molecules:
+                for h in modelhourlist:
+                    if m == "quebec@ontario":
+                        continue
+                    os.system(
+                        "cmcarc -x " + sYear + day_obj.strftime("%m") + day_obj.strftime("%d") + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001.* -f " + os.getcwd() + "/rarc/operation.images.chronos/" + sYear + day_obj.strftime("%m") + day_obj.strftime("%d") + h + "_" + location)
 
-                        def purge(dir, pattern):
-                            for f in os.listdir(dir):
-                                if re.search(pattern, f):
-                                    shutil.move(f, os.getcwd()+"/imgTemp")
+                    def purge(dir, pattern):
+                        for f in os.listdir(dir):
+                            if re.search(pattern, f):
+                                shutil.move(f, os.getcwd() + "/imgTemp")
 
-                        print("extracted: "+m+location+h)
-                        purge(os.getcwd(),sYear+firstmonth+day+h+"_054_GM_"+location+"_I_GEMMACH_"+m+"@sfc@001.*")
-                        print("generating gif: "+m+location+h)
+                    print("extracted: " + m + location +day_obj.strftime("%Y/%m/%d")+ h)
+                    purge(os.getcwd(),
+                          sYear + day_obj.strftime("%m") + day_obj.strftime("%d") + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001.*")
+                    print("generating gif: " + m + location + h)
 
-                        os.system(
-                            "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" + sYear + firstmonth + day + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001* "
-                            + filelocation + "/output/" + sYear + firstmonth + day + h + "_IMG_Gemmach" + m + "_" + location + ".gif")
-                        shutil.rmtree("imgTemp")
-                        os.mkdir("imgTemp")
-                        print("remaking dir end months")
-
-        month = genday[1][0]
-        secondmonthdays = genday[1][1:]
-        for day in secondmonthdays:
-            for location in locationlst:
-                for m in molecules:
-                    for h in modelhourlist:
-                        if m == "quebec@ontario":
-                            continue
-                        os.system(
-                            "cmcarc -x " + sYear + month + day + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001.* -f " + os.getcwd() + "/rarc/operation.images.chronos/" + sYear + month + day + h + "_" + location)
-
-                        def purge(dir, pattern):
-                            for f in os.listdir(dir):
-                                if re.search(pattern, f):
-                                    shutil.move(f, os.getcwd() + "/imgTemp")
-
-                        print("extracted: " + m + location + h)
-                        purge(os.getcwd(),
-                              sYear + month + day + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001.*")
-                        print("generating gif: " + m + location + h)
-
-                        os.system(
-                            "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" + sYear + month + day + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001* "
-                            + filelocation + "/output/" + sYear + month + day + h + "_IMG_Gemmach" + m + "_" + location + ".gif")
-                        shutil.rmtree("imgTemp")
-                        os.mkdir("imgTemp")
-                        print("remaking dir start month")
-    else:
-        Month = genday[0]
-        Day = genday[1:]
-        for day in Day:
-            for location in locationlst:
-                for m in molecules:
-                    for h in modelhourlist:
-                        if m == "quebec@ontario":
-                            continue
-                        os.system(
-                            "cmcarc -x " + sYear + Month + day + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001.* -f " + os.getcwd() + "/rarc/operation.images.chronos/" + sYear + Month + day + h + "_" + location)
-
-                        def purge(dir, pattern):
-                            for f in os.listdir(dir):
-                                if re.search(pattern, f):
-                                    shutil.move(f, os.getcwd() + "/imgTemp")
-
-                        print("extracted: " + m + location + h)
-                        purge(os.getcwd(),
-                              sYear + Month + day + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001.*")
-                        print("generating gif: " + m + location + h)
-
-                        os.system(
-                            "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" + sYear + Month + day + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001* "
-                            + filelocation + "/output/" + sYear + Month + day + h + "_IMG_Gemmach" + m + "_" + location + ".gif")
-                        shutil.rmtree("imgTemp")
-                        os.mkdir("imgTemp")
-                        print("remaking dir start month")
+                    os.system(
+                        "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" + sYear + day_obj.strftime("%m") + day_obj.strftime("%d") + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001* "
+                        + filelocation + "/output/" + sYear + day_obj.strftime("%m") + day_obj.strftime("%d") + h + "_IMG_Gemmach" + m + "_" + location + ".gif")
+                    shutil.rmtree("imgTemp")
+                    os.mkdir("imgTemp")
+                    print("remaking directory")
     print("\nJob done, see folder-->" + filelocation+"/output")
 
 
