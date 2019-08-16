@@ -422,7 +422,7 @@ def getImg():
     Im.generateImage()
     # update list
     giflst.clear()
-    gif = os.listdir("output")
+    gif = os.listdir("output_img")
     for g in gif:
         if g.endswith(".gif"):
             giflst.append(g)
@@ -432,7 +432,7 @@ def getImg():
 ImgBtn = tk.Button(machTab, text="Get Gemmach Images", command=getImg, width=17, height=1)
 ImgBtn.place(x=50, y=525)
 
-gifs = os.listdir("output")
+gifs = os.listdir("output_img")
 for g in gifs:
     if g.endswith(".gif"):
         giflst.append(g)
@@ -444,7 +444,7 @@ def getUMOSimg():
     Im.generateUMOSImage(t)
     # this part updates the list
     giflst.clear()
-    gif = os.listdir("output")
+    gif = os.listdir("output_img/")
     for g in gif:
         if g.endswith(".gif"):
             giflst.append(g)
@@ -467,7 +467,7 @@ animateCombo.place(x=180, y=565)
 
 def animate():
     index = animateCombo.current()
-    os.system("animate output/" + sorted(giflst)[index] + " &")
+    os.system("animate output_img/" + sorted(giflst)[index] + " &")
 
 
 animateBtn = tk.Button(machTab, text="Animate GIF", command=animate, width=17, height=1)
@@ -514,7 +514,6 @@ def rarcFolderDeletion():
             folderdict[folder] = folder
             convertedFolderName.append(folder)
 
-
 def deleteRarcFile():
     rarcFolderDeletion()
     popup = tk.Tk()
@@ -525,18 +524,20 @@ def deleteRarcFile():
     filelst = ttk.Combobox(popup, values=sorted(convertedFolderName), width=40, state='readonly')
     filelst.place(x=15, y=50)
     B1 = ttk.Button(popup, text="Cancel", command=popup.destroy, width=10)
-    B1.place(x=55, y=160)
+    B1.place(x=10, y=160)
 
     def confirmDelete():
         inv_folderDict = {v: k for k, v in folderdict.items()}
-        a = int(filelst.current())
-        todel = sorted(convertedFolderName)[a]
+        selectedFile = int(filelst.current())
+        todel = sorted(convertedFolderName)[selectedFile]
         shutil.rmtree("rarc/" + inv_folderDict[todel])
         rarcFolderDeletion()
         popup.destroy()
 
-    b2 = tk.Button(popup, text="Confirm delete", command=confirmDelete, width=10, bg='red')
-    b2.place(x=195, y=160)
+    b2 = tk.Button(popup, text="Confirm delete", command=confirmDelete, width=13, bg='red')
+    b2.place(x=110, y=160)
+    b3 = tk.Button(popup,text = "Delete All", command =lambda :(shutil.rmtree("rarc"), os.mkdir("rarc"),popup.destroy()),width=10,bg='Red')
+    b3.place(x=260,y=160)
     popup.mainloop()
 
 

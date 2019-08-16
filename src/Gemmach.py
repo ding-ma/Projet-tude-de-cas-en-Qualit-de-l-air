@@ -36,7 +36,7 @@ hour24 = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11"
 #code to create repos and make sure everything is executable
 filelocation = os.getcwd()
 directories = ["bash", "config", "rarc", "output", "extracted", "UMOSTreating", "configMIST", "extractedMist", "configFw",
-               "extractedFw","imgTemp","excel_output", "img_output"]
+               "extractedFw","imgTemp","output_csv", "output_img", "output_excel"]
 for i in directories:
     if not os.path.exists(filelocation+"/"+i):
         os.mkdir(filelocation+"/"+i)
@@ -587,8 +587,14 @@ def uniquify(path, sep = ''):
 
 
 def generateExcel(fileName):
-    df = pd.read_csv("output/"+fileName)
-    df.to_excel(filelocation+"/excel_output/"+fileName[:-4]+".xlsx",engine="xlsxwriter",  index=False, index_label=False)
+    df = pd.read_csv("output_csv/"+fileName)
+    hourslst = df['Time(Z)'].tolist()
+    temp = []
+    for h in hourslst:
+        t = datetime.strptime(str(h), "%H").strftime("%H")
+        temp.append(t)
+    df['Time(Z)'] = temp
+    df.to_excel(filelocation+"/output_excel/"+fileName[:-4]+".xlsx",engine="xlsxwriter",  index=False, index_label=False)
 
 #sorts and generates a CSV file in the output folder
 def sortAndGenerate(destination, selectedDate):
@@ -601,19 +607,19 @@ def sortAndGenerate(destination, selectedDate):
     for m in modelHourList:
         for p in particulelist:
             #output/GEM__" + "ID" + locationID + "___" + m + p + "___" + year + month + day +"_.csv
-            uniqueFileName = uniquify("output/"+year + month + day +m+"_"+"Gemmach"+"_"+p+"_"+returnName(locationID)+".csv")
+            uniqueFileName = uniquify("output_csv/"+year + month + day +m+"_"+"Gemmach"+"_"+p+"_"+returnName(locationID)+".csv")
             if not os.path.exists(destination + m + p):
                 os.makedirs(destination + m + p)
             for f in os.listdir(destination):
                 if f.endswith("_" + m + p + ".csv"):
                     shutil.move(destination + f, destination + m + p)
                 file = open(uniqueFileName, "w+")
-                file.write("Model Run,Date,Time,Value\n")
+                file.write("Model Run,Date,Time(Z),Value\n")
                 for i in sorted(os.listdir(destination + m + p)):
                     file.write(open(destination + m + p + "/" + i).read())
                 file.close()
             generateExcel(uniqueFileName.split("/")[-1])
     # generateExcel(exceltreatinglst)
-    print("\nJob done, see folder for csv file-->" + filelocation + "/output")
-    print("\nJob done, see folder for excel file-->" + filelocation + "/excel_output")
+    print("\nJob done, see folder for csv file-->" + filelocation + "/output_csv")
+    print("\nJob done, see folder for excel file-->" + filelocation + "/output_excel")
 

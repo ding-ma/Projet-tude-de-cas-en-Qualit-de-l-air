@@ -326,17 +326,17 @@ def sortAndGenerate(destination,selectedDate):
     os.system(" ls " + filelocation + "/extractedMist | sort -st '/' -k1,1")
     for m in modelHourList:
         for p in particulelist:
-            uniqueFileName = uniquify("output/"+year + month + day +m+"_"+"UMOS-Mist"+"_"+p+"_"+Gm.returnName(locationId)+".csv")
+            uniqueFileName = uniquify("output_csv/"+year + month + day +m+"_"+"UMOS-Mist"+"_"+p+"_"+Gm.returnName(locationId)+".csv")
             if not os.path.exists(destination + m + p):
                 os.makedirs(destination + m + p)
             for f in os.listdir(destination):
                 if f.endswith("_" + m + p + ".csv"):
                     shutil.move(destination + f, destination + m + p)
             file = open(uniqueFileName,"w+")
-            file.write("Model Run,Date,Time,Value\n")
+            file.write("Model Run,Date,Time(Z),Value\n")
             for i in sorted(os.listdir(destination + m + p)):
                 file.write(open(destination + m + p + "/" + i).read())
             file.close()
             Gm.generateExcel(uniqueFileName.split("/")[-1])
-    print("\nJob done, see folder for csv file-->" + filelocation + "/output")
-    print("\nJob done, see folder for excel file-->" + filelocation + "/excel_output")
+    print("\nJob done, see folder for csv file-->" + filelocation + "/output_csv")
+    print("\nJob done, see folder for excel file-->" + filelocation + "/output_excel")

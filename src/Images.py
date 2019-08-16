@@ -7,18 +7,20 @@ import Gemmach as Gm
 
 filelocation = Gm.filelocation
 
-#formats the start date
+
+# formats the start date
 def inputStartDate(sD):
     global sYear
     global sMonth
     global sDay
     global sDate
-    #splits the entry into a tuple
+    # splits the entry into a tuple
     unformatattedDate = re.split("/", sD)
     sYear = unformatattedDate[0]
     sMonth = unformatattedDate[1]
     sDay = unformatattedDate[2]
-    sDate = date(int(sYear),int(sMonth),int(sDay))
+    sDate = date(int(sYear), int(sMonth), int(sDay))
+
 
 # end date
 def inputEndDate(eD):
@@ -34,16 +36,20 @@ def inputEndDate(eD):
     generateDatelst()
 
 
-lstDate=[]
+lstDate = []
+
+
 def generateDatelst():
     lstDate.clear()
-    delta = eDate-sDate
-    for i in range(delta.days +1):
+    delta = eDate - sDate
+    for i in range(delta.days + 1):
         date = sDate + timedelta(days=i)
         lstDate.append(date)
 
 
 bothCheked = 0
+
+
 def modelCheckbox(h_00, h_12):
     global modelHour
     global modelHourBash
@@ -71,7 +77,7 @@ def time(sTime, eTime):
     global formattedSelectedTimeWithSpace
     global sTimeBash
     sTimeBash = sTime
-    #gets index then generates a list within the index
+    # gets index then generates a list within the index
     sIndex = Gm.hours.index(sTime)
     eIndex = Gm.hours.index(eTime)
     unformattedSelectedTime = ""
@@ -109,8 +115,8 @@ def particuleCheckBox(O3, NO2, others, PM25):
         unformattedParticuleString[i:i + 2] for i in range(0, len(unformattedParticuleString), 2))
 
 
-#east,east@coast@zoom,north@america,north@america@gemmach,west
-def locationCheckBox(East, EastZoom,NA,NAGem,West,QcOnt):
+# east,east@coast@zoom,north@america,north@america@gemmach,west
+def locationCheckBox(East, EastZoom, NA, NAGem, West, QcOnt):
     global locationlst
     global rarcString
     East = int(East)
@@ -137,8 +143,8 @@ def locationCheckBox(East, EastZoom,NA,NAGem,West,QcOnt):
         strWest = "west,"
     if QcOnt is 1:
         strQCOnt = "quebec@ontario,"
-    rarcString = strEast + strEastZoom+strNA+strNAGem+strWest+strQCOnt
-    #east,east@coast@zoom,north@america,north@america@gemmach,west,quebec@ontario,
+    rarcString = strEast + strEastZoom + strNA + strNAGem + strWest + strQCOnt
+    # east,east@coast@zoom,north@america,north@america@gemmach,west,quebec@ontario,
     tempList = re.split(",", rarcString)
     locationlst = tempList[:-1]
 
@@ -182,6 +188,7 @@ def UMOSRarcFile():
         "#\n")
     print("UMOS Image Config Files Saved")
 
+
 def generateImage():
     molecules = particulelst
     modelhourlist = re.split(",", modelHour)
@@ -192,24 +199,30 @@ def generateImage():
                     if location == "quebec@ontario":
                         continue
                     os.system(
-                        "cmcarc -x " + sYear + day_obj.strftime("%m") + day_obj.strftime("%d") + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001.* -f " + os.getcwd() + "/rarc/operation.images.chronos/" + sYear + day_obj.strftime("%m") + day_obj.strftime("%d") + h + "_" + location)
+                        "cmcarc -x " + sYear + day_obj.strftime("%m") + day_obj.strftime(
+                            "%d") + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001.* -f " + os.getcwd() + "/rarc/operation.images.chronos/" + sYear + day_obj.strftime(
+                            "%m") + day_obj.strftime("%d") + h + "_" + location)
 
                     def purge(dir, pattern):
                         for f in os.listdir(dir):
                             if re.search(pattern, f):
                                 shutil.move(f, os.getcwd() + "/imgTemp")
 
-                    print("extracted: " + m+"-" + location +day_obj.strftime("-%Y%m%d")+ h)
+                    print("extracted: " + m + "-" + location + day_obj.strftime("-%Y%m%d") + h)
                     purge(os.getcwd(),
-                          sYear + day_obj.strftime("%m") + day_obj.strftime("%d") + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001.*")
-                    print("generating gif: " + m+"-" + location +day_obj.strftime("-%Y%m%d")+ h)
+                          sYear + day_obj.strftime("%m") + day_obj.strftime(
+                              "%d") + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001.*")
+                    print("generating gif: " + m + "-" + location + day_obj.strftime("-%Y%m%d") + h)
 
                     os.system(
-                        "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" + sYear + day_obj.strftime("%m") + day_obj.strftime("%d") + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001* "
-                        + filelocation + "/img_output/" + sYear + day_obj.strftime("%m") + day_obj.strftime("%d") + h + "_IMG_Gemmach" + m + "_" + location + ".gif")
+                        "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" + sYear + day_obj.strftime(
+                            "%m") + day_obj.strftime(
+                            "%d") + h + "_054_GM_" + location + "_I_GEMMACH_" + m + "@sfc@001* "
+                        + filelocation + "/output_img/" + sYear + day_obj.strftime("%m") + day_obj.strftime(
+                            "%d") + h + "_IMG_Gemmach" + m + "_" + location + ".gif")
                     shutil.rmtree("imgTemp")
                     os.mkdir("imgTemp")
-    print("\nJob done, see folder for images-->" + filelocation+"/img_output")
+    print("\nJob done, see folder for images-->" + filelocation + "/output_img")
 
 
 def generateUMOSImage(t):
@@ -220,21 +233,26 @@ def generateUMOSImage(t):
             for m in molecules:
                 for h in modelhourlist:
                     os.system(
-                        "cmcarc -x " + sYear +  day_obj.strftime("%m") + day_obj.strftime("%d") + h + "_054_UA_" + location + "_I_UMOS@GEMMACH_" + m + t + ".* -f " + os.getcwd() + "/rarc/operation.images.umoscr/" + sYear +  day_obj.strftime("%m") + day_obj.strftime("%d") + h + "_" + location)
+                        "cmcarc -x " + sYear + day_obj.strftime("%m") + day_obj.strftime(
+                            "%d") + h + "_054_UA_" + location + "_I_UMOS@GEMMACH_" + m + t + ".* -f " + os.getcwd() + "/rarc/operation.images.umoscr/" + sYear + day_obj.strftime(
+                            "%m") + day_obj.strftime("%d") + h + "_" + location)
 
                     def purge(dir, pattern):
                         for f in os.listdir(dir):
                             if re.search(pattern, f):
                                 shutil.move(f, os.getcwd() + "/imgTemp")
 
-                    print("extracted: " + m +"-"+ location +day_obj.strftime("-%Y%m%d")+ h)
+                    print("extracted: " + m + "-" + location + day_obj.strftime("-%Y%m%d") + h)
                     purge(os.getcwd(),
-                          sYear +  day_obj.strftime("%m") + day_obj.strftime("%d")+ h + "_054_UA_" + location + "_I_UMOS@GEMMACH_" + m + t + ".*")
-                    print("generating gif: " + m+"-" + location +day_obj.strftime("-%Y%m%d")+ h)
+                          sYear + day_obj.strftime("%m") + day_obj.strftime(
+                              "%d") + h + "_054_UA_" + location + "_I_UMOS@GEMMACH_" + m + t + ".*")
+                    print("generating gif: " + m + "-" + location + day_obj.strftime("-%Y%m%d") + h)
                     os.system(
-                        "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" + sYear +  day_obj.strftime("%m") + day_obj.strftime("%d") + h + "_054_UA_" + location + "_I_UMOS@GEMMACH_" + m + t + "* "
-                        + filelocation + "/img_output/" + sYear +  day_obj.strftime("%m") + day_obj.strftime("%d") + h + "_IMG_UMOS" + m + "_" + location + t + ".gif")
+                        "convert -delay 35 -loop 0 " + filelocation + "/imgTemp/" + sYear + day_obj.strftime(
+                            "%m") + day_obj.strftime(
+                            "%d") + h + "_054_UA_" + location + "_I_UMOS@GEMMACH_" + m + t + "* "
+                        + filelocation + "/output_img/" + sYear + day_obj.strftime("%m") + day_obj.strftime(
+                            "%d") + h + "_IMG_UMOS" + m + "_" + location + t + ".gif")
                     shutil.rmtree("imgTemp")
                     os.mkdir("imgTemp")
-    print("\nJob done, see folder for images-->" + filelocation+"/img_output")
-
+    print("\nJob done, see folder for images-->" + filelocation + "/output_img")

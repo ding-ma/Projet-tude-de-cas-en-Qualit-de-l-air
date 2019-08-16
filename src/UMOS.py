@@ -204,7 +204,7 @@ subconverterdict = {
 
 
 def toExcel(name):
-    df = pd.read_csv("output/"+name)
+    df = pd.read_csv("output_csv/"+name)
     df.drop(['Lat', 'Lon', 'Vertical', 'Var'], axis=1, inplace=True)
     dateorg_lst = df['Date_Orig'].tolist()
     datevalid_list = df['Date_Valid'].tolist()
@@ -215,14 +215,14 @@ def toExcel(name):
     for org, val in zip(dateorg_lst, datevalid_list):
         orgchanged = datetime.strptime(org, "%Y-%m-%d%H:%M:%S").strftime("%Y%m%d%H")
         valchanged = datetime.strptime(val, "%Y-%m-%d%H:%M:%S").strftime("%Y%m%d")
-        hchanged = datetime.strptime(val, "%Y-%m-%d%H:%M:%S").strftime("%H")
+        hchanged = datetime.strptime(val, "%Y-%m-%d%H:%M:%S").strftime("%-H")
         orglst.append(orgchanged)
         valst.append(valchanged)
         timelst.append(hchanged)
     # ['Model Time', 'Date', 'Time', 'Value']
     #{'Model Time': orglst, 'Date': valst, 'Time': timelst, 'Values': values_lst}
-    dfnew = pd.DataFrame()
-    dfnew.to_excel("excel_output/"+name[:-4]+".xlsx", engine="xlsxwriter", index=False, index_label=False)
+    dfnew = pd.DataFrame(list(zip(orglst,valst,timelst,values_lst)), columns=['Model Run', 'Date', 'Time(Z)', 'Values'])
+    dfnew.to_excel("output_excel/"+name[:-4]+".xlsx", engine="xlsxwriter", index=False, index_label=False)
 
 def getDataAtLocation(locationID):
     try:
@@ -237,7 +237,7 @@ def getDataAtLocation(locationID):
                 # prevents having empty files
                 if os.stat("UMOSTreating/" + untreated).st_size > 500:
                     with open("UMOSTreating/" + untreated, "r") as infile, open(
-                            "output/"+filename, "w") as outfile:
+                            "output_csv/"+filename, "w") as outfile:
                         # UMOS__ID"+locationID +"__"+ untreated + ".csv",'w'
                         outfile.write("Date_Orig,Date_Valid,Code_Stn(ID),Lat,Lon,Vertical,Var,Value\n")
                         for line in infile:
@@ -247,8 +247,8 @@ def getDataAtLocation(locationID):
                             outfile.write(changeName)
                 toExcel(filename)
 
-        print("\nJob done, see folder for csv file-->" + filelocation + "/output")
-        print("\nJob done, see folder for excel file-->" + filelocation + "/excel_output")
+        print("\nJob done, see folder for csv file-->" + filelocation + "/output_csv")
+        print("\nJob done, see folder for excel file-->" + filelocation + "/output_excel")
         removeAllfile(r'' + filelocation + "/UMOSTreating")
         shutil.rmtree("prevision.csv")
     except KeyError:
