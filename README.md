@@ -1,5 +1,5 @@
 # Automatic Image and Data Extractor (AIDE)
-This is the big project of my summer 19 internship at Environment Canada. It is a GUI tool that helps users extract data from archives easily.
+This is the big project of my summer 19 internship at Environment Canada. It is a GUI tool that helps users extract data from archives and write the data into a CSV/excel spread sheet.
 
 # Programming languages
 * SQL, extracting observation data
