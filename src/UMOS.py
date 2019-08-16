@@ -215,13 +215,14 @@ def toExcel(name):
     for org, val in zip(dateorg_lst, datevalid_list):
         orgchanged = datetime.strptime(org, "%Y-%m-%d%H:%M:%S").strftime("%Y%m%d%H")
         valchanged = datetime.strptime(val, "%Y-%m-%d%H:%M:%S").strftime("%Y%m%d")
-        hchanged = datetime.strptime(val, "%Y-%m-%d%H:%M:%S").strftime("%-H")
+        hchanged = datetime.strptime(val, "%Y-%m-%d%H:%M:%S").strftime("%H")
         orglst.append(orgchanged)
         valst.append(valchanged)
         timelst.append(hchanged)
     # ['Model Time', 'Date', 'Time', 'Value']
     #{'Model Time': orglst, 'Date': valst, 'Time': timelst, 'Values': values_lst}
-    dfnew = pd.DataFrame(list(zip(orglst,valst,timelst,values_lst)), columns=['Model Run', 'Date', 'Time(Z)', 'Values'])
+    dfnew = pd.DataFrame(list(zip(orglst,valst,timelst,values_lst)), columns=['Model Run', 'Date', 'Time(Z)', 'Value'])
+    dfnew['Value'] = dfnew['Value'].round(0)
     dfnew.to_excel("output_excel/"+name[:-4]+".xlsx", engine="xlsxwriter", index=False, index_label=False)
 
 def getDataAtLocation(locationID):

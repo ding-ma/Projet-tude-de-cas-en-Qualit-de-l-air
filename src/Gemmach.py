@@ -594,6 +594,7 @@ def generateExcel(fileName):
         t = datetime.strptime(str(h), "%H").strftime("%H")
         temp.append(t)
     df['Time(Z)'] = temp
+    df['Value'] = df['Value'].round(0)
     df.to_excel(filelocation+"/output_excel/"+fileName[:-4]+".xlsx",engine="xlsxwriter",  index=False, index_label=False)
 
 #sorts and generates a CSV file in the output folder
