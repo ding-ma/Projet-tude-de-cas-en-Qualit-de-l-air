@@ -8,8 +8,7 @@ import time
 import tkinter as tk
 from tkinter import ttk
 
-import FireWork as Fw
-import Gemmach as Gm
+import BashModels as Bm
 import Images as Im
 import UMOS as Um
 import UMOSMist as Umist
@@ -32,28 +31,41 @@ nb.place(x=0, y=0, width=w, height=h)
 machTab = ttk.Frame(nb)
 nb.add(machTab, text="Tool")
 
+###
+# for bash models
+gemmachModelType = "Gemmach"
+gemmachBranch = "operation.forecasts.mach"
+
+uMistModelType = "UMist"
+uMistBranch = "operation.scribeMat.mist.aq"
+
+fWorkModelType = "FireWork"
+fWorkBranch = "operation.forecasts.firework.mach"
+
+###################
+
+# code to create repos and make sure everything is executable
+filelocation = os.getcwd()
+directories = ["bash", "config"+gemmachModelType,"config"+uMistModelType, "config"+fWorkModelType,"rarc", "output",  "UMOSTreating", "extracted"+gemmachModelType, "extracted"+uMistModelType,"extracted"+fWorkModelType, "imgTemp", "output_csv", "output_img", "output_excel"]
+
+
+for i in directories:
+    if not os.path.exists(filelocation + "/" + i):
+        os.mkdir(filelocation + "/" + i)
+os.system("chmod -R 744 " + filelocation)
+filedirectory = next(os.walk('.'))[1]
 
 # this function just writes all the user input into all files
 def UpdateEverything():
-    global particules
     a = enteredDate.get()
-    Gm.inputStartDate(a)
     b = enteredEndDate.get()
-    Gm.inputEndDate(b)
     sTime = sHourcombo.get()
     eTime = eHourCombo.get()
-    Gm.usertime(sTime, eTime)
     h_00 = var_00.get()
     h_12 = var_12.get()
-    Gm.modelCheckbox(h_00, h_12)
     O3 = var_O3.get()
     NO2 = var_NO2.get()
     PM25 = var_PM25.get()
-    particules = Gm.particuleCheckBox(O3, NO2, "", PM25)
-    Gm.rarcFile()
-    selectDate.config(values=Gm.returnDateList())
-    #    others = otherVariable.get()
-    Gm.level("")
 
     Um.inputStartDate(a)
     datesplit = Um.inputEndDate(b)
@@ -62,24 +74,14 @@ def UpdateEverything():
     Um.particuleCheckBoxAndTime(O3, NO2, PM25)
     Um.rarcFile(datesplit)
 
-    Fw.level("")
-    Fw.removeAllfile(r'' + Fw.filelocation + "/configFw")
-    Fw.time(sTime, eTime)
-    Fw.inputStartDate(a)
-    Fw.inputEndDate(b)
-    Fw.modelCheckbox(h_00, h_12)
-    Fw.rarcFile()
-
     Im.inputStartDate(a)
     Im.inputEndDate(b)
     Im.time(sTime, eTime)
     Im.modelCheckbox(h_00, h_12)
-
     O3img = var_O3_image.get()
     NO2img = var_NO2_image.get()
     PM25img = var_PM25_image.get()
     Im.particuleCheckBox(O3img, NO2img, "", PM25img)
-
     East = var_east.get()
     EastZoom = var_eastZoom.get()
     NA = var_NA.get()
@@ -89,34 +91,44 @@ def UpdateEverything():
     Im.locationCheckBox(East, EastZoom, NA, NAGem, West, QcOnt)
     Im.RarcFile()
     Im.UMOSRarcFile()
-
     Ob.inputStartDate(a)
     Ob.inputEndDate(b)
     Ob.particuleCheckBox(O3, NO2, "", PM25)
 
-    Umist.removeAllfile(r'' + Umist.filelocation + "/configMIST")
-    Umist.time(sTime, eTime)
 
-    Umist.modelCheckbox(h_00, h_12)
-    Umist.inputStartDate(a)
-    Umist.inputEndDate(b)
-
+def bashModelParameters(modelType, branche):
+    global particules
+    Bm.inputStartDate(enteredDate.get())
+    Bm.inputEndDate(enteredEndDate.get())
+    Bm.usertime(sHourcombo.get(), eHourCombo.get())
+    Bm.modelCheckbox(var_00.get(), var_12.get())
+    O3 = var_O3.get()
+    NO2 = var_NO2.get()
+    PM25 = var_PM25.get()
+    particules = Bm.particuleCheckBox(O3, NO2, "", PM25)
+    Bm.rarcFile(modelType,branche)
+    selectDate.config(values=Bm.returnDateList())
+    #    others = otherVariable.get()
+    Bm.level("")
 
 def getdate():
-    return Gm.returnDateList()[int(selectDate.current())]
+    return Bm.returnDateList()[int(selectDate.current())]
 
 
-def StartXRACR(modelType):
-    UpdateEverything()
+def StartXRACR(modelType,branche):
+    if branche == "":
+        UpdateEverything()
+    else:
+        bashModelParameters(modelType, branche)
     if modelType == "UMist":
         Umist.rarcFile()
-    os.system("rarc -i " + Gm.filelocation + "/" + modelType + " &")
+    os.system("rarc -i " + filelocation + "/" + modelType + " &")
 
 
 def UMOSClicked():
     UpdateEverything()
     for filename in glob.glob("rarc/umos*"):
-        os.system("rarc -i " + Gm.filelocation + "/" + filename + " &")
+        os.system("rarc -i " + filelocation + "/" + filename + " &")
 
 
 extractionLabel = tk.Label(machTab, text="Extraction", font="13")
@@ -135,14 +147,14 @@ enteredEndDate.place(x=525, y=45)
 
 # Start Hours
 sHourLabel = tk.Label(machTab, text="Choose the start time")
-sHourcombo = ttk.Combobox(machTab, values=Gm.hours, state='readonly')
+sHourcombo = ttk.Combobox(machTab, values=Bm.hours, state='readonly')
 sHourcombo.current(0)
 sHourLabel.place(x=650, y=45)
 sHourcombo.place(x=650, y=80)
 
 # End Hours
 eHourLabel = tk.Label(machTab, text="Choose the end time")
-eHourCombo = ttk.Combobox(machTab, values=Gm.hours, state='readonly')
+eHourCombo = ttk.Combobox(machTab, values=Bm.hours, state='readonly')
 eHourCombo.current(48)
 eHourLabel.place(x=850, y=45)
 eHourCombo.place(x=850, y=80)
@@ -164,30 +176,30 @@ separetorline.place(x=0, y=180)
 AlpaNumDataLabel = tk.Label(machTab, text="Alphanumerical Data:")
 AlpaNumDataLabel.place(x=10, y=115)
 
-extrationBtn = tk.Button(machTab, text="Gemmach Extraction", command=lambda: StartXRACR("gemmach"), width=17, height=1)
+extrationBtn = tk.Button(machTab, text="Gemmach Extraction", command=lambda: StartXRACR(gemmachModelType, gemmachBranch), width=17, height=1)
 extrationBtn.place(x=150, y=115)
 
-fwRarcBtn = tk.Button(machTab, text="FireWork Extraction", command=lambda: StartXRACR("FireWork"), width=17, height=1)
+fwRarcBtn = tk.Button(machTab, text="FireWork Extraction", command=lambda: StartXRACR(fWorkModelType,fWorkBranch), width=17, height=1)
 fwRarcBtn.place(x=330, y=115)
 
-mistExtraction = tk.Button(machTab, text="UMOS-Mist Extraction", command=lambda: StartXRACR("UMist"), width=17,
+mistExtraction = tk.Button(machTab, text="UMOS-Mist Extraction", command=lambda: StartXRACR(uMistModelType,uMistBranch), width=17,
                            height=1)
 mistExtraction.place(x=510, y=115)
 
 UMOSBtnExt = tk.Button(machTab, text="UMOS Extraction", command=UMOSClicked, width=17, height=1)
 UMOSBtnExt.place(x=690, y=115)
 
-observationRarcBtn = tk.Button(machTab, text="Observation Extraction", command=lambda: StartXRACR("observations"),
+observationRarcBtn = tk.Button(machTab, text="Observation Extraction", command=lambda: StartXRACR("observations",""),
                                width=17, height=1)
 observationRarcBtn.place(x=870, y=115)
 
 imagesLabel = tk.Label(machTab, text="Images:")
 imagesLabel.place(x=10, y=160)
 
-ImgRarcBtn = tk.Button(machTab, text="Gemmach Extraction", command=lambda: StartXRACR("image"), width=17, height=1)
+ImgRarcBtn = tk.Button(machTab, text="Gemmach Extraction", command=lambda: StartXRACR("image",""), width=17, height=1)
 ImgRarcBtn.place(x=150, y=160)
 
-ImgUmosRarcBtn = tk.Button(machTab, text="UMOS-Mist Extraction", command=lambda: StartXRACR("imageUMOS"), width=17,
+ImgUmosRarcBtn = tk.Button(machTab, text="UMOS-Mist Extraction", command=lambda: StartXRACR("imageUMOS",""), width=17,
                            height=1)
 ImgUmosRarcBtn.place(x=510, y=160)
 
@@ -218,19 +230,19 @@ PM25_Checkbutton.place(x=265, y=245)
 
 # stations
 def combined(event):
-    Gm.provlist.clear()
+    Bm.provlist.clear()
     name = comboprov.get()
-    provlist = Gm.gettingprovlist(name)
+    provlist = Bm.gettingprovlist(name)
     combostations.config(values=provlist)
 
 
 locationLabel = ttk.Label(machTab, text="Select Station:")
 # province combobox
-comboprov = ttk.Combobox(machTab, values=Gm.prov, width=10, state='readonly')
+comboprov = ttk.Combobox(machTab, values=Bm.prov, width=10, state='readonly')
 comboprov.bind('<<ComboboxSelected>>', combined)
 comboprov.current(0)
 # stations from the province combobox
-combostations = ttk.Combobox(machTab, values=Gm.gettingprovlist("Province"), width=30, state='readonly')
+combostations = ttk.Combobox(machTab, values=Bm.gettingprovlist("Province"), width=30, state='readonly')
 combostations.current(0)
 locationLabel.place(x=400, y=245)
 comboprov.place(x=510, y=245)
@@ -243,7 +255,7 @@ stationSearchField = ttk.Entry(machTab, width=15)
 
 def SearchNameID():
     userInput = stationSearchField.get()
-    dString = Gm.SearchNameID(userInput)
+    dString = Bm.SearchNameID(userInput)
     stationSearchLabel.config(text=dString)
 
 
@@ -302,36 +314,38 @@ selectDateLabel = tk.Label(machTab, text="Select a date to treat (UMOS-MIST, Gem
 selectDateLabel.place(x=10, y=360)
 
 
-def getLocation():
-    UpdateEverything()
-    StartBash("gemmachBashTest")
+def getLocationGemmach():
+    gemFolder = "extracted"+ gemmachModelType
+    bashModelParameters(gemmachModelType, gemmachBranch)
+    Bm.bashFile(getdate(), gemmachModelType, gemmachBranch)
+    StartBash(gemmachModelType,gemmachBranch)
     time.sleep(1)
-    Gm.removeAllfile(r'' + Gm.filelocation + "/config")
-    Gm.getEticket()
-    locID = getComboboxLocation()
-    Gm.locationExtraction(locID, getdate())
-    Gm.launchTCL()
-    Gm.removeEmptyFile(r'' + Gm.filelocation + "/extracted")
-    Gm.sortAndGenerate(Gm.filelocation + "/extracted/", getdate())
+    Bm.removeAllfile(r'' + filelocation + "/config"+gemmachModelType)
+    Bm.getEticket(gemmachModelType)
+    Bm.locationExtraction(getComboboxLocation(), getdate(),gemmachModelType)
+    Bm.launchTCL(gemmachModelType)
+    Bm.removeEmptyFile(r'' + filelocation + "/"+gemFolder)
+    Bm.sortAndGenerate(filelocation + "/"+gemFolder+"/", getdate(),gemmachModelType)
 
 
-locationBtn = tk.Button(machTab, text="Get Gemmach data at Station", command=getLocation, width=25, height=1)
+locationBtn = tk.Button(machTab, text="Get Gemmach data at Station", command=getLocationGemmach, width=25, height=1)
 locationBtn.place(x=50, y=395)
 
 
 def MistGetLocation():
-    UpdateEverything()
+    umistFolder = "extracted"+uMistModelType
+    bashModelParameters(uMistModelType, uMistBranch)
     Umist.bashFile(particules,getdate())
-    StartBash("UmosMist")
+    StartBash(uMistModelType,uMistBranch)
     time.sleep(1)
     Umist.writeEticket(getdate())
-    shutil.rmtree("extractedMist")
-    os.mkdir("extractedMist")
-    os.system("./UmosMistEticket.tcl")
+    shutil.rmtree(umistFolder)
+    os.mkdir(umistFolder)
+    # todo change: os.system("./"+uMistModelType+"Eticket.tcl")
     Umist.TCLConfig(particules, getComboboxLocation(), getdate())
     Umist.launchTCL()
-    Umist.removeEmptyFile(r'' + Umist.filelocation + "/extractedMist")
-    Umist.sortAndGenerate(Umist.filelocation + "/extractedMist/", getdate())
+    Umist.removeEmptyFile(r'' + Umist.filelocation + "/"+umistFolder)
+    Umist.sortAndGenerate(Umist.filelocation + "/"+umistFolder+"/", getdate())
 
 
 mistTCLBtn = tk.Button(machTab, text="Get UMOS-Mist data at Station", command=MistGetLocation, width=25, height=1)
@@ -339,36 +353,37 @@ mistTCLBtn.place(x=550, y=395)
 
 
 def FwGetLocation():
-    UpdateEverything()
-    Fw.bashFile(particules, getdate())
-    StartBash("FireWork")
+    fwFolder = "extracted"+fWorkModelType
+    bashModelParameters(fWorkModelType, fWorkBranch)
+    Bm.bashFile(getdate(),fWorkModelType,fWorkBranch)
+    StartBash(fWorkModelType,fWorkBranch)
     time.sleep(1)
-    shutil.rmtree("extractedFw")
-    os.mkdir("extractedFw")
-    Fw.TCLConfig(particules, getComboboxLocation(), getdate())
-    Fw.launchTCL()
-    Fw.removeEmptyFile(r'' + Fw.filelocation + "/extractedFw")
-    Fw.sortAndGenerate(Fw.filelocation + "/extractedFw/", getdate())
+    Bm.removeAllfile(r'' + filelocation + "/config"+fWorkModelType)
+    Bm.getEticket(gemmachModelType)
+    Bm.locationExtraction(getComboboxLocation(), getdate(),gemmachModelType)
+    Bm.launchTCL(gemmachModelType)
+    Bm.removeEmptyFile(r'' + filelocation + "/"+fwFolder)
+    Bm.sortAndGenerate(filelocation + "/"+fwFolder+"/", getdate(),gemmachModelType)
 
 
 fwTCLbtn = tk.Button(machTab, text="Get FireWork data at Station", command=FwGetLocation, width=25, height=1)
 fwTCLbtn.place(x=300, y=395)
 
 
-def StartBash(modelType):
-    Gm.bashFile(getdate())
+def StartBash(modelType,branche):
+    Bm.bashFile(getdate(),modelType,branche)
     time.sleep(1)
-    os.system("chmod -R 777 " + Gm.filelocation)
-    if Gm.bothCheked is 1:
+    os.system("chmod -R 777 " + Bm.filelocation)
+    if Bm.bothCheked is 1:
         os.system("./" + modelType + "00.bash ")
-        print("Done, file located at -->" + Gm.filelocation + "/bash")
-    if Gm.bothCheked is 2:
+        print("Done, file located at -->" + Bm.filelocation + "/bash")
+    if Bm.bothCheked is 2:
         os.system("./" + modelType + "12.bash ")
-        print("Done, file located at -->" + Gm.filelocation + "/bash")
-    if Gm.bothCheked is 3:
+        print("Done, file located at -->" + Bm.filelocation + "/bash")
+    if Bm.bothCheked is 3:
         os.system("./" + modelType + "00.bash ")
         os.system("./" + modelType + "12.bash ")
-        print("Done, file located at -->" + Gm.filelocation + "/bash")
+        print("Done, file located at -->" + Bm.filelocation + "/bash")
 
 
 ##############################################################################################################
@@ -477,7 +492,7 @@ animateBtn.place(x=10, y=565)
 def getComboboxLocation():
     location = int(combostations.current())
     province = comboprov.get()
-    locationlst = Gm.provinceDic[province]
+    locationlst = Bm.provinceDic[province]
     locID = locationlst[location]
     return locID
 
@@ -623,7 +638,7 @@ def storeDB():
             enteredEndDate.get(),
             sHourcombo.current(),
             eHourCombo.current(),
-            Gm.returnDateList(),
+            Bm.returnDateList(),
             selectDate.current()
         ], dbFile)
         dbFile.close()
@@ -648,7 +663,7 @@ window.mainloop()
 # file, you dont want to get the location right now because the file may not be extracted yet
 
 # additional code for extra features
-# if the level is added, need to change the empty string into get what the user entered in the textbox  to in there --> Gm.level("")
+# if the level is added, need to change the empty string into get what the user entered in the textbox  to in there --> Bm.level("")
 # manual add level
 # otherLabel = tk.Label(machTab, text="Others, add no space e.g. UVTT")
 # otherVariable = tk.Entry(machTab, width=13)
