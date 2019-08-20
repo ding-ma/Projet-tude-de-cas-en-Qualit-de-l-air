@@ -359,11 +359,11 @@ def FwGetLocation():
     StartBash(fWorkModelType,fWorkBranch)
     time.sleep(1)
     Bm.removeAllfile(r'' + filelocation + "/config"+fWorkModelType)
-    Bm.getEticket(gemmachModelType)
-    Bm.locationExtraction(getComboboxLocation(), getdate(),gemmachModelType)
-    Bm.launchTCL(gemmachModelType)
+    Bm.getEticket(fWorkModelType)
+    Bm.locationExtraction(getComboboxLocation(), getdate(),fWorkModelType)
+    Bm.launchTCL(fWorkModelType)
     Bm.removeEmptyFile(r'' + filelocation + "/"+fwFolder)
-    Bm.sortAndGenerate(filelocation + "/"+fwFolder+"/", getdate(),gemmachModelType)
+    Bm.sortAndGenerate(filelocation + "/"+fwFolder+"/", getdate(),fWorkModelType)
 
 
 fwTCLbtn = tk.Button(machTab, text="Get FireWork data at Station", command=FwGetLocation, width=25, height=1)
@@ -373,17 +373,17 @@ fwTCLbtn.place(x=300, y=395)
 def StartBash(modelType,branche):
     Bm.bashFile(getdate(),modelType,branche)
     time.sleep(1)
-    os.system("chmod -R 777 " + Bm.filelocation)
+    os.system("chmod -R 777 " + filelocation)
     if Bm.bothCheked is 1:
         os.system("./" + modelType + "00.bash ")
-        print("Done, file located at -->" + Bm.filelocation + "/bash")
+        print("Done, file located at -->" + filelocation + "/bash")
     if Bm.bothCheked is 2:
         os.system("./" + modelType + "12.bash ")
-        print("Done, file located at -->" + Bm.filelocation + "/bash")
+        print("Done, file located at -->" + filelocation + "/bash")
     if Bm.bothCheked is 3:
         os.system("./" + modelType + "00.bash ")
         os.system("./" + modelType + "12.bash ")
-        print("Done, file located at -->" + Bm.filelocation + "/bash")
+        print("Done, file located at -->" + filelocation + "/bash")
 
 
 ##############################################################################################################

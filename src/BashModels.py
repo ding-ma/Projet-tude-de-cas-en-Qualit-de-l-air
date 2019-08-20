@@ -442,9 +442,6 @@ def generateTCL(modelH,iditem,selectedDate,modelType):
             generatedTime = starttime +timedelta(hours = I)
             time00Format = generatedTime.strftime("%H")
             time0Format = generatedTime.strftime("%-H")
-            print(time0Format)
-            print(isinstance(time0Format,str))
-            print(type(time0Format))
             dateToFile = generatedTime.strftime("%d")
             monthToFile = generatedTime.strftime("%m")
             config = open("config"+modelType+"/" + p+"_"+monthToFile + dateToFile + time00Format + modelH + ".tcl", "w")
@@ -454,7 +451,7 @@ def generateTCL(modelH,iditem,selectedDate,modelType):
                 "set Data(TAG3)   \"" + monthToFile + dateToFile + time00Format + "\"\n"
                 "set Data(outTXT)       \"SITE\" \n"
                 "set Data(PASSE) \"" + modelH + "\"\n"
-                "set Data(levels) \"-1""\"\n" 
+                "set Data(levels) \"-1""\"\n"
                 "set Data(MandatoryLevels) \" "+year + month + day+modelH+"\"\n"
                 "set Data(Path)    " + filelocation + "/bash\n"
                 "set Data(PathOut) " + filelocation + "/extracted"+modelType+"\n"
@@ -462,7 +459,7 @@ def generateTCL(modelH,iditem,selectedDate,modelType):
                 "set Data(End)      \"" + year + monthToFile + "\"\n"
                 "set Data(Eticket)     \"" + EticketGM + "\"\n"
                 "set Data(point) \"" + name + "\"\n"
-                "set Data(coord) \"" + lat + " " + long + "\"\n"
+                "set Data(coord) \"" + str(lat) + " " + str(long) + "\"\n"
                 "set Data(days) \"" + dateToFile + "\"\n"
                 "set Data(hours) \"" + time0Format + "\"\n")
 
@@ -471,7 +468,8 @@ def launchTCL(modelType):
     os.system(" ls "+filelocation+"/config"+modelType+" | sort -st '/' -k1,1")
     os.system("chmod -R 744 "+ filelocation+"/config"+modelType)
     for a in os.listdir('config'+modelType):
-        os.system("./extract1.tcl " + "config/"+modelType + a)
+        print(a)
+        os.system("./extract1.tcl " + "config"+modelType+"/" + a)
 
 
 #removes empty file that are generated

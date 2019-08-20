@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="993a9838-9207-46e0-aaef-0972cce94224" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Projet-tude-de-cas-en-Qualit-de-l-air.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Projet-tude-de-cas-en-Qualit-de-l-air.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BashModels.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/BashModels.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UMOS.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UMOS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI.py" afterDir="false" />
     </list>
     <list id="907627cc-b390-404d-92ca-b82bb5948891" name="changed ui for date entry, dropbox" comment="changed ui for date entry, dropbox&#10;&#10;(cherry picked from commit 2f4aa07e39a3bdfdaad2fabc35416c24e44b5482)">
       <changelist_data name="Ding Ma" email="ding.ma@mail.mcgill.ca" date="1559324784000" />
@@ -254,13 +252,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557412480438</updated>
-    </task>
-    <task id="LOCAL-00076" summary="trying to automatically get eticket">
-      <created>1560975405143</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1560975405143</updated>
     </task>
     <task id="LOCAL-00077" summary="added automatic eticket reading">
       <created>1561037628646</created>
@@ -598,7 +589,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566323942273</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="error fixed, now getting &quot;TypeError: can only concatenate str (not &quot;float&quot;) to str&quot; at time0Format">
+      <created>1566327482611</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1566327482611</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -653,7 +651,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="massive code update :)" />
     <MESSAGE value="updated all the modules and cleaned up the code" />
     <MESSAGE value="observation creates error if there is nothing found and only write file if there is something" />
     <MESSAGE value="minor tweak" />
@@ -678,7 +675,8 @@
     <MESSAGE value="ops, forgot to add rounding and hour needed to be zero padded" />
     <MESSAGE value="updating code to use pandas library and make it cleaner" />
     <MESSAGE value="updated the files, giving me &quot;&lt;class 'TypeError'&gt;: drop() missing 1 required positional argument: 'labels'&quot;&#10;error" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated the files, giving me &quot;&lt;class 'TypeError'&gt;: drop() missing 1 required positional argument: 'labels'&quot;&#10;error" />
+    <MESSAGE value="error fixed, now getting &quot;TypeError: can only concatenate str (not &quot;float&quot;) to str&quot; at time0Format" />
+    <option name="LAST_COMMIT_MESSAGE" value="error fixed, now getting &quot;TypeError: can only concatenate str (not &quot;float&quot;) to str&quot; at time0Format" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
