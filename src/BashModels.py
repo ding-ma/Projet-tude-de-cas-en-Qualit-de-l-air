@@ -33,8 +33,7 @@ hour24 = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11"
 ##################################################
 filelocation = os.getcwd()
 
-stationsDataFrame = pd.read_csv("stations.csv").drop(columns=['city', 'address'])
-
+stationsDataFrame = pd.read_csv("stations.csv").drop(axis=1,labels=['city', 'address'])
 lstID = stationsDataFrame['id'].tolist()
 lstName = stationsDataFrame['name_en_ CA'].tolist()
 lstLatitude = stationsDataFrame['lat'].tolist()
@@ -142,7 +141,7 @@ def gettingprovlist(P):
         return "Station"
     for y in provinceDic[P]:
         indexofitem = lstID.index(y)
-        display = lstDisplay[indexofitem][0]
+        display = str(lstDisplay[indexofitem][0])+": "+lstDisplay[indexofitem][1]
         provlist.append(display)
     return provlist
 
@@ -443,6 +442,9 @@ def generateTCL(modelH,iditem,selectedDate,modelType):
             generatedTime = starttime +timedelta(hours = I)
             time00Format = generatedTime.strftime("%H")
             time0Format = generatedTime.strftime("%-H")
+            print(time0Format)
+            print(isinstance(time0Format,str))
+            print(type(time0Format))
             dateToFile = generatedTime.strftime("%d")
             monthToFile = generatedTime.strftime("%m")
             config = open("config"+modelType+"/" + p+"_"+monthToFile + dateToFile + time00Format + modelH + ".tcl", "w")
@@ -461,8 +463,8 @@ def generateTCL(modelH,iditem,selectedDate,modelType):
                 "set Data(Eticket)     \"" + EticketGM + "\"\n"
                 "set Data(point) \"" + name + "\"\n"
                 "set Data(coord) \"" + lat + " " + long + "\"\n"
-                "set Data(days) \"" + str(dateToFile) + "\"\n"
-                "set Data(hours) \"" + str(time0Format) + "\"\n")
+                "set Data(days) \"" + dateToFile + "\"\n"
+                "set Data(hours) \"" + time0Format + "\"\n")
 
 #runs all the file generated,  it is normal to see Error #8 while running
 def launchTCL(modelType):
