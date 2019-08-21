@@ -3,9 +3,9 @@ import re
 import shutil
 from datetime import date, timedelta
 
-import Gemmach as Gm
+import BashModels as Bm
 
-filelocation = Gm.filelocation
+filelocation = Bm.filelocation
 
 
 # formats the start date
@@ -78,11 +78,11 @@ def time(sTime, eTime):
     global sTimeBash
     sTimeBash = sTime
     # gets index then generates a list within the index
-    sIndex = Gm.hours.index(sTime)
-    eIndex = Gm.hours.index(eTime)
+    sIndex = Bm.hours.index(sTime)
+    eIndex = Bm.hours.index(eTime)
     unformattedSelectedTime = ""
     for timeList in range(eIndex - sIndex + 1):
-        unformattedSelectedTime += Gm.hours[sIndex + timeList]
+        unformattedSelectedTime += Bm.hours[sIndex + timeList]
     # for every 3 character
     formattedSelectedTimeWithComma = ','.join(
         unformattedSelectedTime[i:i + 3] for i in range(0, len(unformattedSelectedTime), 3))

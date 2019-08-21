@@ -2,15 +2,14 @@ import csv
 import glob
 import os
 import re
-import shutil
 from datetime import date, timedelta, datetime
 
 import pandas as pd
 
-import Gemmach as Gm
+import BashModels as Bm
 
 #creates a dictionary based on the station ID and 3 letter Code
-filelocation = Gm.filelocation
+filelocation = Bm.filelocation
 file = open("UMOS_Ref.csv", "r")
 reader = csv.reader(file)
 UMOSRefList = list(reader)
@@ -142,7 +141,7 @@ def extractwithCMCARC(particules):
             for date in lstdates:
                 os.system(
                     "cmcarc -x 'prevision.csv/" + mol.lower() + "sp3.*' -f " + filelocation + "/rarc/operation.umos.aq.prevision/" + str(
-                        date.year) + str(date.strftime("%m")) + str(date.strftime("%d")) + h + "_")
+                        date.year) + date.strftime("%m") + date.strftime("%d") + h + "_")
 
 
 def rarcFile(datesplit):
@@ -196,6 +195,7 @@ def removeAllfile(path):
             if os.path.getsize(docPath) > 0:
                 os.remove(docPath)
 
+
 subconverterdict = {
     "p2":"AF",
     "o3":"O3",
@@ -234,7 +234,7 @@ def getDataAtLocation(locationID):
                     "cat " + filelocation + "/prevision.csv/" + sub + "/" + file + "| grep " + stationCode + " > " + filelocation + "/UMOSTreating/" + file + sub)
             for untreated in os.listdir("UMOSTreating"):
                 date = untreated.split("_")[0]
-                filename = date + "_UMOS_" + subconverterdict[sub[:2]] + "_" + Gm.returnName(locationID) + ".csv"
+                filename = date + "_UMOS_" + subconverterdict[sub[:2]] + "_" + Bm.returnName(locationID) + ".csv"
                 # prevents having empty files
                 if os.stat("UMOSTreating/" + untreated).st_size > 500:
                     with open("UMOSTreating/" + untreated, "r") as infile, open(
@@ -250,7 +250,7 @@ def getDataAtLocation(locationID):
 
         print("\nJob done, see folder for csv file-->" + filelocation + "/output_csv")
         print("\nJob done, see folder for excel file-->" + filelocation + "/output_excel")
-        removeAllfile(r'' + filelocation + "/UMOSTreating")
-        shutil.rmtree("prevision.csv")
+        # removeAllfile(r'' + filelocation + "/UMOSTreating")
+        # shutil.rmtree("prevision.csv")
     except KeyError:
         print("The station chosen does not have a UMOS code.")

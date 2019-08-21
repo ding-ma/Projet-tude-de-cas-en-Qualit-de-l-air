@@ -11,7 +11,6 @@ from tkinter import ttk
 import BashModels as Bm
 import Images as Im
 import UMOS as Um
-import UMOSMist as Umist
 import observations as Ob
 
 # initial setting
@@ -46,7 +45,8 @@ fWorkBranch = "operation.forecasts.firework.mach"
 
 # code to create repos and make sure everything is executable
 filelocation = os.getcwd()
-directories = ["bash", "config"+gemmachModelType,"config"+uMistModelType, "config"+fWorkModelType,"rarc", "output",  "UMOSTreating", "extracted"+gemmachModelType, "extracted"+uMistModelType,"extracted"+fWorkModelType, "imgTemp", "output_csv", "output_img", "output_excel"]
+directories = ["bash", "config"+gemmachModelType,"config"+uMistModelType, "config"+fWorkModelType,"rarc", "output",  "UMOSTreating",
+               "extracted"+gemmachModelType, "extracted"+uMistModelType,"extracted"+fWorkModelType, "imgTemp", "output_csv", "output_img", "output_excel"]
 
 
 for i in directories:
@@ -106,10 +106,11 @@ def bashModelParameters(modelType, branche):
     NO2 = var_NO2.get()
     PM25 = var_PM25.get()
     particules = Bm.particuleCheckBox(O3, NO2, "", PM25)
-    Bm.rarcFile(modelType,branche)
-    selectDate.config(values=Bm.returnDateList())
-    #    others = otherVariable.get()
-    Bm.level("")
+    if modelType != "" and branche != "":
+        Bm.rarcFile(modelType,branche)
+        selectDate.config(values=Bm.returnDateList())
+        #    others = otherVariable.get()
+        Bm.level("")
 
 def getdate():
     return Bm.returnDateList()[int(selectDate.current())]
@@ -120,8 +121,6 @@ def StartXRACR(modelType,branche):
         UpdateEverything()
     else:
         bashModelParameters(modelType, branche)
-    if modelType == "UMist":
-        Umist.rarcFile()
     os.system("rarc -i " + filelocation + "/" + modelType + " &")
 
 
@@ -268,10 +267,9 @@ searchBtn.place(x=400, y=275)
 
 
 def UMOSGetLocation():
-    b = enteredEndDate.get()
     Um.inputStartDate(enteredDate.get())
-    datesplit = Um.inputEndDate(b)
-    locID = getComboboxLocation()
+    datesplit = Um.inputEndDate(enteredEndDate.get())
+    locID = str(getComboboxLocation())
     # extraction
     O3 = var_O3.get()
     NO2 = var_NO2.get()
@@ -284,7 +282,6 @@ def UMOSGetLocation():
     if datesplit is False:
         # pre17
         Um.getDataAtLocationPre2017(locID, particules)
-        pass
     else:
         # post 17
         Um.extractwithCMCARC(particules)
@@ -299,7 +296,7 @@ def ObservationGetLocation():
     UpdateEverything()
     Ob.listadys()
     locID = getComboboxLocation()
-    Ob.generateFromDB(locID)
+    Ob.generateFromDB(str(locID))
 
 
 observationLocationBtn = tk.Button(machTab, text="Get Observation Data at Station", command=ObservationGetLocation,
@@ -335,17 +332,15 @@ locationBtn.place(x=50, y=395)
 def MistGetLocation():
     umistFolder = "extracted"+uMistModelType
     bashModelParameters(uMistModelType, uMistBranch)
-    Umist.bashFile(particules,getdate())
+    Bm.umosBashFile(getdate(),uMistModelType,uMistBranch)
     StartBash(uMistModelType,uMistBranch)
     time.sleep(1)
-    Umist.writeEticket(getdate())
-    shutil.rmtree(umistFolder)
-    os.mkdir(umistFolder)
-    # todo change: os.system("./"+uMistModelType+"Eticket.tcl")
-    Umist.TCLConfig(particules, getComboboxLocation(), getdate())
-    Umist.launchTCL()
-    Umist.removeEmptyFile(r'' + Umist.filelocation + "/"+umistFolder)
-    Umist.sortAndGenerate(Umist.filelocation + "/"+umistFolder+"/", getdate())
+    Bm.removeAllfile(r'' + filelocation + "/config"+uMistModelType)
+    Bm.getEticket(uMistModelType)
+    Bm.locationExtraction(getComboboxLocation(), getdate(), uMistModelType)
+    Bm.launchTCL(uMistModelType)
+    Bm.removeEmptyFile(r'' + filelocation + "/" + umistFolder)
+    Bm.sortAndGenerate(filelocation + "/"+umistFolder+"/", getdate(),uMistModelType)
 
 
 mistTCLBtn = tk.Button(machTab, text="Get UMOS-Mist data at Station", command=MistGetLocation, width=25, height=1)
@@ -621,6 +616,7 @@ def loadDB():
 try:
     loadDB()
     UpdateEverything()
+    bashModelParameters("","")
 except:
     pass
 
@@ -633,6 +629,7 @@ def storeDB():
     if enteredDate.get() != "" and enteredEndDate != "":
         dbFile = open("configuration", "ab")
         UpdateEverything()
+        bashModelParameters("", "")
         pickle.dump([
             enteredDate.get(),
             enteredEndDate.get(),

@@ -34,12 +34,13 @@ hour24 = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11"
 filelocation = os.getcwd()
 
 stationsDataFrame = pd.read_csv("stations.csv").drop(axis=1,labels=['city', 'address'])
+stationsDataFrame['lat'] = stationsDataFrame['lat'].round(2)
+stationsDataFrame['lon'] = stationsDataFrame['lon'].round(2)
 lstID = stationsDataFrame['id'].tolist()
 lstName = stationsDataFrame['name_en_ CA'].tolist()
 lstLatitude = stationsDataFrame['lat'].tolist()
 lstLongitude = stationsDataFrame['lon'].tolist()
 lstProvince = stationsDataFrame['province'].tolist()
-# todo, fix the zip in a way like gemmach file
 lstDisplay = stationsDataFrame[['id', 'name_en_ CA']].values.tolist()
 
 # search algorithm
@@ -93,7 +94,7 @@ def SearchNameID(userInput):
 
 
 def returnName(ID):
-    index = isIDFound(ID)
+    index = isIDFound(int(ID))
     if index is False:
         return "Station not in database"
     return lstName[index].strip()
@@ -398,6 +399,86 @@ def bashFile(selectedDate,modeltype,branche):
             )
         print(modeltype+" Config Files Saved!")
 
+def umosBashFile(selectedDate,modeltype,branche):
+    year = selectedDate.split("/")[0]
+    month = selectedDate.split("/")[1]
+    day = selectedDate.split("/")[2]
+    modelHourList = re.split(",", modelHour)
+    for modelHourSeparated in modelHourList:
+        fileBash = open(modeltype + modelHourSeparated + ".bash", 'w+')
+        fileBash.write(
+            "#!/bin/bash\n"
+            "PathOut=" + filelocation + "/bash"
+            "\nPathIn=" + filelocation + "/rarc"
+            "\nDateDebut=" + year + month + day +
+            "\nDateFin=" + year + month + day +
+            "\nListeMois=\"" + month + "\""
+            "\nAnnee=" + year +  # not used
+            "\nTag1=UMOSmist" + modelHourSeparated +
+            "\neditfst=/fs/ssm/eccc/mrd/rpn/utils/16.2/ubuntu-14.04-amd64-64/bin/editfst"
+            "\nType=species"
+            "\nFichierTICTAC=" + filelocation + "/rarc/"+branche+"/${DateDebut}" + modelHourSeparated + "_mist_anal"
+            "\nListeVersionsGEM=\""+branche+"\""
+            "\nListeEspeces=\"" + formattedParticuleString + "\""
+            "\nListeNiveaux=\"-1\""  # TODO confirm levels
+            "\nListeJours=\"-1\""
+            "\nListePasse=\"-1\""
+            "\nListeHeures=\"-1\""
+            "\n################# Extraction#############"
+            "\nfor VersionGEM in  ${ListeVersionsGEM}"
+            "\ndo"
+            "\nFileOut1=${PathOut}/${Tag1}.${DateDebut}.fst"
+            "\nif [  ${FileOut1}  ]; then"
+            "\nrm -rf  ${FileOut1}"
+            "\nelse"
+            "\ncontinue"
+            "\nfi"
+            "\nFileIn=${FichierTICTAC}"
+            "\n${editfst} -s ${FileIn} -d ${FileOut1} <<EOF"
+            "\nDESIRE(-1,['>>','^^'],-1,-1,-1,-1,-1)"
+            "\nZAP(-1,-1,'CAPAMIST',-1,-1,-1,-1)"
+            "\nEOF"
+            "\nfor mois in ${ListeMois}"
+            "\ndo"
+            "\necho ${mois}"
+            "\nfor jour in ${ListeJours}"
+            "\ndo"
+            "\nfor passe  in ${ListePasse}"
+            "\ndo"
+            "\nfor heure in ${ListeHeures}"
+            "\ndo"
+            "\necho ${heure}"
+            "\nFileIn1=${PathIn}/${VersionGEM}/${DateDebut}" + modelHourSeparated + "_mist_anal"
+            "\nif [ ! ${FileIn1}  ]; then"
+            "\ncontinue"
+            "\nelse"
+            "\necho \"-------------\""
+            "\necho ${FileIn1} \"file does exist\""
+            "\nfi"
+            "\necho ${FileIn1}"
+            "\nfor Espece in ${ListeEspeces}"
+            "\ndo"
+            "\nif [ \"$Espece\" = \"P0\" ] || [ \"$Espece\" = \"TCC\" ] ; then"
+            "\n${editfst} -s ${FileIn1} -d ${FileOut1} <<EOF"
+            "\nDESIRE (-1,\"$Espece\",-1, -1, 0, -1, -1)"
+            "\nEOF"
+            "\nelse"
+            "\nfor niveau in  ${ListeNiveaux}"
+            "\ndo"
+            "\n${editfst} -s ${FileIn1} -d ${FileOut1} <<EOF"                                                                                                                                                                                                                                  "\nDESIRE (-1,\"$Espece\",-1, -1, $niveau, [0" +
+            formattedSelectedTimeWithSpace.split(" ")[0] + ",@,0" + formattedSelectedTimeWithSpace.split(" ")[
+            -1] + ",DELTA,1], -1)"
+            "\nZAP(-1,-1,'CAPAMIST',-1,-1,-1,-1)"
+            "\nEOF"
+            "\ndone"
+            "\nfi"
+            "\ndone"
+            "\ndone"
+            "\ndone"
+            "\ndone"
+            "\ndone"
+            "\ndone\n")
+    print("UMOS-Mist Config Files Saved!")
 
 def getEticket(modelType):
     os.system("./"+modelType+"Eticket.tcl")
