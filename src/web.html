@@ -1,66 +1,50 @@
 <h2>Context</h2>
 <p>Ce outil a été créé dans le but de faciliter l'extraction les données de modèles ainsi que celles des observations. Ce programme est écrit en Python 3.4 avec des scripts pour le system UNIX en TCL/tk et [[Bash|BASH]].</p>
 <h2>Procédure à suivre pour installer l'outil</h2>
-<p>1.1 Allez dans le répertoire <i>/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/projetQA-StartUpFiles</i> pour télécharger l'outil</p>
-<p>1.2 Copiez le ficher <strong><em>setup.[[Bash|bash]]</em></strong> et <strong><em>files.zip</em></strong> dans votre répertoire de travail</p>
-<p>1.3 Exécutez le script de [[Bash|bash]]. Si le scipt de functionne pas, il n'est pas en exécutable. Faite la command "<strong><em>chmod 744 setup.[[Bash|bash]]</em></strong>" dans votre terminal</p>
+<p>1.1 Allez dans le répertoire <i>/space/hall1/sitestore/eccc/oth/airq_central/sair001/Ding_Ma/StartUpFiles-projetQA</i> pour télécharger l'outil</p>
+<p>1.2 Copiez le ficher <strong><em>setup.[[Bash|bash]]</em></strong> et <strong><em>files.zip</em></strong> sur le serveur Sciences dans votre répertoire de travail</p>
+<p>1.3 Exécutez le script de [[Bash|bash]] avec <strong><em>./setup.bash</em></strong>. Si le scipt de functionne pas, il n'est pas en exécutable. Faite la command "<strong><em>chmod 744 setup.[[Bash|bash]]</em></strong>" dans votre terminal</p>
 <p>1.4 Redémarez votre terminal pour utilisez l'outil</p>
 <p>1.5 Utilisez la commande <strong><em>AIDE</em></strong> pour démarer l'outil</p>
 <p>L'autre manière est de faire <i>cd ~VotreRepoTravail</i> et par la suite faire <i>python3 -m UI.py</i></p>
 
 <h2>Comment Utiliser l'Outil?</h2>
-<h3>Premiere section -- Rentré des données</h3>
+<h3>Premiere section -- Extraction des données</h3>
 [[Image:P1.png|thumb|alt=XRARC|Première Section|right|600px]]
-<p>Il faut rentrer les informations dans tous les boîtes et clickez sur "write to file".  Si vous faites un changement, il faut repeser sur le boutton vert "update" pour faire un mise à jour des configurations. La partie de l'extraction
-des archives se fait avec la série de date rentrée. Par contre, le traitement se fait jour par jour.</p>
+<p>La première partie de ce programme permet d'extraire les données de modèle sur HPNLS (serveur d'archive). Il faut rentrer les dates, les heures, ainsi que la ou les passes du modèle. Cette partie est la plus longue du procès.</p>
 
-
-<h3>Deuxième section -- Selection des modèles</h3>
+<h3>Deuxième section -- Données Alphanumériques</h3>
 [[Image:P2.png|thumb|alt=XRARC|Deuxième Section|right|600px]]
-<p>Choisiez les modèles dont vous voulez les informations. Pour les Gemmach, FireWork, et Umos-Mist, il faut choisir la date. Les UMOS et observations se font automatiquement sur la list de date.</p>
-<ul>
-  <li>Le premier boutton réécrit le fichier standard avec un script [[Bash|bash]] pour isoler les heures et polluants selectionés</li>
-  <li>Le deuxième effectue les calculs avec [[SPI|SPI]] pour interpoller les resultats à la station choisi</li>
-</ul>
-<p>Si les fichiers ont déjà été traités par le script [[Bash|bash]], il suffit de faire un mise à jour des fichiers avec la nouvelle station pour obtenir des résultats ailleur.</p>
+<p>Pour obtenir les données en format tableau, il faut choisir les polluants à la station désirée. Le bouton "search" permet de chercher avec le ID ou le nom de la station (en anglais seulement).
+  Pour les UMOS et Observations, le programme génère automatiquement dans un fichier par molécule, toute la liste de date. Cependant, pour les Gemmach, FireWork et UMOS-Mist, il faut traiter ces modèles jour par jour du
+au chevauchement des heures dans les fichiers standard.</p>
 
-
-<p>Pour les UMOS et Observation, il suffit simplement d'extraire les données des archives et de selectionés la station intéressée.</p>
 <h3>Troisième section -- Images</h3>
 [[Image:P3.png|thumb|alt=XRARC|Troisième Section|right|600px]]
-<p>Pour extraire les images des archives, il faut toujours Utiliser les données entré dans la section 1. Deplus, il faut aussi selectionés les partie de la carte à la droite.</p>
-<h4>Modèles Gem-Mach</h4>
-<ul>
-  <li>Le premier boutton extrait les donnes des archives en utilisant la command <i>rarc</i>
-  <li>Le deuxième génère l'animation gif dans le répertoire de sortie</li>
-</ul>
-<h4>Modèles UMOS-Mist</h4>
-<ul>
-  <li>Le premier boutton extrait les données des archives en utilisant la commande <i>rarc</i></li>
-  <li>Le deuxième génère l'animation gif dans le répertoire de sortie. Par contre, les images UMOS contiennet deux types ([[Surface|surface]] ou différence de [[Surface|surface]]), il faut aussi choisir ceci
-  avant de générer l'image</li>
-</ul>
+<p>Les données d'images peuvent aussi être extrait à partir de la première section. Par la suite, il faut simplement choisir les polluants désirés aux locations. Le boutton "Get Gemmach Images" génère des fichiers <i>.gif</i>. Pour les images
+d'UMOS-Mist, il faut choisir si on veut les données de surface(@sfc_) ou les données de la différence de surface (@sfc_diff_). Seulement les UMOS-Mist contiennent les données pour les images du Québec et Ontario.</p>
 <p>En bas au complet, le boutton 'Animate GIF' est utilisé pour jouer le ficher choisi. Ce boutton utlise la fonction <i>animate</i> du système linux.</p>
+
 <h3>Suprimer les Fichiers Brutte</h3>
-<p>Le boutton "Delete Extracted Files", va suprimer les répertoires des archives dans <i>~/rarc/</i>. Ces fichiers sont extrêmement grand, environ 1GBé/h pour les Gemmach et Firework. C'est
+<p>Le boutton "Delete Extracted Files", va suprimer les répertoires des archives dans <i>~/rarc/</i>. Ces fichiers sont extrêmement grand, environ 1GB/h pour les Gemmach et Firework. C'est
 important de les suprimer quand on a finit avec. C'est normal que le programme lance l'errur "Exception in Tkinter callback" lorsqu'on suprime le répertoire, c'est un bug avec Python.</p>
+
 <h3>Liste des Fichiers Modifiables par l'Utilisateur en cas de Besoin</h3>
-<p>Dans le fichier <i>Gemmach.py</i>, nous pouvons ajouter des heures suplémentaires. Si une station n'existe pas, simplement l'ajouter dans le fichier <i>stations.csv</i>, remplisez tous les colonnes!
+<p>Dans le fichier <i>BashModels.py</i>, nous pouvons ajouter des heures suplémentaires. Si une station n'existe pas, simplement l'ajouter dans le fichier <i>stations.csv</i>, remplisez tous les colonnes!
 Pour retrouver votre station plus facilement, ajoutez le au Yukon (code 11). Le fichier <i>stations.csv</i> est configuré de cette façons: numéro de station,nom englais,nom français,
 lat,lon,province (en numéro, consultez le fichier <i>info.csv</i> pour la conversion),ville,address.</p>
+
 <h3>Liste des Fichiers Nécessaires au Fonctionnement de l'Outil</h3>
-<p>Deux fichiers sont inclus lorsque vous télécharger l'outil. Dans extracteur.zip, il y a dix fichiers qui sont nécessaires au fonctionnement du programme.</p>
+<p>Deux fichiers sont inclus lorsque vous télécharger l'outil. Dans extracteur.zip, il y a huit fichiers qui sont nécessaires au fonctionnement du programme.</p>
 <ul>
   <li>setup.[[Bash|bash]]</li>
   <li>Files.zip, contient:
     <ol>
   <li>UI.py</li>
   <li>Images.py</li>
-  <li>UMOSMist.py</li>
-  <li>Gemmach.py</li>
   <li>UMOS.py</li>
   <li>Observations.py</li>
-  <li>Firework.py</li>
+  <li>BashModels.py</li>
   <li>UMOS_Ref.csv</li>
   <li>station.csv</li>
   <li>extract1.tcl</li>
@@ -68,17 +52,44 @@ lat,lon,province (en numéro, consultez le fichier <i>info.csv</i> pour la conve
     </ol>
   </li>
 </ul>
+
 <p>Le restant des fichiers sont automatiquement générés par le programme.</p>
-<h4>Layout des fichiers Python----------</h4>
-<p>Le fichier <i>UI.py</i> est le ficher root du programme. Il importe tout les autre fichiers Python. Chaque fichier est indépendant des autres, elles sont tous des modules séparés.
-C'est pour cela que becaucoup de code se resemble. Pour ajourter des modules dans le future, il faut simplement l'importer dans <i>UI.py</i> et adapter le code.</p>
+<h4>Layout des fichiers Python</h4>
+<p>Le fichier <i>UI.py</i> est le ficher root du programme. Il importe tout les autre fichiers Python. Pour ajourter des modules dans le future, il faut simplement l'importer dans <i>UI.py</i> et adapter le code. Tout le code pour
+l'interface se retrouve aussi dans <i>UI.py</i>. Pour changer comment le programme apparait, il faut changer les coordonnées X et Y des bouttons. <i>UI.py</i> prend les données rentrer par l'utilisateur et le passe dans le module
+de python approprié pour faire le traitement.</p>
+
+<h3>Où-sont mes fichiers?</h3>
+<p>Pour les données alphanumériques, ils se retrouve dans <i>~path-du-programme/output_csv</i> pour les fichiers CSV et <i>~path-du-programme/output_excel</i> pour les fichiers excel.
+ Les images se retrouvent à <i>~path-du-programme/output_img</i>. Voir le tableau pour la nomentature des fichiers.
+<table>
+  <tr>
+    <th>Type de Modèle</th>
+    <th>Nomentature</th>
+  </tr>
+  <tr>
+    <td><ul>
+      <li>FireWork</li>
+      <li>Gemmach</li>
+      <li>UMOS</li>
+      <li>UMOS-Mist</li>
+    </ul></td>
+    <td>  AAAAMMJJHH_Produit_Polluant_NomDeStation</td>
+  </tr>
+  <tr>
+    <td>Observations</td>
+    <td>  AAAAMMJJ-Début_AAAAMMJJ-Fin_Produit_Polluant_NomDeStation</td>
+  </tr>
+</table></p>
+<p>Note: Les fichers excel sont illisible sous Linux, il faut les mettre sur le compte Windows avec l'aide de WINSCP.</p>
+
 <h2>Erreur ou Bug Possible</h2>
 <ul>
   <li>Le programme peut seulement prendre 2 mois au maximum</li>
   <li>Une boite doit être choché au minimum pour les modèle, les particules, et les location </li>
   <li>Dans la case de "search", il faut <u>seulement</u> entrer des charactères(nom de station) ou des nombres(code de station).</li>
   <li>Si rarc retourne "Grand Total of 0", ceci veut dire que les fichiers d'archives n'existent pas ou elles sont déjà présentes.</li>
-  <li>Les dates avant le 7 avirl 2016 pour les UMOS ne vont pas marché dû à des erreurs dans les fichiers standard</li>
+  <li>Les dates avant le 7 avirl 2016 pour les UMOS-Mist ne vont pas marché dû à des erreurs dans les fichiers standard</li>
   <li>Parfois, quand les fichiers d'observations viennent de se faire extraire, les données ne sortent des bd. Il faut peser sur "update" une fois. </li>
 </ul>
 <h3>À faire - Réparation des fichiers UMOS</h3>
@@ -89,9 +100,9 @@ les fichiers ne sont plus de 0 à 48, mais de 0 à 23. Ceci cause aussi des prob
 <p>Ce qui faut faire: Dans le scipt time.tcl, il faut extraire les IP2 de 0 à 48h et les associées avec le bon temps. En ce momment, j'ai seulement deux fois 0 à 23. </p>
 
 <h2>Description Détailler du Fonctionnement de l'outil</h2>
-<p>Lorsque le programmes est lancer, il modifie automatiquement les fichier en éxécutable et il crée les repertoire de travail. C'est très important de ne pas les suprimer!</p>
+<p>Lorsque le programmes est lancer, il modifie automatiquement les fichier en éxécutable et il crée les repertoire de travail. C'est très important de ne pas les suprimer! Il y a beaucoup de commentaire dans les fichiers python. </p>
 <h3>Extraction des Archives</h3>
-<p>Le programme écrit automatiquement les fichier de configuration avec les informations entrées. Par la suite, le boutton "Extraction" lance la commande <i>rarc -i Gemmach</i>
+<p>Le programme écrit automatiquement les fichier de configuration avec les informations entrées. Par la suite, le boutton "Gemmach Extraction" lance la commande <i>rarc -i Gemmach</i>
 pour lancer le programme RARC dans le terminal. La sortie de ces fichiers vont se retrouver à <em>~/rarc/</em>, et dépendament des modèles choisis, le programme va générer
 les répertoire de fichers d'archives.</p>
 
@@ -139,7 +150,7 @@ les répertoire de fichers d'archives.</p>
 </table>
 <p>Notes: Le programme peut <u>seulement</u> traiter les fichiers dans ces répertoires!</p>
 <h3>[[Bash|Bash]] Script</h3>
-<p>Pour le script de [[Bash|bash]], le pgramme va isoler les heures et polluants. Ceci génère un script [[Bash|bash]] comme <i>FireWork00.[[Bash|bash]]</i>, il y a deux fichiers par modèles pour les deux passes.
+<p>Pour le script de [[Bash|bash]], le programme va isoler les heures et polluants. Ceci génère un script [[Bash|bash]] comme <i>FireWork00.[[Bash|bash]]</i>, il y a deux fichiers par modèles pour les deux passes.
   Le debut du script est la configuration pour le script. Ceci inclus l'heure, les polluants, les niveaux, et la passe. Le script prend le ficher brute des archives et il va le combiner
 en 1 seul ficher de sortie .fst. Le fichier de sortie est situer à <em>~/[[Bash|bash]]/</em>. Dépendant du type de modèle, le ficher de sortie aurait cette forme <i>MODEL-MODÈLE_DATE-DÉBUT_DATE-FIN.fst</i>.
 Dans ce script, la commande <i>DESIRE</i> est utilisé. Ceci va chercher les tic-tacs ainsi que les polluants au niveaux désirer.</p>
@@ -148,7 +159,7 @@ De plus, les fichiers Umos-Mist <b>ne sont pas</b> accessible avant le <u>7 avri
 
 <h3>Extraire aux stations</h3>
 <p>Pour l'extration des données à une station, le script <b>extract1.tcl</b> et le fichier de configuration sont nécessaires. Le programme Python génère un fichier config par heure, par [[Date|date]], par passe, par
-polluants et par station. Ceci fait becoup de fichier! Ceci évite des problèmes que le script TCL peut avoir. Si le temps spécifié n'est pas dans le fichier de sortie du script [[Bash|bash]], le script TCL ne va pas
+polluants et par station. Ceci fait beaucoup de fichier! Ceci évite des problèmes que le script TCL peut avoir. Si le temps spécifié n'est pas dans le fichier de sortie du script [[Bash|bash]], le script TCL ne va pas
 fonctionner. C'est pour ça qu'il a des erreur dans le script tcl roule (error 8), c'est normal! À la fin, le script va générer becaucoup de ficher csv avec une entré. Ceux qui sont vide sont
 suprimer par le programme et ceux qui contiennent de l'information sont combiner ensemble. Le répertoire de sortie se situe à <i>~/output/</i>. Les fichiers de configuration se situent à <i>~/config/</i> et les fichier
 de traitement se situent à <i>~/extracted/</i>. Bien évidament, il y a une répertoire par modèle.</p>
@@ -176,4 +187,4 @@ une animation. Le Gem-Mach et Umos fonctionne de la même manière. Le fichier d
   <li>Utiliser les libraries <i>Matplotlib, Numpy, Pandas, et Openpyxl </i> pour générer des graphs et des fichiers excel.</li>
 </ul>
 <h2>Code du Projet</h2>
-<p>Le code du projet se situe à https://github.com/ding-ma/Projet-tude-de-cas-en-Qualit-de-l-air. Pour des questions, veuillez m'écrire à ding.ma@mail.mcgill.ca.</p>
+<p>Le code du projet se situe à https://github.com/ding-ma/Projet-tude-de-cas-en-Qualit-de-l-air. Pour des questions, veuillez m'écrire à <i>ding.ma@mail.mcgill.ca</i>.</p>
