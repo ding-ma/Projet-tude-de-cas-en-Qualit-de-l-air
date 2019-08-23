@@ -1,9 +1,12 @@
+import csv
 import os
 import re
 import sqlite3 as sql
 import time
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from sys import platform
+
+import pandas as pd
 
 import BashModels as Bm
 
@@ -104,6 +107,86 @@ def particuleCheckBox(O3, NO2, others, PM25):
     # for every 2 character, add space
     formattedParticuleString = ' '.join(
         unformattedParticuleString[i:i + 2] for i in range(0, len(unformattedParticuleString), 2))
+
+
+AQHI_path = "/fs/home/fs1/ords/oth/airq_central/frc002/Data/CAS/Observations/Station/"
+stationlst = []
+datelst = []
+hourlst = []
+O3lst = []
+NO2lst = []
+PM25lst = []
+
+def getQuickData(stationID):
+    stationName = Bm.returnName(stationID)
+    if os.path.exists(AQHI_path + stationID) is True:
+        for files in sorted(
+                os.listdir(AQHI_path + stationID)):
+            for days in lstdays:
+                if files.endswith(stationID + "_" + days.strftime("%Y%m%d") + ".csv"):
+                    f = open(AQHI_path + stationID + "/" + files, "r")
+                    csvFile = list(csv.reader(f))
+                    for z in range(len(csvFile)):
+                        row = csvFile[z]
+                        if row != ['station', 'Date', 'UTC', 'AQHI', 'O3', 'NO2', 'PM2.5', 'PM10', 'SO2', 'H2S',
+                                   'CO',
+                                   'NO', 'TRS']:
+                            station = row[0]
+                            stationlst.append(station)
+                            date = row[1]
+                            datelst.append(date)
+                            hour = row[2]
+                            hourlst.append(hour)
+                            NO2 = row[5]
+                            NO2lst.append(NO2)
+                            O3 = row[4]
+                            O3lst.append(O3)
+                            PM25 = row[6]
+                            PM25lst.append(PM25)
+    else:
+        print("This station does not exist in db-AQHI, try using the archives...")
+
+    # use this line when pandas will be updated on the server:
+    # dfNO['Date(DD/MM/YYYY)'] = pd.to_datetime(dfNO['Date(DD/MM/YYYY)']).dt.strftime("%Y%m%d")
+
+    formatteddatelst = []
+    formattedhourlst = []
+
+    for day in datelst:
+        d = datetime.strptime(day, "%Y-%m-%d").strftime("%Y%m%d")
+        formatteddatelst.append(d)
+
+    for hour in hourlst:
+        h = datetime.strptime(hour, "%H:%M:%S").strftime("%H")
+        formattedhourlst.append(h)
+
+    columnheader = ["Date", "Hour(Z)", "Value"]
+    if "AF" in formattedParticuleString:
+        dfPM = pd.DataFrame(list(zip(formatteddatelst, formattedhourlst, PM25lst)), columns=columnheader)
+        dfPM.to_csv("output_csv/" + sDate.strftime("%Y%m%d") + eDate.strftime("%Y%m%d") +"_OBS_AF_" + stationName + ".csv", sep=",", index=False)
+        dfPM.to_excel("output_excel/" + sDate.strftime("%Y%m%d") + eDate.strftime("%Y%m%d") +"_OBS_AF_" + stationName + ".xlsx", engine="xlsxwriter")
+
+    if "N2" in formattedParticuleString:
+        dfNO = pd.DataFrame(list(zip(formatteddatelst, formattedhourlst, NO2lst)), columns=columnheader)
+
+        dfNO.to_csv("output_csv/" + sDate.strftime("%Y%m%d") + eDate.strftime("%Y%m%d") +"_OBS_N2_" + stationName+".csv", sep=",",index=False)
+        dfNO.to_excel("output_excel/"+ sDate.strftime("%Y%m%d") + eDate.strftime("%Y%m%d") +"_OBS_N2_" + stationName+ ".xlsx", engine="xlsxwriter")
+
+    if "O3" in formattedParticuleString:
+        dfO3 = pd.DataFrame(list(zip(formatteddatelst, formattedhourlst, O3lst)), columns=columnheader)
+        dfO3.to_csv("output_csv/"  + sDate.strftime("%Y%m%d") + eDate.strftime("%Y%m%d") +"_OBS_O3_" + stationName+".csv", sep=",", index=False)
+        dfO3.to_excel("output_excel/" + sDate.strftime("%Y%m%d") + eDate.strftime("%Y%m%d") +"_OBS_O3_" + stationName+ ".xlsx", engine="xlsxwriter")
+
+    stationlst.clear()
+    datelst.clear()
+    hourlst.clear()
+    NO2lst.clear()
+    O3lst.clear()
+    PM25lst.clear()
+    formatteddatelst.clear()
+    formattedhourlst.clear()
+    print("\nJob done, see folder for csv file-->" + filelocation + "/output_csv")
+    print("\nJob done, see folder for excel file-->" + filelocation + "/output_excel")
 
 
 lstofSpecies = []

@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="993a9838-9207-46e0-aaef-0972cce94224" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/obsWithAQHI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/observation-fastway.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/web.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/web.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/obsWithAQHI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/obsWithAQHI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/observations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/observations.py" afterDir="false" />
     </list>
     <list id="907627cc-b390-404d-92ca-b82bb5948891" name="changed ui for date entry, dropbox" comment="changed ui for date entry, dropbox&#10;&#10;(cherry picked from commit 2f4aa07e39a3bdfdaad2fabc35416c24e44b5482)">
       <changelist_data name="Ding Ma" email="ding.ma@mail.mcgill.ca" date="1559324784000" />
@@ -235,11 +235,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.s" />
         <item itemvalue="Python.obsWithAQHI" />
         <item itemvalue="Python.UMOS" />
         <item itemvalue="Python.BashModels" />
         <item itemvalue="Python.scratch" />
-        <item itemvalue="Python.s" />
       </list>
     </recent_temporary>
   </component>
@@ -253,13 +253,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557412480438</updated>
-    </task>
-    <task id="LOCAL-00079" summary="backup before changing UI">
-      <created>1561128604530</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1561128604530</updated>
     </task>
     <task id="LOCAL-00080" summary="massive ui update">
       <created>1561144708757</created>
@@ -597,7 +590,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566395579238</updated>
     </task>
-    <option name="localTasksCounter" value="128" />
+    <task id="LOCAL-00128" summary="getting observation from db-AQHI works. A lot faster than from archives. adding it to the UI...">
+      <created>1566574358784</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1566574358785</updated>
+    </task>
+    <option name="localTasksCounter" value="129" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -652,7 +652,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="minor tweak" />
     <MESSAGE value="working on pickle" />
     <MESSAGE value="added on pickle entered dates and hours" />
     <MESSAGE value="skips QC-ONT images for gemmach and update the pickle" />
@@ -677,7 +676,8 @@
     <MESSAGE value="error fixed, now getting &quot;TypeError: can only concatenate str (not &quot;float&quot;) to str&quot; at time0Format" />
     <MESSAGE value="gemmach and firework now works. patching umos-mist tomorrow :)" />
     <MESSAGE value="everything works, cannot test umos-mist due to server error" />
-    <option name="LAST_COMMIT_MESSAGE" value="everything works, cannot test umos-mist due to server error" />
+    <MESSAGE value="getting observation from db-AQHI works. A lot faster than from archives. adding it to the UI..." />
+    <option name="LAST_COMMIT_MESSAGE" value="getting observation from db-AQHI works. A lot faster than from archives. adding it to the UI..." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>

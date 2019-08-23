@@ -295,13 +295,22 @@ UMOSBtnGetFile.place(x=50, y=320)
 def ObservationGetLocation():
     UpdateEverything()
     Ob.listadys()
-    locID = getComboboxLocation()
-    Ob.generateFromDB(str(locID))
+    Ob.generateFromDB(str(getComboboxLocation()))
 
 
 observationLocationBtn = tk.Button(machTab, text="Get Observation Data at Station", command=ObservationGetLocation,
                                    width=25, height=1)
 observationLocationBtn.place(x=300, y=320)
+
+
+def quickobs():
+    UpdateEverything()
+    Ob.listadys()
+    Ob.getQuickData(str(getComboboxLocation()))
+
+
+quickObsLocationbtn = tk.Button(machTab, text = "Get QUICK obs at station", command=quickobs, width=25,height=1,bg='yellow')
+quickObsLocationbtn.place(x=600, y=320)
 
 selectDate = ttk.Combobox(machTab, values=["No Date Entered"], state='readonly', width=25)
 selectDate.place(x=370, y=360)
