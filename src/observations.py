@@ -117,15 +117,18 @@ O3lst = []
 NO2lst = []
 PM25lst = []
 
-def checkifDataisValid(fileName, polluant):
-    df = pd.read_csv(fileName)
+def checkifDataisValid(fileNameCSV, polluant,fileNameExcel):
+    df = pd.read_csv(fileNameCSV)
     counter = list(df['Value'].value_counts(normalize=True).items())
 
     # there is another way of doing it without a loop
     for item in counter:
-        if item[0] == -9.99 and item[1] > 0.25:
+        if item[0] == -9.99 and 1> item[1] > 0.25:
             print("Warning: more than 25% of entries for "+polluant+" are missing")
-
+        if item[0] == -9.99 and item[1] == 1:
+            print("Warning: " +polluant+"'s file has been delete because it was empty.")
+            os.remove(fileNameCSV)
+            os.remove(fileNameExcel)
 
 def getQuickData(stationID):
     stationName = Bm.returnName(stationID)
@@ -173,22 +176,25 @@ def getQuickData(stationID):
     columnheader = ["Date", "Hour(Z)", "Value"]
     if "AF" in formattedParticuleString:
         dfPM = pd.DataFrame(list(zip(formatteddatelst, formattedhourlst, PM25lst)), columns=columnheader)
-        dfPM.to_csv("output_csv/" + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_AF_" + stationName + ".csv", sep=",", index=False)
-        dfPM.to_excel("output_excel/" + sDate.strftime("%Y%m%d") +"_"+ eDate.strftime("%Y%m%d") +"_OBS_AF_" + stationName + ".xlsx", engine="xlsxwriter")
-        checkifDataisValid("output_csv/" + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_AF_" + stationName + ".csv", "PM25")
+        fileNameAF = sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_AF_" + stationName
+        dfPM.to_csv("output_csv/" +  fileNameAF +".csv", sep=",", index=False)
+        dfPM.to_excel("output_excel/" + fileNameAF + ".xlsx", engine="xlsxwriter")
+        checkifDataisValid("output_csv/" + fileNameAF + ".csv", "PM25", "output_excel/" + fileNameAF + ".xlsx")
 
     if "N2" in formattedParticuleString:
         dfNO = pd.DataFrame(list(zip(formatteddatelst, formattedhourlst, NO2lst)), columns=columnheader)
-
-        dfNO.to_csv("output_csv/" + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_N2_" + stationName+".csv", sep=",",index=False)
-        dfNO.to_excel("output_excel/"+ sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_N2_" + stationName+ ".xlsx", engine="xlsxwriter")
-        checkifDataisValid("output_csv/" + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_N2_" + stationName+".csv", "NO2")
+        fileNameN2 = sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_N2_" + stationName
+        dfNO.to_csv("output_csv/" + fileNameN2+".csv", sep=",",index=False)
+        dfNO.to_excel("output_excel/"+ fileNameN2+ ".xlsx", engine="xlsxwriter")
+        checkifDataisValid("output_csv/" + fileNameN2+".csv", "NO2","output_excel/"+ fileNameN2+ ".xlsx")
 
     if "O3" in formattedParticuleString:
         dfO3 = pd.DataFrame(list(zip(formatteddatelst, formattedhourlst, O3lst)), columns=columnheader)
-        dfO3.to_csv("output_csv/"  + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_O3_" + stationName+".csv", sep=",", index=False)
-        dfO3.to_excel("output_excel/" + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_O3_" + stationName+ ".xlsx", engine="xlsxwriter")
-        checkifDataisValid("output_csv/"  + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_O3_" + stationName+".csv", "O3")
+        fileNameO3 = sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_O3_" + stationName
+        dfO3.to_csv("output_csv/"  +fileNameO3 +".csv", sep=",", index=False)
+        dfO3.to_excel("output_excel/" +fileNameO3+ ".xlsx", engine="xlsxwriter")
+        checkifDataisValid("output_csv/"  + fileNameO3 +".csv", "O3", "output_excel/" +fileNameO3+ ".xlsx")
+
 
     stationlst.clear()
     datelst.clear()
