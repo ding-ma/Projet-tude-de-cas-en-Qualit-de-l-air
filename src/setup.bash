@@ -1,7 +1,7 @@
 #!/bin/bash
 
 shopt -s expand_aliases
-unzip="unzip extracteur.zip"
+unzip="unzip files.zip"
 eval $unzip
 path=$(eval "pwd")
 str="alias AIDE=\x22cd $path/ && python3 -m UI.py\x22"
