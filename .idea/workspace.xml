@@ -252,13 +252,6 @@
       <option name="presentableId" value="Default" />
       <updated>1557412480438</updated>
     </task>
-    <task id="LOCAL-00082" summary="added delete button">
-      <created>1561490178258</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1561490178258</updated>
-    </task>
     <task id="LOCAL-00083" summary="working on tcl script to correct the umos mist files">
       <created>1561579592182</created>
       <option name="number" value="00083" />
@@ -595,7 +588,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567190244953</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="ops forgot to change zip file name in script">
+      <created>1567190307680</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1567190307680</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -650,7 +650,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="skips QC-ONT images for gemmach and update the pickle" />
     <MESSAGE value="minor tweak for images" />
     <MESSAGE value="removed forecast.py from project," />
     <MESSAGE value="added if condition for file save" />
@@ -675,7 +674,8 @@
     <MESSAGE value="getting observation from db-AQHI works. A lot faster than from archives. adding it to the UI..." />
     <MESSAGE value="ui is done, need to discuss on where to position it. everything works" />
     <MESSAGE value="added underscores for visibility" />
-    <option name="LAST_COMMIT_MESSAGE" value="added underscores for visibility" />
+    <MESSAGE value="ops forgot to change zip file name in script" />
+    <option name="LAST_COMMIT_MESSAGE" value="ops forgot to change zip file name in script" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
