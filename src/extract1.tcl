@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/tclsh
 # : - \
     exec /fs/ssm/eccc/cmo/cmoe/apps/SPI_7.12.0_all/tclsh "$0" "$@"
 package require TclData

@@ -122,7 +122,7 @@ def getQuickData(stationID):
     if os.path.exists(AQHI_path + stationID) is True:
         for files in sorted(
                 os.listdir(AQHI_path + stationID)):
-            for days in lstdays:
+            for days in lstdays[:-1]:
                 if files.endswith(stationID + "_" + days.strftime("%Y%m%d") + ".csv"):
                     f = open(AQHI_path + stationID + "/" + files, "r")
                     csvFile = list(csv.reader(f))
@@ -163,19 +163,19 @@ def getQuickData(stationID):
     columnheader = ["Date", "Hour(Z)", "Value"]
     if "AF" in formattedParticuleString:
         dfPM = pd.DataFrame(list(zip(formatteddatelst, formattedhourlst, PM25lst)), columns=columnheader)
-        dfPM.to_csv("output_csv/" + sDate.strftime("%Y%m%d") + eDate.strftime("%Y%m%d") +"_OBS_AF_" + stationName + ".csv", sep=",", index=False)
-        dfPM.to_excel("output_excel/" + sDate.strftime("%Y%m%d") + eDate.strftime("%Y%m%d") +"_OBS_AF_" + stationName + ".xlsx", engine="xlsxwriter")
+        dfPM.to_csv("output_csv/" + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_AF_" + stationName + ".csv", sep=",", index=False)
+        dfPM.to_excel("output_excel/" + sDate.strftime("%Y%m%d") +"_"+ eDate.strftime("%Y%m%d") +"_OBS_AF_" + stationName + ".xlsx", engine="xlsxwriter")
 
     if "N2" in formattedParticuleString:
         dfNO = pd.DataFrame(list(zip(formatteddatelst, formattedhourlst, NO2lst)), columns=columnheader)
 
-        dfNO.to_csv("output_csv/" + sDate.strftime("%Y%m%d") + eDate.strftime("%Y%m%d") +"_OBS_N2_" + stationName+".csv", sep=",",index=False)
-        dfNO.to_excel("output_excel/"+ sDate.strftime("%Y%m%d") + eDate.strftime("%Y%m%d") +"_OBS_N2_" + stationName+ ".xlsx", engine="xlsxwriter")
+        dfNO.to_csv("output_csv/" + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_N2_" + stationName+".csv", sep=",",index=False)
+        dfNO.to_excel("output_excel/"+ sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_N2_" + stationName+ ".xlsx", engine="xlsxwriter")
 
     if "O3" in formattedParticuleString:
         dfO3 = pd.DataFrame(list(zip(formatteddatelst, formattedhourlst, O3lst)), columns=columnheader)
-        dfO3.to_csv("output_csv/"  + sDate.strftime("%Y%m%d") + eDate.strftime("%Y%m%d") +"_OBS_O3_" + stationName+".csv", sep=",", index=False)
-        dfO3.to_excel("output_excel/" + sDate.strftime("%Y%m%d") + eDate.strftime("%Y%m%d") +"_OBS_O3_" + stationName+ ".xlsx", engine="xlsxwriter")
+        dfO3.to_csv("output_csv/"  + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_O3_" + stationName+".csv", sep=",", index=False)
+        dfO3.to_excel("output_excel/" + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_O3_" + stationName+ ".xlsx", engine="xlsxwriter")
 
     stationlst.clear()
     datelst.clear()
