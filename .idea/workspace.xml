@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="993a9838-9207-46e0-aaef-0972cce94224" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup.bash" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/observations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/observations.py" afterDir="false" />
     </list>
     <list id="907627cc-b390-404d-92ca-b82bb5948891" name="changed ui for date entry, dropbox" comment="changed ui for date entry, dropbox&#10;&#10;(cherry picked from commit 2f4aa07e39a3bdfdaad2fabc35416c24e44b5482)">
       <changelist_data name="Ding Ma" email="ding.ma@mail.mcgill.ca" date="1559324784000" />
@@ -251,13 +251,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557412480438</updated>
-    </task>
-    <task id="LOCAL-00083" summary="working on tcl script to correct the umos mist files">
-      <created>1561579592182</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1561579592182</updated>
     </task>
     <task id="LOCAL-00084" summary="backup before working on time change script">
       <created>1561657439585</created>
@@ -595,7 +588,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567190307680</updated>
     </task>
-    <option name="localTasksCounter" value="132" />
+    <task id="LOCAL-00132" summary="added pip install for people that didnt have it">
+      <created>1567192352977</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1567192352977</updated>
+    </task>
+    <option name="localTasksCounter" value="133" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -650,7 +650,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="minor tweak for images" />
     <MESSAGE value="removed forecast.py from project," />
     <MESSAGE value="added if condition for file save" />
     <MESSAGE value="reduced get chosen pollutant button into get data at station with a function" />
@@ -675,7 +674,8 @@
     <MESSAGE value="ui is done, need to discuss on where to position it. everything works" />
     <MESSAGE value="added underscores for visibility" />
     <MESSAGE value="ops forgot to change zip file name in script" />
-    <option name="LAST_COMMIT_MESSAGE" value="ops forgot to change zip file name in script" />
+    <MESSAGE value="added pip install for people that didnt have it" />
+    <option name="LAST_COMMIT_MESSAGE" value="added pip install for people that didnt have it" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>

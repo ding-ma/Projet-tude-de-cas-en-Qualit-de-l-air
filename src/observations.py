@@ -117,6 +117,15 @@ O3lst = []
 NO2lst = []
 PM25lst = []
 
+def checkifDataisValid(fileName):
+    df = pd.read_csv(fileName)
+    counter = list(df['Value'].value_counts(normalize=True).items())
+
+    # there is another way of doing it without a loop
+    for item in counter:
+        if item[0] == -9.99 and item[1] > 0.25:
+            print("Warning: more than 25% of entries are missing")
+
 def getQuickData(stationID):
     stationName = Bm.returnName(stationID)
     if os.path.exists(AQHI_path + stationID) is True:
@@ -165,17 +174,20 @@ def getQuickData(stationID):
         dfPM = pd.DataFrame(list(zip(formatteddatelst, formattedhourlst, PM25lst)), columns=columnheader)
         dfPM.to_csv("output_csv/" + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_AF_" + stationName + ".csv", sep=",", index=False)
         dfPM.to_excel("output_excel/" + sDate.strftime("%Y%m%d") +"_"+ eDate.strftime("%Y%m%d") +"_OBS_AF_" + stationName + ".xlsx", engine="xlsxwriter")
+        checkifDataisValid("output_csv/" + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_AF_" + stationName + ".csv")
 
     if "N2" in formattedParticuleString:
         dfNO = pd.DataFrame(list(zip(formatteddatelst, formattedhourlst, NO2lst)), columns=columnheader)
 
         dfNO.to_csv("output_csv/" + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_N2_" + stationName+".csv", sep=",",index=False)
         dfNO.to_excel("output_excel/"+ sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_N2_" + stationName+ ".xlsx", engine="xlsxwriter")
+        checkifDataisValid("output_csv/" + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_N2_" + stationName+".csv")
 
     if "O3" in formattedParticuleString:
         dfO3 = pd.DataFrame(list(zip(formatteddatelst, formattedhourlst, O3lst)), columns=columnheader)
         dfO3.to_csv("output_csv/"  + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_O3_" + stationName+".csv", sep=",", index=False)
         dfO3.to_excel("output_excel/" + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_O3_" + stationName+ ".xlsx", engine="xlsxwriter")
+        checkifDataisValid("output_csv/"  + sDate.strftime("%Y%m%d")+"_" + eDate.strftime("%Y%m%d") +"_OBS_O3_" + stationName+".csv")
 
     stationlst.clear()
     datelst.clear()
